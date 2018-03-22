@@ -1,0 +1,72 @@
+.ejemplo{
+padding: 20px;
+margin: 20px 0;
+border: 1px solid #eee;
+border-left-width: 5px;
+border-right-width: 5px;
+border-radius: 3px;
+border-left-color: #000000;
+  color: #000000;
+border-right-color: #000000;
+  }
+
+.ejercicio {
+padding: 20px;
+margin: 20px 0;
+border: 1px solid #eee;
+border-left-width: 5px;
+border-right-width: 5px;
+border-radius: 3px;
+border-left-color: #db1313;
+border-right-color: #db1313;
+  color: #000000;
+  }
+
+.importante {
+padding: 1em 1em 1em 4em;
+margin-bottom: 10px;
+margin: 20px 0;
+border: 1px solid #eee;
+border-left-width: 0px;
+border-radius: 10px;
+border-left-color: #ce4844;
+  background-color: #ECA1A0;
+  font-size: 110%;
+background: #ECA1A0 5px center/3em no-repeat;
+background-image: url("../images/warning.png");
+}
+
+.curiosidad {
+padding: 1em 1em 1em 4em;
+margin-bottom: 10px;
+margin: 20px 0;
+border: 1px solid #eee;
+border-left-width: 0px;
+border-radius: 10px;
+border-left-color: #ce4844;
+  background-color: #DCE4EA;
+  font-size: 110%;
+  background: #DCE4EA 5px center/3em no-repeat;
+background-image: url("../images/important.png");
+}
+
+.rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5 5px center/3em no-repeat;
+}
+.rmdcaution {
+  background-image: url("../images/caution.png");
+}
+.rmdimportant {
+  background-image: url("../images/important.png");
+}
+.rmdnote {
+  background-image: url("../images/note.png");
+}
+.rmdtip {
+  background-image: url("../images/tip.png");
+}
+.rmdwarning {
+  background-image: url("../images/warning.png");
+}
