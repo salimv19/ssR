@@ -8,20 +8,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:title" content="A Book" />
+<meta property="og:title" content="aprendeR" />
 <meta property="og:type" content="book" />
 
 
 
 
 
-<meta name="author" content="Salim" />
+<meta name="author" content="Andrea Fernández Conde" />
 
 
 
-<meta name="description" content="A Book">
+<meta name="description" content="aprendeR">
 
-<title>A Book</title>
+<title>aprendeR</title>
 
 <script src="libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -62,7 +62,8 @@ img {
 <div class="col-sm-12">
 <div id="TOC">
 <ul>
-<li><a href="#hello-world"><span class="toc-section-number">1</span> Hello World</a></li>
+<li><a href="index.html#introduccion"><span class="toc-section-number">1</span> Introducción</a></li>
+<li><a href="2-hello-world.html#hello-world"><span class="toc-section-number">2</span> Hello World</a></li>
 </ul>
 </div>
 </div>
@@ -70,79 +71,28 @@ img {
 <div class="row">
 <div class="col-sm-12">
 <div id="header">
-<h1 class="title">A Book</h1>
-<h4 class="author"><em>Salim</em></h4>
+<h1 class="title">aprendeR</h1>
+<h4 class="author"><em>Andrea Fernández Conde</em></h4>
 </div>
-<div id="hello-world" class="section level1">
-<h1><span class="header-section-number">1</span> Hello World</h1>
-<div class="ejemplo">
-<p>
-Usa la mnemotécnica del inglés: get working directory ≡ getwd. Notarás como muchas funciones tienen un nombre que acorta lo que hacen.
-</p>
-</div>
-<div class="ejercicio">
-<p>
-<code>Packrat</code> Cuando cambian las versiones de distintos paquetes de R, es posible que código que solía funcionar deje de hacerlo. Por esta razón, es conveniente empaquetar proyectos de código de manera que el código en un proyecto específico tenga asociados también las versiones específicas de los paquetes con los cuáles fue creado. Una forma de lograr esto es utilizando <code>packrat</code>. Para mayor detalle, ver el apéndice B.
-</p>
-</div>
-<div class="importante">
-<p>
-Ejercicios
-</p>
-<ul>
-<li>
-primero
-</li>
-<li>
-luego
-</li>
-<li>
-después
-</li>
-</ul>
-</div>
-<div class="curiosidad">
-<p>
-En R
-</p>
-<ul>
-<li>
-Todo lo que existe es un objeto.
-</li>
-<li>
-Todo lo que sucede es una llamada a una función.
-</li>
-</ul>
-</div>
-<div class="rmdnote">
-<p>
-Note
-</p>
-</div>
-<div class="rmdcaution">
-<p>
-Caution
-</p>
-</div>
-<div class="rmdimportant">
-<p>
-Important
-</p>
-</div>
-<div class="rmdtip">
-<p>
-Tip
-</p>
-</div>
-<div class="rmdwarning">
-<p>
-Warning
-</p>
-</div>
-<!-- If you need PDF output, uncomment bookdown::pdf_book above in YAML. You will need a LaTeX installation, e.g., https://yihui.name/tinytex/ -->
-
+<div id="introduccion" class="section level1">
+<h1><span class="header-section-number">1</span> Introducción</h1>
+<p> inicia a principios de los noventas en la Universidad de Auckland en Nueva Zelanda. Ross Ihaka, profesor del departamento de estadística, pensaba que debía existir una alternativa superior para el análisis de datos realizado por los alumnos, que utilizaban lo que él llamaba <em>programas viejos y cuchos</em>. Robert Gentleman le sugiere a Ross escribir un software cuya ambición inicial era poder enseñar sus cursos de licenciatura de primer año. Así, en 1991 generan una estructura básica a través de la cuál sus estudiantes podían hacer análisis de datos y producir modelos gráficos de la información. Lo bautizan  por sus iniciales .</p>
+<p>Ross y Robert no comercializan el software sino que lo ponen a disposición de otros interesados. Ross ha expresado que  cambió su opinión acerca de la humanidad pues es el resultado del trabajo de muchos que no reciben ingresos o reconocimiento por el mismo . En 1996, presentan  en un paper introductorio .</p>
+<p>A partir de entonces, <code>R</code> ha crecido en forma importante. Entre los contribuidores actuales más relevantes se encuentra Hadley Wickham, alumno de licenciatura en el departamento de estadística de la Universidad de Auckland cuando <code>R</code> se encontraba en desarrollo. En la gráfica siguiente, se muestran las descargas anuales de paquetes de <code>R</code> del 2012 al 2016 del espejo de RStudio.</p>
+<p>En el 2016 <code>R</code> fue descargado 5 veces. El aumento en la popularidad de <code>R</code> no es el único elemento por el cuál <code>R</code> es un lenguaje valioso. Sin embargo, el que sea un lenguaje comúnmente enseñado en universidades y utilizado en empresas, lo convierte en una habilidad con considerable valor de mercado.</p>
+<p>En la encuesta de <code>Stackoverflow</code>, <code>R</code> se encuentra en el lugar séptimo de los mejores pagados para los desarrolladores cuya ocupación es matemáticas, superando a <code>Python</code> y a <code>SQL</code> . En cuanto a las tecnologías más populares por tipo de desarrollador que declara dedicarse a matemáticas y datos, <code>R</code> está en el sexto lugar, el primer lugar lo tiene <code>python</code>, seguido de <code>SQL</code> .</p>
+<p>Actualmente, <code>R</code>, <code>python</code> y <code>SQL</code> se encuentran entre las herramientas más populares tanto entre desarrolladores como empresas, aunque no son las únicas. La decisión de aprender alguno de estos lenguajes depende de muchos factores, entre ellos cuán natural resulta la interacción individual con cada cuál, el lenguaje preferido en el grupo de trabajo particular y el tipo de análisis que se requiere realizar en el día a día. Escapa del objetivo de este manual el realizar una comparación exhaustiva de tecnologías pero se recomienda tener en cuenta que cada herramienta tiene una especialidad específica y, particularmente en un ambiente de producción, es necesario tener esto en consideración.</p>
+<p><code>R</code> es un excelente lenguaje para aprender ciencia de datos; de hecho en  se describe a <code>R</code> como un proyecto para estadística computacional. Esto lo convierte en un lenguaje único pues fue construido por estadísticos y diseñado para realizar análisis de datos.</p>
+<p>Su uso generalizado en la comunidad estadística tiene la ventaja de que casi cualquier prueba o técnica estadística puede ser encontrada en algún paquete de <code>R</code> . Además, existe una documentación extensa y estandarizada que facilita su uso.</p>
+<p>Aunque el material para aprender <code>R</code> es amplio y hay una comunidad mundial muy activa que constantemente produce nuevos recursos, existen pocas referencias que faciliten iniciar su aprendizaje para hispanoparlantes. En general, la documentación, listas de distribución, libros y tutoriales están escritos en inglés.</p>
+<p>Este manual tiene como objetivo guiar a principiantes en programación que tienen una formación previa como analistas de datos. El enfoque principal es el de facilitar de ejemplos que permitan al analista traducir la manipulación de datos que ya saben realizar en otro ambiente a <code>R</code>.</p>
+<p>El manual se estructura como sigue: en el capítulo 2, se introducen elementos básicos para poder iniciar el trabajo en <code>R</code>. Se especifica cómo instalar el software, se recomienda utilizar un editor especializado, así como paquetes útiles para diferentes tareas. En particular, se explica cómo guardar código de manera que otras personas puedan ejecutarlo y cómo realizar documentos reproducibles. Por último, se explica cómo accesar a la ayuda y documentación, así como la forma en la que puede optimizarse su funcionamiento. Este capítulo actúa más como una referencia general para poder realizar el trabajo en el ambiente.</p>
+<p>En el capítulo 3, se introducen las funciones, las estructuras de datos y las estructuras de control disponibles en el lenguaje. El capítulo 4, explica como operar los objetos y estructuras detallados en el capítulo anterior, proporcionando múltiples ejemplos y ejercicios para familiarizar al lector con el lenguaje.</p>
+<p>El capítulo 5, detalla las herramientas básicas para poder realizar un proyecto de datos en <code>R</code>. Las herramientas que se desarrollan en este capítulo permiten iterar sobre parte del ciclo de un proyecto de datos: importación de datos al ambiente, manipulación, limpieza y visualización de los mismos. Éstas herramientas permiten operar sobre los objetos introducidos en el capítulo 3 en una forma eficiente, fácil de aprender, fácil de leer y que permite que el usuario realice manipulaciones de datos complejas que le permitirán, a su vez, utilizar todas las herramientas de modelado que <code>R</code> posee que necesitan como insumo datos limpios y preparados en una forma específica.</p>
+<p>Cada capítulo incluye ejercicios y respuestas a los mismos; al final se recomienda material adicional para repasar los conceptos estudiados. El material se encuentra disponible electrónicamente en . Para facilitar el aprendizaje, se recomienda descargar los materiales o clonar el repositorio, esto permite revisar el material y el código desde el ambiente local evitando copiar y pegar el mismo para su ejecución.</p>
 </div>
 <p style="text-align: center;">
+<a href="2-hello-world.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>
