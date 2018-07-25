@@ -5,7 +5,7 @@ Usa la mnemotécnica del inglés: get working directory ≡ getwd. Notarás como
 funciones tienen un nombre que acorta lo que hacen.
 ```
 
-```{block, type='ejercicioB'}
+```{block, type='nota'}
 `Packrat` Cuando cambian las versiones de distintos paquetes de R, es posible que código
 que solía funcionar deje de hacerlo. Por esta razón, es conveniente empaquetar proyectos
 de código de manera que el código en un proyecto específico tenga asociados también

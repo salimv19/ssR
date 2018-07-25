@@ -198,7 +198,23 @@ Debes encontrarte en la ruta elegida cuando tecleas <code>getwd()</code>.
 <li><em>../un_archivo.R</em> le indica a <code>R</code> que busque una carpeta arriba del actual directorio de trabajo por el archivo <em>un_archivo.R</em>.</li>
 <li><em>datos/otro_archivo.R</em> hace que se busque en el directorio de trabajo, dentro de la carpeta <em>datos</em> por el archivo <em>otro_archivo.R</em></li>
 </ul>
-
+<div class="nota">
+<p>
+<strong>Rutas relativas vs. Rutas absolutas</strong>
+</p>
+<p>
+El resultado que se muestra aquí al usar el comando <code>getwd()</code> depende de la computadora en la que se esta trabajando debido a que es una <em>ruta absoluta</em>. Nota como es diferente la ruta que obtienes al correr el comando en tu consola de <code>R</code>. Eso es porque se trata de una ruta absoluta, es decir, es tal que da la ruta (<em>path</em>) completo al directorio en cuestión. Puedes accesar todos los directorios o archivos usando su ruta absoluta.
+</p>
+<p>
+En investigación reproducible (<em>reproducible research</em>), en investigación colaborativa o incluso cuando trabajas en varias computadoras es una buena idea usar rutas relativas en lugar de absolutas. Esto hace que el código sea menos dependiente de una estructura de archivos o computadora en particular <span class="citation"><span class="citation">(Gandrud <a href="#ref-gandrud2013">2013</a>, pág. 67)</span></span>.
+</p>
+<p>
+En general, es <em>buena práctica</em> configurar el código de un proyecto con rutas relativas. En <code>R</code> en particular, cuando guardas un <code>Rmarkdown</code> y lo corres desde la línea de comandos (o lo <em>tejes</em> desde <code>RStudio</code>), la ruta que está fija -como si hubieras usado el comando <code>setwd()</code> es en donde <em>vive</em> ese archivo, es decir, el directorio en donde está guardado el mismo.
+</p>
+<p>
+Desde cualquier <code>script</code> puedes llamar a otros usando este tipo de ruta como en el ejemplo anterior.
+</p>
+</div>
 </div>
 <div id="ejemplos-basicos" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Ejemplos básicos</h3>
@@ -220,7 +236,7 @@ Debes encontrarte en la ruta elegida cuando tecleas <code>getwd()</code>.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># módulo</span>
 <span class="dv">10</span> <span class="op">%%</span><span class="st"> </span><span class="dv">4</span> </code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<p>Estas operaciones también pueden ser realizadas entre vectores.</p>
+<p>Estas operaciones también pueden ser realizadas entre vectores<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Creamos un vector con entradas del -1 al 12 y lo asignamos a la variable x</span>
 x &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">1</span><span class="op">:</span><span class="dv">12</span>
 <span class="co"># Lo vemos</span>
@@ -274,6 +290,15 @@ y &lt;-<span class="st"> </span><span class="dv">3</span><span class="op">:</spa
 <div id="ref-kabacoff2015r">
 <p>Kabacoff, Robert. 2015. <em>R in Action: Data Analysis and Graphics with R</em>. Manning Publications Co.</p>
 </div>
+<div id="ref-gandrud2013">
+<p>Gandrud, Christopher. 2013. <em>Reproducible Research with R and R Studio</em>. CRC Press.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>Revisaremos más adelante con detalle la definición de vectores en la sección <a href="estructuras-y-funciones.html#estructuras-y-funciones">3</a>.<a href="el-espacio-de-trabajo-workspace.html#fnref2">↩</a></p></li>
+</ol>
 </div>
             </section>
 

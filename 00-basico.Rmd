@@ -169,29 +169,29 @@ directorio de trabajo por el archivo *un\_archivo.R*.
 - *datos/otro\_archivo.R* hace que se busque en el directorio de trabajo, dentro 
 de la carpeta *datos* por el archivo *otro\_archivo.R*
 
-
-\begin{nota}
-\textbf{Rutas relativas vs. Rutas absolutas\\}
+```{block, type='nota'}
+**Rutas relativas vs. Rutas absolutas**
 
 El resultado que se muestra aquí al usar el comando `getwd()` depende de la computadora en la que se esta 
-trabajando debido a que es una \textit{ruta absoluta}. Nota como es diferente la ruta 
+trabajando debido a que es una *ruta absoluta*. Nota como es diferente la ruta 
 que obtienes al correr el comando en tu consola de `R`. Eso es porque se trata 
-de una ruta absoluta, es decir, es tal que da la ruta (\textit{path}) completo
-al directorio en cuestión. Puedes accesar todos los directorios o archivos usando su ruta absoluta.\\
+de una ruta absoluta, es decir, es tal que da la ruta (*path*) completo
+al directorio en cuestión. Puedes accesar todos los directorios o archivos usando su ruta absoluta.
 
-En investigación reproducible (\textit{reproducible research}), en investigación colaborativa o
+En investigación reproducible (*reproducible research*), en investigación colaborativa o
 incluso cuando trabajas en varias computadoras es una buena idea usar rutas relativas
 en lugar de absolutas. Esto hace que el código sea menos dependiente de una estructura
-de archivos o computadora en particular [@gandrud2013, pág. 67]. \\
+de archivos o computadora en particular [@gandrud2013, pág. 67]. 
 
-En general, es \textit{buena práctica} configurar el código de un proyecto con rutas relativas.
+En general, es *buena práctica* configurar el código de un proyecto con rutas relativas.
 En `R` en particular, cuando guardas un `Rmarkdown` y lo corres desde la línea de
-comandos (o lo \textit{tejes} desde `RStudio`), la ruta que está fija -como si hubieras usado el comando `setwd()` es
-en donde \textit{vive} ese archivo, es decir, el directorio en donde está guardado el mismo.\\
+comandos (o lo *tejes* desde `RStudio`), la ruta que está fija -como si hubieras usado el comando `setwd()` es
+en donde *vive* ese archivo, es decir, el directorio en donde está guardado el mismo.
 
 Desde cualquier `script` puedes llamar a otros usando este tipo de ruta como en 
 el ejemplo anterior.
-\end{nota}
+
+```
 
 ### Ejemplos básicos
 
@@ -212,7 +212,7 @@ sentido).
 10 %% 4 
 ```
 
-Estas operaciones también pueden ser realizadas entre vectores\footnote{Revisaremos más adelante con detalle la definición de vectores en la sección \ref{estructuras-de-datos}.}. 
+Estas operaciones también pueden ser realizadas entre vectores^[Revisaremos más adelante con detalle la definición de vectores en la sección [3](#estructuras-y-funciones).]. 
 
 ```{r}
 # Creamos un vector con entradas del -1 al 12 y lo asignamos a la variable x
@@ -618,7 +618,7 @@ getAnywhere(plot.density)
 ```
 
 Nota como el método `plot.density` viene del paquete `stats`
-\footnote{Hay otro tipo de funciones en las accesar al código fuente no se pueda con los métodos descritos. Para ello, es útil revisar la sección "old-school object-oriented programming in R" [@adler2010r, págs. 131-133] o las secciones dedicadas a los objetos S3 y S4 en @wickham2014advanced.}.
+^[Hay otro tipo de funciones en las accesar al código fuente no se pueda con los métodos descritos. Para ello, es útil revisar la sección "old-school object-oriented programming in R" [@adler2010r, págs. 131-133] o las secciones dedicadas a los objetos S3 y S4 en @wickham2014advanced.].
 
 
 La documentación normalmente se acompaña de **ejemplos**. Para *correr* los ejemplos
