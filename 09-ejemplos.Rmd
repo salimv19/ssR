@@ -1,0 +1,53 @@
+# Formatos
+
+```{block, type='ejemplo'}
+Usa la mnemotécnica del inglés: get working directory ≡ getwd. Notarás como muchas
+funciones tienen un nombre que acorta lo que hacen.
+```
+
+```{block, type='ejercicio'}
+`Packrat` Cuando cambian las versiones de distintos paquetes de R, es posible que código
+que solía funcionar deje de hacerlo. Por esta razón, es conveniente empaquetar proyectos
+de código de manera que el código en un proyecto específico tenga asociados también
+las versiones específicas de los paquetes con los cuáles fue creado. Una forma de lograr
+esto es utilizando `packrat`. Para mayor detalle, ver el apéndice B.
+```
+
+```{block, type='importante'}
+Ejercicios
+
+- primero
+- luego
+- después
+
+```
+
+```{block, type='curiosidad'}
+En R
+
+* Todo lo que existe es un objeto.
+* Todo lo que sucede es una llamada a una función.
+
+```
+
+```{block, type='rmdnote'}
+Note
+```
+
+```{block, type='rmdcaution'}
+Caution
+```
+
+
+```{block, type='rmdimportant'}
+Important
+```
+
+```{block, type='rmdtip'}
+Tip
+```
+
+```{block, type='rmdwarning'}
+Warning
+```
+

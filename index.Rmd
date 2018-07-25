@@ -9,10 +9,27 @@ output:
   #bookdown::pdf_book:
       #includes:
         #in_header: estilos.css
+  bookdown::gitbook:
+    css: estilos.css
+    lib_dir: assets
+    split_by: section
+    #download: [["aprendeR.pdf", "PDF"]]
+    github-repo: salimv19/ssR
+    config:
+      toolbar:
+        position: static
+      sharing:
+        facebook: no
+        twitter: no
+        google: yes
+        linkedin: yes
+        weibo: no
+        instapper: no
+        vk: no
 ---
 #Introducción
 
-```{r setup, include=F}
+```{r setupI, include=F}
 knitr::opts_chunk$set(echo = T, error = F, message = F, warning = F)
 library(knitr)
 library(dplyr)
@@ -20,7 +37,7 @@ library(ggplot2)
 #library(rformat)
 ```
 
-\texttt{R} inicia a principios de los noventas en la Universidad de Auckland en
+`R` inicia a principios de los noventas en la Universidad de Auckland en
 Nueva Zelanda. Ross Ihaka, profesor del departamento de estadística, pensaba que
 debía existir una alternativa superior para el análisis de datos realizado por
 los alumnos, que utilizaban lo que él llamaba *programas viejos y cuchos*.
@@ -117,59 +134,5 @@ disponible electrónicamente en \url{https://github.com/animalito/aprendeR}. Par
 facilitar el aprendizaje, se recomienda descargar los materiales o clonar el 
 repositorio, esto permite revisar el material y el código desde el ambiente local
 evitando copiar y pegar el mismo para su ejecución. 
-
-# Hello World
-
-```{block, type='ejemplo'}
-Usa la mnemotécnica del inglés: get working directory ≡ getwd. Notarás como muchas
-funciones tienen un nombre que acorta lo que hacen.
-```
-
-```{block, type='ejercicio'}
-`Packrat` Cuando cambian las versiones de distintos paquetes de R, es posible que código
-que solía funcionar deje de hacerlo. Por esta razón, es conveniente empaquetar proyectos
-de código de manera que el código en un proyecto específico tenga asociados también
-las versiones específicas de los paquetes con los cuáles fue creado. Una forma de lograr
-esto es utilizando `packrat`. Para mayor detalle, ver el apéndice B.
-```
-
-```{block, type='importante'}
-Ejercicios
-
-- primero
-- luego
-- después
-
-```
-
-```{block, type='curiosidad'}
-En R
-
-* Todo lo que existe es un objeto.
-* Todo lo que sucede es una llamada a una función.
-
-```
-
-```{block, type='rmdnote'}
-Note
-```
-
-```{block, type='rmdcaution'}
-Caution
-```
-
-
-```{block, type='rmdimportant'}
-Important
-```
-
-```{block, type='rmdtip'}
-Tip
-```
-
-```{block, type='rmdwarning'}
-Warning
-```
-
 
 <!-- If you need PDF output, uncomment bookdown::pdf_book above in YAML. You will need a LaTeX installation, e.g., https://yihui.name/tinytex/ -->
