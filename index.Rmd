@@ -26,11 +26,17 @@ output:
         weibo: no
         instapper: no
         vk: no
+bibliography: ["bib.bib"]
+biblio-style: apalike
+link-citations: yes
+language:
+  label:
+    fig: 'Figura '
 ---
 #Introducción
 
-```{r setupI, include=F}
-knitr::opts_chunk$set(echo = T, error = F, message = F, warning = F)
+```{r setupI, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = FALSE, message = FALSE, warning = FALSE)
 library(knitr)
 library(dplyr)
 library(ggplot2)
@@ -45,32 +51,49 @@ Robert Gentleman le sugiere a Ross escribir un software cuya ambición inicial
 era poder enseñar sus cursos de licenciatura de primer año. 
 Así, en 1991 generan una estructura básica a través de la cuál
 sus estudiantes podían hacer análisis de datos y producir modelos gráficos de la
-información. Lo bautizan \texttt{R} por sus iniciales \parencite{rorigins}. 
+información. Lo bautizan `R` por sus iniciales [@rorigins].
 
 Ross y Robert no comercializan el software sino que lo ponen a disposición de 
-otros interesados. Ross ha expresado que \texttt{R} cambió su opinión acerca de 
+otros interesados. Ross ha expresado que `R` cambió su opinión acerca de 
 la humanidad pues es el resultado del trabajo de muchos que no reciben 
-ingresos o reconocimiento por el mismo \parencite{rorigins}. En 1996, presentan
-\texttt{R} en un paper introductorio \parencite{ihaka1996r}. 
+ingresos o reconocimiento por el mismo [@rorigins]. En 1996, presentan
+`R` en un paper introductorio [@ihaka1996r]. 
 
 A partir de entonces, `R` ha crecido en forma importante. Entre los contribuidores
 actuales más relevantes se encuentra Hadley Wickham, alumno de licenciatura en el 
 departamento de estadística de la Universidad de Auckland cuando `R` se encontraba
 en desarrollo. En la gráfica siguiente, se muestran las descargas anuales de paquetes 
-de `R` del 2012 al 2016 del espejo de RStudio\footnote{Estos números representan únicamente una fracción de las descargas de \texttt{R} en el mundo pues existen múltiples espejos del software de donde es posible realizar la descarga. Los datos son tomados de \textcite{cranlogs}}.
+de `R` del 2012 al 2016 del espejo de RStudio ^[Estos números representan únicamente una fracción de las descargas de `R` en el mundo pues existen múltiples espejos del software de donde es posible realizar la descarga. Los datos son tomados de @cranlogs.].
 
-En el 2016 `R` fue descargado 
-5 veces.
-El aumento en la popularidad de `R` no es el único 
-elemento por el cuál `R` es un lenguaje valioso. Sin embargo, el que sea un 
-lenguaje comúnmente enseñado en universidades y utilizado en empresas, lo 
-convierte en una habilidad con considerable valor de mercado.
+```{r, cache=TRUE, fig.cap="Descargas anuales del espejo de RStudio de paquetes de R de 2012 a 2016 (en millones).", echo = FALSE, fig.width=7, fig.height=4.5, fig.align = 'center'}
+library(cranlogs)
+df <- cran_downloads(from = "2012-01-01", to ="2016-12-31") %>%
+  mutate(tipo = "paquetes")
+#df.r <- cran_downloads("R", from = "2015-01-01", to ="2016-12-31") %>%
+#  mutate(tipo = "R")
+#df2 <- plyr::rbind.fill(df, df.r) %>%
+df2 <- dplyr::mutate(df, year = lubridate::year(date)) %>%
+  dplyr::group_by(year, tipo) %>%
+  dplyr::summarise(count = sum(count, na.rm = T)) %>%
+  mutate(count = count/1000000)
+
+group.colors <- c(paquetes = "steelblue")#, R = "indianred3")
+ggplot(df2, aes(x = year, y = count, group = tipo, fill = tipo)) + 
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values=group.colors) +
+  geom_text(aes(label = round(count, 2)), vjust = -0.5, color = "black") +
+  theme_bw() + 
+  ylab("millones de descargas") + xlab("año")
+```
+
+En el 2016 paquetes de `R` fueron descargados `r formatC(floor(df2$count[df2$year==2016 & df2$tipo == "paquetes"]*1000000), format = "d", big.mark=",")` veces.
+El aumento en la popularidad de `R` no es el único elemento por el cuál `R` es un lenguaje valioso. Sin embargo, el que sea un lenguaje comúnmente enseñado en universidades y utilizado en empresas, lo convierte en una habilidad con considerable valor de mercado.
 
 En la encuesta de `Stackoverflow`, `R` se encuentra en el lugar séptimo de los mejores pagados para
-los desarrolladores cuya ocupación es matemáticas, superando a `Python` y a `SQL` \parencite[][Top paying tech per occupation, mathematics]{stackoverflowsurvey16}.
+los desarrolladores cuya ocupación es matemáticas, superando a `Python` y a `SQL`  [@stackoverflowsurvey16, Top paying tech per occupation, mathematics].
 En cuanto a las tecnologías más populares por tipo de desarrollador que declara
 dedicarse a matemáticas y datos, `R` está en el sexto lugar, el primer lugar
-lo tiene `python`, seguido de `SQL` \parencite[][Most Popular Technologies per Dev Type, Math and Data]{stackoverflowsurvey16}. 
+lo tiene `python`, seguido de `SQL` [@stackoverflowsurvey16, Most Popular Technologies per Dev Type, Math and Data]. 
 
 Actualmente, `R`, `python` y `SQL` se encuentran entre las herramientas más
 populares tanto entre desarrolladores como empresas, aunque no son las únicas. 
@@ -83,14 +106,14 @@ exhaustiva de tecnologías pero se recomienda tener en cuenta que cada herramien
 tiene una especialidad específica y, particularmente en un ambiente de producción,
 es necesario tener esto en consideración.
 
-`R` es un excelente lenguaje para aprender ciencia de datos; de hecho en \textcite{cran}
+`R` es un excelente lenguaje para aprender ciencia de datos; de hecho en @cran
 se describe a `R` como un proyecto para estadística computacional. Esto lo 
 convierte en un lenguaje único pues fue construido por estadísticos y diseñado
 para realizar análisis de datos.
 
 Su uso generalizado en la comunidad estadística tiene la ventaja de que casi
 cualquier prueba o técnica estadística puede ser encontrada en algún paquete de
-`R` \parencite{recommendr}. Además, existe una documentación extensa y 
+`R` [@recommendr]. Además, existe una documentación extensa y 
 estandarizada que facilita su uso. 
 
 Aunque el material para aprender `R` es amplio y hay una comunidad mundial muy
@@ -104,7 +127,7 @@ tienen una formación previa como analistas de datos. El enfoque principal es
 el de facilitar de ejemplos que permitan al analista traducir la manipulación 
 de datos que ya saben realizar en otro ambiente a `R`. 
 
-El manual se estructura como sigue: en el capítulo 2, se introducen elementos
+El manual se estructura como sigue: en el capítulo [2](#r-lo-basico) , se introducen elementos
 básicos para poder iniciar el trabajo en `R`. Se especifica cómo instalar el 
 software, se recomienda utilizar un editor especializado, así como paquetes
 útiles para diferentes tareas. En particular, se explica cómo guardar código de 
@@ -113,12 +136,12 @@ Por último, se explica cómo accesar a la ayuda y documentación, así como la 
 en la que puede optimizarse su funcionamiento. Este capítulo actúa más como una
 referencia general para poder realizar el trabajo en el ambiente.
 
-En el capítulo 3, se introducen las funciones, las estructuras de datos y las 
-estructuras de control disponibles en el lenguaje. El capítulo 4, explica 
+En el capítulo [3](#estructuras-y-funciones), se introducen las funciones, las estructuras de datos y las 
+estructuras de control disponibles en el lenguaje. El capítulo [4](#vectorizacion), explica 
 como operar los objetos y estructuras detallados en el capítulo anterior, proporcionando
 múltiples ejemplos y ejercicios para familiarizar al lector con el lenguaje. 
 
-El capítulo 5, detalla las herramientas básicas para poder realizar un proyecto
+El capítulo [5](#introduccion), detalla las herramientas básicas para poder realizar un proyecto
 de datos en `R`. Las herramientas que se desarrollan en este capítulo permiten
 iterar sobre parte del ciclo de un proyecto de datos: importación de datos al ambiente, 
 manipulación, limpieza y visualización de los mismos. Éstas herramientas 
@@ -130,7 +153,7 @@ en una forma específica.
 
 Cada capítulo incluye ejercicios y respuestas a los mismos; al final se recomienda
 material adicional para repasar los conceptos estudiados. El material se encuentra
-disponible electrónicamente en \url{https://github.com/animalito/aprendeR}. Para 
+disponible electrónicamente en [https://github.com/animalito/aprendeR](https://github.com/animalito/aprendeR). Para 
 facilitar el aprendizaje, se recomienda descargar los materiales o clonar el 
 repositorio, esto permite revisar el material y el código desde el ambiente local
 evitando copiar y pegar el mismo para su ejecución. 

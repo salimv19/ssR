@@ -6,7 +6,7 @@
 
 #R: lo básico
 
-```{r setup00, include=F}
+```{r setup00, include=FALSE}
 knitr::opts_chunk$set(echo = T, error = F, message = F, warning = F)
 ```
 
@@ -34,7 +34,7 @@ para instalar R compilándolo \parencite{instalarcompilado}.
 Ésta es la mejor opción pues se aprovecharán todas las 
 características de su máquina. 
 
-```{bash, eval = F}
+```{bash, eval = FALSE}
 #!/bin/bash
 while true; do
     read -p "Do you wish to Compile R? y/n " yn
@@ -131,10 +131,10 @@ fijado.
 
 Para saber en qué directorio te encuentras, se usa el comando `getwd()`. 
 
-\begin{curiosidad} 
-Usa la mnemotécnica del inglés: \textit{get working directory} $\equiv$ \textit{getwd}. 
-Notarás como muchas funciones tienen un nombre que acorta lo que hacen.
-\end{curiosidad}
+```{block, type='ejemplo'}
+Usa la mnemotécnica del inglés: _get working directory_ ≡ _getwd_. Notarás como muchas
+funciones tienen un nombre que acorta lo que hacen.
+```
 
 ```{r}
 getwd()
@@ -143,7 +143,7 @@ getwd()
 Para especificar el directorio de trabajo, se utiliza el comando `setwd()` (*set working directory*) en 
 la consola. Y volvemos a 
 
-```{r, eval=F}
+```{r, eval=FALSE}
 setwd("/home/animalito/study/")
 getwd()
 ```
@@ -252,7 +252,7 @@ ls()
 
 También se puede utilizar\/guardar la historia de comandos utilizados
 
-```{r, eval=F}
+```{r, eval=FALSE}
 history()
 history(max.show = 5)
 history(max.show = Inf) # Muestra toda la historia
@@ -270,7 +270,7 @@ Es posible también guardar el ambiente de trabao (*workspace*) -en forma comple
 comando `save.image()` a un archivo con extensión *.RData*. Puedes guardar una 
 lista de objetos específica a un archivo *.RData*. Por ejemplo:
 
-```{r, eval=F}
+```{r, eval=FALSE}
 x <- 1:12
 y <- 3:45
 save(x, y, file = "ejemplo.RData") #la extensión puede ser arbitraria.
@@ -278,7 +278,7 @@ save(x, y, file = "ejemplo.RData") #la extensión puede ser arbitraria.
 
 Después puedo cargar ese archivo. Prueba hacer:
 
-```{r, eval=F}
+```{r, eval=FALSE}
 rm(list = ls()) # limpiamos workspace
 load(file = "ejemplo.RData") #la extensión puede ser arbitraria.
 ls()
@@ -356,7 +356,7 @@ varios paquetes.
 Si queremos instalar varios paquetes usando las herramientas del R básico (*base*) \parencite{rbase}
 haríamos algo como \parencite[ejemplo tomado de][en la viñeta de intrducción al paquete]{pacman}:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 packs <- c("XML", "devtools", "RCurl", "fakePackage", "SPSSemulate")
 success <- suppressWarnings(sapply(packs, require, character.only = TRUE))
 install.packages(names(success)[!success])
@@ -365,7 +365,7 @@ sapply(names(success)[!success], require, character.only = TRUE)
 
 Con `pacman::p_load` la tarea se reduce a:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 pacman::p_load(XML, devtools, RCurl, fakePackage, SPSSemulate)
 ```
 
@@ -378,7 +378,7 @@ o podemos llamarla directamente utilizando la convención \texttt{paquete::funci
 
 Para instalar `pacman` escribe:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 install.packages("pacman")
 ```
 
@@ -389,7 +389,7 @@ A continuación, hay una lista de paquetes que se recomienda descargar o revisar
 tener a la mano herramientas diversas útiles para el trabajo del científico de 
 datos. La lista no es comprensiva pues hay un gran número de paquetes útiles.
 
-```{r, eval = F}
+```{r, eval = FALSE}
 # Para cargar datos al ambiente de trabajo (data load)
 pacman::p_load(RODBC, RMySQL, RPostgreSQL, RSQLite, foreign, Rpostgres, haven
                , readr)
@@ -457,7 +457,7 @@ Esto también aplica para *correr* una selección del texto editable^[RStudio ti
 
 Es posible también ejecutar todo el script
 
-```{r, eval=F}
+```{r, eval=FALSE}
 source("foo.R")
 ```
 
@@ -475,7 +475,7 @@ Es posible generar documentos reproducibles en `R` utilizando `R Markdown`, un
 alta calidad en múltiples formatos \parencite{rmarkdownconcept}. Para utilizarlo,
 se instala el paquete `rmarkdown` con el comando:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 install.packages("rmarkdown")
 ```
 
@@ -550,10 +550,10 @@ paste("Hola", "Mundo")
 
 Se puede incluir un pedazo de código en cualquier parte del documento y se controlan
 las opciones de cada pedazo, por ejemplo, incluyendo una opción para que el
-código no se imprima y que solo se imprima el resultado agregando `r, echo = F`:
+código no se imprima y que solo se imprima el resultado agregando `r, echo = FALSE`:
 
 \begin{verbatim}
-```{r, echo = F}
+```{r, echo = FALSE}
 paste("Hola", "Mundo")
 ```
 \end{verbatim}
@@ -568,7 +568,7 @@ Desde la consola se puede accesar a la misma.
 
 Para ayuda general,
 
-```{r, eval=F}
+```{r, eval=FALSE}
 help.start()
 ```
 
@@ -576,7 +576,7 @@ Para la **ayuda de una función en especifico**, por ejemplo, si se quiere grafi
 algo y sabemos que existe la función `plot` podemos consultar
 fácilmente la ayuda.
 
-```{r, eval=F}
+```{r, eval=FALSE}
 help(plot)
 # o tecleando directamente
 ?plot
@@ -632,13 +632,13 @@ Nota como el método `plot.density` viene del paquete `stats`
 La documentación normalmente se acompaña de **ejemplos**. Para *correr* los ejemplos
 sin necesidad de copiar y pegar, prueba
 
-```{r, eval=F}
+```{r, eval=FALSE}
 example(plot)
 ```
 
 Para búsquedas más comprensivas, se puede buscar de otras maneras:
 
-```{r, eval=F}
+```{r, eval=FALSE}
 apropos("foo") # Enlista todas las funciones que contengan la cadena "foo"
 RSiteSearch("foo") # Busca por la cadena "foo" en todos 
 # los manuales de ayuda y listas de distribución.
@@ -675,14 +675,14 @@ consola de `R`. El material actualmente se encuentra en inglés.
 
 Para instalar swirl,
 
-```{r, eval=F}
+```{r, eval=FALSE}
 install.packages("swirl")
 library("swirl")
 ```
 
 Luego llama a la función `swirl` para activarlo
 
-```{r, eval=F}
+```{r, eval=FALSE}
 swirl()
 ```
 

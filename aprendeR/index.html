@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>aprendeR</title>
+  <meta name="description" content="aprendeR">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="aprendeR" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="aprendeR" />
+  
+  
+  
+
+<meta name="author" content="Andrea Fernández Conde">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="r-lo-basico.html">
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="estilos.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="r-lo-basico.html"><a href="r-lo-basico.html"><i class="fa fa-check"></i><b>2</b> R: lo básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="instalacion.html"><a href="instalacion.html"><i class="fa fa-check"></i><b>2.1</b> Instalación</a></li>
+<li class="chapter" data-level="2.2" data-path="editores.html"><a href="editores.html"><i class="fa fa-check"></i><b>2.2</b> Editores</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="editores.html"><a href="editores.html#rstudio"><i class="fa fa-check"></i><b>2.2.1</b> RStudio</a></li>
+<li class="chapter" data-level="2.2.2" data-path="editores.html"><a href="editores.html#ess"><i class="fa fa-check"></i><b>2.2.2</b> ESS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html"><i class="fa fa-check"></i><b>2.3</b> El espacio de trabajo (Workspace)</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#directorio-de-trabajo"><i class="fa fa-check"></i><b>2.3.1</b> Directorio de trabajo</a></li>
+<li class="chapter" data-level="2.3.2" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#ejemplos-basicos"><i class="fa fa-check"></i><b>2.3.2</b> Ejemplos básicos</a></li>
+<li class="chapter" data-level="2.3.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#comandos-utiles"><i class="fa fa-check"></i><b>2.3.3</b> Comandos útiles</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html"><i class="fa fa-check"></i><b>2.4</b> Paquetes (<em>libraries</em>)</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#cran"><i class="fa fa-check"></i><b>2.4.1</b> CRAN</a></li>
+<li class="chapter" data-level="2.4.2" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#github"><i class="fa fa-check"></i><b>2.4.2</b> Github</a></li>
+<li class="chapter" data-level="2.4.3" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#otras-fuentes"><i class="fa fa-check"></i><b>2.4.3</b> Otras fuentes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="paquetes-recomendados.html"><a href="paquetes-recomendados.html"><i class="fa fa-check"></i><b>2.5</b> Paquetes recomendados</a></li>
+<li class="chapter" data-level="2.6" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>2.6</b> Scripting</a></li>
+<li class="chapter" data-level="2.7" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2.7</b> rmarkdown</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="rmarkdown.html"><a href="rmarkdown.html#encabezado-y-formatos"><i class="fa fa-check"></i><b>2.7.1</b> Encabezado y formatos</a></li>
+<li class="chapter" data-level="2.7.2" data-path="rmarkdown.html"><a href="rmarkdown.html#knitr-chunks"><i class="fa fa-check"></i><b>2.7.2</b> Knitr chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="ayuda-y-documentacion.html"><a href="ayuda-y-documentacion.html"><i class="fa fa-check"></i><b>2.8</b> Ayuda y documentación</a></li>
+<li class="chapter" data-level="2.9" data-path="optimizando.html"><a href="optimizando.html"><i class="fa fa-check"></i><b>2.9</b> Optimizando</a></li>
+<li class="chapter" data-level="2.10" data-path="material-adicional.html"><a href="material-adicional.html"><i class="fa fa-check"></i><b>2.10</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estructuras-y-funciones.html"><a href="estructuras-y-funciones.html"><i class="fa fa-check"></i><b>3</b> Estructuras y funciones</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectorizacion.html"><a href="vectorizacion.html"><i class="fa fa-check"></i><b>4</b> Vectorización</a><ul>
+<li class="chapter" data-level="4.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>4.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="formatos.html"><a href="formatos.html"><i class="fa fa-check"></i><b>5</b> Formatos</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">aprendeR</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">aprendeR</h1>
+<h4 class="author"><em>Andrea Fernández Conde</em></h4>
+</div>
+<div id="introduccion" class="section level1">
+<h1><span class="header-section-number">Capítulo 1</span> Introducción</h1>
+<p><code>R</code> inicia a principios de los noventas en la Universidad de Auckland en Nueva Zelanda. Ross Ihaka, profesor del departamento de estadística, pensaba que debía existir una alternativa superior para el análisis de datos realizado por los alumnos, que utilizaban lo que él llamaba <em>programas viejos y cuchos</em>. Robert Gentleman le sugiere a Ross escribir un software cuya ambición inicial era poder enseñar sus cursos de licenciatura de primer año. Así, en 1991 generan una estructura básica a través de la cuál sus estudiantes podían hacer análisis de datos y producir modelos gráficos de la información. Lo bautizan <code>R</code> por sus iniciales <span class="citation">(Ingenio <a href="#ref-rorigins">2016</a>)</span>.</p>
+<p>Ross y Robert no comercializan el software sino que lo ponen a disposición de otros interesados. Ross ha expresado que <code>R</code> cambió su opinión acerca de la humanidad pues es el resultado del trabajo de muchos que no reciben ingresos o reconocimiento por el mismo <span class="citation">(Ingenio <a href="#ref-rorigins">2016</a>)</span>. En 1996, presentan <code>R</code> en un paper introductorio <span class="citation">(Ihaka and Gentleman <a href="#ref-ihaka1996r">1996</a>)</span>.</p>
+<p>A partir de entonces, <code>R</code> ha crecido en forma importante. Entre los contribuidores actuales más relevantes se encuentra Hadley Wickham, alumno de licenciatura en el departamento de estadística de la Universidad de Auckland cuando <code>R</code> se encontraba en desarrollo. En la gráfica siguiente, se muestran las descargas anuales de paquetes de <code>R</code> del 2012 al 2016 del espejo de RStudio.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="aprendeR_files/figure-html/unnamed-chunk-1-1.png" alt="Descargas anuales del espejo de RStudio de paquetes de R de 2012 a 2016 (en millones)." width="672" />
+<p class="caption">
+Figura 1.1: Descargas anuales del espejo de RStudio de paquetes de R de 2012 a 2016 (en millones).
+</p>
+</div>
+<p>En el 2016 paquetes de <code>R</code> fueron descargados 218,480,053 veces. El aumento en la popularidad de <code>R</code> no es el único elemento por el cuál <code>R</code> es un lenguaje valioso. Sin embargo, el que sea un lenguaje comúnmente enseñado en universidades y utilizado en empresas, lo convierte en una habilidad con considerable valor de mercado.</p>
+<p>En la encuesta de <code>Stackoverflow</code>, <code>R</code> se encuentra en el lugar séptimo de los mejores pagados para los desarrolladores cuya ocupación es matemáticas, superando a <code>Python</code> y a <code>SQL</code> <span class="citation">(Stackoverflow <a href="#ref-stackoverflowsurvey16">2016</a>, Top paying tech per occupation, mathematics)</span>. En cuanto a las tecnologías más populares por tipo de desarrollador que declara dedicarse a matemáticas y datos, <code>R</code> está en el sexto lugar, el primer lugar lo tiene <code>python</code>, seguido de <code>SQL</code> <span class="citation">(Stackoverflow <a href="#ref-stackoverflowsurvey16">2016</a>, Most Popular Technologies per Dev Type, Math and Data)</span>.</p>
+<p>Actualmente, <code>R</code>, <code>python</code> y <code>SQL</code> se encuentran entre las herramientas más populares tanto entre desarrolladores como empresas, aunque no son las únicas. La decisión de aprender alguno de estos lenguajes depende de muchos factores, entre ellos cuán natural resulta la interacción individual con cada cuál, el lenguaje preferido en el grupo de trabajo particular y el tipo de análisis que se requiere realizar en el día a día. Escapa del objetivo de este manual el realizar una comparación exhaustiva de tecnologías pero se recomienda tener en cuenta que cada herramienta tiene una especialidad específica y, particularmente en un ambiente de producción, es necesario tener esto en consideración.</p>
+<p><code>R</code> es un excelente lenguaje para aprender ciencia de datos; de hecho en <span class="citation">CRAN (<a href="#ref-cran">2016</a>)</span> se describe a <code>R</code> como un proyecto para estadística computacional. Esto lo convierte en un lenguaje único pues fue construido por estadísticos y diseñado para realizar análisis de datos.</p>
+<p>Su uso generalizado en la comunidad estadística tiene la ventaja de que casi cualquier prueba o técnica estadística puede ser encontrada en algún paquete de <code>R</code> <span class="citation">(Labs <a href="#ref-recommendr">2016</a>)</span>. Además, existe una documentación extensa y estandarizada que facilita su uso.</p>
+<p>Aunque el material para aprender <code>R</code> es amplio y hay una comunidad mundial muy activa que constantemente produce nuevos recursos, existen pocas referencias que faciliten iniciar su aprendizaje para hispanoparlantes. En general, la documentación, listas de distribución, libros y tutoriales están escritos en inglés.</p>
+<p>Este manual tiene como objetivo guiar a principiantes en programación que tienen una formación previa como analistas de datos. El enfoque principal es el de facilitar de ejemplos que permitan al analista traducir la manipulación de datos que ya saben realizar en otro ambiente a <code>R</code>.</p>
+<p>El manual se estructura como sigue: en el capítulo <a href="r-lo-basico.html#r-lo-basico">2</a> , se introducen elementos básicos para poder iniciar el trabajo en <code>R</code>. Se especifica cómo instalar el software, se recomienda utilizar un editor especializado, así como paquetes útiles para diferentes tareas. En particular, se explica cómo guardar código de manera que otras personas puedan ejecutarlo y cómo realizar documentos reproducibles. Por último, se explica cómo accesar a la ayuda y documentación, así como la forma en la que puede optimizarse su funcionamiento. Este capítulo actúa más como una referencia general para poder realizar el trabajo en el ambiente.</p>
+<p>En el capítulo <a href="estructuras-y-funciones.html#estructuras-y-funciones">3</a>, se introducen las funciones, las estructuras de datos y las estructuras de control disponibles en el lenguaje. El capítulo <a href="vectorizacion.html#vectorizacion">4</a>, explica como operar los objetos y estructuras detallados en el capítulo anterior, proporcionando múltiples ejemplos y ejercicios para familiarizar al lector con el lenguaje.</p>
+<p>El capítulo <a href="index.html#introduccion">5</a>, detalla las herramientas básicas para poder realizar un proyecto de datos en <code>R</code>. Las herramientas que se desarrollan en este capítulo permiten iterar sobre parte del ciclo de un proyecto de datos: importación de datos al ambiente, manipulación, limpieza y visualización de los mismos. Éstas herramientas permiten operar sobre los objetos introducidos en el capítulo 3 en una forma eficiente, fácil de aprender, fácil de leer y que permite que el usuario realice manipulaciones de datos complejas que le permitirán, a su vez, utilizar todas las herramientas de modelado que <code>R</code> posee que necesitan como insumo datos limpios y preparados en una forma específica.</p>
+<p>Cada capítulo incluye ejercicios y respuestas a los mismos; al final se recomienda material adicional para repasar los conceptos estudiados. El material se encuentra disponible electrónicamente en <a href="https://github.com/animalito/aprendeR" class="uri">https://github.com/animalito/aprendeR</a>. Para facilitar el aprendizaje, se recomienda descargar los materiales o clonar el repositorio, esto permite revisar el material y el código desde el ambiente local evitando copiar y pegar el mismo para su ejecución.</p>
+<!-- If you need PDF output, uncomment bookdown::pdf_book above in YAML. You will need a LaTeX installation, e.g., https://yihui.name/tinytex/ -->
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-rorigins">
+<p>Ingenio. 2016. “R: The Ultimate Virus.” Blog. <a href="http://www.ingenio-magazine.com/r-the-ultimate-virus/" class="uri">http://www.ingenio-magazine.com/r-the-ultimate-virus/</a>; Ingenio Magazine.</p>
+</div>
+<div id="ref-ihaka1996r">
+<p>Ihaka, Ross, and Robert Gentleman. 1996. “R: A Language for Data Analysis and Graphics.” <em>Journal of Computational and Graphical Statistics</em> 5 (3). Taylor &amp; Francis: 299–314.</p>
+</div>
+<div id="ref-stackoverflowsurvey16">
+<p>Stackoverflow. 2016. “Developer Survey Results.” Survey. <a href="https://insights.stackoverflow.com/survey/2016" class="uri">https://insights.stackoverflow.com/survey/2016</a>.</p>
+</div>
+<div id="ref-cran">
+<p>CRAN. 2016. <em>The Comprehensive R Archive Network</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>.</p>
+</div>
+<div id="ref-recommendr">
+<p>Labs, Sharp Sights. 2016. “Why R Is the Best Data Science Language to Learn Today.” Blog. <a href="http://sharpsightlabs.com/blog/r-recommend-data-science/" class="uri">http://sharpsightlabs.com/blog/r-recommend-data-science/</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Estos números representan únicamente una fracción de las descargas de <code>R</code> en el mundo pues existen múltiples espejos del software de donde es posible realizar la descarga. Los datos son tomados de <span class="citation">Csardi (<a href="#ref-cranlogs">2016</a>)</span>.<a href="index.html#fnref1">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="r-lo-basico.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": true,
+"linkedin": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["aprendeR.pdf"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

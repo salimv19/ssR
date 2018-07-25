@@ -32,7 +32,7 @@
   
   
 
-<link rel="next" href="r-lo-basico.html">
+<link rel="next" href="basico.html">
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -100,7 +100,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
-<li class="chapter" data-level="2" data-path="r-lo-basico.html"><a href="r-lo-basico.html"><i class="fa fa-check"></i><b>2</b> R: lo básico</a><ul>
+<li class="chapter" data-level="2" data-path="basico.html"><a href="basico.html"><i class="fa fa-check"></i><b>2</b> R: lo básico</a><ul>
 <li class="chapter" data-level="2.1" data-path="instalacion.html"><a href="instalacion.html"><i class="fa fa-check"></i><b>2.1</b> Instalación</a></li>
 <li class="chapter" data-level="2.2" data-path="editores.html"><a href="editores.html"><i class="fa fa-check"></i><b>2.2</b> Editores</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="editores.html"><a href="editores.html#rstudio"><i class="fa fa-check"></i><b>2.2.1</b> RStudio</a></li>
@@ -154,24 +154,54 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1 class="title">aprendeR</h1>
 <h4 class="author"><em>Andrea Fernández Conde</em></h4>
 </div>
-<div id="introduccion" class="section level1">
+<div id="intro" class="section level1">
 <h1><span class="header-section-number">1</span> Introducción</h1>
-<p><code>R</code> inicia a principios de los noventas en la Universidad de Auckland en Nueva Zelanda. Ross Ihaka, profesor del departamento de estadística, pensaba que debía existir una alternativa superior para el análisis de datos realizado por los alumnos, que utilizaban lo que él llamaba <em>programas viejos y cuchos</em>. Robert Gentleman le sugiere a Ross escribir un software cuya ambición inicial era poder enseñar sus cursos de licenciatura de primer año. Así, en 1991 generan una estructura básica a través de la cuál sus estudiantes podían hacer análisis de datos y producir modelos gráficos de la información. Lo bautizan  por sus iniciales .</p>
-<p>Ross y Robert no comercializan el software sino que lo ponen a disposición de otros interesados. Ross ha expresado que  cambió su opinión acerca de la humanidad pues es el resultado del trabajo de muchos que no reciben ingresos o reconocimiento por el mismo . En 1996, presentan  en un paper introductorio .</p>
-<p>A partir de entonces, <code>R</code> ha crecido en forma importante. Entre los contribuidores actuales más relevantes se encuentra Hadley Wickham, alumno de licenciatura en el departamento de estadística de la Universidad de Auckland cuando <code>R</code> se encontraba en desarrollo. En la gráfica siguiente, se muestran las descargas anuales de paquetes de <code>R</code> del 2012 al 2016 del espejo de RStudio.</p>
-<p>En el 2016 <code>R</code> fue descargado 5 veces. El aumento en la popularidad de <code>R</code> no es el único elemento por el cuál <code>R</code> es un lenguaje valioso. Sin embargo, el que sea un lenguaje comúnmente enseñado en universidades y utilizado en empresas, lo convierte en una habilidad con considerable valor de mercado.</p>
-<p>En la encuesta de <code>Stackoverflow</code>, <code>R</code> se encuentra en el lugar séptimo de los mejores pagados para los desarrolladores cuya ocupación es matemáticas, superando a <code>Python</code> y a <code>SQL</code> . En cuanto a las tecnologías más populares por tipo de desarrollador que declara dedicarse a matemáticas y datos, <code>R</code> está en el sexto lugar, el primer lugar lo tiene <code>python</code>, seguido de <code>SQL</code> .</p>
+<p><code>R</code> inicia a principios de los noventas en la Universidad de Auckland en Nueva Zelanda. Ross Ihaka, profesor del departamento de estadística, pensaba que debía existir una alternativa superior para el análisis de datos realizado por los alumnos, que utilizaban lo que él llamaba <em>programas viejos y cuchos</em>. Robert Gentleman le sugiere a Ross escribir un software cuya ambición inicial era poder enseñar sus cursos de licenciatura de primer año. Así, en 1991 generan una estructura básica a través de la cuál sus estudiantes podían hacer análisis de datos y producir modelos gráficos de la información. Lo bautizan <code>R</code> por sus iniciales <span class="citation">(Ingenio <a href="#ref-rorigins">2016</a>)</span>.</p>
+<p>Ross y Robert no comercializan el software sino que lo ponen a disposición de otros interesados. Ross ha expresado que <code>R</code> cambió su opinión acerca de la humanidad pues es el resultado del trabajo de muchos que no reciben ingresos o reconocimiento por el mismo <span class="citation">(Ingenio <a href="#ref-rorigins">2016</a>)</span>. En 1996, presentan <code>R</code> en un paper introductorio <span class="citation">(Ihaka and Gentleman <a href="#ref-ihaka1996r">1996</a>)</span>.</p>
+<p>A partir de entonces, <code>R</code> ha crecido en forma importante. Entre los contribuidores actuales más relevantes se encuentra Hadley Wickham, alumno de licenciatura en el departamento de estadística de la Universidad de Auckland cuando <code>R</code> se encontraba en desarrollo. En la gráfica siguiente, se muestran las descargas anuales de paquetes de <code>R</code> del 2012 al 2016 del espejo de RStudio.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="_main_files/figure-html/unnamed-chunk-1-1.png" alt="Descargas anuales del espejo de RStudio de paquetes de R de 2012 a 2016 (en millones)." width="672" />
+<p class="caption">
+Figure 1.1: Descargas anuales del espejo de RStudio de paquetes de R de 2012 a 2016 (en millones).
+</p>
+</div>
+<p>En el 2016 paquetes de <code>R</code> fueron descargados 218,480,053 veces. El aumento en la popularidad de <code>R</code> no es el único elemento por el cuál <code>R</code> es un lenguaje valioso. Sin embargo, el que sea un lenguaje comúnmente enseñado en universidades y utilizado en empresas, lo convierte en una habilidad con considerable valor de mercado.</p>
+<p>En la encuesta de <code>Stackoverflow</code>, <code>R</code> se encuentra en el lugar séptimo de los mejores pagados para los desarrolladores cuya ocupación es matemáticas, superando a <code>Python</code> y a <code>SQL</code> <span class="citation">(Stackoverflow <a href="#ref-stackoverflowsurvey16">2016</a>, Top paying tech per occupation, mathematics)</span>. En cuanto a las tecnologías más populares por tipo de desarrollador que declara dedicarse a matemáticas y datos, <code>R</code> está en el sexto lugar, el primer lugar lo tiene <code>python</code>, seguido de <code>SQL</code> <span class="citation">(Stackoverflow <a href="#ref-stackoverflowsurvey16">2016</a>, Most Popular Technologies per Dev Type, Math and Data)</span>.</p>
 <p>Actualmente, <code>R</code>, <code>python</code> y <code>SQL</code> se encuentran entre las herramientas más populares tanto entre desarrolladores como empresas, aunque no son las únicas. La decisión de aprender alguno de estos lenguajes depende de muchos factores, entre ellos cuán natural resulta la interacción individual con cada cuál, el lenguaje preferido en el grupo de trabajo particular y el tipo de análisis que se requiere realizar en el día a día. Escapa del objetivo de este manual el realizar una comparación exhaustiva de tecnologías pero se recomienda tener en cuenta que cada herramienta tiene una especialidad específica y, particularmente en un ambiente de producción, es necesario tener esto en consideración.</p>
-<p><code>R</code> es un excelente lenguaje para aprender ciencia de datos; de hecho en  se describe a <code>R</code> como un proyecto para estadística computacional. Esto lo convierte en un lenguaje único pues fue construido por estadísticos y diseñado para realizar análisis de datos.</p>
-<p>Su uso generalizado en la comunidad estadística tiene la ventaja de que casi cualquier prueba o técnica estadística puede ser encontrada en algún paquete de <code>R</code> . Además, existe una documentación extensa y estandarizada que facilita su uso.</p>
+<p><code>R</code> es un excelente lenguaje para aprender ciencia de datos; de hecho en <span class="citation">CRAN (<a href="#ref-cran">2016</a>)</span> se describe a <code>R</code> como un proyecto para estadística computacional. Esto lo convierte en un lenguaje único pues fue construido por estadísticos y diseñado para realizar análisis de datos.</p>
+<p>Su uso generalizado en la comunidad estadística tiene la ventaja de que casi cualquier prueba o técnica estadística puede ser encontrada en algún paquete de <code>R</code> <span class="citation">(Labs <a href="#ref-recommendr">2016</a>)</span>. Además, existe una documentación extensa y estandarizada que facilita su uso.</p>
 <p>Aunque el material para aprender <code>R</code> es amplio y hay una comunidad mundial muy activa que constantemente produce nuevos recursos, existen pocas referencias que faciliten iniciar su aprendizaje para hispanoparlantes. En general, la documentación, listas de distribución, libros y tutoriales están escritos en inglés.</p>
 <p>Este manual tiene como objetivo guiar a principiantes en programación que tienen una formación previa como analistas de datos. El enfoque principal es el de facilitar de ejemplos que permitan al analista traducir la manipulación de datos que ya saben realizar en otro ambiente a <code>R</code>.</p>
-<p>El manual se estructura como sigue: en el capítulo 2, se introducen elementos básicos para poder iniciar el trabajo en <code>R</code>. Se especifica cómo instalar el software, se recomienda utilizar un editor especializado, así como paquetes útiles para diferentes tareas. En particular, se explica cómo guardar código de manera que otras personas puedan ejecutarlo y cómo realizar documentos reproducibles. Por último, se explica cómo accesar a la ayuda y documentación, así como la forma en la que puede optimizarse su funcionamiento. Este capítulo actúa más como una referencia general para poder realizar el trabajo en el ambiente.</p>
+<p>El manual se estructura como sigue: en el capítulo [basico], se introducen elementos básicos para poder iniciar el trabajo en <code>R</code>. Se especifica cómo instalar el software, se recomienda utilizar un editor especializado, así como paquetes útiles para diferentes tareas. En particular, se explica cómo guardar código de manera que otras personas puedan ejecutarlo y cómo realizar documentos reproducibles. Por último, se explica cómo accesar a la ayuda y documentación, así como la forma en la que puede optimizarse su funcionamiento. Este capítulo actúa más como una referencia general para poder realizar el trabajo en el ambiente.</p>
 <p>En el capítulo 3, se introducen las funciones, las estructuras de datos y las estructuras de control disponibles en el lenguaje. El capítulo 4, explica como operar los objetos y estructuras detallados en el capítulo anterior, proporcionando múltiples ejemplos y ejercicios para familiarizar al lector con el lenguaje.</p>
 <p>El capítulo 5, detalla las herramientas básicas para poder realizar un proyecto de datos en <code>R</code>. Las herramientas que se desarrollan en este capítulo permiten iterar sobre parte del ciclo de un proyecto de datos: importación de datos al ambiente, manipulación, limpieza y visualización de los mismos. Éstas herramientas permiten operar sobre los objetos introducidos en el capítulo 3 en una forma eficiente, fácil de aprender, fácil de leer y que permite que el usuario realice manipulaciones de datos complejas que le permitirán, a su vez, utilizar todas las herramientas de modelado que <code>R</code> posee que necesitan como insumo datos limpios y preparados en una forma específica.</p>
-<p>Cada capítulo incluye ejercicios y respuestas a los mismos; al final se recomienda material adicional para repasar los conceptos estudiados. El material se encuentra disponible electrónicamente en . Para facilitar el aprendizaje, se recomienda descargar los materiales o clonar el repositorio, esto permite revisar el material y el código desde el ambiente local evitando copiar y pegar el mismo para su ejecución.</p>
+<p>Cada capítulo incluye ejercicios y respuestas a los mismos; al final se recomienda material adicional para repasar los conceptos estudiados. El material se encuentra disponible electrónicamente en <a href="https://github.com/animalito/aprendeR" class="uri">https://github.com/animalito/aprendeR</a>. Para facilitar el aprendizaje, se recomienda descargar los materiales o clonar el repositorio, esto permite revisar el material y el código desde el ambiente local evitando copiar y pegar el mismo para su ejecución.</p>
 <!-- If you need PDF output, uncomment bookdown::pdf_book above in YAML. You will need a LaTeX installation, e.g., https://yihui.name/tinytex/ -->
 
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-rorigins">
+<p>Ingenio. 2016. “R: The Ultimate Virus.” Blog. <a href="http://www.ingenio-magazine.com/r-the-ultimate-virus/" class="uri">http://www.ingenio-magazine.com/r-the-ultimate-virus/</a>; Ingenio Magazine.</p>
+</div>
+<div id="ref-ihaka1996r">
+<p>Ihaka, Ross, and Robert Gentleman. 1996. “R: A Language for Data Analysis and Graphics.” <em>Journal of Computational and Graphical Statistics</em> 5 (3). Taylor &amp; Francis: 299–314.</p>
+</div>
+<div id="ref-stackoverflowsurvey16">
+<p>Stackoverflow. 2016. “Developer Survey Results.” Survey. <a href="https://insights.stackoverflow.com/survey/2016" class="uri">https://insights.stackoverflow.com/survey/2016</a>.</p>
+</div>
+<div id="ref-cran">
+<p>CRAN. 2016. <em>The Comprehensive R Archive Network</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>.</p>
+</div>
+<div id="ref-recommendr">
+<p>Labs, Sharp Sights. 2016. “Why R Is the Best Data Science Language to Learn Today.” Blog. <a href="http://sharpsightlabs.com/blog/r-recommend-data-science/" class="uri">http://sharpsightlabs.com/blog/r-recommend-data-science/</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Estos números representan únicamente una fracción de las descargas de <code>R</code> en el mundo pues existen múltiples espejos del software de donde es posible realizar la descarga. Los datos son tomados de <span class="citation">Csardi (<a href="#ref-cranlogs">2016</a>)</span>.<a href="index.html#fnref1">↩</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -179,7 +209,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         </div>
       </div>
 
-<a href="r-lo-basico.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="basico.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

@@ -100,7 +100,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
-<li class="chapter" data-level="2" data-path="r-lo-basico.html"><a href="r-lo-basico.html"><i class="fa fa-check"></i><b>2</b> R: lo básico</a><ul>
+<li class="chapter" data-level="2" data-path="basico.html"><a href="basico.html"><i class="fa fa-check"></i><b>2</b> R: lo básico</a><ul>
 <li class="chapter" data-level="2.1" data-path="instalacion.html"><a href="instalacion.html"><i class="fa fa-check"></i><b>2.1</b> Instalación</a></li>
 <li class="chapter" data-level="2.2" data-path="editores.html"><a href="editores.html"><i class="fa fa-check"></i><b>2.2</b> Editores</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="editores.html"><a href="editores.html#rstudio"><i class="fa fa-check"></i><b>2.2.1</b> RStudio</a></li>
@@ -158,7 +158,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">2.3.1</span> Directorio de trabajo</h3>
 <p>El directorio de trabajo (<em>working directory</em>) es el directorio en tu computadora en el que estás trabajando en ese momento. Cuando se le pide a R que abra un archivo o guarde ciertos datos, R lo hará a partir del directorio de trabajo que le hayas fijado.</p>
 <p>Para saber en qué directorio te encuentras, se usa el comando <code>getwd()</code>.</p>
-
+<div class="ejemplo">
+<p>
+Usa la mnemotécnica del inglés: <em>get working directory</em> ≡ <em>getwd</em>. Notarás como muchas funciones tienen un nombre que acorta lo que hacen.
+</p>
+</div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre></div>
 <pre><code>## [1] &quot;/home/salim/SOCIEDAT/ssR&quot;</code></pre>
 <p>Para especificar el directorio de trabajo, se utiliza el comando <code>setwd()</code> (<em>set working directory</em>) en la consola. Y volvemos a</p>
@@ -212,7 +216,8 @@ x <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <
 <h3><span class="header-section-number">2.3.3</span> Comandos útiles</h3>
 <p>Para enlistar los objetos que están en el espacio de trabajo</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre></div>
-<pre><code>## [1] &quot;x&quot;  &quot;xx&quot;</code></pre>
+<pre><code>## [1] &quot;df&quot;           &quot;df2&quot;          &quot;group.colors&quot; &quot;x&quot;           
+## [5] &quot;xx&quot;</code></pre>
 <p>Para eliminar todos los objetos en un directorio de trabajo (<em>workspace</em>)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>()) <span class="co"># se puede borrar solo uno, por ejemplo, nombrándolo</span>
 <span class="kw">ls</span>()</code></pre></div>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>aprendeR</title>
+  <meta name="description" content="aprendeR">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="aprendeR" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="aprendeR" />
+  
+  
+  
+
+<meta name="author" content="Andrea Fernández Conde">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="rmarkdown.html">
+<link rel="next" href="optimizando.html">
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="estilos.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="r-lo-basico.html"><a href="r-lo-basico.html"><i class="fa fa-check"></i><b>2</b> R: lo básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="instalacion.html"><a href="instalacion.html"><i class="fa fa-check"></i><b>2.1</b> Instalación</a></li>
+<li class="chapter" data-level="2.2" data-path="editores.html"><a href="editores.html"><i class="fa fa-check"></i><b>2.2</b> Editores</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="editores.html"><a href="editores.html#rstudio"><i class="fa fa-check"></i><b>2.2.1</b> RStudio</a></li>
+<li class="chapter" data-level="2.2.2" data-path="editores.html"><a href="editores.html#ess"><i class="fa fa-check"></i><b>2.2.2</b> ESS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html"><i class="fa fa-check"></i><b>2.3</b> El espacio de trabajo (Workspace)</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#directorio-de-trabajo"><i class="fa fa-check"></i><b>2.3.1</b> Directorio de trabajo</a></li>
+<li class="chapter" data-level="2.3.2" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#ejemplos-basicos"><i class="fa fa-check"></i><b>2.3.2</b> Ejemplos básicos</a></li>
+<li class="chapter" data-level="2.3.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#comandos-utiles"><i class="fa fa-check"></i><b>2.3.3</b> Comandos útiles</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html"><i class="fa fa-check"></i><b>2.4</b> Paquetes (<em>libraries</em>)</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#cran"><i class="fa fa-check"></i><b>2.4.1</b> CRAN</a></li>
+<li class="chapter" data-level="2.4.2" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#github"><i class="fa fa-check"></i><b>2.4.2</b> Github</a></li>
+<li class="chapter" data-level="2.4.3" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#otras-fuentes"><i class="fa fa-check"></i><b>2.4.3</b> Otras fuentes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="paquetes-recomendados.html"><a href="paquetes-recomendados.html"><i class="fa fa-check"></i><b>2.5</b> Paquetes recomendados</a></li>
+<li class="chapter" data-level="2.6" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>2.6</b> Scripting</a></li>
+<li class="chapter" data-level="2.7" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2.7</b> rmarkdown</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="rmarkdown.html"><a href="rmarkdown.html#encabezado-y-formatos"><i class="fa fa-check"></i><b>2.7.1</b> Encabezado y formatos</a></li>
+<li class="chapter" data-level="2.7.2" data-path="rmarkdown.html"><a href="rmarkdown.html#knitr-chunks"><i class="fa fa-check"></i><b>2.7.2</b> Knitr chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="ayuda-y-documentacion.html"><a href="ayuda-y-documentacion.html"><i class="fa fa-check"></i><b>2.8</b> Ayuda y documentación</a></li>
+<li class="chapter" data-level="2.9" data-path="optimizando.html"><a href="optimizando.html"><i class="fa fa-check"></i><b>2.9</b> Optimizando</a></li>
+<li class="chapter" data-level="2.10" data-path="material-adicional.html"><a href="material-adicional.html"><i class="fa fa-check"></i><b>2.10</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estructuras-y-funciones.html"><a href="estructuras-y-funciones.html"><i class="fa fa-check"></i><b>3</b> Estructuras y funciones</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectorizacion.html"><a href="vectorizacion.html"><i class="fa fa-check"></i><b>4</b> Vectorización</a><ul>
+<li class="chapter" data-level="4.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>4.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="formatos.html"><a href="formatos.html"><i class="fa fa-check"></i><b>5</b> Formatos</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">aprendeR</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ayuda-y-documentacion" class="section level2">
+<h2><span class="header-section-number">2.8</span> Ayuda y documentación</h2>
+<p><code>R</code> tiene mucha documentación. Dado que es imposible recordar todas las funciones o cómo utilizar todo lo que ya está hecho, es necesario aprender a leerla. Desde la consola se puede accesar a la misma.</p>
+<p>Para ayuda general,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help.start</span>()</code></pre></div>
+<p>Para la <strong>ayuda de una función en especifico</strong>, por ejemplo, si se quiere graficar algo y sabemos que existe la función <code>plot</code> podemos consultar fácilmente la ayuda.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(plot)
+<span class="co"># o tecleando directamente</span>
+?plot</code></pre></div>
+<p>El segundo ejemplo se puede extender para buscar esa función en todos los paquetes que tengo instalados en mi ambiente al escribir <code>??plot</code>.</p>
+<p>A veces, es útil ver el <strong>cuerpo de una función</strong>. Esta tarea no necesariamente es trivial. Para funciones generadas por el usuario, usa</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xx &lt;-<span class="st"> </span><span class="cf">function</span>(x) x<span class="op">^</span><span class="dv">2</span>
+<span class="kw">body</span>(xx)</code></pre></div>
+<pre><code>## x^2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># o simplemente imprimir el objeto en donde guardamos la función</span>
+xx</code></pre></div>
+<pre><code>## function(x) x^2</code></pre>
+<p>También funciona para algunas funciones de paquete, por ejemplo <code>rename</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plyr)
+<span class="kw">body</span>(rename)</code></pre></div>
+<pre><code>## {
+##     names(x) &lt;- revalue(names(x), replace, warn_missing = warn_missing)
+##     duplicated_names &lt;- names(x)[duplicated(names(x))]
+##     if (warn_duplicated &amp;&amp; (length(duplicated_names) &gt; 0L)) {
+##         duplicated_names_message &lt;- paste0(&quot;`&quot;, duplicated_names, 
+##             &quot;`&quot;, collapse = &quot;, &quot;)
+##         warning(&quot;The plyr::rename operation has created duplicates for the &quot;, 
+##             &quot;following name(s): (&quot;, duplicated_names_message, 
+##             &quot;)&quot;, call. = FALSE)
+##     }
+##     x
+## }</code></pre>
+<p>Para plot, en cambio, al usar la función <code>body</code> se ve:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">body</span>(plot)</code></pre></div>
+<pre><code>## UseMethod(&quot;plot&quot;)</code></pre>
+<p>Esto es porque <code>plot</code> es una función genérica (S3) que tiene métodos para distintas clases de objetos. En esos casos, primero debemos usar la función <code>methods</code> para enlistar los métodos que tiene esa función.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">methods</span>(plot)</code></pre></div>
+<pre><code>##  [1] plot.acf*           plot,ANY-method     plot,color-method  
+##  [4] plot.data.frame*    plot.decomposed.ts* plot.default       
+##  [7] plot.dendrogram*    plot.density*       plot.ecdf          
+## [10] plot.factor*        plot.formula*       plot.function      
+## [13] plot.ggplot*        plot.gtable*        plot.hclust*       
+## [16] plot.histogram*     plot.HoltWinters*   plot.isoreg*       
+## [19] plot.lm*            plot.medpolish*     plot.mlm*          
+## [22] plot.ppr*           plot.prcomp*        plot.princomp*     
+## [25] plot.profile.nls*   plot.R6*            plot.raster*       
+## [28] plot.spec*          plot.stepfun        plot.stl*          
+## [31] plot.table*         plot.ts             plot.tskernel*     
+## [34] plot.TukeyHSD*     
+## see &#39;?methods&#39; for accessing help and source code</code></pre>
+<p>Si tiene asteriscos, significa que la función para ese método en particular no viene directamente del espacio de nombres del paquete pero, de cualquier forma, lo podemos pedir usando la <code>función getAnywhere</code> para cualquiera de los métodos que se desplegaron:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getAnywhere</span>(plot.density)</code></pre></div>
+<pre><code>## A single object matching &#39;plot.density&#39; was found
+## It was found in the following places
+##   registered S3 method for plot from namespace stats
+##   namespace:stats
+## with value
+## 
+## function (x, main = NULL, xlab = NULL, ylab = &quot;Density&quot;, type = &quot;l&quot;, 
+##     zero.line = TRUE, ...) 
+## {
+##     if (is.null(xlab)) 
+##         xlab &lt;- paste(&quot;N =&quot;, x$n, &quot;  Bandwidth =&quot;, formatC(x$bw))
+##     if (is.null(main)) 
+##         main &lt;- deparse(x$call)
+##     plot.default(x, main = main, xlab = xlab, ylab = ylab, type = type, 
+##         ...)
+##     if (zero.line) 
+##         abline(h = 0, lwd = 0.1, col = &quot;gray&quot;)
+##     invisible(NULL)
+## }
+## &lt;bytecode: 0x5956750&gt;
+## &lt;environment: namespace:stats&gt;</code></pre>
+<p>Nota como el método <code>plot.density</code> viene del paquete <code>stats</code> .</p>
+<p>La documentación normalmente se acompaña de <strong>ejemplos</strong>. Para <em>correr</em> los ejemplos sin necesidad de copiar y pegar, prueba</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">example</span>(plot)</code></pre></div>
+<p>Para búsquedas más comprensivas, se puede buscar de otras maneras:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apropos</span>(<span class="st">&quot;foo&quot;</span>) <span class="co"># Enlista todas las funciones que contengan la cadena &quot;foo&quot;</span>
+<span class="kw">RSiteSearch</span>(<span class="st">&quot;foo&quot;</span>) <span class="co"># Busca por la cadena &quot;foo&quot; en todos </span>
+<span class="co"># los manuales de ayuda y listas de distribución.</span></code></pre></div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rmarkdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="optimizando.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": true,
+"linkedin": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["aprendeR.pdf"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
