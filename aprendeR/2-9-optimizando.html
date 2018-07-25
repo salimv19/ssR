@@ -149,8 +149,23 @@ img {
 <h2><span class="header-section-number">2.9</span> Optimizando</h2>
 <p>Es común que muy pronto nos encontremos con limitaciones al poder de cómputo y rapidez con el que R procesa los datos. Hay operaciones intensivas como, por ejemplo, la inversión de matrices (qr) o el análisis por componentes principales (svd). Incluso una selección de variables (<em>back/forward selection</em>) usando una simple regresión lineal sobre múltiples regresores puede llevar un tiempo de cómputo de horas/días o no terminar.</p>
 <p>Una de las manera más rápidas de mejorar el rendimiento (<em>performance</em>) de <code>R</code> es instalando las librerías de álgebra lineal que puede utilizar el software para hacer las operaciones más rápido.</p>
-<p>Para mucho (demasiado) detalle al respecto, referirse a la comparación de rendimiento en  o al paquete del mismo autor .</p>
-<p>Para la parte práctica de todo esto, referirse a <a href="http://brettklamer.com/diversions/statistical/faster-blas-in-r/">este blog</a> para instalar las librerías apropiadas para BLAS y Lapack . Para una comparación bastante práctica de las diferentes versiones de esas librerías, ver <a href="http://blog.nguyenvq.com/blog/2014/11/10/optimized-r-and-python-standard-blas-vs-atlas-vs-openblas-vs-mkl/">aquí</a> .</p>
+<p>Para mucho (demasiado) detalle al respecto, referirse a la comparación de rendimiento en <span class="citation">Eddelbuettel (<a href="#ref-eddelbuettel2010">2010</a>)</span> o al paquete del mismo autor <span class="citation">Eddelbuettel (<a href="#ref-gcbd">2016</a>)</span>.</p>
+<p>Para la parte práctica de todo esto, referirse a <a href="http://brettklamer.com/diversions/statistical/faster-blas-in-r/">este blog</a> para instalar las librerías apropiadas para BLAS y Lapack <span class="citation">(Klamer <a href="#ref-blasinr">2014</a>)</span>. Para una comparación bastante práctica de las diferentes versiones de esas librerías, ver <a href="http://blog.nguyenvq.com/blog/2014/11/10/optimized-r-and-python-standard-blas-vs-atlas-vs-openblas-vs-mkl/">aquí</a> <span class="citation">(Nguyen <a href="#ref-optimizedr">2014</a>)</span>.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-eddelbuettel2010">
+<p>Eddelbuettel, Dirk. 2010. “Benchmarking Single-and Multi-Core Blas Implementations and Gpus for Use with R.” <em>Mathematica</em>.</p>
+</div>
+<div id="ref-gcbd">
+<p>Eddelbuettel, Dirk. 2016. <em>Gcbd: ’GPU’/Cpu Benchmarking in Debian-Based Systems</em>. <a href="https://CRAN.R-project.org/package=gcbd" class="uri">https://CRAN.R-project.org/package=gcbd</a>.</p>
+</div>
+<div id="ref-blasinr">
+<p>Klamer, Brett. 2014. “Faster Blas in R.” Blog. <a href="http://brettklamer.com/diversions/statistical/faster-blas-in-r/" class="uri">http://brettklamer.com/diversions/statistical/faster-blas-in-r/</a>.</p>
+</div>
+<div id="ref-optimizedr">
+<p>Nguyen, Vinh. 2014. “Optimized R and Python: Standard Blas Vs. Atlas Vs. Openblas Vs. Mkl.” Blog. <a href="http://blog.nguyenvq.com/blog/2014/11/10/optimized-r-and-python-standard-blas-vs-atlas-vs-openblas-vs-mkl/" class="uri">http://blog.nguyenvq.com/blog/2014/11/10/optimized-r-and-python-standard-blas-vs-atlas-vs-openblas-vs-mkl/</a>.</p>
+</div>
 </div>
 <p style="text-align: center;">
 <a href="2-8-ayuda-y-documentacion.html"><button class="btn btn-default">Previous</button></a>

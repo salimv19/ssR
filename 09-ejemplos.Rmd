@@ -1,11 +1,11 @@
 # Formatos
 
-```{block, type='ejemplo'}
+```{block, type='curiosidad'}
 Usa la mnemotécnica del inglés: get working directory ≡ getwd. Notarás como muchas
 funciones tienen un nombre que acorta lo que hacen.
 ```
 
-```{block, type='ejercicio'}
+```{block, type='ejercicioB'}
 `Packrat` Cuando cambian las versiones de distintos paquetes de R, es posible que código
 que solía funcionar deje de hacerlo. Por esta razón, es conveniente empaquetar proyectos
 de código de manera que el código en un proyecto específico tenga asociados también
@@ -13,7 +13,7 @@ las versiones específicas de los paquetes con los cuáles fue creado. Una forma
 esto es utilizando `packrat`. Para mayor detalle, ver el apéndice B.
 ```
 
-```{block, type='importante'}
+```{block, type='ejercicio'}
 Ejercicios
 
 - primero
@@ -22,7 +22,7 @@ Ejercicios
 
 ```
 
-```{block, type='curiosidad'}
+```{block, type='curiosidadB'}
 En R
 
 * Todo lo que existe es un objeto.

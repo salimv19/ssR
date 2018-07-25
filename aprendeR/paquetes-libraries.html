@@ -156,7 +156,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Existen una gran cantidad de paquetes disponibles además de los incluidos por omisión (<em>default</em>).</p>
 <div id="cran" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> CRAN</h3>
-<p><em>Comprehensive R Archive Network</em>  es una colección de sitios que contienen exactamente el mismo material, es decir, son espejos (<em>mirrors</em>) de las distribuciones de R, las extensiones, la documentación y los binarios. El master de CRAN está en Wirtschaftsuniversität Wien en Austria. Éste se “espeja” (<em>mirrors</em>) en forma diaria a muchos sitios alrededor del mundo. En la <a href="https://cran.r-project.org/mirrors.html">lista de espejos</a> se puede ver que para México están disponibles el espejo del ITAM, del Colegio de Postgraduados (Texcoco) y Jellyfish Foundation .</p>
+<p><em>Comprehensive R Archive Network</em> <span class="citation">(CRAN <a href="#ref-cran">2016</a>)</span> es una colección de sitios que contienen exactamente el mismo material, es decir, son espejos (<em>mirrors</em>) de las distribuciones de R, las extensiones, la documentación y los binarios. El master de CRAN está en Wirtschaftsuniversität Wien en Austria. Éste se “espeja” (<em>mirrors</em>) en forma diaria a muchos sitios alrededor del mundo. En la <a href="https://cran.r-project.org/mirrors.html">lista de espejos</a> se puede ver que para México están disponibles el espejo del ITAM, del Colegio de Postgraduados (Texcoco) y Jellyfish Foundation <span class="citation">(CRAN <a href="#ref-cran">2016</a>)</span>.</p>
 <p>Los espejos son importantes pues, cada vez que busquen instalar paquetes, se les preguntará qué espejo quieren utilizar para la sesión en cuestión. Del espejo que selecciones, será del cuál R <em>bajará</em> el binario y la documentación.</p>
 <p>Del CRAN es que se obtiene la última versión oficial de R. Diario se actualizan los espejos. Para más detalles consultar el <a href="https://cran.r-project.org/doc/FAQ/R-FAQ.html">FAQ</a>.</p>
 <p>Para contribuir un paquete en CRAN se deben seguir las instrucciones <a href="https://cran.r-project.org/web/packages/policies.html">aquí</a>.</p>
@@ -166,11 +166,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Git es un controlador de versiones muy popular para desarrollar software. Cuando se combina con <a href="https://github.com/">GitHub</a> se puede compartir el código con el resto de la comunidad. Éste controlador de versiones es el más popular entre los que contribuyen a R. Muchos problemas a los que uno se enfrenta alguien ya los desarrolló y no necesariamente publicó el paquete en CRAN. Para instalar algún paquete desde GitHub, se pueden seguir las instrucciones siguientes</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
 devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;username/packagename&quot;</span>)</code></pre></div>
-<p>Donde <code>username</code> es el usuario de Github y <code>packagename</code> es el nombre del repositorio que contiene el paquete. Cuidado, no todo repositorio en GitHub es un paquete. Para más información ver el capítulo <a href="http://r-pkgs.had.co.nz/git.html">Git and GitHub</a> en .</p>
+<p>Donde <code>username</code> es el usuario de Github y <code>packagename</code> es el nombre del repositorio que contiene el paquete. Cuidado, no todo repositorio en GitHub es un paquete. Para más información ver el capítulo <a href="http://r-pkgs.had.co.nz/git.html">Git and GitHub</a> en <span class="citation">Wickham (<a href="#ref-wickham2015r">2015</a>)</span>.</p>
 </div>
 <div id="otras-fuentes" class="section level3">
 <h3><span class="header-section-number">2.4.3</span> Otras fuentes</h3>
 <p>Otros lugares en donde es común que se publiquen paquetes es en <a href="https://www.bioconductor.org/">Bioconductor</a> un proyecto de software para la comprensión de datos del genoma humano.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-cran">
+<p>CRAN. 2016. <em>The Comprehensive R Archive Network</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>.</p>
+</div>
+<div id="ref-wickham2015r">
+<p>Wickham, Hadley. 2015. <em>R Packages</em>. “O’Reilly Media, Inc.”</p>
 </div>
 </div>
             </section>

@@ -153,12 +153,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="el-espacio-de-trabajo-workspace" class="section level2">
 <h2><span class="header-section-number">2.3</span> El espacio de trabajo (Workspace)</h2>
 <p>El <em>espacio de trabajo</em> es el ambiente actual de trabajo en <code>R</code>. Incluye todos los objetos definidos por el usuario (vectores, matrices, funciones, dataframes, listas).</p>
-<p>Una sesión de R inicia cuando abres la consola. Al terminar el trabajo se puede guardar la imagen del espacio de trabajo tal cual está, de manera que sea posible continuar <em>desde donde te quedaste</em> .</p>
+<p>Una sesión de R inicia cuando abres la consola. Al terminar el trabajo se puede guardar la imagen del espacio de trabajo tal cual está, de manera que sea posible continuar <em>desde donde te quedaste</em> <span class="citation">(Kabacoff <a href="#ref-kabacoff2015r">2015</a>, pág. 11)</span>.</p>
 <div id="directorio-de-trabajo" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Directorio de trabajo</h3>
 <p>El directorio de trabajo (<em>working directory</em>) es el directorio en tu computadora en el que estás trabajando en ese momento. Cuando se le pide a R que abra un archivo o guarde ciertos datos, R lo hará a partir del directorio de trabajo que le hayas fijado.</p>
 <p>Para saber en qué directorio te encuentras, se usa el comando <code>getwd()</code>.</p>
-<div class="ejemplo">
+<div class="curiosidad">
 <p>
 Usa la mnemotécnica del inglés: <em>get working directory</em> ≡ <em>getwd</em>. Notarás como muchas funciones tienen un nombre que acorta lo que hacen.
 </p>
@@ -168,7 +168,31 @@ Usa la mnemotécnica del inglés: <em>get working directory</em> ≡ <em>getwd</
 <p>Para especificar el directorio de trabajo, se utiliza el comando <code>setwd()</code> (<em>set working directory</em>) en la consola. Y volvemos a</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;/home/animalito/study/&quot;</span>)
 <span class="kw">getwd</span>()</code></pre></div>
-
+<div class="ejercicio">
+<p>
+<strong>Ejercicios</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Abre tu consola de <code>R</code> y escribe <code>setwd()</code>.
+</li>
+<li>
+Utiliza la tecla <code>tab</code> <img src="images/tab_key.jpg" width="32"> para autocompletar las posibles rutas desde donde quiera que estés.
+</li>
+<li>
+Escoge alguna (nuevamente usando la tecla tab para moverte entre las opciones). Si esto no funciona, teclea textualmente alguna de las rutas que ves.
+</li>
+<li>
+Cierra la doble comilla y el paréntesis.
+</li>
+<li>
+Teclea enter.
+</li>
+<li>
+Debes encontrarte en la ruta elegida cuando tecleas <code>getwd()</code>.
+</li>
+</ol>
+</div>
 <p>Con lo que acabamos de hacer, <code>R</code> buscará archivos o guardará archivos en la carpeta que obtuviste con el comando <code>getwd()</code>. En <code>R</code> también es posible navegar a partir de el directorio de trabajo. Como siempre,</p>
 <ul>
 <li><em>../un_archivo.R</em> le indica a <code>R</code> que busque una carpeta arriba del actual directorio de trabajo por el archivo <em>un_archivo.R</em>.</li>
@@ -243,6 +267,12 @@ y &lt;-<span class="st"> </span><span class="dv">3</span><span class="op">:</spa
 <span class="kw">load</span>(<span class="dt">file =</span> <span class="st">&quot;ejemplo.RData&quot;</span>) <span class="co">#la extensión puede ser arbitraria.</span>
 <span class="kw">ls</span>()</code></pre></div>
 <p>Nota como los objetos preservan el nombre con el que fueron guardados.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-kabacoff2015r">
+<p>Kabacoff, Robert. 2015. <em>R in Action: Data Analysis and Graphics with R</em>. Manning Publications Co.</p>
 </div>
 </div>
             </section>

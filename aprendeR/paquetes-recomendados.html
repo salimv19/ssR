@@ -153,9 +153,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="paquetes-recomendados" class="section level2">
 <h2><span class="header-section-number">2.5</span> Paquetes recomendados</h2>
 <p>Hay muchísimas librerías y lo recomendable es, dado un problema y un modelo para resolverlo, revisar si alguien ya implementó el método en algunas de las fuentes de paquetes mencionadas antes.</p>
-<p>Para mantener orden en los paquetes descargados puede ser útil utilizar el  pues provee de herramientas para instalar paquetes en una forma un poco más sencilla que usando la función <code>install.packages</code>.</p>
+<p>Para mantener orden en los paquetes descargados puede ser útil utilizar el <span class="citation">Rinker and Kurkiewicz (<a href="#ref-pacman">2015</a>)</span> pues provee de herramientas para instalar paquetes en una forma un poco más sencilla que usando la función <code>install.packages</code>.</p>
 <p>En particular, la función <code>p_load</code> permite instalar, cargar y actualizar uno o varios paquetes.</p>
-<p>Si queremos instalar varios paquetes usando las herramientas del R básico (<em>base</em>)  haríamos algo como :</p>
+<p>Si queremos instalar varios paquetes usando las herramientas del R básico (<em>base</em>) <span class="citation">(R Core Team <a href="#ref-rbase">2016</a>)</span> haríamos algo como :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">packs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;XML&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;RCurl&quot;</span>, <span class="st">&quot;fakePackage&quot;</span>, <span class="st">&quot;SPSSemulate&quot;</span>)
 success &lt;-<span class="st"> </span><span class="kw">suppressWarnings</span>(<span class="kw">sapply</span>(packs, require, <span class="dt">character.only =</span> <span class="ot">TRUE</span>))
 <span class="kw">install.packages</span>(<span class="kw">names</span>(success)[<span class="op">!</span>success])
@@ -208,6 +208,15 @@ pacman<span class="op">::</span><span class="kw">p_load</span>(XML, jsonlite, ht
 <span class="co"># Para escribir paquetes en R</span>
 pacman<span class="op">::</span><span class="kw">p_load</span>(devtools, testthat, roxygen2)</code></pre></div>
 
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-pacman">
+<p>Rinker, Tyler W., and Dason Kurkiewicz. 2015. <em>pacman: Package Management for R</em>. Buffalo, New York: University at Buffalo/SUNY. <a href="http://github.com/trinker/pacman" class="uri">http://github.com/trinker/pacman</a>.</p>
+</div>
+<div id="ref-rbase">
+<p>R Core Team. 2016. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
 </div>
             </section>
 
