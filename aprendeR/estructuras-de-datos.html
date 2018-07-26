@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>aprendeR</title>
+  <meta name="description" content="aprendeR">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="aprendeR" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="aprendeR" />
+  
+  
+  
+
+<meta name="author" content="Andrea Fernández Conde">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="funciones.html">
+<link rel="next" href="estructuras-de-datos-fuera-de-r-basico.html">
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="estilos.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="r-lo-basico.html"><a href="r-lo-basico.html"><i class="fa fa-check"></i><b>2</b> R: lo básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="instalacion.html"><a href="instalacion.html"><i class="fa fa-check"></i><b>2.1</b> Instalación</a></li>
+<li class="chapter" data-level="2.2" data-path="editores.html"><a href="editores.html"><i class="fa fa-check"></i><b>2.2</b> Editores</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="editores.html"><a href="editores.html#rstudio"><i class="fa fa-check"></i><b>2.2.1</b> RStudio</a></li>
+<li class="chapter" data-level="2.2.2" data-path="editores.html"><a href="editores.html#ess"><i class="fa fa-check"></i><b>2.2.2</b> ESS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html"><i class="fa fa-check"></i><b>2.3</b> El espacio de trabajo (Workspace)</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#directorio-de-trabajo"><i class="fa fa-check"></i><b>2.3.1</b> Directorio de trabajo</a></li>
+<li class="chapter" data-level="2.3.2" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#ejemplos-basicos"><i class="fa fa-check"></i><b>2.3.2</b> Ejemplos básicos</a></li>
+<li class="chapter" data-level="2.3.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#comandos-utiles"><i class="fa fa-check"></i><b>2.3.3</b> Comandos útiles</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html"><i class="fa fa-check"></i><b>2.4</b> Paquetes (<em>libraries</em>)</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#cran"><i class="fa fa-check"></i><b>2.4.1</b> CRAN</a></li>
+<li class="chapter" data-level="2.4.2" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#github"><i class="fa fa-check"></i><b>2.4.2</b> Github</a></li>
+<li class="chapter" data-level="2.4.3" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#otras-fuentes"><i class="fa fa-check"></i><b>2.4.3</b> Otras fuentes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="paquetes-recomendados.html"><a href="paquetes-recomendados.html"><i class="fa fa-check"></i><b>2.5</b> Paquetes recomendados</a></li>
+<li class="chapter" data-level="2.6" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>2.6</b> Scripting</a></li>
+<li class="chapter" data-level="2.7" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2.7</b> rmarkdown</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="rmarkdown.html"><a href="rmarkdown.html#encabezado-y-formatos"><i class="fa fa-check"></i><b>2.7.1</b> Encabezado y formatos</a></li>
+<li class="chapter" data-level="2.7.2" data-path="rmarkdown.html"><a href="rmarkdown.html#knitr-chunks"><i class="fa fa-check"></i><b>2.7.2</b> Knitr chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="ayuda-y-documentacion.html"><a href="ayuda-y-documentacion.html"><i class="fa fa-check"></i><b>2.8</b> Ayuda y documentación</a></li>
+<li class="chapter" data-level="2.9" data-path="optimizando.html"><a href="optimizando.html"><i class="fa fa-check"></i><b>2.9</b> Optimizando</a></li>
+<li class="chapter" data-level="2.10" data-path="material-adicional.html"><a href="material-adicional.html"><i class="fa fa-check"></i><b>2.10</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estructuras-y-funciones.html"><a href="estructuras-y-funciones.html"><i class="fa fa-check"></i><b>3</b> Estructuras y funciones</a><ul>
+<li class="chapter" data-level="3.1" data-path="objetos.html"><a href="objetos.html"><i class="fa fa-check"></i><b>3.1</b> Objetos</a></li>
+<li class="chapter" data-level="3.2" data-path="funciones.html"><a href="funciones.html"><i class="fa fa-check"></i><b>3.2</b> Funciones</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="funciones.html"><a href="funciones.html#componentes-de-una-funcion"><i class="fa fa-check"></i><b>3.2.1</b> Componentes de una función</a></li>
+<li class="chapter" data-level="3.2.2" data-path="funciones.html"><a href="funciones.html#el-ambiente"><i class="fa fa-check"></i><b>3.2.2</b> El ambiente</a></li>
+<li class="chapter" data-level="3.2.3" data-path="funciones.html"><a href="funciones.html#reglas-de-visibilidad-scoping"><i class="fa fa-check"></i><b>3.2.3</b> Reglas de visibilidad (scoping)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html"><i class="fa fa-check"></i><b>3.3</b> Estructuras de datos</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#clases-atomicas-atomic-classes"><i class="fa fa-check"></i><b>3.3.1</b> Clases atómicas (atomic classes)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#vectores"><i class="fa fa-check"></i><b>3.3.2</b> Vectores</a></li>
+<li class="chapter" data-level="3.3.3" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#matrices"><i class="fa fa-check"></i><b>3.3.3</b> Matrices</a></li>
+<li class="chapter" data-level="3.3.4" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#listas"><i class="fa fa-check"></i><b>3.3.4</b> Listas</a></li>
+<li class="chapter" data-level="3.3.5" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#factores-factor"><i class="fa fa-check"></i><b>3.3.5</b> Factores (factor)</a></li>
+<li class="chapter" data-level="3.3.6" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#data-frames"><i class="fa fa-check"></i><b>3.3.6</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="estructuras-de-datos-fuera-de-r-basico.html"><a href="estructuras-de-datos-fuera-de-r-basico.html"><i class="fa fa-check"></i><b>3.4</b> Estructuras de datos fuera de R-básico</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estructuras-de-datos-fuera-de-r-basico.html"><a href="estructuras-de-datos-fuera-de-r-basico.html#data-tables"><i class="fa fa-check"></i><b>3.4.1</b> Data tables</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estructuras-de-datos-fuera-de-r-basico.html"><a href="estructuras-de-datos-fuera-de-r-basico.html#tibbles"><i class="fa fa-check"></i><b>3.4.2</b> Tibbles</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="objetos-importantes.html"><a href="objetos-importantes.html"><i class="fa fa-check"></i><b>3.5</b> Objetos importantes</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="objetos-importantes.html"><a href="objetos-importantes.html#infinito"><i class="fa fa-check"></i><b>3.5.1</b> Infinito</a></li>
+<li class="chapter" data-level="3.5.2" data-path="objetos-importantes.html"><a href="objetos-importantes.html#no-es-un-numero"><i class="fa fa-check"></i><b>3.5.2</b> No es un número</a></li>
+<li class="chapter" data-level="3.5.3" data-path="objetos-importantes.html"><a href="objetos-importantes.html#valores-perdidos-missing-values"><i class="fa fa-check"></i><b>3.5.3</b> Valores perdidos (missing values)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html"><i class="fa fa-check"></i><b>3.6</b> Estructuras de control</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#if"><i class="fa fa-check"></i><b>3.6.1</b> If</a></li>
+<li class="chapter" data-level="3.6.2" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#for"><i class="fa fa-check"></i><b>3.6.2</b> For</a></li>
+<li class="chapter" data-level="3.6.3" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#whiles"><i class="fa fa-check"></i><b>3.6.3</b> Whiles</a></li>
+<li class="chapter" data-level="3.6.4" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#repeat---break"><i class="fa fa-check"></i><b>3.6.4</b> Repeat - Break</a></li>
+<li class="chapter" data-level="3.6.5" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#next"><i class="fa fa-check"></i><b>3.6.5</b> Next</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="material-adicional-1.html"><a href="material-adicional-1.html"><i class="fa fa-check"></i><b>3.7</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectorizacion-la-familia-apply-y-otros.html"><a href="vectorizacion-la-familia-apply-y-otros.html"><i class="fa fa-check"></i><b>4</b> Vectorización, la familia apply y otros</a><ul>
+<li class="chapter" data-level="4.1" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>4.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="herramientas-basicas-para-un-proyecto-de-datos.html"><a href="herramientas-basicas-para-un-proyecto-de-datos.html"><i class="fa fa-check"></i><b>5</b> Herramientas básicas para un proyecto de datos</a><ul>
+<li class="chapter" data-level="5.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>5.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusión</a></li>
+<li class="appendix"><span><b>Apéndices</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown</a><ul>
+<li class="chapter" data-level="A.1" data-path="r-markdown-2.html"><a href="r-markdown-2.html"><i class="fa fa-check"></i><b>A.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="packrat.html"><a href="packrat.html"><i class="fa fa-check"></i><b>B</b> Packrat</a><ul>
+<li class="chapter" data-level="B.1" data-path="el-directorio-del-proyecto.html"><a href="el-directorio-del-proyecto.html"><i class="fa fa-check"></i><b>B.1</b> El directorio del proyecto</a></li>
+<li class="chapter" data-level="B.2" data-path="instalacion-1.html"><a href="instalacion-1.html"><i class="fa fa-check"></i><b>B.2</b> Instalación</a></li>
+<li class="chapter" data-level="B.3" data-path="r-markdown-3.html"><a href="r-markdown-3.html"><i class="fa fa-check"></i><b>B.3</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="formatos.html"><a href="formatos.html"><i class="fa fa-check"></i><b>C</b> Formatos</a></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">aprendeR</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estructuras-de-datos" class="section level2">
+<h2><span class="header-section-number">3.3</span> Estructuras de datos</h2>
+<p>R tiene diferentes tipos y estructuras de datos que permiten al usuario aprovechar el lenguaje. La manipulación de estos objetos es algo que se hace diario y entender cómo operarlos o cómo convertir de una a otra es muy útil.</p>
+<div id="clases-atomicas-atomic-classes" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Clases atómicas (atomic classes)</h3>
+<p>R tiene 6 clases atómicas<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> <span class="citation">(R Core Team <a href="#ref-rmanual">2016</a><a href="#ref-rmanual">a</a>)</span>.</p>
+<ul>
+<li><code>character</code> (caracter)</li>
+<li><code>numeric</code> (números reales o decimales, a esta clase también se le llama <code>double</code>)</li>
+<li><code>integer</code> (números enteros)</li>
+<li><code>logical</code> (booleanos, i.e. falso-verdadero)</li>
+<li><code>complex</code> (números complejos)</li>
+<li><code>raw</code> (contiene bytes)</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-52">Cuadro 3.1: </span>Clases atómicas</caption>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Tipo</th>
+<th align="left">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>character</code></td>
+<td align="left">Caracter</td>
+<td align="left">‘hola’, ‘x’</td>
+</tr>
+<tr class="even">
+<td align="left"><code>numeric</code></td>
+<td align="left">Numérico</td>
+<td align="left">67, 45.5</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>integer</code></td>
+<td align="left">Integer</td>
+<td align="left">2L, 67L</td>
+</tr>
+<tr class="even">
+<td align="left"><code>logical</code></td>
+<td align="left">Lógico</td>
+<td align="left">TRUE, FALSE, T, F</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>complex</code></td>
+<td align="left">Complejo</td>
+<td align="left">1+4i</td>
+</tr>
+<tr class="even">
+<td align="left"><code>raw</code></td>
+<td align="left">Crudo</td>
+<td align="left">01 - imprime hexadecimales</td>
+</tr>
+</tbody>
+</table>
+<p>Algunos comandos importantes para las clases atómicas son su tipo <code>typeof()</code>, su tamaño <code>length()</code> y sus atributos <code>attributes()</code>, es decir, sus metadatos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">############ Ejemplo 1
+
+x &lt;-<span class="st"> &quot;una cadena&quot;</span>
+<span class="kw">typeof</span>(x)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(x) <span class="co"># tamaño: ¿cuántas cadenas son?</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nchar</span>(x) <span class="co"># Número de caracteres</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(x) <span class="co"># Le pusimos metadatos?</span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">############ Ejemplo 2
+
+y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
+<span class="kw">typeof</span>(y)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(y)</code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(y)</code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">############ Ejemplo 3
+
+z &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 2L, 3L) <span class="co"># Nota como para denotar enteros se incluye una L al final</span>
+<span class="kw">typeof</span>(z)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(z)</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div id="vectores" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Vectores</h3>
+<p>Los vectores son la estructura de datos más básica de R <span class="citation">(Wickham <a href="#ref-wickham2014advanced">2014</a>)</span>. Hay dos tipos de vectores: vectores atómicos y listas.</p>
+<p>Típicamente -en libros, blogs, manuales, cuando se mencionan vectores se refieren a los atómicos y no a las listas.</p>
+<div id="vectores-atomicos" class="section level4">
+<h4><span class="header-section-number">3.3.2.1</span> Vectores atómicos</h4>
+<p>Los vectores pueden ser pensados como celdas contiguas que contienen datos <span class="citation">(R Core Team <a href="#ref-rmanual">2016</a><a href="#ref-rmanual">a</a>)</span>, es decir, elementos de alguna de las clases atómicas (<code>character</code>, <code>logical</code>, <code>integer</code>, <code>numeric</code>). Se puede crear un vector vacío con el comando <code>vector()</code> así como especificar su tamaño y su clase.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v &lt;-<span class="st"> </span><span class="kw">vector</span>()
+v </code></pre></div>
+<pre><code>## logical(0)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Especifico clase y longitud
+<span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>, <span class="dt">length =</span> <span class="dv">10</span>)</code></pre></div>
+<pre><code>##  [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Lo mismo pero usando un wrapper
+<span class="kw">character</span>(<span class="dv">10</span>)</code></pre></div>
+<pre><code>##  [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Numerico de tamaño 5
+<span class="kw">numeric</span>(<span class="dv">5</span>)</code></pre></div>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Lógico tamaño 5
+<span class="kw">logical</span>(<span class="dv">5</span>)</code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+</div>
+<div id="tipos-de-vectores" class="section level4">
+<h4><span class="header-section-number">3.3.2.2</span> Tipos de vectores</h4>
+<p>Realiza los siguientes ejemplos en la consola de R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>)
+x
+<span class="kw">typeof</span>(x)
+
+xi &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 3L, 56L, 4L)
+xi
+<span class="kw">typeof</span>(xi)
+
+y &lt;-<span class="st"> </span><span class="kw">c</span>(T, F, T, F, F, T)
+
+z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;aba&quot;</span>, <span class="st">&quot;andrea&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;bueno&quot;</span>)</code></pre></div>
+<p>Dijimos que la función <code>typeof</code> permitía preguntarle a un objeto qué tipo de dato es. La función <code>class</code> permite hacer una pregunta similar. La diferencia radica en el punto de vista: el primero da el tipo del objeto como un objeto en <code>R</code> mientras que, el segundo identifica el tipo del objeto desde el punto de vista de la programación orientada a objetos en <code>R</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(z)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>Otra función útil es <code>str</code> pues permite desplegar en forma compacta la estructura interna de un objeto en <code>R</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(z)</code></pre></div>
+<pre><code>##  int [1:3] 1 2 3</code></pre>
+</div>
+<div id="operaciones-con-vectores" class="section level4">
+<h4><span class="header-section-number">3.3.2.3</span> Operaciones con vectores</h4>
+<p>Aritmética: por default, se realizan componente a componente.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)
+b &lt;-<span class="st"> </span>a <span class="op">+</span><span class="st"> </span><span class="dv">10</span>
+b</code></pre></div>
+<pre><code>## [1] 11 12 13 14 15</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">c &lt;-<span class="st"> </span><span class="kw">sqrt</span>(b) <span class="co"># square root = raíz</span>
+c</code></pre></div>
+<pre><code>## [1] 3.316625 3.464102 3.605551 3.741657 3.872983</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a <span class="op">+</span><span class="st"> </span>c</code></pre></div>
+<pre><code>## [1] 4.316625 5.464102 6.605551 7.741657 8.872983</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> <span class="op">*</span><span class="st"> </span>(a <span class="op">+</span><span class="st"> </span>c)</code></pre></div>
+<pre><code>## [1] 43.16625 54.64102 66.05551 77.41657 88.72983</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a<span class="op">^</span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1]  1  4  9 16 25</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a <span class="op">*</span><span class="st"> </span>c</code></pre></div>
+<pre><code>## [1]  3.316625  6.928203 10.816654 14.966630 19.364917</code></pre>
+<p>Agregar elementos aun vector ya creado</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(a, <span class="dv">7</span>)
+a</code></pre></div>
+<pre><code>## [1] 1 2 3 4 5 7</code></pre>
+<p>Para construir datos rápido, podemos usar comandos como <code>rep</code>, <code>seq</code> o distintas distribuciones, e.g., la normal <code>rnorm</code>, uniformes <code>runif</code> o cualquiera en <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Distributions.html">esta lista</a>.</p>
+<p>Prueba lo siguiente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Dame un vector donde el minimo sea 0, maximo 1 en intervalos de 0.25</span>
+<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>)
+<span class="co"># Vector con 10 unos</span>
+<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>)
+<span class="co"># 5 realizaciones de una normal(0,1)</span>
+<span class="kw">rnorm</span>(<span class="dv">5</span>)
+<span class="co"># De una normal(10, 5)</span>
+<span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(<span class="dv">5</span>))
+<span class="co"># De una uniforme(0,1)</span>
+<span class="kw">runif</span>(<span class="dv">5</span>)
+<span class="co"># De una uniforme(5, 15)</span>
+<span class="kw">runif</span>(<span class="dv">5</span>, <span class="dt">min =</span> <span class="dv">5</span>, <span class="dt">max =</span> <span class="dv">15</span>)</code></pre></div>
+</div>
+<div id="atributos-de-un-vector" class="section level4">
+<h4><span class="header-section-number">3.3.2.4</span> Atributos de un vector</h4>
+<p>Cada objeto tiene atributos. Hay atributos específicos para vectores que, sin importar su clase, tienen en común. Ya revisamos algunos: tamaño (<code>length</code>), clase (<code>class</code>). También son importantes atributos como los nombres</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">calificaciones &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)
+<span class="kw">names</span>(calificaciones) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Maria&quot;</span>, <span class="st">&quot;Jorge&quot;</span>, <span class="st">&quot;Miguel&quot;</span>, <span class="st">&quot;Raúl&quot;, &quot;</span>Carla<span class="st">&quot;)</span>
+<span class="st">attributes(calificaciones)</span></code></pre></div>
+<pre><code>## $names
+## [1] &quot;Maria&quot;  &quot;Jorge&quot;  &quot;Miguel&quot; &quot;Raúl&quot;   &quot;Carla&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># O llamamos directo a los nombres</span>
+<span class="kw">names</span>(calificaciones)</code></pre></div>
+<pre><code>## [1] &quot;Maria&quot;  &quot;Jorge&quot;  &quot;Miguel&quot; &quot;Raúl&quot;   &quot;Carla&quot;</code></pre>
+</div>
+<div id="coercion" class="section level4">
+<h4><span class="header-section-number">3.3.2.5</span> Coerción</h4>
+<p>Los vectores solo permiten tener objetos del mismo tipo. Hay coercioń explícita (<em>explicit coercion</em>, también llamada <em>cast</em>) utilizando <code>as.&lt;nombre_clase&gt;</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.numeric</span>()
+<span class="kw">as.character</span>()
+<span class="kw">as.integer</span>()
+<span class="kw">as.logical</span>()</code></pre></div>
+<p>Utilizando coerción explícita garantizamos siempre tener el resultado en cuanto a la clase del objeto.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="kw">as.character</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
+<p>Realizar coerción explícita implica trabajar extra y, a veces, no se puede realizar de manera directa: los datos pueden venir <em>sucios</em> con varios tipos de datos mezclados en una misma <em>variable</em>.</p>
+<p><code>R</code> mezcla distintos tipos de datos y realiza una <em>coerción implícita</em> utilizando reglas razonables. En otras palabras, R realiza una coerción explícita <em>por default</em> entre los objetos y “decide” cuál es la clase del vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Número + caracter = caracter</span>
+<span class="kw">c</span>(<span class="fl">1.7</span>, <span class="st">&quot;a&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;1.7&quot; &quot;a&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Lógico + número = número</span>
+<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 1 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Número + caracter = caracter</span>
+<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] &quot;a&quot;    &quot;TRUE&quot;</code></pre>
+<p>En ese proceso, puede haber pérdidas de información, por ejemplo, al mezclar valores lógicos con numéricos, Se confunden valores <em>verdaderos</em> con un <em>uno</em>. Hay que tener cuidado particularmente cuando se limpian los datos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">c</span>(T, T, T), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</code></pre></div>
+<pre><code>## [1] 1 1 1 1 2 3</code></pre>
+<p>Hay conversiones que no tienen sentido y generan pérdida de información total:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)
+<span class="kw">as.numeric</span>(x)</code></pre></div>
+<pre><code>## [1] NA NA NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.logical</span>(x)</code></pre></div>
+<pre><code>## [1] NA NA NA</code></pre>
+<p>Normalmente, se obtiene un mensaje de advertencia (<em>warning</em>) cuando alguna coerción puede derivar en pérdida de información <span class="citation">(Wickham <a href="#ref-wickham2014advanced">2014</a>)</span>.</p>
+<p>La última consideración importante es que para R un objeto no es igual, aunque no se pierda información, si su tipo no es el mismo</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">5</span>
+<span class="kw">identical</span>(x, <span class="kw">as.numeric</span>(x))</code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>En este ejemplo, cuando declaramos <span class="math inline">\(x\)</span> no especificamos su clase y R decidió que era entero. Al coercionar al objeto para que fuese numérico, R no considera a los dos objetos iguales.</p>
+<p>En general, la coersión de R es muy útil pues permite incluso comparar objetos de distintas clases si el resultado tiene sentido</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> &quot;2&quot;</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="nota">
+<p>
+Lo importante es recordar que es importante revisar las <strong>advertencias</strong> que <code>R</code> arroja a la consola y verificar que el resultado obtenido es el deseado o que la pérdida de información no se puede evitar.
+</p>
+</div>
+</div>
+<div id="extraer-partes-del-vector" class="section level4">
+<h4><span class="header-section-number">3.3.2.6</span> Extraer partes del vector</h4>
+<p><code>R</code> tiene constructos que permite acceder a elementos individuales o subconjuntos de un vector a través de operaciones de indexación (<em>indexing</em>) <span class="citation">(R Core Team <a href="#ref-rmanual">2016</a><a href="#ref-rmanual">a</a>, sección “Indexing”)</span>.</p>
+<p>Para los vectores, es posible acceder al i-ésimo elemento usando <code>x[i]</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)
+<span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>)
+<span class="co"># Accedemos al 4to elemento</span>
+x[<span class="dv">4</span>]</code></pre></div>
+<pre><code>##  d 
+## 40</code></pre>
+<p>Además de la indexación con un entero, se puede</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x[i] - caso anterior</span>
+<span class="co"># x[[i]]</span>
+x[[<span class="dv">4</span>]]</code></pre></div>
+<pre><code>## [1] 40</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x[&quot;a&quot;] - por nombre (cuando existen)</span>
+x[<span class="st">&quot;a&quot;</span>]</code></pre></div>
+<pre><code>##  a 
+## 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Se puede extraer un subconjunto</span>
+x[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</code></pre></div>
+<pre><code>##  a  b  c 
+## 10 20 30</code></pre>
+<div class="nota">
+<p>
+<strong><code>[]</code> vs. <code>[[]]</code></strong>
+</p>
+<p>
+Estas dos formas de acceder a los elementos de un vector (utilizados también en otras estructuras de datos) suelen causar confusión.
+</p>
+<p>
+En vectores, <code>[[</code> casi no se utiliza, aunque son ligeramente diferentes. Como vimos en el ejemplo, <code>[[</code> quita los nombres o atributos y permite extraer únicamente un elemento a la vez.
+</p>
+</div>
+</div>
+</div>
+<div id="matrices" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Matrices</h3>
+<p>Las matrices son un tipo especial de vectores. Son un vector atómico con una dimensión adicional pues tienen filas y columnas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)
+m</code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</code></pre>
+<p>En términos de sus atributos por <em>default</em>, la diferencia entre los vectores y las matrices es:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)
+<span class="kw">attributes</span>(x)</code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(m)</code></pre></div>
+<pre><code>## $dim
+## [1] 2 2</code></pre>
+<p>Como puedes notar, las matrices se forman <em>por default</em> usando los elementos del vector para llenar columna por columna de izquierda a derecha. Podemos simplemente “agregarle” una dimensión a un vector para construir una matriz.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
+m</code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(m) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)
+m</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10</code></pre>
+<p>También podemos pegar o concatenar vectores de la misma longitud como si fueran columnas de una matriz usando <code>cbind</code> o como si fueran filas <code>rbind</code> (r = row, c = column).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">4</span>)
+y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">4</span>)
+<span class="kw">cbind</span>(x, y)</code></pre></div>
+<pre><code>##               x          y
+## [1,] 0.96287589 -0.3065290
+## [2,] 0.01111454  0.6312563
+## [3,] 0.82282778 -0.8850892
+## [4,] 0.42547561  0.3376346</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(x, y)</code></pre></div>
+<pre><code>##         [,1]       [,2]       [,3]      [,4]
+## x  0.9628759 0.01111454  0.8228278 0.4254756
+## y -0.3065290 0.63125627 -0.8850892 0.3376346</code></pre>
+<p>Le agregamos atributos para accesar más fácilmente a los objetos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(x, y), <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> T,
+            <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">paste0</span>(<span class="st">&quot;row&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>),
+                            <span class="kw">paste0</span>(<span class="st">&quot;col&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)))
+m</code></pre></div>
+<pre><code>##            col1       col2
+## row1  0.9628759 0.01111454
+## row2  0.8228278 0.42547561
+## row3 -0.3065290 0.63125627
+## row4 -0.8850892 0.33763458</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dimnames</span>(m)</code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;row1&quot; &quot;row2&quot; &quot;row3&quot; &quot;row4&quot;
+## 
+## [[2]]
+## [1] &quot;col1&quot; &quot;col2&quot;</code></pre>
+<p>Acceder a elementos de una matriz puede hacerse de muchas formas</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># m[i] - quinto elemento, contando desde entrada 1,1 por columnas</span>
+m[<span class="dv">5</span>]</code></pre></div>
+<pre><code>## [1] 0.01111454</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># m[[i]] - quinto elemento, quitando atributos</span>
+m[[<span class="dv">5</span>]]</code></pre></div>
+<pre><code>## [1] 0.01111454</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># m[i, j] - mismo elemento que m[5] pero usando notacion fila, columna</span>
+m[<span class="dv">1</span>, <span class="dv">2</span>]</code></pre></div>
+<pre><code>## [1] 0.01111454</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># m[[i, j]] - mismo elemento, quitando atributos</span>
+m[[<span class="dv">1</span>, <span class="dv">2</span>]]</code></pre></div>
+<pre><code>## [1] 0.01111454</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Puedo llamar por su nombre</span>
+m[<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;col2&quot;</span>]</code></pre></div>
+<pre><code>## [1] 0.01111454</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Misma forma, quitando atributos</span>
+m[[<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;col2&quot;</span>]]</code></pre></div>
+<pre><code>## [1] 0.01111454</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># m[i, ] - toda la fila i-ésima</span>
+m[<span class="dv">1</span>, ]</code></pre></div>
+<pre><code>##       col1       col2 
+## 0.96287589 0.01111454</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># m[, j] - toda la columna j-ésima</span>
+m[, <span class="dv">2</span>]</code></pre></div>
+<pre><code>##       row1       row2       row3       row4 
+## 0.01111454 0.42547561 0.63125627 0.33763458</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Índices o nombres son equivalentes</span>
+m[<span class="dv">1</span>, <span class="dv">1</span>] <span class="op">==</span><span class="st"> </span>m[<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;col1&quot;</span>]</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="nota">
+<p>
+<strong><code>[]</code> vs. <code>[[]]</code></strong>
+</p>
+<p>
+En matrices, <code>[[</code> casi no se utiliza. Como vimos en el ejemplo, <code>[[</code> quita los nombres o atributos y permite extraer únicamente un elemento a la vez.
+</p>
+</div>
+</div>
+<div id="listas" class="section level3">
+<h3><span class="header-section-number">3.3.4</span> Listas</h3>
+<p>Tiene características muy similares a un vector pero permite que cada elemento sea de un tipo distinto. Mas aún, es posible incluir una lista como un elemento de otra lista y por eso también se les conoce como vectores recursivos (<em>recursive vectors</em>) <span class="citation">(Wickham <a href="#ref-wickham2014advanced">2014</a>, sección “lists”)</span>.</p>
+<p>Para crear una lista vacía utilizas <code>list()</code> y para coercionar un objeto a una lista usa <code>as.list()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">list</span>(3L, <span class="fl">3.56</span>, <span class="dv">1</span> <span class="op">+</span><span class="st"> </span>4i, <span class="ot">TRUE</span>, <span class="st">&quot;hola&quot;</span>, <span class="kw">list</span>(<span class="st">&quot;genial&quot;</span>, <span class="dv">1</span>))
+
+<span class="kw">length</span>(x)</code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(x)</code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(x[<span class="dv">1</span>])</code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(x[[<span class="dv">1</span>]])</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">as.list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)
+<span class="kw">length</span>(y)</code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<p>Nota como muchas propiedades que tenían los vectores atómicos los tienen también las listas. Las listas también pueden tener nombres</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Lista vacia</span>
+lista &lt;-<span class="st"> </span><span class="kw">list</span>()
+<span class="co"># Concatenamos un vector</span>
+lista[[<span class="st">&quot;numeros&quot;</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">34</span>, <span class="fl">45.5</span>, <span class="dv">34</span>) 
+<span class="co"># Concatenamos un objeto de datos</span>
+lista[[<span class="st">&quot;datos&quot;</span>]] &lt;-<span class="st"> </span><span class="kw">head</span>(iris)
+<span class="co"># Concatenamos un número</span>
+lista &lt;-<span class="st"> </span><span class="kw">c</span>(lista, <span class="dv">3</span>) <span class="co"># ¡No le tuvimos que poner nombre!</span>
+
+lista</code></pre></div>
+<pre><code>## $numeros
+## [1]  1.0 34.0 45.5 34.0
+## 
+## $datos
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+## 
+## [[3]]
+## [1] 3</code></pre>
+<div class="curiosidad">
+<p>
+R tiene muchos <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">datos de ejemplo</a> que son utilizados en muchos paquetes, blogs y libros. Utiliza <strong>help(iris)</strong> para saber más del dataset usado arriba.
+</p>
+</div>
+<p>Por su propiedad recursiva, se navega diferente. Repasamos las principales maneras de extraer los elementos de la lista utilizando la lista <span class="math inline">\(x\)</span> declarada anteriormente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Recordamos a x</span>
+x</code></pre></div>
+<pre><code>## [[1]]
+## [1] 3
+## 
+## [[2]]
+## [1] 3.56
+## 
+## [[3]]
+## [1] 1+4i
+## 
+## [[4]]
+## [1] TRUE
+## 
+## [[5]]
+## [1] &quot;hola&quot;
+## 
+## [[6]]
+## [[6]][[1]]
+## [1] &quot;genial&quot;
+## 
+## [[6]][[2]]
+## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x[i] - el i-ésimo elemento de la lista</span>
+x[<span class="dv">3</span>]</code></pre></div>
+<pre><code>## [[1]]
+## [1] 1+4i</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Nota como la clase del objeto sigue siendo lista
+<span class="kw">class</span>(x[<span class="dv">3</span>])</code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x[[i]] - el i-ésimo elemento de la lista</span>
+x[[<span class="dv">3</span>]]</code></pre></div>
+<pre><code>## [1] 1+4i</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## La clase ahora es la del objeto dentro del &quot;espacio&quot; 3 en la lista original
+<span class="kw">class</span>(x[[<span class="dv">3</span>]])</code></pre></div>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Nombramos la lista</span>
+<span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;entero&quot;</span>, <span class="st">&quot;numerico&quot;</span>, <span class="st">&quot;complejo&quot;</span>
+              , <span class="st">&quot;booleano&quot;</span>, <span class="st">&quot;caracter&quot;</span>, <span class="st">&quot;lista&quot;</span>)
+
+<span class="co"># Ganamos formas de accesar los objetos</span>
+<span class="co"># x$a - llamamos al elemento con nombre &quot;a&quot;</span>
+x<span class="op">$</span>entero</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(x<span class="op">$</span>entero) <span class="co"># Es equivalente a [[]]</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x$&quot;a&quot;</span>
+x<span class="op">$</span><span class="st">&quot;complejo&quot;</span></code></pre></div>
+<pre><code>## [1] 1+4i</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x[[&quot;lista&quot;]][i] - i-ésimo elemento de la lista dentro de la lista </span>
+x[[<span class="st">&quot;lista&quot;</span>]][<span class="dv">1</span>]</code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;genial&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x[[j]][i] - Mismas reglas en la lista anidada</span>
+x[[<span class="dv">6</span>]][<span class="dv">1</span>]</code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;genial&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x[[j]][[i]] - i-ésimo elemento en la lista del j-ésimo elemento de x</span>
+x[[<span class="dv">6</span>]][[<span class="dv">1</span>]]</code></pre></div>
+<pre><code>## [1] &quot;genial&quot;</code></pre>
+<div class="nota">
+<p>
+<strong><code>[]</code> vs. <code>[[]]</code></strong>
+</p>
+<p>
+En listas, <code>[[</code> es fundamental para accesar correctamente los objetos y poder navegar la lista.
+</p>
+<p>
+Como en vectores y matrices, <code>[[</code> quita los nombres o atributos y permite extraer únicamente un elemento a la vez. En listas, además, devuelve el objeto dentro del i-ésimo elemento. Por el contrario, <code>[</code> devuelve una lista.
+</p>
+<p>
+Puedo poner listas dentro de listas, dentro de listas… Se navega en orden como en el ejemplo.
+</p>
+</div>
+<p>Las longitudes de los objetos en la lista se pueden pensar <em>por niveles</em>, por su propiedad recursiva.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># El tamaño es del &quot;primer nivel&quot;.</span>
+<span class="kw">length</span>(x)</code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Hay 6 elementos en x, todos de diferentes tipos</span>
+<span class="kw">names</span>(x)</code></pre></div>
+<pre><code>## [1] &quot;entero&quot;   &quot;numerico&quot; &quot;complejo&quot; &quot;booleano&quot; &quot;caracter&quot; &quot;lista&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Para obtener la longitud dentro del i-ésimo elemento de la lista, debo</span>
+<span class="kw">length</span>(x[[<span class="dv">6</span>]]) <span class="co"># La lista anidada tiene 2 elementos</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># que no es lo mismo que</span>
+<span class="kw">length</span>(x[<span class="dv">6</span>]) <span class="co"># Donde hay un solo elemento: una lista</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="factores-factor" class="section level3">
+<h3><span class="header-section-number">3.3.5</span> Factores (factor)</h3>
+<p>Los factores son otro tipo de vectores pero que ayuda a representar datos del tipo categórico u ordinal, es decir, cuando los posibles valores de la variable tipo caracter es limitado. Por ejemplo, son útiles cuando tenemos una variable como “sexo” donde, al menos por ahora, legalmente solo puede tomar los valores <em>hombre</em> o <em>mujer</em>. Si, en cambio, se tiene un vector de nombres es conveniente dejarlo como caracter.</p>
+<p>Un factor se guarda como un <em>enteros</em> pero con <em>etiquetas</em> encima tal que cada entero corresponde a una etiqueta (<em>label</em>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;no&quot;</span>)
+<span class="kw">class</span>(y)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Debemos pedirle explícitamente que lo guarde como factor</span>
+x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;no&quot;</span>))
+x</code></pre></div>
+<pre><code>## [1] no si si no
+## Levels: no si</code></pre>
+<p>Al imprimir el objeto, se observa como los niveles fueron asignados. Éstos corresponden al número de valores únicos en el vector de caracter y se asignan en orden alfabético los valores.</p>
+<p>Los factores se despliegan <em>como si fueran</em> vectores tipo caracter y algunas operaciones son análogas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(x)</code></pre></div>
+<pre><code>## x
+## no si 
+##  2  2</code></pre>
+<p>La ganancia es que son más rápidas. Aunque a veces los factores se comportan como vectores tipo caracter pero <em>debemos</em> recordar que por debajo son enteros y tenemos que ser cuidadosos si los tratamos como caracteres.</p>
+<p>Supongamos por ejemplo que tenemos un factor con valores 5, 6 o 7. Lo tenemos guardado como factor.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ej &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;7&quot;</span>, <span class="st">&quot;6&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;7&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;7&quot;</span>, <span class="st">&quot;6&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;6&quot;</span>,<span class="st">&quot;5&quot;</span>))
+ej</code></pre></div>
+<pre><code>##  [1] 7 6 5 7 5 7 6 5 5 6 5
+## Levels: 5 6 7</code></pre>
+<p>Dado que los valores son números, conceptualmente tiene sentido operarlos como tal:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.integer</span>(ej)</code></pre></div>
+<pre><code>##  [1] 3 2 1 3 1 3 2 1 1 2 1</code></pre>
+<p>Obtuvimos los enteros a los que las etiquetas originales habían sido asignados. Para recuperar los valores originales, debemos hacer</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.integer</span>(<span class="kw">as.character</span>(ej))</code></pre></div>
+<pre><code>##  [1] 7 6 5 7 5 7 6 5 5 6 5</code></pre>
+<p>Algunos métodos que están hechos para caracteres coercionan un factor a caracter mientras que otros arrojan un error. Si usas métodos de caracteres, lo mejor es “castear” (coerción explícita) a caracter tu factor utilizando <code>as.character(mifactor)</code>. De esta manera se pierden algunas cosas pero te aseguras que las cosas funcionen como deben.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(x)</code></pre></div>
+<pre><code>## no si 
+##  2  2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">as.character</span>(x))</code></pre></div>
+<pre><code>##    Length     Class      Mode 
+##         4 character character</code></pre>
+<div class="curiosidad">
+<p>
+<strong>Summary</strong>
+</p>
+<p>
+<code>R</code> funciona mejor gracias a sus convenciones, es decir, porque los contribuyentes se ponen de acuerdo en seguir ciertas reglas de manera que sea más fácil utilizar los paquetes de otros (con sus objetos y funciones).
+</p>
+<p>
+La función <code>summary</code> es la función genérica que produce resumenes para objetos de muchas clases. La función invoca métodos que dependen de la clase del argumento enviado (en estos ejemplos, el resumen para un factor y para un caracter respectivamente).
+</p>
+</div>
+<p>Los factores pueden incluir únicamente los niveles con los que fueron definidos. Por esa razón, la unión de dos factores ddeclarados en forma independiente puede dar resultados no deseados.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;si&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;tal vez&quot;</span>))
+<span class="kw">c</span>(x, y)</code></pre></div>
+<pre><code>## [1] 1 2 2 1 2 1 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="kw">c</span>(x, y))</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>No es posible entonces recuperar el valor de las etiquetas. <code>R</code> hizo las operaciones posibles pero hubo pérdida de información. Para concatenar dos factores correctamente, es necesario:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factor</span>(<span class="kw">c</span>(<span class="kw">as.character</span>(x), <span class="kw">as.character</span>(y)))</code></pre></div>
+<pre><code>## [1] no      si      si      no      si      no      tal vez
+## Levels: no si tal vez</code></pre>
+<p>En general, se recomienda incluir el valor de u nnivel posible, independientemente de si se tiene o no esa respuesta. Sin embargo, el problema al concatenar persiste.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;no&quot;</span>), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;tal vez&quot;</span>))
+<span class="kw">c</span>(x, <span class="st">&quot;tal vez&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;1&quot;       &quot;2&quot;       &quot;2&quot;       &quot;1&quot;       &quot;tal vez&quot;</code></pre>
+<p>Para datos ordinales como las respuestas en una pregunta de encuesta con escala likert<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> los factores son también objetos útiles.</p>
+<p>Veamos un ejemplo en donde tenemos 500 respuestas a la pregunta “este tutorial es muy útil”:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2887</span>)
+respuestas &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">size =</span> <span class="dv">500</span>, <span class="dt">replace =</span>  T
+                     , <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.15</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.15</span>))
+y &lt;-<span class="st"> </span><span class="kw">factor</span>(
+  <span class="dt">x =</span> respuestas,
+  <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>),
+  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;totalmente en desacuerdo&quot;</span>, <span class="st">&quot;en desacuerdo&quot;</span>
+             , <span class="st">&quot;ni de acuerdo ni en desacuerdo&quot;</span>
+             , <span class="st">&quot;de acuerdo&quot;</span>, <span class="st">&quot;totalmente de acuerdo&quot;</span>),
+  <span class="dt">ordered =</span> T)
+<span class="kw">table</span>(y)</code></pre></div>
+<pre><code>## y
+##       totalmente en desacuerdo                  en desacuerdo 
+##                             51                             74 
+## ni de acuerdo ni en desacuerdo                     de acuerdo 
+##                            108                            194 
+##          totalmente de acuerdo 
+##                             73</code></pre>
+<p>Nota como la tabla está ordenada de izquierda a derecha con la respuesta más en desacuerdo a la más de acuerdo pues introducimos la opción <code>ordered = T</code> en la definición del factor debido a que las respuestas están en una escala ordinal.</p>
+<div class="curiosidad">
+<p>
+<strong>Otras funciones útiles</strong>
+</p>
+<p>
+En el ejemplo anterior, introducimos las funciones:
+</p>
+<ul>
+<li>
+<code>set.seed</code>: sirve para fijar la semilla con la que se generan números aleatorios. Esto es importante pues al fijarla se puede reproducir exactamente el mismo vector de respuestas cuantas veces sea necesario.
+</li>
+<li>
+<code>sample</code>: permite extraer muestras de un vector <code>x</code> especificando el tamaño de la muestra, si es muestreo con reemplazo y permite establecer pesos para el muestreo.
+</li>
+</ul>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(y)</code></pre></div>
+<pre><code>## y
+##       totalmente en desacuerdo                  en desacuerdo 
+##                             51                             74 
+## ni de acuerdo ni en desacuerdo                     de acuerdo 
+##                            108                            194 
+##          totalmente de acuerdo 
+##                             73</code></pre>
+<p>Por último, al utilizar factores (y más aún, declarar un orden cuando es conceptualmente pertinente) es más fácil visualizar correctamente los datos con menor desgaste. Si graficamos las respuestas como caracter recibimos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">como.caracter =</span> <span class="kw">as.character</span>(y), <span class="dt">como.factor =</span> y) 
+<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> como.caracter)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-99-1.png" width="768" /></p>
+<p>Si utilizamos el factor ordenado obtenemos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> como.factor)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-100-1.png" width="768" /></p>
+<div class="nota">
+<p>
+<strong>Nota</strong>
+</p>
+<p>
+En R muchas cosas son más fáciles si se utliza la estructura de datos apropiada y se establecen correctamente todos los metadatos necesarios al objeto para que los defaults de R faciliten el trabajo.
+</p>
+<p>
+Al utilizar factores cuando es pertinente se gana, al menos, lo siguiente:
+</p>
+<ul>
+<li>
+Se almacenan los datos usando menos memoria. Esto es importante pues R trabaja en ram.
+</li>
+<li>
+El rendimiento es mejor que usando caracteres.
+</li>
+<li>
+Por <em>default</em> R utiliza los métodos apropiados para el tipo de variable. Por ejemplo, si se introduce un factor como variable dependiente en un modelo de regresión, automáticamente aplica un logit y no un ols.
+</li>
+<li>
+Se pueden especificar elementos, como el orden de los niveles, que son útiles para el análisis y presentación de resultados.
+</li>
+</ul>
+<p>
+A pesar de sus ventajas, si son incorrectamente utilizados las estructuras de datos pueden resultar en pérdidas de información o comportamientos indeseados.
+</p>
+</div>
+</div>
+<div id="data-frames" class="section level3">
+<h3><span class="header-section-number">3.3.6</span> Data frames</h3>
+<p>Los dataframes son una de las estructuras de datos más importantes para guardar datos en R <span class="citation">(Wickham <a href="#ref-wickham2014advanced">2014</a>, sección “Data frames”)</span>. En <code>python</code>, existe una estructura similar en la librería <code>pandas</code> creado para facilitar el análisis de datos en este lenguaje sin la necesidad de cambiar a un lenguaje de dominio específico como <code>R</code> <span class="citation">(McKinney <a href="#ref-pandas">2010</a>, sección “What problem does pandas solve?”)</span>.</p>
+<p>Este objeto es tan importante porque muchos de los modelos estadísticos que se utliizan necesitan una estructura de datos tabular.</p>
+<p>Los dataframes tienen atributos adicionales a los que tienen los vectores:</p>
+<ul>
+<li><code>rownames()</code></li>
+<li><code>colnames()</code></li>
+<li><code>names()</code></li>
+<li><code>head()</code> te enseña las primeras 6 lineas.</li>
+<li><code>tail()</code> te enseña las últimas 6 líneas.</li>
+<li><code>nrow()</code> te da el número de filas</li>
+<li><code>ncol()</code> te da el número de columnas</li>
+<li><code>str()</code> te dice el tipo de cada columna y te muestra ejemplos</li>
+</ul>
+<p>Podemos ver a los dataframes como un tipo de lista con algunas restricciones <span class="citation">(R Core Team <a href="#ref-rmanual">2016</a><a href="#ref-rmanual">a</a>, sección “Data frames”)</span>:</p>
+<ul>
+<li>Los componentes deben ser vectores, factores, matrices numéricas, listas u otros dataframes.</li>
+<li>Las matrices, listaa y otros data frames proveen de tantas columnas, elementos o variables como las originales, respectivamente.</li>
+<li>Los vectores numéricos, lógicos y factores se incluyen en el dataframe sin transformaciones adicionales. Los vectores tipo caracter se coercionan a factores.</li>
+<li>Todos los elementos (las columnas) deben tener la misma longitud o tamaño.</li>
+</ul>
+<p>Los dataframes se pueden crear utilizando comandos como <code>read.table()</code> (que tiene como caso particular <code>read.csv()</code>. Se verá con detalle el uso de estas funciones en la sección <a href="#importacion-de-datos">5.1</a>.</p>
+<p>Para convertir un dataframe a una matriz se utiliza <code>data.matrix()</code>. La coerción es forzada y no necesariamente da lo que uno espera.</p>
+<p>Se pueden crear data.frames con la función <code>data.frame()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>),
+  <span class="dt">y =</span> <span class="kw">runif</span>(<span class="dv">10</span>),
+  <span class="dt">n =</span> LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>],
+  <span class="dt">stringsAsFactors =</span> F <span class="co"># F = FALSE, T = TRUE</span>
+)
+
+<span class="kw">head</span>(df)</code></pre></div>
+<pre><code>##             x          y n
+## 1  0.89814648 0.52584158 A
+## 2 -0.37532709 0.68789829 B
+## 3 -2.17112789 0.60079780 C
+## 4 -0.63011959 0.86922537 D
+## 5  0.03778982 0.44119997 E
+## 6  0.35565256 0.02638035 F</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(df)</code></pre></div>
+<pre><code>## [1] 10  3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(df)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    10 obs. of  3 variables:
+##  $ x: num  0.8981 -0.3753 -2.1711 -0.6301 0.0378 ...
+##  $ y: num  0.526 0.688 0.601 0.869 0.441 ...
+##  $ n: chr  &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...</code></pre>
+<div class="curiosidad">
+<p>
+<strong>¿Por qué usar la opción <code>stringsAsFactors = F</code>?</strong>
+</p>
+<p>
+Por <em>default</em> las columnas tipo caracter en un <code>dataframe</code> son convertidas a factor. Esto es útil cuando se tienen los datos limpios y se va a proceder a modelas sin realizar mayores transformaciones o limpiezas a los datos. Sin embargo, cuando se realizarán manipulaciones a los mismos, es recomendable cambiar la opción por <em>default</em> para leer columnas como caracter, de esta forma se evitan los problemas mencionados en la sección de factores.
+</p>
+</div>
+<p>Es posible concatenar columnas o filas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="kw">data.frame</span>(<span class="dt">z =</span> <span class="kw">rexp</span>(<span class="dv">10</span>)))
+df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">1</span>), <span class="kw">runif</span>(<span class="dv">1</span>), <span class="st">&quot;K&quot;</span>, <span class="kw">rexp</span>(<span class="dv">1</span>)))
+<span class="kw">dim</span>(df)</code></pre></div>
+<pre><code>## [1] 11  4</code></pre>
+<p>Repasamos las principales maneras de extraer los elementos de un dataframe utilizando el objeto <span class="math inline">\(df\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>),
+  <span class="dt">y =</span> <span class="kw">runif</span>(<span class="dv">4</span>),
+  <span class="dt">n =</span> LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>],
+  <span class="dt">stringsAsFactors =</span> F <span class="co"># F = FALSE, T = TRUE</span>
+)
+
+<span class="co"># df[i]</span>
+df[<span class="dv">1</span>] <span class="co"># La primera columna</span></code></pre></div>
+<pre><code>##             x
+## 1  0.38112864
+## 2  0.51810269
+## 3 -0.84698783
+## 4  0.03558633</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(df[<span class="dv">1</span>]) <span class="co"># Regresa un dataframe</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># df[[i]]</span>
+df[[<span class="dv">1</span>]] <span class="co"># La primera columna</span></code></pre></div>
+<pre><code>## [1]  0.38112864  0.51810269 -0.84698783  0.03558633</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(df[[<span class="dv">1</span>]]) <span class="co"># Regresa un vector </span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># df[i, j]</span>
+df[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># elemento en la primera fila, segunda columna</span></code></pre></div>
+<pre><code>## [1] 0.5346584</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># df[[i, j]]</span>
+df[[<span class="dv">1</span>, <span class="dv">2</span>]] <span class="co"># mismo resultado</span></code></pre></div>
+<pre><code>## [1] 0.5346584</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># df$columna </span>
+df<span class="op">$</span>x <span class="co"># La columna llamada x</span></code></pre></div>
+<pre><code>## [1]  0.38112864  0.51810269 -0.84698783  0.03558633</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># df$&quot;columna&quot;</span>
+df<span class="op">$</span><span class="st">&quot;x&quot;</span></code></pre></div>
+<pre><code>## [1]  0.38112864  0.51810269 -0.84698783  0.03558633</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[[<span class="st">&quot;n&quot;</span>]][<span class="dv">1</span>] <span class="co"># Podemos navegar igual que en una lista</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot;</code></pre>
+<div class="nota">
+<p>
+<strong><code>[]</code> vs. <code>[[]]</code></strong>
+</p>
+<p>
+Debido a que los <em>dataframes</em> son un caso particular de las listas, <code>[[</code> es también fundamental para accesar correctamente los objetos.
+</p>
+<p>
+<code>[[</code> quita los nombres o atributos, permite extraer únicamente un elemento a la vez y devuelve el objeto dentro del i-ésimo elemento.
+</p>
+<p>
+<code>[</code> devuelve un data frame con la columna(s) que sea nombradas o los índices que sean utilizados.
+</p>
+</div>
+<p>Cuando se declara un <code>dataframe</code> automáticamente se verifican que los nombres sean sintácticamente válidos con la función <code>make.names</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data.frame</span>(<span class="st">&quot;2000&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">100</span><span class="op">:</span><span class="dv">104</span>)
+           , <span class="st">&quot;una-variable&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">200</span><span class="op">:</span><span class="dv">204</span>)
+           , <span class="st">&quot;.2000&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">300</span><span class="op">:</span><span class="dv">304</span>)
+)</code></pre></div>
+<pre><code>##   X2000 una.variable X.2000
+## 1   100          200    300
+## 2   101          201    301
+## 3   102          202    302
+## 4   103          203    303
+## 5   104          204    304</code></pre>
+<div class="curiosidad">
+<p>
+<strong>Nombres sintácticamente válidos</strong>
+</p>
+<p>
+Los <code>dataframes</code> pueden tener únicamente nombres sintácticamente válidos <span class="citation"><span class="citation">(Hornik <a href="#ref-rfaq">2016</a>, sección “What are valid names?”)</span></span>:
+</p>
+<ul>
+<li>
+Está compuesto por letras, números, puntos o guiones bajos.
+</li>
+<li>
+No deben empezar con números. Tampoco pueden empezar con un punto seguido de un número.
+</li>
+<li>
+No se permiten palabras reservadas (if, else, repeat, next, TRUE, FALSE, entre otras).
+</li>
+</ul>
+</div>
+</div>
+</div>
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-rmanual">
+<p>R Core Team. 2016a. <em>R Language Definition, Manual for R Version 3.3.2</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-lang.html</a>.</p>
+</div>
+<div id="ref-wickham2014advanced">
+<p>Wickham, Hadley. 2014. <em>Advanced R</em>. CRC Press.</p>
+</div>
+<div id="ref-pandas">
+<p>McKinney, Wes. 2010. “pandas: Python Data Analysis Library.” <a href="http://pandas.pydata.org/" class="uri">http://pandas.pydata.org/</a>.</p>
+</div>
+<div id="ref-rfaq">
+<p>Hornik, Kurt. 2016. <em>R Faq. Frequently Asked Questions on R</em> (version 2016-06-06). Vienna, Austria: R Foundation for Statistical Computing. <a href="https://cran.r-project.org/doc/FAQ/R-FAQ.html" class="uri">https://cran.r-project.org/doc/FAQ/R-FAQ.html</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="6">
+<li id="fn6"><p>Los tipos básicos son referidos como atómicos cuando es necesario excluir listas.<a href="estructuras-de-datos.html#fnref6">↩</a></p></li>
+<li id="fn7"><p>Se denomina así por su autor quien en <span class="citation">(Likert <a href="#ref-likert1932">1932</a>)</span> describe su uso.<a href="estructuras-de-datos.html#fnref7">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="funciones.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estructuras-de-datos-fuera-de-r-basico.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": true,
+"linkedin": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

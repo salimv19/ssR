@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>aprendeR</title>
+  <meta name="description" content="aprendeR">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="aprendeR" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="aprendeR" />
+  
+  
+  
+
+<meta name="author" content="Andrea Fernández Conde">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="clases-atomicas-atomic-classes.html">
+<link rel="next" href="matrices.html">
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="estilos.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="r-lo-basico.html"><a href="r-lo-basico.html"><i class="fa fa-check"></i><b>2</b> R: lo básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="instalacion.html"><a href="instalacion.html"><i class="fa fa-check"></i><b>2.1</b> Instalación</a></li>
+<li class="chapter" data-level="2.2" data-path="editores.html"><a href="editores.html"><i class="fa fa-check"></i><b>2.2</b> Editores</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="editores.html"><a href="editores.html#rstudio"><i class="fa fa-check"></i><b>2.2.1</b> RStudio</a></li>
+<li class="chapter" data-level="2.2.2" data-path="editores.html"><a href="editores.html#ess"><i class="fa fa-check"></i><b>2.2.2</b> ESS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html"><i class="fa fa-check"></i><b>2.3</b> El espacio de trabajo (Workspace)</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#directorio-de-trabajo"><i class="fa fa-check"></i><b>2.3.1</b> Directorio de trabajo</a></li>
+<li class="chapter" data-level="2.3.2" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#ejemplos-basicos"><i class="fa fa-check"></i><b>2.3.2</b> Ejemplos básicos</a></li>
+<li class="chapter" data-level="2.3.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#comandos-utiles"><i class="fa fa-check"></i><b>2.3.3</b> Comandos útiles</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html"><i class="fa fa-check"></i><b>2.4</b> Paquetes (<em>libraries</em>)</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#cran"><i class="fa fa-check"></i><b>2.4.1</b> CRAN</a></li>
+<li class="chapter" data-level="2.4.2" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#github"><i class="fa fa-check"></i><b>2.4.2</b> Github</a></li>
+<li class="chapter" data-level="2.4.3" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#otras-fuentes"><i class="fa fa-check"></i><b>2.4.3</b> Otras fuentes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="paquetes-recomendados.html"><a href="paquetes-recomendados.html"><i class="fa fa-check"></i><b>2.5</b> Paquetes recomendados</a></li>
+<li class="chapter" data-level="2.6" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>2.6</b> Scripting</a></li>
+<li class="chapter" data-level="2.7" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2.7</b> rmarkdown</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="rmarkdown.html"><a href="rmarkdown.html#encabezado-y-formatos"><i class="fa fa-check"></i><b>2.7.1</b> Encabezado y formatos</a></li>
+<li class="chapter" data-level="2.7.2" data-path="rmarkdown.html"><a href="rmarkdown.html#knitr-chunks"><i class="fa fa-check"></i><b>2.7.2</b> Knitr chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="ayuda-y-documentacion.html"><a href="ayuda-y-documentacion.html"><i class="fa fa-check"></i><b>2.8</b> Ayuda y documentación</a></li>
+<li class="chapter" data-level="2.9" data-path="optimizando.html"><a href="optimizando.html"><i class="fa fa-check"></i><b>2.9</b> Optimizando</a></li>
+<li class="chapter" data-level="2.10" data-path="material-adicional.html"><a href="material-adicional.html"><i class="fa fa-check"></i><b>2.10</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estructuras-y-funciones.html"><a href="estructuras-y-funciones.html"><i class="fa fa-check"></i><b>3</b> Estructuras y funciones</a></li>
+<li class="chapter" data-level="4" data-path="objetos.html"><a href="objetos.html"><i class="fa fa-check"></i><b>4</b> Objetos</a></li>
+<li class="chapter" data-level="5" data-path="funciones.html"><a href="funciones.html"><i class="fa fa-check"></i><b>5</b> Funciones</a><ul>
+<li class="chapter" data-level="5.1" data-path="componentes-de-una-funcion.html"><a href="componentes-de-una-funcion.html"><i class="fa fa-check"></i><b>5.1</b> Componentes de una función</a></li>
+<li class="chapter" data-level="5.2" data-path="el-ambiente.html"><a href="el-ambiente.html"><i class="fa fa-check"></i><b>5.2</b> El ambiente</a></li>
+<li class="chapter" data-level="5.3" data-path="reglas-de-visibilidad-scoping.html"><a href="reglas-de-visibilidad-scoping.html"><i class="fa fa-check"></i><b>5.3</b> Reglas de visibilidad (scoping)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html"><i class="fa fa-check"></i><b>6</b> Estructuras de datos</a><ul>
+<li class="chapter" data-level="6.1" data-path="clases-atomicas-atomic-classes.html"><a href="clases-atomicas-atomic-classes.html"><i class="fa fa-check"></i><b>6.1</b> Clases atómicas (atomic classes)</a></li>
+<li class="chapter" data-level="6.2" data-path="vectores.html"><a href="vectores.html"><i class="fa fa-check"></i><b>6.2</b> Vectores</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vectores.html"><a href="vectores.html#vectores-atomicos"><i class="fa fa-check"></i><b>6.2.1</b> Vectores atómicos</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vectores.html"><a href="vectores.html#tipos-de-vectores"><i class="fa fa-check"></i><b>6.2.2</b> Tipos de vectores</a></li>
+<li class="chapter" data-level="6.2.3" data-path="vectores.html"><a href="vectores.html#operaciones-con-vectores"><i class="fa fa-check"></i><b>6.2.3</b> Operaciones con vectores</a></li>
+<li class="chapter" data-level="6.2.4" data-path="vectores.html"><a href="vectores.html#atributos-de-un-vector"><i class="fa fa-check"></i><b>6.2.4</b> Atributos de un vector</a></li>
+<li class="chapter" data-level="6.2.5" data-path="vectores.html"><a href="vectores.html#coercion"><i class="fa fa-check"></i><b>6.2.5</b> Coerción</a></li>
+<li class="chapter" data-level="6.2.6" data-path="vectores.html"><a href="vectores.html#extraer-partes-del-vector"><i class="fa fa-check"></i><b>6.2.6</b> Extraer partes del vector</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>6.3</b> Matrices</a></li>
+<li class="chapter" data-level="6.4" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>6.4</b> Listas</a></li>
+<li class="chapter" data-level="6.5" data-path="factores-factor.html"><a href="factores-factor.html"><i class="fa fa-check"></i><b>6.5</b> Factores (factor)</a></li>
+<li class="chapter" data-level="6.6" data-path="data-frames.html"><a href="data-frames.html"><i class="fa fa-check"></i><b>6.6</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="estructuras-de-datos-fuera-de-r-basico.html"><a href="estructuras-de-datos-fuera-de-r-basico.html"><i class="fa fa-check"></i><b>7</b> Estructuras de datos fuera de R-básico</a><ul>
+<li class="chapter" data-level="7.1" data-path="data-tables.html"><a href="data-tables.html"><i class="fa fa-check"></i><b>7.1</b> Data tables</a></li>
+<li class="chapter" data-level="7.2" data-path="tibbles.html"><a href="tibbles.html"><i class="fa fa-check"></i><b>7.2</b> Tibbles</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="objetos-importantes.html"><a href="objetos-importantes.html"><i class="fa fa-check"></i><b>8</b> Objetos importantes</a><ul>
+<li class="chapter" data-level="8.1" data-path="infinito.html"><a href="infinito.html"><i class="fa fa-check"></i><b>8.1</b> Infinito</a></li>
+<li class="chapter" data-level="8.2" data-path="no-es-un-numero.html"><a href="no-es-un-numero.html"><i class="fa fa-check"></i><b>8.2</b> No es un número</a></li>
+<li class="chapter" data-level="8.3" data-path="valores-perdidos-missing-values.html"><a href="valores-perdidos-missing-values.html"><i class="fa fa-check"></i><b>8.3</b> Valores perdidos (missing values)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html"><i class="fa fa-check"></i><b>9</b> Estructuras de control</a><ul>
+<li class="chapter" data-level="9.1" data-path="if.html"><a href="if.html"><i class="fa fa-check"></i><b>9.1</b> If</a></li>
+<li class="chapter" data-level="9.2" data-path="for.html"><a href="for.html"><i class="fa fa-check"></i><b>9.2</b> For</a></li>
+<li class="chapter" data-level="9.3" data-path="whiles.html"><a href="whiles.html"><i class="fa fa-check"></i><b>9.3</b> Whiles</a></li>
+<li class="chapter" data-level="9.4" data-path="repeat-break.html"><a href="repeat-break.html"><i class="fa fa-check"></i><b>9.4</b> Repeat - Break</a></li>
+<li class="chapter" data-level="9.5" data-path="next.html"><a href="next.html"><i class="fa fa-check"></i><b>9.5</b> Next</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="material-adicional-1.html"><a href="material-adicional-1.html"><i class="fa fa-check"></i><b>10</b> Material adicional</a></li>
+<li class="chapter" data-level="11" data-path="vectorizacion-la-familia-apply-y-otros.html"><a href="vectorizacion-la-familia-apply-y-otros.html"><i class="fa fa-check"></i><b>11</b> Vectorización, la familia apply y otros</a><ul>
+<li class="chapter" data-level="11.1" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>11.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="herramientas-basicas-para-un-proyecto-de-datos.html"><a href="herramientas-basicas-para-un-proyecto-de-datos.html"><i class="fa fa-check"></i><b>12</b> Herramientas básicas para un proyecto de datos</a><ul>
+<li class="chapter" data-level="12.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>12.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>13</b> Conclusión</a></li>
+<li class="appendix"><span><b>Apéndices</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown</a><ul>
+<li class="chapter" data-level="A.1" data-path="r-markdown-2.html"><a href="r-markdown-2.html"><i class="fa fa-check"></i><b>A.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="packrat.html"><a href="packrat.html"><i class="fa fa-check"></i><b>B</b> Packrat</a><ul>
+<li class="chapter" data-level="B.1" data-path="el-directorio-del-proyecto.html"><a href="el-directorio-del-proyecto.html"><i class="fa fa-check"></i><b>B.1</b> El directorio del proyecto</a></li>
+<li class="chapter" data-level="B.2" data-path="instalacion-1.html"><a href="instalacion-1.html"><i class="fa fa-check"></i><b>B.2</b> Instalación</a></li>
+<li class="chapter" data-level="B.3" data-path="r-markdown-3.html"><a href="r-markdown-3.html"><i class="fa fa-check"></i><b>B.3</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="formatos.html"><a href="formatos.html"><i class="fa fa-check"></i><b>C</b> Formatos</a></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">aprendeR</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vectores" class="section level2">
+<h2><span class="header-section-number">6.2</span> Vectores</h2>
+<p>Los vectores son la estructura de datos más básica de R <span class="citation">(Wickham <a href="#ref-wickham2014advanced">2014</a>)</span>. Hay dos tipos de vectores: vectores atómicos y listas.</p>
+<p>Típicamente -en libros, blogs, manuales, cuando se mencionan vectores se refieren a los atómicos y no a las listas.</p>
+<div id="vectores-atomicos" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Vectores atómicos</h3>
+<p>Los vectores pueden ser pensados como celdas contiguas que contienen datos <span class="citation">(R Core Team <a href="#ref-rmanual">2016</a><a href="#ref-rmanual">a</a>)</span>, es decir, elementos de alguna de las clases atómicas (<code>character</code>, <code>logical</code>, <code>integer</code>, <code>numeric</code>). Se puede crear un vector vacío con el comando <code>vector()</code> así como especificar su tamaño y su clase.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v &lt;-<span class="st"> </span><span class="kw">vector</span>()
+v </code></pre></div>
+<pre><code>## logical(0)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Especifico clase y longitud
+<span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>, <span class="dt">length =</span> <span class="dv">10</span>)</code></pre></div>
+<pre><code>##  [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Lo mismo pero usando un wrapper
+<span class="kw">character</span>(<span class="dv">10</span>)</code></pre></div>
+<pre><code>##  [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Numerico de tamaño 5
+<span class="kw">numeric</span>(<span class="dv">5</span>)</code></pre></div>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Lógico tamaño 5
+<span class="kw">logical</span>(<span class="dv">5</span>)</code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+</div>
+<div id="tipos-de-vectores" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Tipos de vectores</h3>
+<p>Realiza los siguientes ejemplos en la consola de R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>)
+x
+<span class="kw">typeof</span>(x)
+
+xi &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 3L, 56L, 4L)
+xi
+<span class="kw">typeof</span>(xi)
+
+y &lt;-<span class="st"> </span><span class="kw">c</span>(T, F, T, F, F, T)
+
+z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;aba&quot;</span>, <span class="st">&quot;andrea&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;bueno&quot;</span>)</code></pre></div>
+<p>Dijimos que la función <code>typeof</code> permitía preguntarle a un objeto qué tipo de dato es. La función <code>class</code> permite hacer una pregunta similar. La diferencia radica en el punto de vista: el primero da el tipo del objeto como un objeto en <code>R</code> mientras que, el segundo identifica el tipo del objeto desde el punto de vista de la programación orientada a objetos en <code>R</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(z)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>Otra función útil es <code>str</code> pues permite desplegar en forma compacta la estructura interna de un objeto en <code>R</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(z)</code></pre></div>
+<pre><code>##  int [1:3] 1 2 3</code></pre>
+</div>
+<div id="operaciones-con-vectores" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> Operaciones con vectores</h3>
+<p>Aritmética: por default, se realizan componente a componente.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)
+b &lt;-<span class="st"> </span>a <span class="op">+</span><span class="st"> </span><span class="dv">10</span>
+b</code></pre></div>
+<pre><code>## [1] 11 12 13 14 15</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">c &lt;-<span class="st"> </span><span class="kw">sqrt</span>(b) <span class="co"># square root = raíz</span>
+c</code></pre></div>
+<pre><code>## [1] 3.316625 3.464102 3.605551 3.741657 3.872983</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a <span class="op">+</span><span class="st"> </span>c</code></pre></div>
+<pre><code>## [1] 4.316625 5.464102 6.605551 7.741657 8.872983</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> <span class="op">*</span><span class="st"> </span>(a <span class="op">+</span><span class="st"> </span>c)</code></pre></div>
+<pre><code>## [1] 43.16625 54.64102 66.05551 77.41657 88.72983</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a<span class="op">^</span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1]  1  4  9 16 25</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a <span class="op">*</span><span class="st"> </span>c</code></pre></div>
+<pre><code>## [1]  3.316625  6.928203 10.816654 14.966630 19.364917</code></pre>
+<p>Agregar elementos aun vector ya creado</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(a, <span class="dv">7</span>)
+a</code></pre></div>
+<pre><code>## [1] 1 2 3 4 5 7</code></pre>
+<p>Para construir datos rápido, podemos usar comandos como <code>rep</code>, <code>seq</code> o distintas distribuciones, e.g., la normal <code>rnorm</code>, uniformes <code>runif</code> o cualquiera en <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Distributions.html">esta lista</a>.</p>
+<p>Prueba lo siguiente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Dame un vector donde el minimo sea 0, maximo 1 en intervalos de 0.25</span>
+<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>)
+<span class="co"># Vector con 10 unos</span>
+<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>)
+<span class="co"># 5 realizaciones de una normal(0,1)</span>
+<span class="kw">rnorm</span>(<span class="dv">5</span>)
+<span class="co"># De una normal(10, 5)</span>
+<span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(<span class="dv">5</span>))
+<span class="co"># De una uniforme(0,1)</span>
+<span class="kw">runif</span>(<span class="dv">5</span>)
+<span class="co"># De una uniforme(5, 15)</span>
+<span class="kw">runif</span>(<span class="dv">5</span>, <span class="dt">min =</span> <span class="dv">5</span>, <span class="dt">max =</span> <span class="dv">15</span>)</code></pre></div>
+</div>
+<div id="atributos-de-un-vector" class="section level3">
+<h3><span class="header-section-number">6.2.4</span> Atributos de un vector</h3>
+<p>Cada objeto tiene atributos. Hay atributos específicos para vectores que, sin importar su clase, tienen en común. Ya revisamos algunos: tamaño (<code>length</code>), clase (<code>class</code>). También son importantes atributos como los nombres</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">calificaciones &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)
+<span class="kw">names</span>(calificaciones) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Maria&quot;</span>, <span class="st">&quot;Jorge&quot;</span>, <span class="st">&quot;Miguel&quot;</span>, <span class="st">&quot;Raúl&quot;, &quot;</span>Carla<span class="st">&quot;)</span>
+<span class="st">attributes(calificaciones)</span></code></pre></div>
+<pre><code>## $names
+## [1] &quot;Maria&quot;  &quot;Jorge&quot;  &quot;Miguel&quot; &quot;Raúl&quot;   &quot;Carla&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># O llamamos directo a los nombres</span>
+<span class="kw">names</span>(calificaciones)</code></pre></div>
+<pre><code>## [1] &quot;Maria&quot;  &quot;Jorge&quot;  &quot;Miguel&quot; &quot;Raúl&quot;   &quot;Carla&quot;</code></pre>
+</div>
+<div id="coercion" class="section level3">
+<h3><span class="header-section-number">6.2.5</span> Coerción</h3>
+<p>Los vectores solo permiten tener objetos del mismo tipo. Hay coercioń explícita (<em>explicit coercion</em>, también llamada <em>cast</em>) utilizando <code>as.&lt;nombre_clase&gt;</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.numeric</span>()
+<span class="kw">as.character</span>()
+<span class="kw">as.integer</span>()
+<span class="kw">as.logical</span>()</code></pre></div>
+<p>Utilizando coerción explícita garantizamos siempre tener el resultado en cuanto a la clase del objeto.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="kw">as.character</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
+<p>Realizar coerción explícita implica trabajar extra y, a veces, no se puede realizar de manera directa: los datos pueden venir <em>sucios</em> con varios tipos de datos mezclados en una misma <em>variable</em>.</p>
+<p><code>R</code> mezcla distintos tipos de datos y realiza una <em>coerción implícita</em> utilizando reglas razonables. En otras palabras, R realiza una coerción explícita <em>por default</em> entre los objetos y “decide” cuál es la clase del vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Número + caracter = caracter</span>
+<span class="kw">c</span>(<span class="fl">1.7</span>, <span class="st">&quot;a&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;1.7&quot; &quot;a&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Lógico + número = número</span>
+<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 1 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Número + caracter = caracter</span>
+<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] &quot;a&quot;    &quot;TRUE&quot;</code></pre>
+<p>En ese proceso, puede haber pérdidas de información, por ejemplo, al mezclar valores lógicos con numéricos, Se confunden valores <em>verdaderos</em> con un <em>uno</em>. Hay que tener cuidado particularmente cuando se limpian los datos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">c</span>(T, T, T), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</code></pre></div>
+<pre><code>## [1] 1 1 1 1 2 3</code></pre>
+<p>Hay conversiones que no tienen sentido y generan pérdida de información total:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)
+<span class="kw">as.numeric</span>(x)</code></pre></div>
+<pre><code>## [1] NA NA NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.logical</span>(x)</code></pre></div>
+<pre><code>## [1] NA NA NA</code></pre>
+<p>Normalmente, se obtiene un mensaje de advertencia (<em>warning</em>) cuando alguna coerción puede derivar en pérdida de información <span class="citation">(Wickham <a href="#ref-wickham2014advanced">2014</a>)</span>.</p>
+<p>La última consideración importante es que para R un objeto no es igual, aunque no se pierda información, si su tipo no es el mismo</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">5</span>
+<span class="kw">identical</span>(x, <span class="kw">as.numeric</span>(x))</code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>En este ejemplo, cuando declaramos <span class="math inline">\(x\)</span> no especificamos su clase y R decidió que era entero. Al coercionar al objeto para que fuese numérico, R no considera a los dos objetos iguales.</p>
+<p>En general, la coersión de R es muy útil pues permite incluso comparar objetos de distintas clases si el resultado tiene sentido</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> &quot;2&quot;</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+
+</div>
+<div id="extraer-partes-del-vector" class="section level3">
+<h3><span class="header-section-number">6.2.6</span> Extraer partes del vector</h3>
+<p><code>R</code> tiene constructos que permite acceder a elementos individuales o subconjuntos de un vector a través de operaciones de indexación (<em>indexing</em>) <span class="citation">(R Core Team <a href="#ref-rmanual">2016</a><a href="#ref-rmanual">a</a>, sección “Indexing”)</span>.</p>
+<p>Para los vectores, es posible acceder al i-ésimo elemento usando <code>x[i]</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)
+<span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>)
+<span class="co"># Accedemos al 4to elemento</span>
+x[<span class="dv">4</span>]</code></pre></div>
+<pre><code>##  d 
+## 40</code></pre>
+<p>Además de la indexación con un entero, se puede</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x[i] - caso anterior</span>
+<span class="co"># x[[i]]</span>
+x[[<span class="dv">4</span>]]</code></pre></div>
+<pre><code>## [1] 40</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x[&quot;a&quot;] - por nombre (cuando existen)</span>
+x[<span class="st">&quot;a&quot;</span>]</code></pre></div>
+<pre><code>##  a 
+## 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Se puede extraer un subconjunto</span>
+x[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</code></pre></div>
+<pre><code>##  a  b  c 
+## 10 20 30</code></pre>
+
+</div>
+</div>
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-wickham2014advanced">
+<p>Wickham, Hadley. 2014. <em>Advanced R</em>. CRC Press.</p>
+</div>
+<div id="ref-rmanual">
+<p>R Core Team. 2016a. <em>R Language Definition, Manual for R Version 3.3.2</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-lang.html</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="clases-atomicas-atomic-classes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="matrices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": true,
+"linkedin": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

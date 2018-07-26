@@ -22,7 +22,7 @@ Ejercicios
 
 ```
 
-```{block, type='curiosidadB'}
+```{block, type='importante'}
 En R
 
 * Todo lo que existe es un objeto.

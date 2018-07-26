@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="aprendeR" />
+<meta property="og:type" content="book" />
+
+
+
+
+
+<meta name="author" content="Andrea Fernández Conde" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="aprendeR">
+
+<title>aprendeR</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<link rel="stylesheet" href="estilos.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#introduccion"><span class="toc-section-number">1</span> Introducción</a></li>
+<li class="has-sub"><a href="2-r-lo-basico.html#r-lo-basico"><span class="toc-section-number">2</span> R: lo básico</a><ul>
+<li><a href="2-1-instalacion.html#instalacion"><span class="toc-section-number">2.1</span> Instalación</a></li>
+<li class="has-sub"><a href="2-2-editores.html#editores"><span class="toc-section-number">2.2</span> Editores</a><ul>
+<li><a href="2-2-editores.html#rstudio"><span class="toc-section-number">2.2.1</span> RStudio</a></li>
+<li><a href="2-2-editores.html#ess"><span class="toc-section-number">2.2.2</span> ESS</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-3-el-espacio-de-trabajo-workspace.html#el-espacio-de-trabajo-workspace"><span class="toc-section-number">2.3</span> El espacio de trabajo (Workspace)</a><ul>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#directorio-de-trabajo"><span class="toc-section-number">2.3.1</span> Directorio de trabajo</a></li>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#ejemplos-basicos"><span class="toc-section-number">2.3.2</span> Ejemplos básicos</a></li>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#comandos-utiles"><span class="toc-section-number">2.3.3</span> Comandos útiles</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-4-paquetes-libraries.html#paquetes-libraries"><span class="toc-section-number">2.4</span> Paquetes (<em>libraries</em>)</a><ul>
+<li><a href="2-4-paquetes-libraries.html#cran"><span class="toc-section-number">2.4.1</span> CRAN</a></li>
+<li><a href="2-4-paquetes-libraries.html#github"><span class="toc-section-number">2.4.2</span> Github</a></li>
+<li><a href="2-4-paquetes-libraries.html#otras-fuentes"><span class="toc-section-number">2.4.3</span> Otras fuentes</a></li>
+</ul></li>
+<li><a href="2-5-paquetes-recomendados.html#paquetes-recomendados"><span class="toc-section-number">2.5</span> Paquetes recomendados</a></li>
+<li><a href="2-6-scripting.html#scripting"><span class="toc-section-number">2.6</span> Scripting</a></li>
+<li class="has-sub"><a href="2-7-rmarkdown.html#rmarkdown"><span class="toc-section-number">2.7</span> rmarkdown</a><ul>
+<li><a href="2-7-rmarkdown.html#encabezado-y-formatos"><span class="toc-section-number">2.7.1</span> Encabezado y formatos</a></li>
+<li><a href="2-7-rmarkdown.html#knitr-chunks"><span class="toc-section-number">2.7.2</span> Knitr chunks</a></li>
+</ul></li>
+<li><a href="2-8-ayuda-y-documentacion.html#ayuda-y-documentacion"><span class="toc-section-number">2.8</span> Ayuda y documentación</a></li>
+<li><a href="2-9-optimizando.html#optimizando"><span class="toc-section-number">2.9</span> Optimizando</a></li>
+<li><a href="2-10-material-adicional.html#material-adicional"><span class="toc-section-number">2.10</span> Material adicional</a></li>
+</ul></li>
+<li><a href="3-estructuras-y-funciones.html#estructuras-y-funciones"><span class="toc-section-number">3</span> Estructuras y funciones</a></li>
+<li><a href="4-objetos.html#objetos"><span class="toc-section-number">4</span> Objetos</a></li>
+<li class="has-sub"><a href="5-funciones.html#funciones"><span class="toc-section-number">5</span> Funciones</a><ul>
+<li><a href="5-1-componentes-de-una-funcion.html#componentes-de-una-funcion"><span class="toc-section-number">5.1</span> Componentes de una función</a></li>
+<li><a href="5-2-el-ambiente.html#el-ambiente"><span class="toc-section-number">5.2</span> El ambiente</a></li>
+<li><a href="5-3-reglas-de-visibilidad-scoping.html#reglas-de-visibilidad-scoping"><span class="toc-section-number">5.3</span> Reglas de visibilidad (scoping)</a></li>
+</ul></li>
+<li class="has-sub"><a href="6-estructuras-de-datos.html#estructuras-de-datos"><span class="toc-section-number">6</span> Estructuras de datos</a><ul>
+<li><a href="6-1-clases-atomicas-atomic-classes.html#clases-atomicas-atomic-classes"><span class="toc-section-number">6.1</span> Clases atómicas (atomic classes)</a></li>
+<li class="has-sub"><a href="6-2-vectores.html#vectores"><span class="toc-section-number">6.2</span> Vectores</a><ul>
+<li><a href="6-2-vectores.html#vectores-atomicos"><span class="toc-section-number">6.2.1</span> Vectores atómicos</a></li>
+<li><a href="6-2-vectores.html#tipos-de-vectores"><span class="toc-section-number">6.2.2</span> Tipos de vectores</a></li>
+<li><a href="6-2-vectores.html#operaciones-con-vectores"><span class="toc-section-number">6.2.3</span> Operaciones con vectores</a></li>
+<li><a href="6-2-vectores.html#atributos-de-un-vector"><span class="toc-section-number">6.2.4</span> Atributos de un vector</a></li>
+<li><a href="6-2-vectores.html#coercion"><span class="toc-section-number">6.2.5</span> Coerción</a></li>
+<li><a href="6-2-vectores.html#extraer-partes-del-vector"><span class="toc-section-number">6.2.6</span> Extraer partes del vector</a></li>
+</ul></li>
+<li><a href="6-3-matrices.html#matrices"><span class="toc-section-number">6.3</span> Matrices</a></li>
+<li><a href="6-4-listas.html#listas"><span class="toc-section-number">6.4</span> Listas</a></li>
+<li><a href="6-5-factores-factor.html#factores-factor"><span class="toc-section-number">6.5</span> Factores (factor)</a></li>
+<li><a href="6-6-data-frames.html#data-frames"><span class="toc-section-number">6.6</span> Data frames</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-estructuras-de-datos-fuera-de-r-basico.html#estructuras-de-datos-fuera-de-r-basico"><span class="toc-section-number">7</span> Estructuras de datos fuera de R-básico</a><ul>
+<li><a href="7-1-data-tables.html#data-tables"><span class="toc-section-number">7.1</span> Data tables</a></li>
+<li><a href="7-2-tibbles.html#tibbles"><span class="toc-section-number">7.2</span> Tibbles</a></li>
+</ul></li>
+<li class="has-sub"><a href="8-objetos-importantes.html#objetos-importantes"><span class="toc-section-number">8</span> Objetos importantes</a><ul>
+<li><a href="8-1-infinito.html#infinito"><span class="toc-section-number">8.1</span> Infinito</a></li>
+<li><a href="8-2-no-es-un-numero.html#no-es-un-numero"><span class="toc-section-number">8.2</span> No es un número</a></li>
+<li><a href="8-3-valores-perdidos-missing-values.html#valores-perdidos-missing-values"><span class="toc-section-number">8.3</span> Valores perdidos (missing values)</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-estructuras-de-control.html#estructuras-de-control"><span class="toc-section-number">9</span> Estructuras de control</a><ul>
+<li><a href="9-1-if.html#if"><span class="toc-section-number">9.1</span> If</a></li>
+<li><a href="9-2-for.html#for"><span class="toc-section-number">9.2</span> For</a></li>
+<li><a href="9-3-whiles.html#whiles"><span class="toc-section-number">9.3</span> Whiles</a></li>
+<li><a href="9-4-repeat-break.html#repeat---break"><span class="toc-section-number">9.4</span> Repeat - Break</a></li>
+<li><a href="9-5-next.html#next"><span class="toc-section-number">9.5</span> Next</a></li>
+</ul></li>
+<li><a href="10-material-adicional-1.html#material-adicional-1"><span class="toc-section-number">10</span> Material adicional</a></li>
+<li class="has-sub"><a href="11-vectorizacion-la-familia-apply-y-otros.html#vectorizacion-la-familia-apply-y-otros"><span class="toc-section-number">11</span> Vectorización, la familia apply y otros</a><ul>
+<li><a href="11-1-r-markdown.html#r-markdown"><span class="toc-section-number">11.1</span> R Markdown</a></li>
+</ul></li>
+<li class="has-sub"><a href="12-herramientas-basicas-para-un-proyecto-de-datos.html#herramientas-basicas-para-un-proyecto-de-datos"><span class="toc-section-number">12</span> Herramientas básicas para un proyecto de datos</a><ul>
+<li><a href="12-1-r-markdown-1.html#r-markdown-1"><span class="toc-section-number">12.1</span> R Markdown</a></li>
+</ul></li>
+<li><a href="13-conclusion.html#conclusion"><span class="toc-section-number">13</span> Conclusión</a></li>
+<li class="appendix"><span><b>Apéndices</b></span></li>
+<li class="has-sub"><a href="A-markdown.html#markdown"><span class="toc-section-number">A</span> Markdown</a><ul>
+<li><a href="A-1-r-markdown-2.html#r-markdown-2"><span class="toc-section-number">A.1</span> R Markdown</a></li>
+</ul></li>
+<li class="has-sub"><a href="B-packrat.html#packrat"><span class="toc-section-number">B</span> Packrat</a><ul>
+<li><a href="B-1-el-directorio-del-proyecto.html#el-directorio-del-proyecto"><span class="toc-section-number">B.1</span> El directorio del proyecto</a></li>
+<li><a href="B-2-instalacion-1.html#instalacion-1"><span class="toc-section-number">B.2</span> Instalación</a></li>
+<li><a href="B-3-r-markdown-3.html#r-markdown-3"><span class="toc-section-number">B.3</span> R Markdown</a></li>
+</ul></li>
+<li><a href="C-formatos.html#formatos"><span class="toc-section-number">C</span> Formatos</a></li>
+<li><a href="bibliografia.html#bibliografia">Bibliografía</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="factores-factor" class="section level2">
+<h2><span class="header-section-number">6.5</span> Factores (factor)</h2>
+<p>Los factores son otro tipo de vectores pero que ayuda a representar datos del tipo categórico u ordinal, es decir, cuando los posibles valores de la variable tipo caracter es limitado. Por ejemplo, son útiles cuando tenemos una variable como “sexo” donde, al menos por ahora, legalmente solo puede tomar los valores <em>hombre</em> o <em>mujer</em>. Si, en cambio, se tiene un vector de nombres es conveniente dejarlo como caracter.</p>
+<p>Un factor se guarda como un <em>enteros</em> pero con <em>etiquetas</em> encima tal que cada entero corresponde a una etiqueta (<em>label</em>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;no&quot;</span>)
+<span class="kw">class</span>(y)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Debemos pedirle explícitamente que lo guarde como factor</span>
+x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;no&quot;</span>))
+x</code></pre></div>
+<pre><code>## [1] no si si no
+## Levels: no si</code></pre>
+<p>Al imprimir el objeto, se observa como los niveles fueron asignados. Éstos corresponden al número de valores únicos en el vector de caracter y se asignan en orden alfabético los valores.</p>
+<p>Los factores se despliegan <em>como si fueran</em> vectores tipo caracter y algunas operaciones son análogas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(x)</code></pre></div>
+<pre><code>## x
+## no si 
+##  2  2</code></pre>
+<p>La ganancia es que son más rápidas. Aunque a veces los factores se comportan como vectores tipo caracter pero <em>debemos</em> recordar que por debajo son enteros y tenemos que ser cuidadosos si los tratamos como caracteres.</p>
+<p>Supongamos por ejemplo que tenemos un factor con valores 5, 6 o 7. Lo tenemos guardado como factor.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ej &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;7&quot;</span>, <span class="st">&quot;6&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;7&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;7&quot;</span>, <span class="st">&quot;6&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;6&quot;</span>,<span class="st">&quot;5&quot;</span>))
+ej</code></pre></div>
+<pre><code>##  [1] 7 6 5 7 5 7 6 5 5 6 5
+## Levels: 5 6 7</code></pre>
+<p>Dado que los valores son números, conceptualmente tiene sentido operarlos como tal:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.integer</span>(ej)</code></pre></div>
+<pre><code>##  [1] 3 2 1 3 1 3 2 1 1 2 1</code></pre>
+<p>Obtuvimos los enteros a los que las etiquetas originales habían sido asignados. Para recuperar los valores originales, debemos hacer</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.integer</span>(<span class="kw">as.character</span>(ej))</code></pre></div>
+<pre><code>##  [1] 7 6 5 7 5 7 6 5 5 6 5</code></pre>
+<p>Algunos métodos que están hechos para caracteres coercionan un factor a caracter mientras que otros arrojan un error. Si usas métodos de caracteres, lo mejor es “castear” (coerción explícita) a caracter tu factor utilizando <code>as.character(mifactor)</code>. De esta manera se pierden algunas cosas pero te aseguras que las cosas funcionen como deben.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(x)</code></pre></div>
+<pre><code>## no si 
+##  2  2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">as.character</span>(x))</code></pre></div>
+<pre><code>##    Length     Class      Mode 
+##         4 character character</code></pre>
+
+<p>Los factores pueden incluir únicamente los niveles con los que fueron definidos. Por esa razón, la unión de dos factores ddeclarados en forma independiente puede dar resultados no deseados.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;si&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;tal vez&quot;</span>))
+<span class="kw">c</span>(x, y)</code></pre></div>
+<pre><code>## [1] 1 2 2 1 2 1 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="kw">c</span>(x, y))</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>No es posible entonces recuperar el valor de las etiquetas. <code>R</code> hizo las operaciones posibles pero hubo pérdida de información. Para concatenar dos factores correctamente, es necesario:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factor</span>(<span class="kw">c</span>(<span class="kw">as.character</span>(x), <span class="kw">as.character</span>(y)))</code></pre></div>
+<pre><code>## [1] no      si      si      no      si      no      tal vez
+## Levels: no si tal vez</code></pre>
+<p>En general, se recomienda incluir el valor de u nnivel posible, independientemente de si se tiene o no esa respuesta. Sin embargo, el problema al concatenar persiste.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;no&quot;</span>), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;tal vez&quot;</span>))
+<span class="kw">c</span>(x, <span class="st">&quot;tal vez&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;1&quot;       &quot;2&quot;       &quot;2&quot;       &quot;1&quot;       &quot;tal vez&quot;</code></pre>
+<p>Para datos ordinales como las respuestas en una pregunta de encuesta con escala likert  los factores son también objetos útiles.</p>
+<p>Veamos un ejemplo en donde tenemos 500 respuestas a la pregunta “este tutorial es muy útil”:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2887</span>)
+respuestas &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">size =</span> <span class="dv">500</span>, <span class="dt">replace =</span>  T
+                     , <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.15</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.15</span>))
+y &lt;-<span class="st"> </span><span class="kw">factor</span>(
+  <span class="dt">x =</span> respuestas,
+  <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>),
+  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;totalmente en desacuerdo&quot;</span>, <span class="st">&quot;en desacuerdo&quot;</span>
+             , <span class="st">&quot;ni de acuerdo ni en desacuerdo&quot;</span>
+             , <span class="st">&quot;de acuerdo&quot;</span>, <span class="st">&quot;totalmente de acuerdo&quot;</span>),
+  <span class="dt">ordered =</span> T)
+<span class="kw">table</span>(y)</code></pre></div>
+<pre><code>## y
+##       totalmente en desacuerdo                  en desacuerdo 
+##                             51                             74 
+## ni de acuerdo ni en desacuerdo                     de acuerdo 
+##                            108                            194 
+##          totalmente de acuerdo 
+##                             73</code></pre>
+<p>Nota como la tabla está ordenada de izquierda a derecha con la respuesta más en desacuerdo a la más de acuerdo pues introducimos la opción <code>ordered = T</code> en la definición del factor debido a que las respuestas están en una escala ordinal.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(y)</code></pre></div>
+<pre><code>## y
+##       totalmente en desacuerdo                  en desacuerdo 
+##                             51                             74 
+## ni de acuerdo ni en desacuerdo                     de acuerdo 
+##                            108                            194 
+##          totalmente de acuerdo 
+##                             73</code></pre>
+<p>Por último, al utilizar factores (y más aún, declarar un orden cuando es conceptualmente pertinente) es más fácil visualizar correctamente los datos con menor desgaste. Si graficamos las respuestas como caracter recibimos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">como.caracter =</span> <span class="kw">as.character</span>(y), <span class="dt">como.factor =</span> y) 
+<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> como.caracter)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-91-1.png" width="768" /></p>
+<p>Si utilizamos el factor ordenado obtenemos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> como.factor)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-92-1.png" width="768" /></p>
+
+</div>
+<p style="text-align: center;">
+<a href="6-4-listas.html"><button class="btn btn-default">Previous</button></a>
+<a href="6-6-data-frames.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>
