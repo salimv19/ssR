@@ -129,10 +129,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="estructuras-y-funciones.html"><a href="estructuras-y-funciones.html"><i class="fa fa-check"></i><b>3</b> Estructuras y funciones</a><ul>
 <li class="chapter" data-level="3.1" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3.1</b> R Markdown</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="vectorizacion.html"><a href="vectorizacion.html"><i class="fa fa-check"></i><b>4</b> Vectorización</a><ul>
+<li class="chapter" data-level="4" data-path="vectorizacion-la-familia-apply-y-otros.html"><a href="vectorizacion-la-familia-apply-y-otros.html"><i class="fa fa-check"></i><b>4</b> Vectorización, la familia apply y otros</a><ul>
 <li class="chapter" data-level="4.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>4.1</b> R Markdown</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="formatos.html"><a href="formatos.html"><i class="fa fa-check"></i><b>5</b> Formatos</a></li>
+<li class="chapter" data-level="5" data-path="herramientas-basicas-para-un-proyecto-de-datos.html"><a href="herramientas-basicas-para-un-proyecto-de-datos.html"><i class="fa fa-check"></i><b>5</b> Herramientas básicas para un proyecto de datos</a><ul>
+<li class="chapter" data-level="5.1" data-path="r-markdown-2.html"><a href="r-markdown-2.html"><i class="fa fa-check"></i><b>5.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusión</a></li>
+<li class="appendix"><span><b>Apéndices</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown</a><ul>
+<li class="chapter" data-level="A.1" data-path="r-markdown-3.html"><a href="r-markdown-3.html"><i class="fa fa-check"></i><b>A.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="packrat.html"><a href="packrat.html"><i class="fa fa-check"></i><b>B</b> Packrat</a><ul>
+<li class="chapter" data-level="B.1" data-path="r-markdown-4.html"><a href="r-markdown-4.html"><i class="fa fa-check"></i><b>B.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="formatos.html"><a href="formatos.html"><i class="fa fa-check"></i><b>C</b> Formatos</a></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 </ul>
 
       </nav>
@@ -173,13 +185,13 @@ Figura 1.1: Descargas anuales del espejo de RStudio de paquetes de R de 2012 a 2
 <p>Aunque el material para aprender <code>R</code> es amplio y hay una comunidad mundial muy activa que constantemente produce nuevos recursos, existen pocas referencias que faciliten iniciar su aprendizaje para hispanoparlantes. En general, la documentación, listas de distribución, libros y tutoriales están escritos en inglés.</p>
 <p>Este manual tiene como objetivo guiar a principiantes en programación que tienen una formación previa como analistas de datos. El enfoque principal es el de facilitar de ejemplos que permitan al analista traducir la manipulación de datos que ya saben realizar en otro ambiente a <code>R</code>.</p>
 <p>El manual se estructura como sigue: en el capítulo <a href="r-lo-basico.html#r-lo-basico">2</a> , se introducen elementos básicos para poder iniciar el trabajo en <code>R</code>. Se especifica cómo instalar el software, se recomienda utilizar un editor especializado, así como paquetes útiles para diferentes tareas. En particular, se explica cómo guardar código de manera que otras personas puedan ejecutarlo y cómo realizar documentos reproducibles. Por último, se explica cómo accesar a la ayuda y documentación, así como la forma en la que puede optimizarse su funcionamiento. Este capítulo actúa más como una referencia general para poder realizar el trabajo en el ambiente.</p>
-<p>En el capítulo <a href="estructuras-y-funciones.html#estructuras-y-funciones">3</a>, se introducen las funciones, las estructuras de datos y las estructuras de control disponibles en el lenguaje. El capítulo <a href="vectorizacion.html#vectorizacion">4</a>, explica como operar los objetos y estructuras detallados en el capítulo anterior, proporcionando múltiples ejemplos y ejercicios para familiarizar al lector con el lenguaje.</p>
+<p>En el capítulo <a href="estructuras-y-funciones.html#estructuras-y-funciones">3</a>, se introducen las funciones, las estructuras de datos y las estructuras de control disponibles en el lenguaje. El capítulo <a href="#vectorizacion">4</a>, explica como operar los objetos y estructuras detallados en el capítulo anterior, proporcionando múltiples ejemplos y ejercicios para familiarizar al lector con el lenguaje.</p>
 <p>El capítulo <a href="index.html#introduccion">5</a>, detalla las herramientas básicas para poder realizar un proyecto de datos en <code>R</code>. Las herramientas que se desarrollan en este capítulo permiten iterar sobre parte del ciclo de un proyecto de datos: importación de datos al ambiente, manipulación, limpieza y visualización de los mismos. Éstas herramientas permiten operar sobre los objetos introducidos en el capítulo 3 en una forma eficiente, fácil de aprender, fácil de leer y que permite que el usuario realice manipulaciones de datos complejas que le permitirán, a su vez, utilizar todas las herramientas de modelado que <code>R</code> posee que necesitan como insumo datos limpios y preparados en una forma específica.</p>
 <p>Cada capítulo incluye ejercicios y respuestas a los mismos; al final se recomienda material adicional para repasar los conceptos estudiados. El material se encuentra disponible electrónicamente en <a href="https://github.com/animalito/aprendeR" class="uri">https://github.com/animalito/aprendeR</a>. Para facilitar el aprendizaje, se recomienda descargar los materiales o clonar el repositorio, esto permite revisar el material y el código desde el ambiente local evitando copiar y pegar el mismo para su ejecución.</p>
 <!-- If you need PDF output, uncomment bookdown::pdf_book above in YAML. You will need a LaTeX installation, e.g., https://yihui.name/tinytex/ -->
 
 </div>
-<h3>References</h3>
+<h3>Bibliografía</h3>
 <div id="refs" class="references">
 <div id="ref-rorigins">
 <p>Ingenio. 2016. “R: The Ultimate Virus.” Blog. <a href="http://www.ingenio-magazine.com/r-the-ultimate-virus/" class="uri">http://www.ingenio-magazine.com/r-the-ultimate-virus/</a>; Ingenio Magazine.</p>
@@ -242,7 +254,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["aprendeR.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 },

@@ -1,4 +1,4 @@
-# Vectorización
+# Vectorización, la familia apply y otros
 
 Hola
 
