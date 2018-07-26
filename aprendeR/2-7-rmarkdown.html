@@ -147,7 +147,9 @@ img {
 <li><a href="A-1-r-markdown-3.html#r-markdown-3"><span class="toc-section-number">A.1</span> R Markdown</a></li>
 </ul></li>
 <li class="has-sub"><a href="B-packrat.html#packrat"><span class="toc-section-number">B</span> Packrat</a><ul>
-<li><a href="B-1-r-markdown-4.html#r-markdown-4"><span class="toc-section-number">B.1</span> R Markdown</a></li>
+<li><a href="B-1-el-directorio-del-proyecto.html#el-directorio-del-proyecto"><span class="toc-section-number">B.1</span> El directorio del proyecto</a></li>
+<li><a href="B-2-instalacion-1.html#instalacion-1"><span class="toc-section-number">B.2</span> Instalación</a></li>
+<li><a href="B-3-r-markdown-4.html#r-markdown-4"><span class="toc-section-number">B.3</span> R Markdown</a></li>
 </ul></li>
 <li><a href="C-formatos.html#formatos"><span class="toc-section-number">C</span> Formatos</a></li>
 <li><a href="bibliografia.html#bibliografia">Bibliografía</a></li>
@@ -184,14 +186,17 @@ output:
 <p>Es posible también especificar como salida para el documento un pdf con la opción <code>pdf_document</code>. Las opciones se encuentran también en <a href="http://rmarkdown.rstudio.com/pdf_document_format.html">la documentación</a> <span class="citation">(Inc. <a href="#ref-rmarkdownpdf">2016</a><a href="#ref-rmarkdownpdf">c</a>)</span>. Esta opción es conveniente cuando se tiene conocimiento previo de LaTeX.</p>
 <p>Por último, cabe mencionar la opción <code>word_document</code>, cuyas opciones se encuentran <a href="http://rmarkdown.rstudio.com/word_document_format.html">aquí</a> <span class="citation">(Inc. <a href="#ref-rmarkdownword">2016</a><a href="#ref-rmarkdownword">e</a>)</span> y la opción <code>md_document</code> que compila a Markdown.</p>
 <p>Así como es posible generar documentos, es posible crear presentaciones en HTML (ioslides o slidy) o pdf (beamer) <span class="citation">(Inc. <a href="#ref-rmarkdownreference">2016</a><a href="#ref-rmarkdownreference">d</a>)</span> y dashboards (con flexdashboards) <span class="citation">(Allaire <a href="#ref-flexdashboard">2016</a>)</span>.</p>
-<p>En el apéndice  se detalla la sintaxis de Markdown, misma que permitirá escribir documentos.</p>
+<p>En el apéndice <a href="A-markdown.html#markdown">A</a> se detalla la sintaxis de Markdown, misma que permitirá escribir documentos.</p>
 </div>
 <div id="knitr-chunks" class="section level3">
 <h3><span class="header-section-number">2.7.2</span> Knitr chunks</h3>
 <p>Entre distintas líneas de texto, es posible incluir <code>chunks</code> o <em>pedazos</em> de código de <code>R</code>. Para iniciar un pedazo de código, se incluyen tres acentos invertidos, seguidos de la letra <em>r</em> entre llaves; se cierra un pedazo de código con tres acentos invertidos <span class="citation">(Inc. <a href="#ref-rmarkdownreference">2016</a><a href="#ref-rmarkdownreference">d</a>)</span>.</p>
-
-<p>Se puede incluir un pedazo de código en cualquier parte del documento y se controlan las opciones de cada pedazo, por ejemplo, incluyendo una opción para que el código no se imprima y que solo se imprima el resultado agregando <code>r, echo = FALSE</code>:</p>
-
+<p><code>```{r}</code></p>
+<p><code>paste(&quot;Hola&quot;, &quot;Mundo&quot;)</code></p>
+<p><code>```</code></p>
+<pre><code>## [1] &quot;Hola Mundo&quot;</code></pre>
+<p>Se puede incluir un pedazo de código en cualquier parte del documento y se controlan las opciones de cada pedazo, por ejemplo, incluyendo una opción para que el código no se imprima y que solo se imprima el resultado agregando <code>{r, echo = FALSE}</code>:</p>
+<pre><code>## [1] &quot;Hola Mundo&quot;</code></pre>
 <p>Las opciones se encuentran resumidas en <span class="citation">Inc. (<a href="#ref-rmarkdownreference">2016</a><a href="#ref-rmarkdownreference">d</a>)</span>.</p>
 </div>
 </div>

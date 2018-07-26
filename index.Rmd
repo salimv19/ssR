@@ -137,11 +137,11 @@ en la que puede optimizarse su funcionamiento. Este capítulo actúa más como u
 referencia general para poder realizar el trabajo en el ambiente.
 
 En el capítulo [3](#estructuras-y-funciones), se introducen las funciones, las estructuras de datos y las 
-estructuras de control disponibles en el lenguaje. El capítulo [4](#vectorizacion), explica 
+estructuras de control disponibles en el lenguaje. El capítulo [4](#vectorizacion-la-familia-apply-y-otros), explica 
 como operar los objetos y estructuras detallados en el capítulo anterior, proporcionando
 múltiples ejemplos y ejercicios para familiarizar al lector con el lenguaje. 
 
-El capítulo [5](#introduccion), detalla las herramientas básicas para poder realizar un proyecto
+El capítulo [5](#herramientas-basicas-para-un-proyecto-de-datos), detalla las herramientas básicas para poder realizar un proyecto
 de datos en `R`. Las herramientas que se desarrollan en este capítulo permiten
 iterar sobre parte del ciclo de un proyecto de datos: importación de datos al ambiente, 
 manipulación, limpieza y visualización de los mismos. Éstas herramientas 

@@ -282,7 +282,7 @@ Nota como los objetos preservan el nombre con el que fueron guardados.
 
 R puede hacer muchos análisis estadísticos y de datos. Las diferentes capacidades
 están organizadas en paquetes o librerías. Con la 
-instalación estándar resumida en la sección \ref{instalacion},
+instalación estándar resumida en la sección [B-2](#instalacion-1),
 se instalan también los paquetes más comunes (también llamado el *base* o R-básico). Para obtener una lista de
 todos los paquetes instalados se puede utilizar el comando `library()` en la consola o en un script.
 
@@ -346,7 +346,7 @@ En particular, la función `p_load` permite instalar, cargar y actualizar uno o
 varios paquetes.
 
 Si queremos instalar varios paquetes usando las herramientas del R básico (*base*) [@rbase]
-haríamos algo como \parencite[ejemplo tomado de][en la viñeta de intrducción al paquete]{pacman}:
+haríamos algo como [ejemplo tomado de @pacman, en la viñeta de introducción al paquete]:
 
 ```{r, eval = FALSE}
 packs <- c("XML", "devtools", "RCurl", "fakePackage", "SPSSemulate")
@@ -361,12 +361,12 @@ Con `pacman::p_load` la tarea se reduce a:
 pacman::p_load(XML, devtools, RCurl, fakePackage, SPSSemulate)
 ```
 
-\begin{curiosidad}
+```{block, type='curiosidad'}
 Nota como se puede llamar a una función por su nombre `p\_load` una vez que 
 ya cargamos el paquete en el cuál esa función está guardada con el comando `library(pacman)`
 o podemos llamarla directamente utilizando la convención `paquete::funcion`, en este caso,
 `pacman::p\_load`.
-\end{curiosidad}
+```
 
 Para instalar `pacman` escribe:
 
@@ -424,14 +424,13 @@ pacman::p_load(XML, jsonlite, httr)
 pacman::p_load(devtools, testthat, roxygen2)
 ```
 
-\begin{nota}{Packrat}
-Cuando cambian las versiones de distintos paquetes de `R`, es posible
-que código que solía funcionar deje de hacerlo. Por esta razón, es conveniente
-empaquetar proyectos de código de manera que el código en un proyecto específico 
-tenga asociados también las versiones específicas de los paquetes con los cuáles
-fue creado. Una forma de lograr esto es utilizando `packrat`. Para mayor
-detalle, ver el apéndice \ref{apendice-packrat}.
-\end{nota}
+```{block, type='nota'}
+`Packrat` Cuando cambian las versiones de distintos paquetes de R, es posible que código
+que solía funcionar deje de hacerlo. Por esta razón, es conveniente empaquetar proyectos
+de código de manera que el código en un proyecto específico tenga asociados también
+las versiones específicas de los paquetes con los cuáles fue creado. Una forma de lograr
+esto es utilizando `packrat`. Para mayor detalle, ver el apéndice [B](#packrat).
+```
 
 ## Scripting
 
@@ -522,7 +521,7 @@ Por último, cabe mencionar la opción `word_document`, cuyas opciones se encuen
 Así como es posible generar documentos, es posible crear presentaciones en HTML (ioslides o slidy)
 o pdf (beamer) [@rmarkdownreference] y dashboards (con flexdashboards) [@flexdashboard].
 
-En el apéndice \ref{apendice-markdown} se detalla la sintaxis de Markdown, misma
+En el apéndice [A](#markdown) se detalla la sintaxis de Markdown, misma
 que permitirá escribir documentos.
 
 ### Knitr chunks
@@ -532,23 +531,22 @@ código de `R`. Para iniciar un pedazo de código, se incluyen tres acentos
 invertidos, seguidos de la letra *r* entre llaves; se cierra un pedazo de código
 con tres acentos invertidos [@rmarkdownreference].
 
-\begin{verbatim}
+` ```{r}`
 
-```{r}
+`paste("Hola", "Mundo")`
+
+` ``` `
+```{r, echo=FALSE}
 paste("Hola", "Mundo")
 ```
-
-\end{verbatim}
 
 Se puede incluir un pedazo de código en cualquier parte del documento y se controlan
 las opciones de cada pedazo, por ejemplo, incluyendo una opción para que el
-código no se imprima y que solo se imprima el resultado agregando `r, echo = FALSE`:
+código no se imprima y que solo se imprima el resultado agregando `{r, echo = FALSE}`:
 
-\begin{verbatim}
-```{r, echo = FALSE}
+```{r, echo=FALSE}
 paste("Hola", "Mundo")
 ```
-\end{verbatim}
 
 Las opciones se encuentran resumidas en @rmarkdownreference.
 
@@ -618,7 +616,7 @@ getAnywhere(plot.density)
 ```
 
 Nota como el método `plot.density` viene del paquete `stats`
-^[Hay otro tipo de funciones en las accesar al código fuente no se pueda con los métodos descritos. Para ello, es útil revisar la sección "old-school object-oriented programming in R" [@adler2010r, págs. 131-133] o las secciones dedicadas a los objetos S3 y S4 en @wickham2014advanced.].
+^[Hay otro tipo de funciones en las que accesar al código fuente no se pueda con los métodos descritos. Para ello, es útil revisar la sección "old-school object-oriented programming in R" [@adler2010r, págs. 131-133] o las secciones dedicadas a los objetos S3 y S4 en @wickham2014advanced.].
 
 
 La documentación normalmente se acompaña de **ejemplos**. Para *correr* los ejemplos
@@ -682,10 +680,7 @@ Lo primero que te pedirá es un nombre de usuario (para que pueda guardar el ava
 en los cursos y no debas regresar) y dará algunas instrucciones y comandos
 útiles.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.75\textwidth]{../img/swirl_commands.PNG}
-\end{figure}
+<img src="images/swirl_commands.png" width="800" alt="Swirl_commands" align="middle">
 
 - `skip()` para saltarte la pregunta actual
 - `play()` para poder utilizar la consola en ese momento y practicar un poco más
@@ -696,9 +691,6 @@ en los cursos y no debas regresar) y dará algunas instrucciones y comandos
 
 Una vez que te da la introducción, acepta que te instale el curso de **R Programming**
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.75\textwidth]{../img/swirl_install_course.PNG}
-\end{figure}
+<img src="images/swirl_install_course.png" width="800" alt="Swirl_install_course" align="middle">
 
 El material de este capítulo se cubre en los módulos 1 a 3 del curso **R Programming**.

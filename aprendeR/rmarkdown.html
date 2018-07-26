@@ -141,7 +141,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="A.1" data-path="r-markdown-3.html"><a href="r-markdown-3.html"><i class="fa fa-check"></i><b>A.1</b> R Markdown</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="packrat.html"><a href="packrat.html"><i class="fa fa-check"></i><b>B</b> Packrat</a><ul>
-<li class="chapter" data-level="B.1" data-path="r-markdown-4.html"><a href="r-markdown-4.html"><i class="fa fa-check"></i><b>B.1</b> R Markdown</a></li>
+<li class="chapter" data-level="B.1" data-path="el-directorio-del-proyecto.html"><a href="el-directorio-del-proyecto.html"><i class="fa fa-check"></i><b>B.1</b> El directorio del proyecto</a></li>
+<li class="chapter" data-level="B.2" data-path="instalacion-1.html"><a href="instalacion-1.html"><i class="fa fa-check"></i><b>B.2</b> Instalación</a></li>
+<li class="chapter" data-level="B.3" data-path="r-markdown-4.html"><a href="r-markdown-4.html"><i class="fa fa-check"></i><b>B.3</b> R Markdown</a></li>
 </ul></li>
 <li class="chapter" data-level="C" data-path="formatos.html"><a href="formatos.html"><i class="fa fa-check"></i><b>C</b> Formatos</a></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografía</a></li>
@@ -189,14 +191,17 @@ output:
 <p>Es posible también especificar como salida para el documento un pdf con la opción <code>pdf_document</code>. Las opciones se encuentran también en <a href="http://rmarkdown.rstudio.com/pdf_document_format.html">la documentación</a> <span class="citation">(Inc. <a href="#ref-rmarkdownpdf">2016</a><a href="#ref-rmarkdownpdf">c</a>)</span>. Esta opción es conveniente cuando se tiene conocimiento previo de LaTeX.</p>
 <p>Por último, cabe mencionar la opción <code>word_document</code>, cuyas opciones se encuentran <a href="http://rmarkdown.rstudio.com/word_document_format.html">aquí</a> <span class="citation">(Inc. <a href="#ref-rmarkdownword">2016</a><a href="#ref-rmarkdownword">e</a>)</span> y la opción <code>md_document</code> que compila a Markdown.</p>
 <p>Así como es posible generar documentos, es posible crear presentaciones en HTML (ioslides o slidy) o pdf (beamer) <span class="citation">(Inc. <a href="#ref-rmarkdownreference">2016</a><a href="#ref-rmarkdownreference">d</a>)</span> y dashboards (con flexdashboards) <span class="citation">(Allaire <a href="#ref-flexdashboard">2016</a>)</span>.</p>
-<p>En el apéndice  se detalla la sintaxis de Markdown, misma que permitirá escribir documentos.</p>
+<p>En el apéndice <a href="markdown.html#markdown">A</a> se detalla la sintaxis de Markdown, misma que permitirá escribir documentos.</p>
 </div>
 <div id="knitr-chunks" class="section level3">
 <h3><span class="header-section-number">2.7.2</span> Knitr chunks</h3>
 <p>Entre distintas líneas de texto, es posible incluir <code>chunks</code> o <em>pedazos</em> de código de <code>R</code>. Para iniciar un pedazo de código, se incluyen tres acentos invertidos, seguidos de la letra <em>r</em> entre llaves; se cierra un pedazo de código con tres acentos invertidos <span class="citation">(Inc. <a href="#ref-rmarkdownreference">2016</a><a href="#ref-rmarkdownreference">d</a>)</span>.</p>
-
-<p>Se puede incluir un pedazo de código en cualquier parte del documento y se controlan las opciones de cada pedazo, por ejemplo, incluyendo una opción para que el código no se imprima y que solo se imprima el resultado agregando <code>r, echo = FALSE</code>:</p>
-
+<p><code>```{r}</code></p>
+<p><code>paste(&quot;Hola&quot;, &quot;Mundo&quot;)</code></p>
+<p><code>```</code></p>
+<pre><code>## [1] &quot;Hola Mundo&quot;</code></pre>
+<p>Se puede incluir un pedazo de código en cualquier parte del documento y se controlan las opciones de cada pedazo, por ejemplo, incluyendo una opción para que el código no se imprima y que solo se imprima el resultado agregando <code>{r, echo = FALSE}</code>:</p>
+<pre><code>## [1] &quot;Hola Mundo&quot;</code></pre>
 <p>Las opciones se encuentran resumidas en <span class="citation">Inc. (<a href="#ref-rmarkdownreference">2016</a><a href="#ref-rmarkdownreference">d</a>)</span>.</p>
 </div>
 </div>

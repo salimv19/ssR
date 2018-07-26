@@ -147,7 +147,9 @@ img {
 <li><a href="A-1-r-markdown-3.html#r-markdown-3"><span class="toc-section-number">A.1</span> R Markdown</a></li>
 </ul></li>
 <li class="has-sub"><a href="B-packrat.html#packrat"><span class="toc-section-number">B</span> Packrat</a><ul>
-<li><a href="B-1-r-markdown-4.html#r-markdown-4"><span class="toc-section-number">B.1</span> R Markdown</a></li>
+<li><a href="B-1-el-directorio-del-proyecto.html#el-directorio-del-proyecto"><span class="toc-section-number">B.1</span> El directorio del proyecto</a></li>
+<li><a href="B-2-instalacion-1.html#instalacion-1"><span class="toc-section-number">B.2</span> Instalación</a></li>
+<li><a href="B-3-r-markdown-4.html#r-markdown-4"><span class="toc-section-number">B.3</span> R Markdown</a></li>
 </ul></li>
 <li><a href="C-formatos.html#formatos"><span class="toc-section-number">C</span> Formatos</a></li>
 <li><a href="bibliografia.html#bibliografia">Bibliografía</a></li>
@@ -162,14 +164,18 @@ img {
 <p>Hay muchísimas librerías y lo recomendable es, dado un problema y un modelo para resolverlo, revisar si alguien ya implementó el método en algunas de las fuentes de paquetes mencionadas antes.</p>
 <p>Para mantener orden en los paquetes descargados puede ser útil utilizar el <span class="citation">Rinker and Kurkiewicz (<a href="#ref-pacman">2015</a>)</span> pues provee de herramientas para instalar paquetes en una forma un poco más sencilla que usando la función <code>install.packages</code>.</p>
 <p>En particular, la función <code>p_load</code> permite instalar, cargar y actualizar uno o varios paquetes.</p>
-<p>Si queremos instalar varios paquetes usando las herramientas del R básico (<em>base</em>) <span class="citation">(R Core Team <a href="#ref-rbase">2016</a>)</span> haríamos algo como :</p>
+<p>Si queremos instalar varios paquetes usando las herramientas del R básico (<em>base</em>) <span class="citation">(R Core Team <a href="#ref-rbase">2016</a>)</span> haríamos algo como <span class="citation">(ejemplo tomado de Rinker and Kurkiewicz <a href="#ref-pacman">2015</a>, en la viñeta de introducción al paquete)</span>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">packs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;XML&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;RCurl&quot;</span>, <span class="st">&quot;fakePackage&quot;</span>, <span class="st">&quot;SPSSemulate&quot;</span>)
 success &lt;-<span class="st"> </span><span class="kw">suppressWarnings</span>(<span class="kw">sapply</span>(packs, require, <span class="dt">character.only =</span> <span class="ot">TRUE</span>))
 <span class="kw">install.packages</span>(<span class="kw">names</span>(success)[<span class="op">!</span>success])
 <span class="kw">sapply</span>(<span class="kw">names</span>(success)[<span class="op">!</span>success], require, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p>Con <code>pacman::p_load</code> la tarea se reduce a:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pacman<span class="op">::</span><span class="kw">p_load</span>(XML, devtools, RCurl, fakePackage, SPSSemulate)</code></pre></div>
-
+<div class="curiosidad">
+<p>
+Nota como se puede llamar a una función por su nombre <code>p_load</code> una vez que ya cargamos el paquete en el cuál esa función está guardada con el comando <code>library(pacman)</code> o podemos llamarla directamente utilizando la convención <code>paquete::funcion</code>, en este caso, <code>pacman::p_load</code>.
+</p>
+</div>
 <p>Para instalar <code>pacman</code> escribe:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</code></pre></div>
 <p>Algunos paquetes se encuentran en desarrollo. En particular, si se encuentran en <code>github</code> pueden descargarse usando la función <code>pacman::p_install_gh('usuario/repositorio')</code>.</p>
@@ -214,7 +220,11 @@ pacman<span class="op">::</span><span class="kw">p_load</span>(XML, jsonlite, ht
 
 <span class="co"># Para escribir paquetes en R</span>
 pacman<span class="op">::</span><span class="kw">p_load</span>(devtools, testthat, roxygen2)</code></pre></div>
-
+<div class="nota">
+<p>
+<code>Packrat</code> Cuando cambian las versiones de distintos paquetes de R, es posible que código que solía funcionar deje de hacerlo. Por esta razón, es conveniente empaquetar proyectos de código de manera que el código en un proyecto específico tenga asociados también las versiones específicas de los paquetes con los cuáles fue creado. Una forma de lograr esto es utilizando <code>packrat</code>. Para mayor detalle, ver el apéndice <a href="B-packrat.html#packrat">B</a>.
+</p>
+</div>
 </div>
 <h3>Bibliografía</h3>
 <div id="refs" class="references">
