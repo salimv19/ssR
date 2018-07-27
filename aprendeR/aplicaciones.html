@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="markdown.html">
-<link rel="next" href="packrat.html">
+<link rel="prev" href="subconjuntos-de-diferentes-estructuras-de-datos.html">
+<link rel="next" href="split-apply-combine.html">
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -216,20 +216,184 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-markdown-1" class="section level2">
-<h2><span class="header-section-number">A.1</span> R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+<div id="aplicaciones" class="section level2">
+<h2><span class="header-section-number">4.2</span> Aplicaciones</h2>
+<p>Una de las formas más fáciles de frustrarse con R (y con cualquier otro lenguaje) es no saber decirle al lenguaje lo que se desea hacer. Entender cómo manipular las estructuras de datos y la lógica detrás de su comportamiento ahorra mucho sufrimiento y permite adaptarse ante cosas que necesitamos que aún no se encuentran implementadas por alguien más de una manera más sencilla.</p>
+<p>Con saber de subconjuntos podemos realizar varias tareas indispensables.</p>
+<div id="buscarv-o-buscarh" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Buscarv o buscarh</h3>
+<p>Excel es excelente haciendo estas tareas. Lo malo de excel es que no es <strong>reproducible</strong>. Es muy común que resulte imposible llegar de los datos originales al resultado final pues muchos pasos intermedios de limpieza no están documentados de forma alguna. Un <em>script</em> de limpieza nos permite no solamente ir del <em>raw</em> a la estructura de datos limpia y analizable sino que permite que alguien más verifique las operaciones que se están realizando, se identifiquen errores y que, cuando nos llega un nuevo mes, sea trivial incluir estos datos al resultado final.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>)
+busca &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">m =</span> <span class="st">&quot;Male&quot;</span>, <span class="dt">f =</span> <span class="st">&quot;Female&quot;</span>, <span class="dt">u =</span> <span class="ot">NA</span>)
+busca[x]</code></pre></div>
+<pre><code>##        m        f        u        f        f        m        m 
+##   &quot;Male&quot; &quot;Female&quot;       NA &quot;Female&quot; &quot;Female&quot;   &quot;Male&quot;   &quot;Male&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unname</span>(busca[x])</code></pre></div>
+<pre><code>## [1] &quot;Male&quot;   &quot;Female&quot; NA       &quot;Female&quot; &quot;Female&quot; &quot;Male&quot;   &quot;Male&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="dt">m =</span> <span class="st">&quot;humano&quot;</span>, <span class="dt">f =</span> <span class="st">&quot;humano&quot;</span>, <span class="dt">u =</span> <span class="st">&quot;desconocido&quot;</span>)[x]</code></pre></div>
+<pre><code>##             m             f             u             f             f 
+##      &quot;humano&quot;      &quot;humano&quot; &quot;desconocido&quot;      &quot;humano&quot;      &quot;humano&quot; 
+##             m             m 
+##      &quot;humano&quot;      &quot;humano&quot;</code></pre>
+<p>Esto nos permite pegar un vector a una base de datos de acuerdo a una condición.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">calificaciones &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">6</span>)
+aprueba &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">calificacion =</span> <span class="dv">10</span><span class="op">:</span><span class="dv">1</span>,
+  <span class="dt">descripcion =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;excelente&quot;</span>, <span class="dv">2</span>), <span class="st">&quot;bueno&quot;</span>, <span class="kw">rep</span>(<span class="st">&quot;aceptable&quot;</span>, <span class="dv">2</span>)
+                  , <span class="kw">rep</span>(<span class="st">&quot;no satisfactorio&quot;</span>, <span class="dv">5</span>)),
+  <span class="dt">aprobatorio =</span> <span class="kw">c</span>(<span class="kw">rep</span>(T, <span class="dv">5</span>), <span class="kw">rep</span>(F, <span class="dv">5</span>))
+)
+id &lt;-<span class="st"> </span><span class="kw">match</span>(calificaciones, aprueba<span class="op">$</span>calificacion)
 
+aprueba[id, ]</code></pre></div>
+<pre><code>##     calificacion      descripcion aprobatorio
+## 1             10        excelente        TRUE
+## 2              9        excelente        TRUE
+## 6              5 no satisfactorio       FALSE
+## 6.1            5 no satisfactorio       FALSE
+## 5              6        aceptable        TRUE</code></pre>
+<div class="ejercicio">
+<p>
+<strong>Ejercicios</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Realiza la misma operación con las calificaciones pero utilizando los nombres de las filas, es decir, los rownames(aprueba)
+</li>
+<li>
+Carga la libreria ggplot2 y utiliza la base de datos diamonds
+</li>
+<li>
+Utiliza el comando match para quedarte con las variables cut y x
+</li>
+<li>
+Genera la variable categórica tal que, si el precio es mayor que 5,000 el valor de price.cat es cara, si es mayor que 2,000 es normal y barata en otro caso.
+</li>
+</ol>
 </div>
-<!-- </div> -->
+</div>
+<div id="muestras-aleatorias" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Muestras aleatorias</h3>
+<p>Podemos utilizar índices enteros para generar muestras aleatorias de nuestras bases de datos o de nuestros vectores.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">102030</span>)
+aprueba[<span class="kw">sample</span>(<span class="kw">nrow</span>(aprueba)), ]</code></pre></div>
+<pre><code>##    calificacion      descripcion aprobatorio
+## 10            1 no satisfactorio       FALSE
+## 2             9        excelente        TRUE
+## 8             3 no satisfactorio       FALSE
+## 7             4 no satisfactorio       FALSE
+## 9             2 no satisfactorio       FALSE
+## 3             8            bueno        TRUE
+## 1            10        excelente        TRUE
+## 6             5 no satisfactorio       FALSE
+## 4             7        aceptable        TRUE
+## 5             6        aceptable        TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aprueba[<span class="kw">sample</span>(<span class="kw">nrow</span>(aprueba), <span class="dt">replace =</span> T, <span class="dt">size =</span> <span class="dv">5</span>), ]</code></pre></div>
+<pre><code>##     calificacion      descripcion aprobatorio
+## 4              7        aceptable        TRUE
+## 1             10        excelente        TRUE
+## 4.1            7        aceptable        TRUE
+## 7              4 no satisfactorio       FALSE
+## 2              9        excelente        TRUE</code></pre>
+<div class="ejercicio">
+<p>
+<strong>Ejercicios</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Utiliza la base de datos de iris y genera un conjunto de prueba y uno de entrenamiento correspondientes al 20 y 80 % de los datos, respectivamente.
+</li>
+<li>
+Genera un vector x de tamaño 1000 con realizaciones de una normal media 10, varianza 3.
+</li>
+<li>
+Crea 100 muestras bootstrap del vector x.
+</li>
+<li>
+Calcula la media para cada una de tus muestras.
+</li>
+<li>
+Grafica con la función hist() el vector de medias de tus muestras.
+</li>
+<li>
+Genera un vector l de letras, tamaño 10 y ordénalo. (Usa letters y order).
+</li>
+<li>
+Ordena la base cars de acuerdo a distancia, en forma descendiente (muestra la cola -usa tail- de la base ordenada).
+</li>
+</ol>
+</div>
+</div>
+<div id="expande-bases" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> Expande bases</h3>
+<p>Ahora, a veces tenemos tablas de resumen pero quisieramos extraer los datos originales. Combinamos rep con subconjuntos de enteros para expandir.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;azul&quot;</span>, <span class="st">&quot;verde&quot;</span>, <span class="st">&quot;amarillo&quot;</span>),
+  <span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>)
+)
+df</code></pre></div>
+<pre><code>##      color n
+## 1     azul 4
+## 2    verde 3
+## 3 amarillo 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(df), df<span class="op">$</span>n), ]</code></pre></div>
+<pre><code>##        color n
+## 1       azul 4
+## 1.1     azul 4
+## 1.2     azul 4
+## 1.3     azul 4
+## 2      verde 3
+## 2.1    verde 3
+## 2.2    verde 3
+## 3   amarillo 5
+## 3.1 amarillo 5
+## 3.2 amarillo 5
+## 3.3 amarillo 5
+## 3.4 amarillo 5</code></pre>
+</div>
+<div id="which-intersect-y-union" class="section level3">
+<h3><span class="header-section-number">4.2.4</span> Which, intersect y union</h3>
+<p>Ya estuvimos utilizando otras aplicaciones de estos comandos: ordenamientos, selección de filas o columnas según una condición lógica.</p>
+<p>También utilizamos un comando muy útil llamado which.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">45</span>)
+x &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">10</span>)
+x <span class="op">&lt;=</span><span class="st"> &quot;e&quot;</span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">which</span>(x <span class="op">&lt;=</span><span class="st"> &quot;e&quot;</span>)</code></pre></div>
+<pre><code>## [1]  7  9 10</code></pre>
+<p>Junto con which, puedes usar intersect y union.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pares &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>
+m.<span class="dv">5</span> &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>
+
+<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)[<span class="kw">union</span>(<span class="kw">which</span>(pares), <span class="kw">which</span>(m.<span class="dv">5</span>))]
+<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)[<span class="kw">intersect</span>(<span class="kw">which</span>(pares), <span class="kw">which</span>(m.<span class="dv">5</span>))]
+<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)[<span class="kw">which</span>(<span class="kw">xor</span>(pares, m.<span class="dv">5</span>))]</code></pre></div>
+</div>
+<div id="generacion-de-datos-a-partir-de-distribuciones" class="section level3">
+<h3><span class="header-section-number">4.2.5</span> Generación de datos a partir de distribuciones</h3>
+<p><code>R</code> básico provee funciones de distribución de probabilidad (p), funciones de densidad (d), funciones cuantiles (q) y generación de números aleatorios (r) para varias distribuciones como la binomial, chi-cuadrada, gamma, geométrica, etc. <span class="citation">Dutang (<a href="#ref-probdistributions">2016</a>)</span> resumen otros paquetes en donde se encuentran implementadas otras funcionalidades o distribuciones multivariadas y cópulas.</p>
+<p>En las funciones de <code>R</code> básico, podemos construir un <em>dataframe</em> con realizaciones de distintas distintas distribuciones, por ejemplo, a continuación generamos la variable <span class="math inline">\(x\)</span> como realizaciones de una normal, <span class="math inline">\(y\)</span> con realizaciones de una exponencial y <span class="math inline">\(z\)</span> con realizaciones de una uniforme.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>)
+  , <span class="dt">y =</span> <span class="kw">rexp</span>(<span class="dv">100</span>)
+  , <span class="dt">z =</span> <span class="kw">runif</span>(<span class="dv">100</span>)
+)</code></pre></div>
+</div>
+</div>
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-probdistributions">
+<p>Dutang, Christophe. 2016. “CRAN Task View: Probability Distributions.” Manual. <a href="https://cran.r-project.org/web/views/Distributions.html" class="uri">https://cran.r-project.org/web/views/Distributions.html</a>.</p>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="packrat.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="subconjuntos-de-diferentes-estructuras-de-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="split-apply-combine.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

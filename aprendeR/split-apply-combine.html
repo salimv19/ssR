@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>aprendeR</title>
+  <meta name="description" content="aprendeR">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="aprendeR" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="aprendeR" />
+  
+  
+  
+
+<meta name="author" content="Andrea Fernández Conde">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="aplicaciones.html">
+<link rel="next" href="material-adicional-2.html">
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="estilos.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="r-lo-basico.html"><a href="r-lo-basico.html"><i class="fa fa-check"></i><b>2</b> R: lo básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="instalacion.html"><a href="instalacion.html"><i class="fa fa-check"></i><b>2.1</b> Instalación</a></li>
+<li class="chapter" data-level="2.2" data-path="editores.html"><a href="editores.html"><i class="fa fa-check"></i><b>2.2</b> Editores</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="editores.html"><a href="editores.html#rstudio"><i class="fa fa-check"></i><b>2.2.1</b> RStudio</a></li>
+<li class="chapter" data-level="2.2.2" data-path="editores.html"><a href="editores.html#ess"><i class="fa fa-check"></i><b>2.2.2</b> ESS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html"><i class="fa fa-check"></i><b>2.3</b> El espacio de trabajo (Workspace)</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#directorio-de-trabajo"><i class="fa fa-check"></i><b>2.3.1</b> Directorio de trabajo</a></li>
+<li class="chapter" data-level="2.3.2" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#ejemplos-basicos"><i class="fa fa-check"></i><b>2.3.2</b> Ejemplos básicos</a></li>
+<li class="chapter" data-level="2.3.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#comandos-utiles"><i class="fa fa-check"></i><b>2.3.3</b> Comandos útiles</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html"><i class="fa fa-check"></i><b>2.4</b> Paquetes (<em>libraries</em>)</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#cran"><i class="fa fa-check"></i><b>2.4.1</b> CRAN</a></li>
+<li class="chapter" data-level="2.4.2" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#github"><i class="fa fa-check"></i><b>2.4.2</b> Github</a></li>
+<li class="chapter" data-level="2.4.3" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#otras-fuentes"><i class="fa fa-check"></i><b>2.4.3</b> Otras fuentes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="paquetes-recomendados.html"><a href="paquetes-recomendados.html"><i class="fa fa-check"></i><b>2.5</b> Paquetes recomendados</a></li>
+<li class="chapter" data-level="2.6" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>2.6</b> Scripting</a></li>
+<li class="chapter" data-level="2.7" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2.7</b> rmarkdown</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="rmarkdown.html"><a href="rmarkdown.html#encabezado-y-formatos"><i class="fa fa-check"></i><b>2.7.1</b> Encabezado y formatos</a></li>
+<li class="chapter" data-level="2.7.2" data-path="rmarkdown.html"><a href="rmarkdown.html#knitr-chunks"><i class="fa fa-check"></i><b>2.7.2</b> Knitr chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="ayuda-y-documentacion.html"><a href="ayuda-y-documentacion.html"><i class="fa fa-check"></i><b>2.8</b> Ayuda y documentación</a></li>
+<li class="chapter" data-level="2.9" data-path="optimizando.html"><a href="optimizando.html"><i class="fa fa-check"></i><b>2.9</b> Optimizando</a></li>
+<li class="chapter" data-level="2.10" data-path="material-adicional.html"><a href="material-adicional.html"><i class="fa fa-check"></i><b>2.10</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estructuras-y-funciones.html"><a href="estructuras-y-funciones.html"><i class="fa fa-check"></i><b>3</b> Estructuras y funciones</a><ul>
+<li class="chapter" data-level="3.1" data-path="objetos.html"><a href="objetos.html"><i class="fa fa-check"></i><b>3.1</b> Objetos</a></li>
+<li class="chapter" data-level="3.2" data-path="funciones.html"><a href="funciones.html"><i class="fa fa-check"></i><b>3.2</b> Funciones</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="funciones.html"><a href="funciones.html#componentes-de-una-funcion"><i class="fa fa-check"></i><b>3.2.1</b> Componentes de una función</a></li>
+<li class="chapter" data-level="3.2.2" data-path="funciones.html"><a href="funciones.html#el-ambiente"><i class="fa fa-check"></i><b>3.2.2</b> El ambiente</a></li>
+<li class="chapter" data-level="3.2.3" data-path="funciones.html"><a href="funciones.html#reglas-de-visibilidad-scoping"><i class="fa fa-check"></i><b>3.2.3</b> Reglas de visibilidad (scoping)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html"><i class="fa fa-check"></i><b>3.3</b> Estructuras de datos</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#clases-atomicas-atomic-classes"><i class="fa fa-check"></i><b>3.3.1</b> Clases atómicas (atomic classes)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#vectores"><i class="fa fa-check"></i><b>3.3.2</b> Vectores</a></li>
+<li class="chapter" data-level="3.3.3" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#matrices"><i class="fa fa-check"></i><b>3.3.3</b> Matrices</a></li>
+<li class="chapter" data-level="3.3.4" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#listas"><i class="fa fa-check"></i><b>3.3.4</b> Listas</a></li>
+<li class="chapter" data-level="3.3.5" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#factores-factor"><i class="fa fa-check"></i><b>3.3.5</b> Factores (factor)</a></li>
+<li class="chapter" data-level="3.3.6" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#data-frames"><i class="fa fa-check"></i><b>3.3.6</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="estructuras-de-datos-fuera-de-r-basico.html"><a href="estructuras-de-datos-fuera-de-r-basico.html"><i class="fa fa-check"></i><b>3.4</b> Estructuras de datos fuera de R-básico</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estructuras-de-datos-fuera-de-r-basico.html"><a href="estructuras-de-datos-fuera-de-r-basico.html#data-tables"><i class="fa fa-check"></i><b>3.4.1</b> Data tables</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estructuras-de-datos-fuera-de-r-basico.html"><a href="estructuras-de-datos-fuera-de-r-basico.html#tibbles"><i class="fa fa-check"></i><b>3.4.2</b> Tibbles</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="objetos-importantes.html"><a href="objetos-importantes.html"><i class="fa fa-check"></i><b>3.5</b> Objetos importantes</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="objetos-importantes.html"><a href="objetos-importantes.html#infinito"><i class="fa fa-check"></i><b>3.5.1</b> Infinito</a></li>
+<li class="chapter" data-level="3.5.2" data-path="objetos-importantes.html"><a href="objetos-importantes.html#no-es-un-numero"><i class="fa fa-check"></i><b>3.5.2</b> No es un número</a></li>
+<li class="chapter" data-level="3.5.3" data-path="objetos-importantes.html"><a href="objetos-importantes.html#valores-perdidos-missing-values"><i class="fa fa-check"></i><b>3.5.3</b> Valores perdidos (missing values)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html"><i class="fa fa-check"></i><b>3.6</b> Estructuras de control</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#if"><i class="fa fa-check"></i><b>3.6.1</b> If</a></li>
+<li class="chapter" data-level="3.6.2" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#for"><i class="fa fa-check"></i><b>3.6.2</b> For</a></li>
+<li class="chapter" data-level="3.6.3" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#whiles"><i class="fa fa-check"></i><b>3.6.3</b> Whiles</a></li>
+<li class="chapter" data-level="3.6.4" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#repeat---break"><i class="fa fa-check"></i><b>3.6.4</b> Repeat - Break</a></li>
+<li class="chapter" data-level="3.6.5" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#next"><i class="fa fa-check"></i><b>3.6.5</b> Next</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="material-adicional-1.html"><a href="material-adicional-1.html"><i class="fa fa-check"></i><b>3.7</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectorizacion-la-familia-apply-y-otros.html"><a href="vectorizacion-la-familia-apply-y-otros.html"><i class="fa fa-check"></i><b>4</b> Vectorización, la familia apply y otros</a><ul>
+<li class="chapter" data-level="4.1" data-path="subconjuntos-de-diferentes-estructuras-de-datos.html"><a href="subconjuntos-de-diferentes-estructuras-de-datos.html"><i class="fa fa-check"></i><b>4.1</b> Subconjuntos de diferentes estructuras de datos</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="subconjuntos-de-diferentes-estructuras-de-datos.html"><a href="subconjuntos-de-diferentes-estructuras-de-datos.html#operadores-para-extraer-subconjuntos"><i class="fa fa-check"></i><b>4.1.1</b> Operadores para extraer subconjuntos</a></li>
+<li class="chapter" data-level="4.1.2" data-path="subconjuntos-de-diferentes-estructuras-de-datos.html"><a href="subconjuntos-de-diferentes-estructuras-de-datos.html#asignar-a-un-subconjunto"><i class="fa fa-check"></i><b>4.1.2</b> Asignar a un subconjunto</a></li>
+<li class="chapter" data-level="4.1.3" data-path="subconjuntos-de-diferentes-estructuras-de-datos.html"><a href="subconjuntos-de-diferentes-estructuras-de-datos.html#operadores-logicos"><i class="fa fa-check"></i><b>4.1.3</b> Operadores lógicos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="aplicaciones.html"><a href="aplicaciones.html"><i class="fa fa-check"></i><b>4.2</b> Aplicaciones</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="aplicaciones.html"><a href="aplicaciones.html#buscarv-o-buscarh"><i class="fa fa-check"></i><b>4.2.1</b> Buscarv o buscarh</a></li>
+<li class="chapter" data-level="4.2.2" data-path="aplicaciones.html"><a href="aplicaciones.html#muestras-aleatorias"><i class="fa fa-check"></i><b>4.2.2</b> Muestras aleatorias</a></li>
+<li class="chapter" data-level="4.2.3" data-path="aplicaciones.html"><a href="aplicaciones.html#expande-bases"><i class="fa fa-check"></i><b>4.2.3</b> Expande bases</a></li>
+<li class="chapter" data-level="4.2.4" data-path="aplicaciones.html"><a href="aplicaciones.html#which-intersect-y-union"><i class="fa fa-check"></i><b>4.2.4</b> Which, intersect y union</a></li>
+<li class="chapter" data-level="4.2.5" data-path="aplicaciones.html"><a href="aplicaciones.html#generacion-de-datos-a-partir-de-distribuciones"><i class="fa fa-check"></i><b>4.2.5</b> Generación de datos a partir de distribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="split-apply-combine.html"><a href="split-apply-combine.html"><i class="fa fa-check"></i><b>4.3</b> Split-apply-combine</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="split-apply-combine.html"><a href="split-apply-combine.html#apply"><i class="fa fa-check"></i><b>4.3.1</b> apply</a></li>
+<li class="chapter" data-level="4.3.2" data-path="split-apply-combine.html"><a href="split-apply-combine.html#lapply"><i class="fa fa-check"></i><b>4.3.2</b> lapply</a></li>
+<li class="chapter" data-level="4.3.3" data-path="split-apply-combine.html"><a href="split-apply-combine.html#sapply"><i class="fa fa-check"></i><b>4.3.3</b> sapply</a></li>
+<li class="chapter" data-level="4.3.4" data-path="split-apply-combine.html"><a href="split-apply-combine.html#mapply"><i class="fa fa-check"></i><b>4.3.4</b> mapply</a></li>
+<li class="chapter" data-level="4.3.5" data-path="split-apply-combine.html"><a href="split-apply-combine.html#tapply"><i class="fa fa-check"></i><b>4.3.5</b> tapply</a></li>
+<li class="chapter" data-level="4.3.6" data-path="split-apply-combine.html"><a href="split-apply-combine.html#by"><i class="fa fa-check"></i><b>4.3.6</b> by</a></li>
+<li class="chapter" data-level="4.3.7" data-path="split-apply-combine.html"><a href="split-apply-combine.html#replicate"><i class="fa fa-check"></i><b>4.3.7</b> replicate</a></li>
+<li class="chapter" data-level="4.3.8" data-path="split-apply-combine.html"><a href="split-apply-combine.html#puede-ser-mas-facil"><i class="fa fa-check"></i><b>4.3.8</b> ¿Puede ser más fácil?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="material-adicional-2.html"><a href="material-adicional-2.html"><i class="fa fa-check"></i><b>4.4</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="herramientas-basicas-para-un-proyecto-de-datos.html"><a href="herramientas-basicas-para-un-proyecto-de-datos.html"><i class="fa fa-check"></i><b>5</b> Herramientas básicas para un proyecto de datos</a><ul>
+<li class="chapter" data-level="5.1" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>5.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusión</a></li>
+<li class="appendix"><span><b>Apéndices</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown</a><ul>
+<li class="chapter" data-level="A.1" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>A.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="packrat.html"><a href="packrat.html"><i class="fa fa-check"></i><b>B</b> Packrat</a><ul>
+<li class="chapter" data-level="B.1" data-path="el-directorio-del-proyecto.html"><a href="el-directorio-del-proyecto.html"><i class="fa fa-check"></i><b>B.1</b> El directorio del proyecto</a></li>
+<li class="chapter" data-level="B.2" data-path="instalacion-1.html"><a href="instalacion-1.html"><i class="fa fa-check"></i><b>B.2</b> Instalación</a></li>
+<li class="chapter" data-level="B.3" data-path="r-markdown-2.html"><a href="r-markdown-2.html"><i class="fa fa-check"></i><b>B.3</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="formatos.html"><a href="formatos.html"><i class="fa fa-check"></i><b>C</b> Formatos</a></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">aprendeR</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="split-apply-combine" class="section level2">
+<h2><span class="header-section-number">4.3</span> Split-apply-combine</h2>
+<p>Muchos problemas en el análisis de datos pueden ser resueltos aplicando la estrategia separa, aplica y combina (SAC) en donde divides un problema en pequeños pedazos manejables, operas en forma independiente cada uno de éstos y después combinas los resultados obtenidos <span class="citation">(Wickham <a href="#ref-wickham2011split">2011</a>)</span>.</p>
+<p>Esta estrategia se utiliza en diversas etapas del análisis de datos, por ejemplo <span class="citation">(Wickham <a href="#ref-wickham2011split">2011</a>)</span>:</p>
+<ul>
+<li><strong>Preparación de datos.</strong> Cuando se crean nuevas variables según grupos, cuando se realizan ordenamientos por grupos, cuando se estandariza o normaliza variables.</li>
+<li><strong>Estadística descriptiva.</strong> Cuando se crean agregados por grupos como sus medias o medianas.</li>
+<li><strong>Modelado</strong>. Cuando se calculan modelos separados para cada panel en un estudio de este tipo. Estos modelos pueden examinarse por separado o unificarse para construir modelos más sofisticados que los conjuguen.</li>
+</ul>
+<p>Esta estrategia se utiliza en muchas herramientas: en las tablas dinámicas de <code>Microsoft Excel</code>, el operador <code>group by</code> de <code>SQL</code>, el argumento <code>by</code> disponible en algunos procedimientos de <code>SAS</code> <span class="citation">(Wickham <a href="#ref-wickham2011split">2011</a>)</span>.</p>
+<p>El paradigma split-apply-combine se resume en la figura <a href="split-apply-combine.html#fig:01s-a-c">4.1</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:01s-a-c"></span>
+<img src="images/01_s-a-c.png" alt="Ejemplificación del split-apply-combine [@vaidyanathan2014r, Split-Apply-Combine]" width="75%" />
+<p class="caption">
+Figura 4.1: Ejemplificación del split-apply-combine <span class="citation">(Vaidyanathan <a href="#ref-vaidyanathan2014r">2014</a>, Split-Apply-Combine)</span>
+</p>
+</div>
+<p>Replicamos los vectores <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> de la figura en un <em>dataframe</em>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">letras &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">x =</span> <span class="kw">sort</span>(letras[<span class="kw">rep</span>(<span class="kw">seq</span>(letras), <span class="dv">2</span>)]),
+  <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>)
+)
+df</code></pre></div>
+<pre><code>##   x  y
+## 1 a  2
+## 2 a  4
+## 3 b  0
+## 4 b  5
+## 5 c  5
+## 6 c 10</code></pre>
+<p>Queremos estimar la <strong>media</strong> de los valores en el vector <span class="math inline">\(y\)</span> para cada tipo de letra en el vector <span class="math inline">\(x\)</span>. Esto lo podemos hacer utilizando la estrategia <strong>SAC</strong>, como en la figura.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Dividimos</span>
+<span class="cf">for</span> (l <span class="cf">in</span> <span class="kw">unique</span>(df<span class="op">$</span>x) ){
+  <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;Grupo con letra: &quot;</span>, l))
+  <span class="kw">print</span>(df[l <span class="op">==</span><span class="st"> </span>df<span class="op">$</span>x, ])
+}</code></pre></div>
+<pre><code>## [1] &quot;Grupo con letra: a&quot;
+##   x y
+## 1 a 2
+## 2 a 4
+## [1] &quot;Grupo con letra: b&quot;
+##   x y
+## 3 b 0
+## 4 b 5
+## [1] &quot;Grupo con letra: c&quot;
+##   x  y
+## 5 c  5
+## 6 c 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Aplicamos</span>
+<span class="cf">for</span> (l <span class="cf">in</span> <span class="kw">unique</span>(df<span class="op">$</span>x) ){
+  <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;Media para valores de letra: &quot;</span>, l))
+  <span class="kw">print</span>(<span class="kw">mean</span>(df[l <span class="op">==</span><span class="st"> </span>df<span class="op">$</span>x, ]<span class="op">$</span>y))
+}</code></pre></div>
+<pre><code>## [1] &quot;Media para valores de letra: a&quot;
+## [1] 3
+## [1] &quot;Media para valores de letra: b&quot;
+## [1] 2.5
+## [1] &quot;Media para valores de letra: c&quot;
+## [1] 7.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Combinamos</span>
+medias &lt;-<span class="st"> </span><span class="kw">list</span>()
+<span class="cf">for</span> (l <span class="cf">in</span> <span class="kw">unique</span>(df<span class="op">$</span>x) ){
+  medias[[l]] &lt;-<span class="st"> </span><span class="kw">mean</span>(df[l <span class="op">==</span><span class="st"> </span>df<span class="op">$</span>x, ]<span class="op">$</span>y)
+}
+<span class="kw">as.data.frame</span>(<span class="kw">list</span>(<span class="dt">letras =</span> <span class="kw">names</span>(medias), <span class="dt">medias =</span> <span class="kw">unname</span>(<span class="kw">unlist</span>(medias))))</code></pre></div>
+<pre><code>##   letras medias
+## 1      a    3.0
+## 2      b    2.5
+## 3      c    7.5</code></pre>
+<p><code>R</code> tiene muchas funciones que facilitan realizar este tipo de operaciones. En particular, la familia <code>apply</code> fue pensada para realizarlas. Cada una de las funciones en esta familia recibe una estructura de datos en particular, aplica de determinada manera la función que se le especifica y combina los resultados de una forma específica.</p>
+<div id="apply" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> apply</h3>
+<p><code>apply</code> aplica una función a cada fila o columna en una matriz.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Separa</strong>: por columna o fila según se especifica en el parámetro <code>MARGIN</code> (1 para filas, 2 para columnas).</li>
+<li><strong>Aplica</strong>: la función que se especifica en el parámetro <code>FUN</code>.</li>
+<li><strong>Combina</strong>: regresa un vector con los resultados.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">6</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)
+<span class="co"># 1 is the row index 2 is the column index</span>
+m</code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(m, <span class="dv">1</span>, sum)</code></pre></div>
+<pre><code>## [1]  7  9 11 13 15</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(m, <span class="dv">2</span>, sum)</code></pre></div>
+<pre><code>## [1] 15 40</code></pre>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+Haz una función que reciba un vector y devuelva la suma de la posición <span class="math inline"><span class="math inline">\(v_i + v_{i + 1}\)</span></span>. Para el n-esimo elemento, suma el primero. Aplica esa función a las columnas y filas de la matriz m.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
+suma.rec &lt;-<span class="st"> </span><span class="cf">function</span>(v){
+  resultado &lt;-<span class="st"> </span><span class="kw">c</span>()
+  <span class="cf">for</span> (e <span class="cf">in</span> <span class="kw">seq</span>(<span class="kw">length</span>(v) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)){
+    resultado[e] &lt;-<span class="st"> </span>v[e] <span class="op">+</span><span class="st"> </span>v[e <span class="op">+</span><span class="st"> </span><span class="dv">1</span>]
+  }
+  resultado[<span class="kw">length</span>(v)] &lt;-<span class="st"> </span>v[<span class="kw">length</span>(v)] <span class="op">+</span><span class="st"> </span>v[<span class="dv">1</span>]
+  <span class="kw">return</span>(resultado)
+}
+
+m
+<span class="kw">apply</span>(m, <span class="dv">1</span>, suma.rec)
+<span class="kw">apply</span>(m, <span class="dv">2</span>, suma.rec)</code></pre></div>
+</div>
+<div id="lapply" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> lapply</h3>
+<p><code>lapply</code> aplica una función a cada elemento en una lista. Como sabemos, un <code>data.frame</code> es únicamente un estilo particular de lista tal que todos sus elementos tienen el mismo tamaño. Por ende, también podemos utilizar <code>lapply</code> para iterar sobre las columnas de un <code>data.frame</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">b =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">20</span>)
+<span class="kw">lapply</span>(lista, mean)</code></pre></div>
+<pre><code>## $a
+## [1] 5.5
+## 
+## $b
+## [1] 11</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">b =</span> <span class="dv">11</span><span class="op">:</span><span class="dv">20</span>)
+<span class="kw">lapply</span>(df, mean)</code></pre></div>
+<pre><code>## $a
+## [1] 5.5
+## 
+## $b
+## [1] 15.5</code></pre>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+El <code>summary</code> de un <code>data.frame</code> genera un resumen para los vectores que la conforman de acuerdo a la clase de la misma. Genera una función que regrese una tabla de frecuencias para factores y caracteres o una lista con media, desviación estándar para vectores numéricos o enteros. Aplícalo a la base diamonds usando lapply.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
+mi.resumen &lt;-<span class="st"> </span><span class="cf">function</span>(vector){
+  <span class="cf">if</span>( <span class="kw">class</span>(vector) <span class="op">==</span><span class="st"> &quot;factor&quot;</span> <span class="op">||</span><span class="st"> </span><span class="kw">class</span>(vector) <span class="op">==</span><span class="st"> &quot;character&quot;</span>){
+    <span class="kw">table</span>(vector)
+  } <span class="cf">else</span> <span class="cf">if</span> ( <span class="kw">class</span>(vector) <span class="op">==</span><span class="st"> &quot;numeric&quot;</span> <span class="op">||</span><span class="st"> </span><span class="kw">class</span>(vector) <span class="op">==</span><span class="st"> &quot;integer&quot;</span>) {
+    <span class="kw">list</span>(<span class="dt">media =</span> <span class="kw">mean</span>(vector), <span class="dt">de =</span> <span class="kw">sqrt</span>(<span class="kw">var</span>(vector)))
+  }
+}
+
+<span class="kw">lapply</span>(<span class="kw">names</span>(diamonds), <span class="dt">FUN =</span> <span class="cf">function</span>(c) <span class="kw">mi.resumen</span>(diamonds[, c]))</code></pre></div>
+</div>
+<div id="sapply" class="section level3">
+<h3><span class="header-section-number">4.3.3</span> sapply</h3>
+<p><code>sapply</code> es otra versión de <code>lapply</code> que regresa una lista o un vector, dependiendo si se especifica el parámetro <code>simplify = T</code> y si la función aplicada regresa un único valor.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">sapply</span>(lista, mean, <span class="dt">simplify =</span> F)
+x</code></pre></div>
+<pre><code>## $a
+## [1] 5.5
+## 
+## $b
+## [1] 11</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">sapply</span>(lista, mean, <span class="dt">simplify =</span> T)
+x</code></pre></div>
+<pre><code>##    a    b 
+##  5.5 11.0</code></pre>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+Obtén un vector tipo caracter con los nombres de las clases de las columnas de iris.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
+<span class="kw">sapply</span>(iris, class)</code></pre></div>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+Repite el ejercicio de la suma rara pero usa <code>sapply</code>.
+</p>
+<p>
+<em>Recuerda la instrucción</em>: Haz una función que reciba un vector y devuelva la suma de la posición <span class="math inline"><span class="math inline">\(v_i + v_{i + 1}\)</span></span>. Para el n-esimo elemento, suma el primero. Utiliza <code>sapply</code> para realizar esta operacion.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
+x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
+<span class="kw">sapply</span>(<span class="kw">seq</span>(x), <span class="dt">FUN =</span> <span class="cf">function</span>(i){
+  <span class="cf">if</span>( i <span class="op">==</span><span class="st"> </span><span class="kw">length</span>(x) ){
+    x[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>x[i]
+  } <span class="cf">else</span> {
+    x[i] <span class="op">+</span><span class="st"> </span>x[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>]
+  }
+})</code></pre></div>
+</div>
+<div id="mapply" class="section level3">
+<h3><span class="header-section-number">4.3.4</span> mapply</h3>
+<p><code>mapply</code> es como la versión multivariada de <code>sapply</code>. Le aplica una función a todos los elementos correspondientes de un argumento.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l1 &lt;-<span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">b =</span> <span class="kw">c</span>(<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>))
+l2 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">c =</span> <span class="kw">c</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">15</span>), <span class="dt">d =</span> <span class="kw">c</span>(<span class="dv">16</span><span class="op">:</span><span class="dv">20</span>))
+l1</code></pre></div>
+<pre><code>## $a
+## [1] 1 2 3 4 5
+## 
+## $b
+## [1]  6  7  8  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l2</code></pre></div>
+<pre><code>## $c
+## [1] 11 12 13 14 15
+## 
+## $d
+## [1] 16 17 18 19 20</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mapply</span>(sum, l1<span class="op">$</span>a, l1<span class="op">$</span>b, l2<span class="op">$</span>c, l2<span class="op">$</span>d)</code></pre></div>
+<pre><code>## [1] 34 38 42 46 50</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l1[[<span class="st">&quot;a&quot;</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>l1[[<span class="st">&quot;b&quot;</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>l2[[<span class="st">&quot;c&quot;</span>]][<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>l2[[<span class="st">&quot;d&quot;</span>]][<span class="dv">1</span>]</code></pre></div>
+<pre><code>## [1] 34</code></pre>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+Crea una matriz de 4 x 4 donde el primer renglón sea de unos, el segundo de dos, el tercero de 3 y el cuarto de 4. Usa <code>mapply</code> para hacerlo.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
+m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">4</span>), <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">4</span>), <span class="kw">rep</span>(<span class="dv">4</span>, <span class="dv">4</span>)), <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">byrow =</span> T)
+m
+
+me &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">mapply</span>(rep, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">4</span>))
+me</code></pre></div>
+</div>
+<div id="tapply" class="section level3">
+<h3><span class="header-section-number">4.3.5</span> tapply</h3>
+<p><code>tapply</code> le aplica una función a subconjuntos de un vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(warpbreaks)</code></pre></div>
+<pre><code>##   breaks wool tension
+## 1     26    A       L
+## 2     30    A       L
+## 3     54    A       L
+## 4     25    A       L
+## 5     70    A       L
+## 6     52    A       L</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(warpbreaks, <span class="kw">tapply</span>(breaks, <span class="kw">list</span>(wool, tension), mean))</code></pre></div>
+<pre><code>##          L        M        H
+## A 44.55556 24.00000 24.55556
+## B 28.22222 28.77778 18.77778</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(warpbreaks<span class="op">$</span>breaks, 
+       <span class="kw">list</span>(<span class="dt">wool =</span> warpbreaks<span class="op">$</span>wool, <span class="dt">tension =</span> warpbreaks<span class="op">$</span>tension), 
+       mean)</code></pre></div>
+<pre><code>##     tension
+## wool        L        M        H
+##    A 44.55556 24.00000 24.55556
+##    B 28.22222 28.77778 18.77778</code></pre>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+Utiliza la función <code>tapply</code> y la base de datos <code>diamonds</code> (que está dentro del paquete <code>ggplot2</code>) para obtener las medias de la variable <code>carat</code> para los grupos formados por la variable categórica <code>cut</code> y la variable categórica <code>color</code>.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
+<span class="kw">library</span>(ggplot2)
+<span class="kw">with</span>(diamonds,
+     <span class="kw">tapply</span>(carat,
+            <span class="kw">list</span>(cut, color),
+            mean))</code></pre></div>
+</div>
+<div id="by" class="section level3">
+<h3><span class="header-section-number">4.3.6</span> by</h3>
+<p><code>by</code> le aplica una función a subconjuntos de un <code>data.frame</code>. Se divide un data.frame según los valores de de uno o más factores. Se aplica la función FUN a cada subconjunto.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris)</code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">by</span>(<span class="dt">data =</span> iris[, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dt">INDICES =</span> iris[, <span class="st">&quot;Species&quot;</span>], <span class="dt">FUN =</span> summary)</code></pre></div>
+<pre><code>## iris[, &quot;Species&quot;]: setosa
+##   Sepal.Length    Sepal.Width   
+##  Min.   :4.300   Min.   :2.300  
+##  1st Qu.:4.800   1st Qu.:3.200  
+##  Median :5.000   Median :3.400  
+##  Mean   :5.006   Mean   :3.428  
+##  3rd Qu.:5.200   3rd Qu.:3.675  
+##  Max.   :5.800   Max.   :4.400  
+## -------------------------------------------------------- 
+## iris[, &quot;Species&quot;]: versicolor
+##   Sepal.Length    Sepal.Width   
+##  Min.   :4.900   Min.   :2.000  
+##  1st Qu.:5.600   1st Qu.:2.525  
+##  Median :5.900   Median :2.800  
+##  Mean   :5.936   Mean   :2.770  
+##  3rd Qu.:6.300   3rd Qu.:3.000  
+##  Max.   :7.000   Max.   :3.400  
+## -------------------------------------------------------- 
+## iris[, &quot;Species&quot;]: virginica
+##   Sepal.Length    Sepal.Width   
+##  Min.   :4.900   Min.   :2.200  
+##  1st Qu.:6.225   1st Qu.:2.800  
+##  Median :6.500   Median :3.000  
+##  Mean   :6.588   Mean   :2.974  
+##  3rd Qu.:6.900   3rd Qu.:3.175  
+##  Max.   :7.900   Max.   :3.800</code></pre>
+<p>Puedo calcular, por ejemplo, la suma de los valores del largo y ancho de los sépalos en la base de datos iris según la especie.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">by</span>(iris[, <span class="kw">c</span>(<span class="st">&quot;Sepal.Length&quot;</span>, <span class="st">&quot;Sepal.Width&quot;</span>)], iris[, <span class="st">&quot;Species&quot;</span>], sum)</code></pre></div>
+<p>Posteriormente, se pueden combinar los elementos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.data.frame</span>(<span class="kw">list</span>(
+  <span class="st">&quot;species&quot;</span> =<span class="st"> </span><span class="kw">names</span>(res), 
+  <span class="st">&quot;suma&quot;</span> =<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">seq</span>(<span class="kw">length</span>(res)), <span class="dt">FUN =</span> <span class="cf">function</span>(i) res[[i]])
+  ))</code></pre></div>
+<pre><code>##      species  suma
+## 1     setosa 421.7
+## 2 versicolor 435.3
+## 3  virginica 478.1</code></pre>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+Vuelve a utilizar la base de diamonds para calcular el promedio de carat según cut y color.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
+<span class="kw">library</span>(ggplot2)
+<span class="kw">head</span>(diamonds)
+
+res &lt;-<span class="st"> </span><span class="kw">by</span>(diamonds[, <span class="kw">c</span>(<span class="st">&quot;carat&quot;</span>)], 
+          <span class="kw">list</span>(<span class="dt">cut =</span> <span class="kw">as.factor</span>(diamonds<span class="op">$</span>cut)
+               , <span class="dt">color =</span> <span class="kw">as.factor</span>(diamonds<span class="op">$</span>color))
+          , mean, <span class="dt">simplify =</span> T)</code></pre></div>
+</div>
+<div id="replicate" class="section level3">
+<h3><span class="header-section-number">4.3.7</span> replicate</h3>
+<p><code>replicate</code> es una función muy útil sobretodo en el contexto de simulación.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">replicate</span>(<span class="dv">5</span>, <span class="kw">rnorm</span>(<span class="dv">5</span>), <span class="dt">simplify =</span> F)</code></pre></div>
+<pre><code>## [[1]]
+## [1] -0.01744899 -0.35920817 -1.46121725 -0.82974515  0.53160175
+## 
+## [[2]]
+## [1] -0.2601847  0.5065636  1.3330763 -1.4945952  0.8039902
+## 
+## [[3]]
+## [1] -0.2155771 -0.8922644 -0.1466588 -0.3234650 -1.0602366
+## 
+## [[4]]
+## [1] -1.4859165  1.4469633  1.5193526  1.4491572  0.3427115
+## 
+## [[5]]
+## [1] -0.94652506 -1.25920627 -0.06813108 -0.75359982  0.43192663</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">replicate</span>(<span class="dv">6</span>, <span class="kw">rnorm</span>(<span class="dv">4</span>), <span class="dt">simplify =</span> T)</code></pre></div>
+<pre><code>##             [,1]       [,2]       [,3]       [,4]        [,5]       [,6]
+## [1,]  0.12276245  0.4528315 -0.1228450 -1.5292287 -0.42799037  0.6360040
+## [2,]  0.00389876 -0.4863693 -2.4085836 -0.7545786  1.92098812  0.3017047
+## [3,] -0.80426655  0.1570096  0.1789978  1.6316763  0.03015651  1.4364364
+## [4,]  0.12613563 -0.4231777 -0.7788772  0.6512902 -0.21573077 -0.7753874</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">replicate</span>(<span class="dv">100</span>, <span class="kw">mean</span>(<span class="kw">rexp</span>(<span class="dv">10</span>))))</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-194-1.png" width="672" /></p>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+Replica el ejercicio de muestras bootstrap utilizando la función <code>replicate</code>.
+</p>
+<p>
+<em>Recordando las instrucciones</em>:
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Genera un vector <code>x</code> de tamaño <span class="math inline"><span class="math inline">\(1000\)</span></span> con realizaciones de una normal media <span class="math inline"><span class="math inline">\(10\)</span></span>, varianza <span class="math inline"><span class="math inline">\(3\)</span></span>.
+</li>
+<li>
+Crea <span class="math inline"><span class="math inline">\(100\)</span></span> muestras bootstrap del vector <span class="math inline"><span class="math inline">\(x\)</span></span>.
+</li>
+<li>
+Calcula la <em>media</em> para cada una de tus muestras.
+</li>
+<li>
+Grafica con la función <code>hist()</code> el vector de medias de tus muestras.
+</li>
+</ol>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
+<span class="co"># 1</span>
+x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(<span class="dv">3</span>))
+<span class="kw">hist</span>( <span class="co"># 4</span>
+  <span class="kw">replicate</span>(<span class="dv">100</span>, <span class="co"># 2</span>
+            <span class="kw">mean</span>(<span class="kw">sample</span>(x, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> T))), <span class="co"># 3</span>
+  <span class="dt">main =</span> <span class="st">&quot;Muestras bootstrap&quot;</span>,
+  <span class="dt">xlab =</span> <span class="st">&quot;media&quot;</span>,
+  <span class="dt">ylab =</span> <span class="st">&quot;frecuencia&quot;</span>
+)</code></pre></div>
+</div>
+<div id="puede-ser-mas-facil" class="section level3">
+<h3><span class="header-section-number">4.3.8</span> ¿Puede ser más fácil?</h3>
+<p>La familia <code>apply</code> viene con R básico. Sin embargo, hay 3 implementaciones excelentes del paradigma split-apply-combine: <code>plyr</code>, <code>dplyr</code> y <code>data.table</code>.</p>
+<p>Si la familia apply es poderosa, se queda corta comparada con estos tres. <code>plyr</code> es la primera versión de SAC de Wickham <span class="citation">(Wickham <a href="#ref-wickham2011split">2011</a>)</span>. Posteriormente, mejoró muchas de las funciones en <code>dplyr</code> <span class="citation">(Wickham and Francois, n.d.)</span> sobretodo entorno a velocidad y facilidad de uso. <code>plyr</code> no termina de ser relevante pues varias de sus funciones aun no están en <code>dplyr</code> pero está por ser sustituido.</p>
+<p><code>data.table</code> <span class="citation">(Dowle et al. <a href="#ref-datatable">2015</a>)</span>, es una implementación con una tradición muy diferente y tiene también funciones muy poderosas aunque con una sintaxis muy distinta a <code>dplyr</code>. Es absurdamente eficiente y tiene múltiples aplicaciones.</p>
+<p>Muchas de las funciones en <code>dplyr</code> también están implementadas en <code>data.table</code>. Ambos paquetes son útiles pero priorizan distintos elementos. En el capítulo siguiente se repasarán los verbos en <code>dplyr</code>.</p>
+</div>
+</div>
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-wickham2011split">
+<p>Wickham, Hadley. 2011. “The Split-Apply-Combine Strategy for Data Analysis.” <em>Journal of Statistical Software</em> 40 (1): 1–29.</p>
+</div>
+<div id="ref-vaidyanathan2014r">
+<p>Vaidyanathan, Ramnath. 2014. <em>Introduction to R</em>. Github books, en pycon 2014. <a href="https://ramnathv.github.io/pycon2014-r" class="uri">https://ramnathv.github.io/pycon2014-r</a>.</p>
+</div>
+<div id="ref-datatable">
+<p>Dowle, M, A Srinivasan, T Short, S Lianoglou with contributions from R Saporta, and E Antonyan. 2015. <em>Data.table: Extension of Data.frame</em>. <a href="https://CRAN.R-project.org/package=data.table" class="uri">https://CRAN.R-project.org/package=data.table</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="aplicaciones.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="material-adicional-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": true,
+"linkedin": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["aprendeR.pdf"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
