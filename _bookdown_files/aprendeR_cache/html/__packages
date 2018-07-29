@@ -9,3 +9,17 @@ VIF
 carData
 data.table
 tibble
+xtable
+foreign
+haven
+readr
+readxl
+xlsx
+googlesheets
+bigrquery
+pryr
+DBI
+yaml
+RPostgreSQL
+futile.logger
+bindrcpp

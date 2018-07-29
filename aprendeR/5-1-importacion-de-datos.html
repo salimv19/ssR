@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="aprendeR" />
+<meta property="og:type" content="book" />
+
+
+
+
+
+<meta name="author" content="Andrea Fernández Conde" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="aprendeR">
+
+<title>aprendeR</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<link rel="stylesheet" href="estilos.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#introduccion"><span class="toc-section-number">1</span> Introducción</a></li>
+<li class="has-sub"><a href="2-r-lo-basico.html#r-lo-basico"><span class="toc-section-number">2</span> R: lo básico</a><ul>
+<li><a href="2-1-instalacion.html#instalacion"><span class="toc-section-number">2.1</span> Instalación</a></li>
+<li class="has-sub"><a href="2-2-editores.html#editores"><span class="toc-section-number">2.2</span> Editores</a><ul>
+<li><a href="2-2-editores.html#rstudio"><span class="toc-section-number">2.2.1</span> RStudio</a></li>
+<li><a href="2-2-editores.html#ess"><span class="toc-section-number">2.2.2</span> ESS</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-3-el-espacio-de-trabajo-workspace.html#el-espacio-de-trabajo-workspace"><span class="toc-section-number">2.3</span> El espacio de trabajo (Workspace)</a><ul>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#directorio-de-trabajo"><span class="toc-section-number">2.3.1</span> Directorio de trabajo</a></li>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#ejemplos-basicos"><span class="toc-section-number">2.3.2</span> Ejemplos básicos</a></li>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#comandos-utiles"><span class="toc-section-number">2.3.3</span> Comandos útiles</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-4-paquetes-libraries.html#paquetes-libraries"><span class="toc-section-number">2.4</span> Paquetes (<em>libraries</em>)</a><ul>
+<li><a href="2-4-paquetes-libraries.html#cran"><span class="toc-section-number">2.4.1</span> CRAN</a></li>
+<li><a href="2-4-paquetes-libraries.html#github"><span class="toc-section-number">2.4.2</span> Github</a></li>
+<li><a href="2-4-paquetes-libraries.html#otras-fuentes"><span class="toc-section-number">2.4.3</span> Otras fuentes</a></li>
+</ul></li>
+<li><a href="2-5-paquetes-recomendados.html#paquetes-recomendados"><span class="toc-section-number">2.5</span> Paquetes recomendados</a></li>
+<li><a href="2-6-scripting.html#scripting"><span class="toc-section-number">2.6</span> Scripting</a></li>
+<li class="has-sub"><a href="2-7-rmarkdown.html#rmarkdown"><span class="toc-section-number">2.7</span> rmarkdown</a><ul>
+<li><a href="2-7-rmarkdown.html#encabezado-y-formatos"><span class="toc-section-number">2.7.1</span> Encabezado y formatos</a></li>
+<li><a href="2-7-rmarkdown.html#knitr-chunks"><span class="toc-section-number">2.7.2</span> Knitr chunks</a></li>
+</ul></li>
+<li><a href="2-8-ayuda-y-documentacion.html#ayuda-y-documentacion"><span class="toc-section-number">2.8</span> Ayuda y documentación</a></li>
+<li><a href="2-9-optimizando.html#optimizando"><span class="toc-section-number">2.9</span> Optimizando</a></li>
+<li><a href="2-10-material-adicional.html#material-adicional"><span class="toc-section-number">2.10</span> Material adicional</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-estructuras-y-funciones.html#estructuras-y-funciones"><span class="toc-section-number">3</span> Estructuras y funciones</a><ul>
+<li><a href="3-1-objetos.html#objetos"><span class="toc-section-number">3.1</span> Objetos</a></li>
+<li class="has-sub"><a href="3-2-funciones.html#funciones"><span class="toc-section-number">3.2</span> Funciones</a><ul>
+<li><a href="3-2-funciones.html#componentes-de-una-funcion"><span class="toc-section-number">3.2.1</span> Componentes de una función</a></li>
+<li><a href="3-2-funciones.html#el-ambiente"><span class="toc-section-number">3.2.2</span> El ambiente</a></li>
+<li><a href="3-2-funciones.html#reglas-de-visibilidad-scoping"><span class="toc-section-number">3.2.3</span> Reglas de visibilidad (scoping)</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-3-estructuras-de-datos.html#estructuras-de-datos"><span class="toc-section-number">3.3</span> Estructuras de datos</a><ul>
+<li><a href="3-3-estructuras-de-datos.html#clases-atomicas-atomic-classes"><span class="toc-section-number">3.3.1</span> Clases atómicas (atomic classes)</a></li>
+<li><a href="3-3-estructuras-de-datos.html#vectores"><span class="toc-section-number">3.3.2</span> Vectores</a></li>
+<li><a href="3-3-estructuras-de-datos.html#matrices"><span class="toc-section-number">3.3.3</span> Matrices</a></li>
+<li><a href="3-3-estructuras-de-datos.html#listas"><span class="toc-section-number">3.3.4</span> Listas</a></li>
+<li><a href="3-3-estructuras-de-datos.html#factores-factor"><span class="toc-section-number">3.3.5</span> Factores (factor)</a></li>
+<li><a href="3-3-estructuras-de-datos.html#data-frames"><span class="toc-section-number">3.3.6</span> Data frames</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-4-estructuras-de-datos-fuera-de-r-basico.html#estructuras-de-datos-fuera-de-r-basico"><span class="toc-section-number">3.4</span> Estructuras de datos fuera de R-básico</a><ul>
+<li><a href="3-4-estructuras-de-datos-fuera-de-r-basico.html#data-tables"><span class="toc-section-number">3.4.1</span> Data tables</a></li>
+<li><a href="3-4-estructuras-de-datos-fuera-de-r-basico.html#tibbles"><span class="toc-section-number">3.4.2</span> Tibbles</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-5-objetos-importantes.html#objetos-importantes"><span class="toc-section-number">3.5</span> Objetos importantes</a><ul>
+<li><a href="3-5-objetos-importantes.html#infinito"><span class="toc-section-number">3.5.1</span> Infinito</a></li>
+<li><a href="3-5-objetos-importantes.html#no-es-un-numero"><span class="toc-section-number">3.5.2</span> No es un número</a></li>
+<li><a href="3-5-objetos-importantes.html#valores-perdidos-missing-values"><span class="toc-section-number">3.5.3</span> Valores perdidos (missing values)</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-6-estructuras-de-control.html#estructuras-de-control"><span class="toc-section-number">3.6</span> Estructuras de control</a><ul>
+<li><a href="3-6-estructuras-de-control.html#if"><span class="toc-section-number">3.6.1</span> If</a></li>
+<li><a href="3-6-estructuras-de-control.html#for"><span class="toc-section-number">3.6.2</span> For</a></li>
+<li><a href="3-6-estructuras-de-control.html#whiles"><span class="toc-section-number">3.6.3</span> Whiles</a></li>
+<li><a href="3-6-estructuras-de-control.html#repeat---break"><span class="toc-section-number">3.6.4</span> Repeat - Break</a></li>
+<li><a href="3-6-estructuras-de-control.html#next"><span class="toc-section-number">3.6.5</span> Next</a></li>
+</ul></li>
+<li><a href="3-7-material-adicional-1.html#material-adicional-1"><span class="toc-section-number">3.7</span> Material adicional</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-vectorizacion-la-familia-apply-y-otros.html#vectorizacion-la-familia-apply-y-otros"><span class="toc-section-number">4</span> Vectorización, la familia apply y otros</a><ul>
+<li class="has-sub"><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#subconjuntos-de-diferentes-estructuras-de-datos"><span class="toc-section-number">4.1</span> Subconjuntos de diferentes estructuras de datos</a><ul>
+<li><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#operadores-para-extraer-subconjuntos"><span class="toc-section-number">4.1.1</span> Operadores para extraer subconjuntos</a></li>
+<li><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#asignar-a-un-subconjunto"><span class="toc-section-number">4.1.2</span> Asignar a un subconjunto</a></li>
+<li><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#operadores-logicos"><span class="toc-section-number">4.1.3</span> Operadores lógicos</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-2-aplicaciones.html#aplicaciones"><span class="toc-section-number">4.2</span> Aplicaciones</a><ul>
+<li><a href="4-2-aplicaciones.html#buscarv-o-buscarh"><span class="toc-section-number">4.2.1</span> Buscarv o buscarh</a></li>
+<li><a href="4-2-aplicaciones.html#muestras-aleatorias"><span class="toc-section-number">4.2.2</span> Muestras aleatorias</a></li>
+<li><a href="4-2-aplicaciones.html#expande-bases"><span class="toc-section-number">4.2.3</span> Expande bases</a></li>
+<li><a href="4-2-aplicaciones.html#which-intersect-y-union"><span class="toc-section-number">4.2.4</span> Which, intersect y union</a></li>
+<li><a href="4-2-aplicaciones.html#generacion-de-datos-a-partir-de-distribuciones"><span class="toc-section-number">4.2.5</span> Generación de datos a partir de distribuciones</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-3-split-apply-combine.html#split-apply-combine"><span class="toc-section-number">4.3</span> Split-apply-combine</a><ul>
+<li><a href="4-3-split-apply-combine.html#apply"><span class="toc-section-number">4.3.1</span> apply</a></li>
+<li><a href="4-3-split-apply-combine.html#lapply"><span class="toc-section-number">4.3.2</span> lapply</a></li>
+<li><a href="4-3-split-apply-combine.html#sapply"><span class="toc-section-number">4.3.3</span> sapply</a></li>
+<li><a href="4-3-split-apply-combine.html#mapply"><span class="toc-section-number">4.3.4</span> mapply</a></li>
+<li><a href="4-3-split-apply-combine.html#tapply"><span class="toc-section-number">4.3.5</span> tapply</a></li>
+<li><a href="4-3-split-apply-combine.html#by"><span class="toc-section-number">4.3.6</span> by</a></li>
+<li><a href="4-3-split-apply-combine.html#replicate"><span class="toc-section-number">4.3.7</span> replicate</a></li>
+<li><a href="4-3-split-apply-combine.html#puede-ser-mas-facil"><span class="toc-section-number">4.3.8</span> ¿Puede ser más fácil?</a></li>
+</ul></li>
+<li><a href="4-4-material-adicional-2.html#material-adicional-2"><span class="toc-section-number">4.4</span> Material adicional</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-herramientas-basicas-para-un-proyecto-de-datos.html#herramientas-basicas-para-un-proyecto-de-datos"><span class="toc-section-number">5</span> Herramientas básicas para un proyecto de datos</a><ul>
+<li class="has-sub"><a href="5-1-importacion-de-datos.html#importacion-de-datos"><span class="toc-section-number">5.1</span> Importación de datos</a><ul>
+<li><a href="5-1-importacion-de-datos.html#rds"><span class="toc-section-number">5.1.1</span> rds</a></li>
+<li><a href="5-1-importacion-de-datos.html#separado-por"><span class="toc-section-number">5.1.2</span> separado por *</a></li>
+<li><a href="5-1-importacion-de-datos.html#csv"><span class="toc-section-number">5.1.3</span> csv (archivo separado por comas)</a></li>
+<li><a href="5-1-importacion-de-datos.html#microsoft-excel"><span class="toc-section-number">5.1.4</span> Microsoft Excel</a></li>
+<li><a href="5-1-importacion-de-datos.html#dbf"><span class="toc-section-number">5.1.5</span> dbf</a></li>
+<li><a href="5-1-importacion-de-datos.html#ibm-spss"><span class="toc-section-number">5.1.6</span> IBM SPSS</a></li>
+<li><a href="5-1-importacion-de-datos.html#stata"><span class="toc-section-number">5.1.7</span> Stata</a></li>
+<li><a href="5-1-importacion-de-datos.html#sas"><span class="toc-section-number">5.1.8</span> SAS</a></li>
+<li><a href="5-1-importacion-de-datos.html#google-spreadsheet"><span class="toc-section-number">5.1.9</span> Google Spreadsheet</a></li>
+<li><a href="5-1-importacion-de-datos.html#google-bigquery"><span class="toc-section-number">5.1.10</span> Google bigquery</a></li>
+<li><a href="5-1-importacion-de-datos.html#heroku-postgres"><span class="toc-section-number">5.1.11</span> Heroku Postgres</a></li>
+<li><a href="5-1-importacion-de-datos.html#rdata"><span class="toc-section-number">5.1.12</span> rdata</a></li>
+</ul></li>
+</ul></li>
+<li><a href="6-conclusion.html#conclusion"><span class="toc-section-number">6</span> Conclusión</a></li>
+<li class="appendix"><span><b>Apéndices</b></span></li>
+<li class="has-sub"><a href="A-markdown.html#markdown"><span class="toc-section-number">A</span> Markdown</a><ul>
+<li><a href="A-1-r-markdown.html#r-markdown"><span class="toc-section-number">A.1</span> R Markdown</a></li>
+</ul></li>
+<li class="has-sub"><a href="B-packrat.html#packrat"><span class="toc-section-number">B</span> Packrat</a><ul>
+<li><a href="B-1-el-directorio-del-proyecto.html#el-directorio-del-proyecto"><span class="toc-section-number">B.1</span> El directorio del proyecto</a></li>
+<li><a href="B-2-instalacion-1.html#instalacion-1"><span class="toc-section-number">B.2</span> Instalación</a></li>
+<li><a href="B-3-r-markdown-1.html#r-markdown-1"><span class="toc-section-number">B.3</span> R Markdown</a></li>
+</ul></li>
+<li><a href="C-formatos.html#formatos"><span class="toc-section-number">C</span> Formatos</a></li>
+<li><a href="bibliografia.html#bibliografia">Bibliografía</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="importacion-de-datos" class="section level2">
+<h2><span class="header-section-number">5.1</span> Importación de datos</h2>
+<p>Esta sección resume algunas de las funciones existentes para <strong>importar</strong> datos de distintos formatos a <code>R</code>. En la figura <a href="5-1-importacion-de-datos.html#fig:ciclo1">5.2</a> podemos ver la etapa del análisis de datos correspondiente.</p>
+<div class="figure" style="text-align: center"><span id="fig:ciclo1"></span>
+<img src="images/02_ciclo_1.png" alt="Importación en el análisis de datos [@grolemund2016r, Introducción]." width="75%" />
+<p class="caption">
+Figura 5.2: Importación en el análisis de datos <span class="citation">(Grolemund and Wickham <a href="#ref-grolemund2016r">2016</a>, Introducción)</span>.
+</p>
+</div>
+<p>Para aplicar las herramientas de R a nuestro trabajo, es necesario poder importar nuestros datos a R. R tiene conectores ya implementados para casi cualquier tipo y formato de datos. Entre los más comunes están<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Formato</th>
+<th>Lectura</th>
+<th>Escritura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>rds</td>
+<td><a href="5-1-importacion-de-datos.html#rds">base::readRDS</a></td>
+<td><a href="5-1-importacion-de-datos.html#rds">base::saveRDS</a></td>
+</tr>
+<tr class="even">
+<td>separado por *</td>
+<td><a href="5-1-importacion-de-datos.html#separado-por">utils::read.table</a>; <strong>readr::read_delim</strong></td>
+<td><a href="5-1-importacion-de-datos.html#separado-por">utils::write.table</a>; <strong>readr::write_delim</strong></td>
+</tr>
+<tr class="odd">
+<td>csv</td>
+<td><a href="5-1-importacion-de-datos.html#csv">utils::read.csv</a>; <strong>readr::read_csv</strong></td>
+<td><a href="5-1-importacion-de-datos.html#csv">utils::write.csv</a>; <strong>readr::write_csv</strong></td>
+</tr>
+<tr class="even">
+<td>Microsoft Excel</td>
+<td><a href="5-1-importacion-de-datos.html#microsoft-excel">readxl::read_excel</a></td>
+<td><a href="5-1-importacion-de-datos.html#microsoft-excel">xlsx::write.xlsx</a></td>
+</tr>
+<tr class="odd">
+<td>dbf</td>
+<td><a href="5-1-importacion-de-datos.html#dbf">foreign::read.dbf</a></td>
+<td><a href="5-1-importacion-de-datos.html#dbf">foreign::write.dbf</a></td>
+</tr>
+<tr class="even">
+<td>IBM SPSS</td>
+<td><a href="5-1-importacion-de-datos.html#ibm-spss">haven::read_sav</a></td>
+<td><a href="5-1-importacion-de-datos.html#ibm-spss">haven::write_sav</a></td>
+</tr>
+<tr class="odd">
+<td>Stata</td>
+<td><a href="5-1-importacion-de-datos.html#stata">haven::read_dta</a></td>
+<td><a href="5-1-importacion-de-datos.html#stata">foreign::write.dta</a></td>
+</tr>
+<tr class="even">
+<td>SAS</td>
+<td><a href="5-1-importacion-de-datos.html#sas">haven::read_sas</a></td>
+<td><a href="5-1-importacion-de-datos.html#sas">haven::write_sas</a></td>
+</tr>
+<tr class="odd">
+<td>Google spreadsheet</td>
+<td><a href="5-1-importacion-de-datos.html#google-spreadsheet">googlesheets::gs_read</a></td>
+<td><a href="5-1-importacion-de-datos.html#google-spreadsheet">googlesheets::gs_new</a></td>
+</tr>
+<tr class="even">
+<td>Google bigquery</td>
+<td><a href="5-1-importacion-de-datos.html#google-bigquery">bigrquery::query_exec</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Heroku Postgres</td>
+<td><a href="5-1-importacion-de-datos.html#heroku-postgres">sql2df</a></td>
+<td><a href="5-1-importacion-de-datos.html#heroku-postgres">df2sql</a></td>
+</tr>
+<tr class="even">
+<td>rdata</td>
+<td><a href="5-1-importacion-de-datos.html#rdata">base::load</a></td>
+<td><a href="5-1-importacion-de-datos.html#rdata">base::save</a></td>
+</tr>
+</tbody>
+</table>
+<p>Los paquetes utilizados son (corre estos comandos en la consola):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(foreign)
+<span class="kw">library</span>(haven)
+<span class="kw">library</span>(readr)
+<span class="kw">library</span>(readxl)
+<span class="kw">library</span>(xlsx)
+<span class="kw">library</span>(googlesheets)
+<span class="kw">library</span>(bigrquery)</code></pre></div>
+<div class="nota">
+<p>
+<strong>Importancia de rutas relativas</strong>
+</p>
+<p>
+Para leer un archivo, recordemos el comando <code>getwd()</code> para encontrar la carpeta a la cual <code>R</code> esta dirigido en este momento. Una buena practica es considerar el directorio de trabajo como el lugar en donde esta guardado el archivo o <code>script</code> en el que se trabaja y “moverse” desde ahí hasta el archivo que se quiere leer.
+</p>
+<p>
+Ya sea en escritura o en lectura, <code>R</code> buscará a partir del directorio de trabajo (el que se despliega con <code>getwd()</code>) para buscar a partir de ahí el archivo por leer o para guardar el que se escribirá si se usan rutas relativas.
+</p>
+<p>
+En caso de usar rutas absolutas (a pesar de que esto <strong>no</strong> es una <em>buena práctica</em>) se hará lectura o escritura del archivo en el lugar especificado.
+</p>
+</div>
+<div class="ejercicio">
+<p>
+<strong>Ejercicios</strong>
+</p>
+<p>
+<code>R</code> tiene conexión con muchos de los formatos en los que se encuentran los datos. Veremos algunos de los mas relevantes.
+</p>
+<p>
+El código en cada uno de los <code>chunks</code> (un chunk es el pedazo del documento en donde hay código de <code>R</code>) está hecho para que puedas correrlo en la consola (excepto cuando dice explícitamente <em>do not run</em> (leyenda comúnmente encontrada en los ejemplos de la documentación de las funciones. Con esto entenderás mejor el concepto de rutas relativas.
+</p>
+</div>
+<div id="rds" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> rds</h3>
+<p>La extensión <code>rds</code> es de las más comúnmente utilizada en <code>R</code>, por ejemplo, para guardar los datos para un paquete. Las funciones pertenecen al <code>base</code> <span class="citation">(R Core Team <a href="#ref-rbase">2016</a><a href="#ref-rbase">b</a>)</span>. Permiten guardar un solo objeto de <code>R</code> a un archivo y recuperarlo.</p>
+<p>Para <strong>escribirlos</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Creamos un dataframe llamado misdatos</span>
+misdatos &lt;-<span class="st"> </span>iris
+<span class="co"># Los guardamos en comprimido</span>
+<span class="kw">saveRDS</span>(misdatos, <span class="dt">file =</span> <span class="st">&quot;misdatos.rds&quot;</span>, <span class="dt">ascii =</span> <span class="ot">FALSE</span>, <span class="dt">version =</span> <span class="ot">NULL</span>,
+        <span class="dt">compress =</span> <span class="ot">TRUE</span>, <span class="dt">refhook =</span> <span class="ot">NULL</span>)</code></pre></div>
+<p>Nota como si usas el comando <code>getwd()</code> y después vas a la ruta indicada por medio del explorador de archivos, verás en esa carpeta el archivo <code>misdatos.rds</code>.</p>
+<p>Para <strong>leerlos</strong> usamos la ruta relativa. Dado que los guardamos en el directorio de trabajo actual (Recuerda, se puede cambiar con el comando <code>setwd</code>) entonces simplemente los llamamos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">misdatos &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">&quot;misdatos.rds&quot;</span>)
+<span class="co"># Los borramos</span>
+<span class="kw">file.remove</span>(<span class="st">&quot;misdatos.rds&quot;</span>)</code></pre></div>
+</div>
+<div id="separado-por" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> separado por *</h3>
+<p>Con esto nos referimos a la colección de archivos en texto plano, es decir, <code>.txt</code>, <code>.tsv</code>, <code>.psv</code>, etcétera.</p>
+<p>Para <strong>escribirlos</strong> el mas común es <code>write.table</code> del paquete <code>utils</code> <span class="citation">(R Core Team <a href="#ref-utils">2016</a><a href="#ref-utils">c</a>)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Do not run</span>
+<span class="kw">write.table</span>(misdatos, <span class="dt">file =</span> <span class="st">&quot;~/misdatos.&lt;extension&gt;&quot;</span>, <span class="dt">append =</span> <span class="ot">FALSE</span>
+, <span class="dt">quote =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>, <span class="dt">eol =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>
+, <span class="dt">row.names =</span> <span class="ot">TRUE</span>, <span class="dt">col.names =</span> <span class="ot">TRUE</span>
+, <span class="dt">qmethod =</span> <span class="kw">c</span>(<span class="st">&quot;escape&quot;</span>, <span class="st">&quot;double&quot;</span>), <span class="dt">fileEncoding =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
+<p>En el paquete <code>readr</code> se implementa también <code>write_delim</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Do not run</span>
+<span class="kw">write_delim</span>(misdatos, <span class="dt">path =</span> <span class="st">&quot;~/misdatos.&lt;extension&gt;&quot;</span>
+            , <span class="dt">delim =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span>, <span class="dt">append =</span> <span class="ot">FALSE</span>, <span class="dt">col_names =</span> <span class="op">!</span>append)</code></pre></div>
+<p>Escribamos ahora el <em>dataframe</em> <code>misdatos</code> en <code>psv</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_delim</span>(misdatos, <span class="dt">path =</span> <span class="st">&quot;misdatos.psv&quot;</span>, <span class="dt">delim =</span> <span class="st">&quot;|&quot;</span>)</code></pre></div>
+<p>Para <strong>leerlos</strong> <code>read.table</code> del paquete <code>utils</code> <span class="citation">(R Core Team <a href="#ref-utils">2016</a><a href="#ref-utils">c</a>)</span> nos permite especificar casi cualquier particularidad en un archivo de texto plano.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Do not run</span>
+misdatos &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;~/misdatos.&lt;extension&gt;&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>
+                       , <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&#39;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>
+                       , <span class="dt">numerals =</span> <span class="kw">c</span>(<span class="st">&quot;allow.loss&quot;</span>, <span class="st">&quot;warn.loss&quot;</span>, <span class="st">&quot;no.loss&quot;</span>)
+                       , row.names, col.names, <span class="dt">as.is =</span> <span class="op">!</span>stringsAsFactors
+                       , <span class="dt">na.strings =</span> <span class="st">&quot;NA&quot;</span>, <span class="dt">colClasses =</span> <span class="ot">NA</span>, <span class="dt">nrows =</span> <span class="op">-</span><span class="dv">1</span>
+                       , <span class="dt">skip =</span> <span class="dv">0</span>, <span class="dt">check.names =</span> <span class="ot">TRUE</span>
+                       , <span class="dt">fill =</span> <span class="op">!</span>blank.lines.skip, <span class="dt">strip.white =</span> <span class="ot">FALSE</span>
+                       , <span class="dt">blank.lines.skip =</span> <span class="ot">TRUE</span>, <span class="dt">comment.char =</span> <span class="st">&quot;#&quot;</span>
+                       , <span class="dt">allowEscapes =</span> <span class="ot">FALSE</span>, <span class="dt">flush =</span> <span class="ot">FALSE</span>
+                       , <span class="dt">stringsAsFactors =</span> <span class="kw">default.stringsAsFactors</span>()
+                       , <span class="dt">fileEncoding =</span> <span class="st">&quot;&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;unknown&quot;</span>, text
+                       , <span class="dt">skipNul =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>La función <code>read_delim</code> del paquete <code>readr</code> <span class="citation">(Wickham, Hester, and Francois <a href="#ref-readr">2016</a>)</span> lee los datos más eficientemente a un objeto de clase <code>tibble</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Do not run</span>
+misdatos &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="dt">file =</span> <span class="st">&quot;~/misdatos.&lt;extension&gt;&quot;</span>, delim
+                       , <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="dt">escape_backslash =</span> <span class="ot">FALSE</span>
+                       , <span class="dt">escape_double =</span> <span class="ot">TRUE</span>, <span class="dt">col_names =</span> <span class="ot">TRUE</span>
+                       , <span class="dt">col_types =</span> <span class="ot">NULL</span>, <span class="dt">locale =</span> <span class="kw">default_locale</span>()
+                       , <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>), <span class="dt">quoted_na =</span> <span class="ot">TRUE</span>, <span class="dt">comment =</span> <span class="st">&quot;&quot;</span>
+                       , <span class="dt">trim_ws =</span> <span class="ot">FALSE</span>, <span class="dt">skip =</span> <span class="dv">0</span>, <span class="dt">n_max =</span> <span class="ot">Inf</span>
+                       , <span class="dt">guess_max =</span> <span class="kw">min</span>(<span class="dv">1000</span>, n_max)
+                       , <span class="dt">progress =</span> <span class="kw">interactive</span>())</code></pre></div>
+<p>Leemos el archivo <code>.psv</code> que creamos antes:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">misdatos &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="dt">file =</span> <span class="st">&quot;misdatos.psv&quot;</span>, <span class="dt">delim =</span> <span class="st">&quot;|&quot;</span>)
+<span class="co"># Los borramos</span>
+<span class="kw">file.remove</span>(<span class="st">&quot;misdatos.psv&quot;</span>)</code></pre></div>
+</div>
+<div id="csv" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> csv (archivo separado por comas)</h3>
+<p>Este es un caso particular de archivos de texto en el que se separan por comas. Como es muy utilizado, generalmente se hacen funciones donde ya se especifica el delimitador. Guardaremos el <em>data frame</em> <code>misdatos</code> en el directorio “arriba” de la ruta que se muestra usando <code>getwd</code>. Esto lo podemos hacer anteponiendo al nombre del archivo con <code>../</code>.</p>
+<p>Para <strong>escribirlos</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># utils </span>
+<span class="kw">write.csv</span>(misdatos, <span class="dt">file =</span> <span class="st">&quot;../misdatos.csv&quot;</span>, <span class="dt">row.names =</span> F)
+<span class="co"># readr</span>
+<span class="kw">write_csv</span>(misdatos, <span class="dt">path =</span> <span class="st">&quot;../misdatos.csv&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span>, <span class="dt">append =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>Observa en el explorador de archivos en dónde es que se guardó el archivo <code>misdatos.csv</code>.</p>
+<p>Para <strong>leerlos</strong>, seguimos usando rutas relativas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># utils - como data.frame</span>
+misdatos &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;../misdatos.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>,
+   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)
+
+misdatos &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;../misdatos.csv&quot;</span>)
+
+<span class="co"># readr - como tibble</span>
+misdatos &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;../misdatos.csv&quot;</span>)
+
+<span class="co"># Lo borro</span>
+<span class="kw">file.remove</span>(<span class="st">&quot;../misdatos.csv&quot;</span>)</code></pre></div>
+</div>
+<div id="microsoft-excel" class="section level3">
+<h3><span class="header-section-number">5.1.4</span> Microsoft Excel</h3>
+<p>Para <strong>escribirlos</strong> dentro del paquete <code>xlsx</code> usamos la función <code>write.xlsx</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">misdatos &lt;-<span class="st"> </span>iris
+<span class="kw">write.xlsx</span>(misdatos, <span class="st">&quot;misdatos.xlsx&quot;</span>, <span class="dt">row.names =</span> F)</code></pre></div>
+<p>Para <strong>leerlos</strong> dentro del paquete <code>readxl</code> se encuentra la función <code>read_excel</code> que es muy útil en este caso.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">misdatos &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;misdatos.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">1</span>, <span class="dt">col_names =</span> <span class="ot">TRUE</span>, 
+<span class="dt">col_types =</span> <span class="ot">NULL</span>, <span class="dt">na =</span> <span class="st">&quot;&quot;</span>, <span class="dt">skip =</span> <span class="dv">0</span>)
+
+<span class="co"># Lo borro</span>
+<span class="kw">file.remove</span>(<span class="st">&quot;misdatos.xlsx&quot;</span>)</code></pre></div>
+</div>
+<div id="dbf" class="section level3">
+<h3><span class="header-section-number">5.1.5</span> dbf</h3>
+<p>Extensión que representa un archivo de una base de datos (<em>database file</em>).</p>
+<p>Para <strong>escribirlos</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.dbf</span>(<span class="kw">as.data.frame</span>(misdatos), <span class="st">&quot;misdatos.dbf&quot;</span>)</code></pre></div>
+<p>Nota cómo tuvimos que coercionar el objeto a <em>data frame</em>. Como en el ejemplo anterior leímos un <em>tibble</em> y el paquete <code>foreign</code> es más viejo (y no conoce los <em>tibbles</em>) entonces le mandamos un objeto que si conoce.</p>
+<p>Veremos más adelante la ventaja de usar <em>tibbles</em> aún cuando de vez en cuando se tienen problemas de compatibilidad.</p>
+<p>Para <strong>leerlos</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">misdatos &lt;-<span class="st"> </span><span class="kw">read.dbf</span>(<span class="st">&quot;misdatos.dbf&quot;</span>)
+<span class="co"># Lo borro</span>
+<span class="kw">file.remove</span>(<span class="st">&quot;misdatos.dbf&quot;</span>)</code></pre></div>
+</div>
+<div id="ibm-spss" class="section level3">
+<h3><span class="header-section-number">5.1.6</span> IBM SPSS</h3>
+<p>SPSS puede guardar los datos agregando etiquetas y otros metadatos. Para evitar retrabajo, puede leerse directamente a <code>R</code>.</p>
+<p>Para <strong>escribirlos</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># haven</span>
+<span class="kw">write_sav</span>(<span class="dt">data =</span> misdatos, <span class="dt">path =</span> <span class="st">&quot;misdatos.sav&quot;</span>)</code></pre></div>
+<p>Para <strong>leerlos</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># haven - como tibble</span>
+misdatos &lt;-<span class="st"> </span><span class="kw">read_sav</span>(<span class="dt">file =</span> <span class="st">&quot;misdatos.sav&quot;</span>, <span class="dt">user_na =</span> <span class="ot">FALSE</span>)
+
+<span class="co"># Lo borro</span>
+<span class="kw">file.remove</span>(<span class="st">&quot;misdatos.sav&quot;</span>)</code></pre></div>
+</div>
+<div id="stata" class="section level3">
+<h3><span class="header-section-number">5.1.7</span> Stata</h3>
+<div class="curiosidad">
+<p>
+<strong>HOME DIRECTORY</strong>
+</p>
+<p>
+El directorio (carpeta) <em>home</em> es muy utilizado. Normalmente, se le denota como <span class="math inline"><span class="math inline">\(\thicksim\)</span></span> y es en donde un sistema operativo guarda los archivos del usuario que se encuentra en sesión. Dependiendo del sistema operativo que utilices, encontrarás este directorio en una ruta específica.
+</p>
+<p>
+En Microsoft Windows Vista 7, 8 y 10 lo encuentras en <code>&lt;root&gt;\Users\&lt;username&gt;</code>.
+</p>
+<p>
+En Linux lo encuentras en <code>/home/&lt;username&gt;</code>.
+</p>
+<p>
+En Mac OS X lo encuentras en <code>/Users/&lt;username&gt;</code>.
+</p>
+</div>
+<p>Para <strong>escribirlos</strong> en <code>Stata</code> primero tenemos que cambiar los nombres de las variables en el <em>data frame</em> pues <code>Stata</code> no admite puntos en los nombres:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(misdatos) &lt;-<span class="st"> </span><span class="kw">tolower</span>(<span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">.&quot;</span>, <span class="st">&quot;_&quot;</span>, <span class="kw">names</span>(misdatos)))
+<span class="co"># foreign</span>
+<span class="kw">write.dta</span>(<span class="dt">data =</span> misdatos, <span class="dt">file =</span> <span class="st">&quot;~/misdatos.dta&quot;</span>, <span class="dt">version =</span> <span class="dv">12</span>)</code></pre></div>
+<p>Para <strong>leerlos</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># haven - como tibble</span>
+misdatos &lt;-<span class="st"> </span><span class="kw">read_dta</span>(<span class="dt">file =</span> <span class="st">&quot;~/misdatos.dta&quot;</span>, <span class="dt">encoding =</span> <span class="ot">NULL</span>)
+
+<span class="co"># Lo borramos</span>
+<span class="kw">file.remove</span>(<span class="st">&quot;~/misdatos.dta&quot;</span>)</code></pre></div>
+</div>
+<div id="sas" class="section level3">
+<h3><span class="header-section-number">5.1.8</span> SAS</h3>
+<p>Para usar el paquete <code>haven</code> en este caso ejemplificaremos la creación de un directorio de archivos en tu computadora desde <code>R</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Creamos un directorio llamado datos</span>
+<span class="kw">dir.create</span>(<span class="st">&quot;datos_sas&quot;</span>)</code></pre></div>
+<p>Observa como, en el directorio que se despliega con <code>getwd</code> encuentras ahora una carpeta llamada <code>datos_sas</code>. Creamos ahí un archivo con la función <code>write_sas</code> de <code>haven</code>. Nota que, para <strong>escribirlos</strong>, también debemos asegurarnos que los nombres de variables estén compuestos por letras, números o guiones bajos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">misdatos &lt;-<span class="st"> </span>iris
+<span class="kw">names</span>(misdatos) &lt;-<span class="st"> </span><span class="kw">tolower</span>(<span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">.&quot;</span>, <span class="st">&quot;_&quot;</span>, <span class="kw">names</span>(misdatos)))
+<span class="co"># haven</span>
+<span class="kw">write_sas</span>(<span class="dt">data =</span> misdatos, <span class="dt">path =</span> <span class="st">&quot;datos_sas/misdatos.sas7bdat&quot;</span>)</code></pre></div>
+<p>Para leerlos, utilizamos <code>read_sas</code> del paquete <code>haven</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># haven - como tibble</span>
+misdatos &lt;-<span class="st"> </span><span class="kw">read_sas</span>(<span class="st">&quot;datos_sas/misdatos.sas7bdat&quot;</span>
+                     , <span class="dt">catalog_file =</span> <span class="ot">NULL</span>, <span class="dt">encoding =</span> <span class="ot">NULL</span>)</code></pre></div>
+<p>Observa desde el explorador de archivos, cómo se creó el archivo dentro del directorio <code>datos_sas/</code>. También desde <code>R</code> podemos borrar el directorio:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlink</span>(<span class="st">&quot;datos_sas&quot;</span>, <span class="dt">recursive =</span> T, <span class="dt">force =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>La bandera <code>recursive</code> le dice al sistema que borre todo lo contenido en esa carpeta.</p>
+</div>
+<div id="google-spreadsheet" class="section level3">
+<h3><span class="header-section-number">5.1.9</span> Google Spreadsheet</h3>
+<p>Para hacer este ejercicio, debes tener una cuenta de <code>gmail</code>.</p>
+<p>Primero, debe realizarse la autenticación. Esto lo puedes hacer en cualquier sesión interactiva utilizando alguna función del paquete <code>googlesheets</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gs_ls</span>()</code></pre></div>
+<p>En la consola de <code>R</code> te aparece:</p>
+<p><img src="images/gs_oauth1.png" width="30%" style="display: block; margin: auto;" /></p>
+<p>Se abrirá una ventana del explorador y deberás introducir tus credenciales de tu cuenta de <code>gmail</code></p>
+<p><img src="images/gs_oauth2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Después de poner tus credenciales, te aparecerá un mensaje pidiendo acceso a tus datos en <code>drive</code>:</p>
+<p><img src="images/gs_oauth3.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Al aceptar darle acceso, recibirás un mensaje parecido a <em>Authentication complete. Please close this page and return to R.</em></p>
+<p>Ahora verás en la consola de R un listado de las <code>google spreadsheets</code> en tu cuenta de <code>gmail</code>.</p>
+<p>Ahora, vamos a <strong>escribir</strong> una nueva hoja en tu cuenta.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gs_new</span>(<span class="st">&quot;misdatos&quot;</span>, <span class="dt">ws_title =</span> <span class="st">&quot;mihoja&quot;</span>, <span class="dt">input =</span> <span class="kw">head</span>(iris)
+       , <span class="dt">trim =</span> <span class="ot">TRUE</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>Si vas a tu google drive, deberás ver que se creó un nuevo elemento que se ve así:</p>
+<p><img src="images/gs_nuevo.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>De igual forma, puedes ahora <strong>leer</strong> los datos de cualquier <code>google spreadsheet</code> que tengas en tu cuenta.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">misdatos &lt;-<span class="st"> </span><span class="kw">gs_read</span>(<span class="kw">gs_title</span>(<span class="st">&quot;misdatos&quot;</span>), <span class="dt">ws =</span> <span class="st">&quot;mihoja&quot;</span>)
+<span class="co"># La borro</span>
+<span class="kw">gs_delete</span>(<span class="kw">gs_title</span>(<span class="st">&quot;misdatos&quot;</span>))</code></pre></div>
+</div>
+<div id="google-bigquery" class="section level3">
+<h3><span class="header-section-number">5.1.10</span> Google bigquery</h3>
+<p><code>Google bigquery</code> es un <em>data warehouse</em> que permite guardar grandes bases de datos. Al contratar el servicio, <code>google</code> se encarga del <em>hardware</em> y la infraestructura necesaria para que su procesamiento sea rápido <span class="citation">(Platform <a href="#ref-whatisbigquery">2016</a>)</span>.</p>
+<p>Para guardar tus datos en <code>bigquery</code> debes crear un proyecto en <a href="https://console.developers.google.com/apis/library">la consola de desarrolladores</a>.</p>
+<p>Existen varias bases de dato públicas disponibles. Para poder utilizarlas, necesitas tener una cuenta. Puedes empezar una prueba gratis en <a href="https://cloud.google.com/free-trial/">la página de google cloud platform.</a> Verás una pantalla como esta:</p>
+<p><img src="images/bq1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Sigue las instrucciones y eventualmente llegarás a una pantalla como esta</p>
+<p><img src="images/bq2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Copia el identificador de tu proyecto para que puedas realizar <code>queries</code> (llamadas a las bases de datos).</p>
+<p>Leemos la base de datos pública de natalidad en Estados Unidos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">project &lt;-<span class="st"> &quot;focus-healer-159122&quot;</span> <span class="co"># pon tu projectID aquí</span>
+ 
+sql &lt;-<span class="st"> &#39;SELECT year, count(*) as babies, avg(mother_age) as mother_age_avg</span>
+<span class="st">FROM[publicdata:samples.natality] </span>
+<span class="st">WHERE year &gt; 1980 and year &lt; 2006</span>
+<span class="st">group by year;&#39;</span>
+ 
+data &lt;-<span class="st"> </span><span class="kw">query_exec</span>(<span class="dt">query =</span> sql, <span class="dt">project =</span> project)</code></pre></div>
+<p>Nota como la tabla cuenta con aproximadamente. 140 millones de registros y se obtiene el detalle en segundos.</p>
+</div>
+<div id="heroku-postgres" class="section level3">
+<h3><span class="header-section-number">5.1.11</span> Heroku Postgres</h3>
+<p><code>R</code> no es un manejador de base de datos y, por ende, no es un lenguaje que permite trabajar con una gran cantidad de datos. <code>R</code> guarda los objetos utilizando la memoria virtual de la computadora, i.e. la RAM, misma que depende de varios elementos (incluido el sistema operativo) y que limita los datos que podrán ser procesados.</p>
+<p>Cuando necesitamos conocer el tamaño de los datos que están en el ambiente de trabajo, puede utilizarse el paquete <code>pryr</code> <span class="citation">(H. Wickham <a href="#ref-pryr">2015</a><a href="#ref-pryr">a</a>, sección “the role of physical memory”)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>()) <span class="co"># borramos los objetos del ambiente</span>
+<span class="co"># Cargamos datos al ambiente</span>
+flights &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/flights.csv&quot;</span>)
+airports &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/airports.csv&quot;</span>)
+planes &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/planes.csv&quot;</span>)
+<span class="kw">ls</span>() <span class="co"># mostramos los objetos en el ambiente</span>
+
+<span class="kw">library</span>(pryr) <span class="co"># Cargamos el paquete pryr</span>
+<span class="kw">mem_used</span>() <span class="co"># memoria utilizada</span>
+
+<span class="kw">object_size</span>(flights, <span class="dt">units =</span> <span class="st">&quot;Mb&quot;</span>) <span class="co"># Obtenemos el tamaño de un objeto</span>
+<span class="kw">sapply</span>(<span class="kw">ls</span>(), <span class="cf">function</span>(x) <span class="kw">object_size</span>(<span class="kw">get</span>(x))) <span class="co"># de todos en el ambiente</span></code></pre></div>
+<p>Las estrategias en memoria se revisaron brevemente en el apartado XXX, en este caso, es pertinente mencionar las estrategias fuera de memoria (<em>out of memory</em>).</p>
+<p>Es posible explorar un conjunto de datos sin necesidad de cargarlos en <code>R</code> pero utilizando comandos de <code>R</code> y trabajando desde un script de <code>R</code>, permitiendo que herramientas más eficientes (y apropiadas) para el trabajo de grandes volúmenes de datos realicen el procesamiento de los mismos.</p>
+<p>Los sistemas gestores de base de datos están optimizados para almacenar y buscar en grandes volúmenes de datos en forma más eficiente que <code>R</code>. Algunos ejemplos populares son Oracle y PostgreSQL <span class="citation">(Peng, Kross, and Anderson <a href="#ref-peng2016m">2016</a>, sección “working with large datasets”)</span>. Hay múltiples paquetes que permiten establecer una conexión con estos sistemas desde una sesión de <code>R</code>.</p>
+<p>Los paquetes <code>DBI</code> y <code>Postgresql</code> permiten realizar esta tarea. Debido a que requieren credenciales se muestra una función para leer datos desde <code>PostgreSQL</code> y escribirlos sin necesidad de poner las credenciales dentro del mismo script.</p>
+<p>Para que funcionen apropiadamente, es necesario poner en el directorio de trabajo un archivo llamado <code>parametros.yaml</code> en donde se escriben las credenciales para Postgres:</p>
+<pre><code>host : localhost
+db : postgres
+username : usr
+password : password
+</code></pre>
+<p>Nota: el salto de línea en la última línea es importante.</p>
+<p>Para leer datos, creamos una función a la que podemos enviarle una cadena de comandos en SQL.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sql2df &lt;-<span class="st"> </span><span class="cf">function</span>(sql.file, <span class="dt">df.file =</span> <span class="st">&quot;&quot;</span>) {
+  <span class="kw">require</span>(DBI)
+  <span class="kw">require</span>(futile.logger)
+  <span class="kw">require</span>(yaml)
+  <span class="kw">require</span>(RPostgreSQL)
+  
+  <span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(df.file)) {
+    <span class="cf">if</span>(<span class="kw">file.exists</span>(<span class="st">&quot;./parametros.yaml&quot;</span>)) {
+      x &lt;-<span class="st"> </span>yaml<span class="op">::</span><span class="kw">yaml.load_file</span>(<span class="st">&quot;./parametros.yaml&quot;</span>)
+    } <span class="cf">else</span> {
+      x &lt;-<span class="st"> </span>yaml<span class="op">::</span><span class="kw">yaml.load_file</span>(<span class="st">&quot;../parametros.yaml&quot;</span>)
+    }
+    
+    <span class="co"># Creamos la conexión a la base de datos</span>
+    futile.logger<span class="op">::</span><span class="kw">flog.info</span>(<span class="st">&quot;Conectando a la base de datos&quot;</span>)
+    
+    con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(RPostgreSQL<span class="op">::</span><span class="kw">PostgreSQL</span>(), <span class="dt">dbname =</span> x<span class="op">$</span>db, 
+                     <span class="dt">host =</span> x<span class="op">$</span>host, 
+                     <span class="dt">port =</span> <span class="dv">5432</span>, 
+                     <span class="dt">user =</span> x<span class="op">$</span>username,
+                     <span class="dt">password =</span> x<span class="op">$</span>password)
+    
+    futile.logger<span class="op">::</span><span class="kw">flog.info</span>(<span class="st">&quot;Conectado a %s, como %s&quot;</span>, x<span class="op">$</span>host, x<span class="op">$</span>username)
+    
+    <span class="co"># Leemos el query</span>
+    sql &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">readLines</span>(sql.file,<span class="dt">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)
+                 , <span class="dt">sep=</span><span class="st">&quot; &quot;</span>, <span class="dt">collapse=</span><span class="st">&quot; &quot;</span>)
+    
+    <span class="kw">tryCatch</span>( {
+      futile.logger<span class="op">::</span><span class="kw">flog.info</span>(<span class="st">&quot;Ejecutando el query&quot;</span>)
+      <span class="co"># Creamos el query</span>
+      rs &lt;-<span class="st"> </span>RPostgreSQL<span class="op">::</span><span class="kw">dbSendQuery</span>(con, sql)
+      futile.logger<span class="op">::</span><span class="kw">flog.info</span>(<span class="st">&quot;Obteniendo los datos&quot;</span>)
+      <span class="co"># Obtenemos los datos</span>
+      df &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw">dbFetch</span>(rs)
+      <span class="co"># Liberamos el ResultSet</span>
+      futile.logger<span class="op">::</span><span class="kw">flog.info</span>(<span class="st">&quot;Limpiando el result set&quot;</span>)
+      RPostgreSQL<span class="op">::</span><span class="kw">dbClearResult</span>(rs)
+    }, <span class="dt">finally=</span>RPostgreSQL<span class="op">::</span><span class="kw">dbDisconnect</span>(con) <span class="co"># Nos desconectamos de la BD</span>
+    )
+    
+    <span class="cf">if</span>(df.file <span class="op">!=</span><span class="st"> &quot;&quot;</span>){ 
+      <span class="kw">saveRDS</span>(<span class="dt">object=</span>df, <span class="dt">file=</span>df.file)  
+    }
+  } <span class="cf">else</span> {
+    df &lt;-<span class="st"> </span><span class="kw">readRDS</span>(df.file)
+  }
+  
+  <span class="kw">return</span>(df)
+}</code></pre></div>
+<p>La función <code>sql2df</code><a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> recibe como parámetro, como cadena, la ruta hacia un archivo de extensión <code>.sql</code> con los comandos a ejecutar en el manejador de base de datos. Éste puede verse, por ejemplo, como:</p>
+<pre><code>select * 
+from information_schema.tables 
+where table_schema = &#39;information_schema&#39;;</code></pre>
+<p>Guardamos ésta en el archivo <code>sql/ejemplo.sql</code> la cláusula de arriba. Después, llamamos a la función.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos &lt;-<span class="st"> </span><span class="kw">sql2df</span>(<span class="st">&quot;sql/ejemplo.sql&quot;</span>, <span class="dt">df.file =</span> <span class="st">&quot;ejemplo.rds&quot;</span>)
+<span class="kw">head</span>(datos)</code></pre></div>
+<p>Con el parámetro <code>df.file</code> es posible especificar una ruta para que se guarde una copia local del resultado de los datos. Esto es útil cuando se está trabajando con los datos, de forma que sea más rápido el trabajo con los mismos.</p>
+<p>Para escribir datos, podemos utilizar la función siguiente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2sql &lt;-<span class="st"> </span><span class="cf">function</span>(data.frame, df.schema.name, df.table.name, <span class="dt">owner.to =</span> <span class="ot">NA</span>) {
+  <span class="kw">require</span>(DBI)
+  <span class="kw">require</span>(futile.logger)
+  <span class="kw">require</span>(yaml)
+  <span class="kw">require</span>(RPostgreSQL)
+  data.frame &lt;-<span class="st"> </span><span class="kw">data.frame</span>(data.frame)
+  <span class="co"># Normalizamos nombres</span>
+  <span class="kw">names</span>(data.frame) &lt;-<span class="st"> </span><span class="kw">normalizarNombres</span>(<span class="kw">names</span>(data.frame))
+  
+  <span class="cf">if</span>(<span class="kw">file.exists</span>(<span class="st">&quot;./parametros.yaml&quot;</span>)) {
+    x &lt;-<span class="st"> </span>yaml<span class="op">::</span><span class="kw">yaml.load_file</span>(<span class="st">&quot;./parametros.yaml&quot;</span>)
+  } <span class="cf">else</span> {
+    x &lt;-<span class="st"> </span>yaml<span class="op">::</span><span class="kw">yaml.load_file</span>(<span class="st">&quot;../parametros.yaml&quot;</span>)
+  }
+   
+  <span class="co"># Creamos la conexión a la base de datos</span>
+  futile.logger<span class="op">::</span><span class="kw">flog.info</span>(<span class="st">&quot;Conectando a la base de datos&quot;</span>)
+    
+  con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(RPostgreSQL<span class="op">::</span><span class="kw">PostgreSQL</span>(), <span class="dt">dbname =</span> x<span class="op">$</span>db, 
+                     <span class="dt">host =</span> x<span class="op">$</span>host, 
+                     <span class="dt">port =</span> <span class="dv">5432</span>, 
+                     <span class="dt">user =</span> x<span class="op">$</span>username,
+                     <span class="dt">password =</span> x<span class="op">$</span>password)
+  futile.logger<span class="op">::</span><span class="kw">flog.info</span>(<span class="st">&quot;Conectado a %s, como %s&quot;</span>
+                           , x<span class="op">$</span>host, x<span class="op">$</span>username)
+  
+  <span class="kw">tryCatch</span>( {
+    <span class="kw">flog.info</span>(<span class="st">&quot;Ejecutando la escritura de tabla %s en el esquema %s&quot;</span>
+              , df.table.name, df.schema.name)
+    <span class="co"># Definimos el camino al esquema deseado</span>
+    <span class="cf">if</span>(df.schema.name <span class="op">!=</span><span class="st"> &quot;public&quot;</span>){
+      <span class="kw">dbSendQuery</span>(<span class="dt">conn =</span> con
+                  , <span class="dt">statement =</span> <span class="kw">paste0</span>(<span class="st">&quot;SET search_path = &quot;</span>
+                                       , df.schema.name, <span class="st">&quot;, public;&quot;</span>))
+    }
+    long.name &lt;-<span class="st"> </span><span class="kw">paste0</span>(df.schema.name, <span class="st">&quot;.&quot;</span>, df.table.name)
+    <span class="co"># Escribimos la tabla</span>
+    <span class="kw">dbWriteTable</span>(con,
+                 df.table.name,
+                 data.frame,
+                 <span class="dt">overwrite=</span><span class="ot">FALSE</span>,
+                 <span class="dt">append =</span> <span class="ot">TRUE</span>)
+    
+    <span class="kw">flog.info</span>(<span class="st">&quot;Escribiendo los datos&quot;</span>)
+    
+    <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.na</span>(owner.to)){
+      <span class="kw">flog.info</span>(<span class="st">&quot;Otorgando ownership a %s&quot;</span>, owner.to)
+      <span class="kw">dbSendQuery</span>(con, <span class="kw">paste0</span>(<span class="st">&quot;alter table &quot;</span>, long.name
+                              , <span class="st">&quot; owner to &quot;</span>, owner.to, <span class="st">&quot;;&quot;</span>))
+    }
+    
+  }, <span class="dt">finally=</span><span class="kw">dbDisconnect</span>(con) <span class="co"># Nos desconectamos de la BD</span>
+  )
+  <span class="kw">flog.info</span>(<span class="st">&quot;Escritura finalizada&quot;</span>)
+}
+
+<span class="co"># Función de ayuda</span>
+normalizarNombres &lt;-<span class="st"> </span><span class="cf">function</span>(column_names) {
+  <span class="kw">require</span>(magrittr)
+  <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot; &quot;</span>, stringr<span class="op">::</span><span class="kw">str_trim</span>(column_names)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">gsub</span>(<span class="st">&quot;^ *|(?&lt;= ) | *$&quot;</span>, <span class="st">&quot;&quot;</span>, ., <span class="dt">perl=</span>T) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">gsub</span>(<span class="st">&#39;</span><span class="ch">\\</span><span class="st"> |</span><span class="ch">\\</span><span class="st">.&#39;</span>, <span class="st">&#39;_&#39;</span>, .) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">gsub</span>(<span class="st">&quot;([a-z])([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1_</span><span class="ch">\\</span><span class="st">L</span><span class="ch">\\</span><span class="st">2&quot;</span>, ., <span class="dt">perl =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">gsub</span>(<span class="st">&#39;ñ&#39;</span>, <span class="st">&#39;n&#39;</span>, .) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">iconv</span>(., <span class="dt">to=</span><span class="st">&#39;ASCII//TRANSLIT&#39;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">tolower</span>(.)
+}</code></pre></div>
+<p>Se especifican en los parámetros el data.frame a escribir, una cadena de caracteres indicando el esquema en el que se escribirá la base, una cadena indicando el nombre de la tabla y es posible especificar qué dueño deberá asignarse para la base:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">df2sql</span>(iris, <span class="st">&quot;public&quot;</span>, <span class="st">&quot;iris&quot;</span>, <span class="dt">owner.to =</span> <span class="st">&quot;usr&quot;</span>)</code></pre></div>
+</div>
+<div id="rdata" class="section level3">
+<h3><span class="header-section-number">5.1.12</span> rdata</h3>
+<p>También es posible guardar objetos específicos del ambiente dentro de un formato especial con extensión <code>rdata</code> o <code>RData</code>. Esto es muy útil, por ejemplo, para guardar modelos u otros objetos y después poder utilizarlos en producción o en alguna aplicación que requiera un tiempo de respuesta bajo.</p>
+<p>Para <strong>escribirlos</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">save</span>(..., 
+     <span class="dt">file =</span> <span class="st">&quot;~/misdatos.rdata&quot;</span>,
+     <span class="dt">ascii =</span> <span class="ot">FALSE</span>, <span class="dt">version =</span> <span class="ot">NULL</span>, <span class="dt">envir =</span> <span class="kw">parent.frame</span>(),
+     <span class="dt">compress =</span> <span class="kw">isTRUE</span>(<span class="op">!</span>ascii), compression_level,
+     <span class="dt">eval.promises =</span> <span class="ot">TRUE</span>, <span class="dt">precheck =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>Nota como <code>...</code> pueden ser uno o más objetos de <code>R</code>.</p>
+<p>Para <strong>leerlos</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;~/misdatos.rdata&quot;</span>)</code></pre></div>
+<p>Los objetos se cargarán al ambiente con los nombres con los que fueron guardados.</p>
+
+</div>
+</div>
+<!-- </div> -->
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-grolemund2016r">
+<p>Grolemund, G., and H. Wickham. 2016. <em>R for Data Science</em>. O’Reilly Media, Incorporated. <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a>.</p>
+</div>
+<div id="ref-rbase">
+<p>R Core Team. 2016b. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-utils">
+<p>R Core Team. 2016c. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-readr">
+<p>Wickham, Hadley, Jim Hester, and Romain Francois. 2016. <em>Readr: Read Tabular Data</em>. <a href="https://CRAN.R-project.org/package=readr" class="uri">https://CRAN.R-project.org/package=readr</a>.</p>
+</div>
+<div id="ref-whatisbigquery">
+<p>Platform, Google Cloud. 2016. “What Is Bigquery.” Documentation. <a href="https://cloud.google.com/bigquery/what-is-bigquery?" class="uri">https://cloud.google.com/bigquery/what-is-bigquery?</a></p>
+</div>
+<div id="ref-pryr">
+<p>Wickham, Hadley. 2015a. <em>Pryr: Tools for Computing on the Language</em>. <a href="https://CRAN.R-project.org/package=pryr" class="uri">https://CRAN.R-project.org/package=pryr</a>.</p>
+</div>
+<div id="ref-peng2016m">
+<p>Peng, RD, S Kross, and B Anderson. 2016. <em>Mastering Software Development in R</em>. Libro en desarrollo, disponible en línea. <a href="http://rdpeng.github.io/RProgDA/" class="uri">http://rdpeng.github.io/RProgDA/</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>La lista no pretende ser comprehensiva, sin embargo, se presentan algunos de los formatos de datos más comunes. De igual forma, se presentan algunas funciones que sirven para conectar <code>R</code> con datos que están guardados en un manejador de datos externo o en la nube. En caso de presentarse más de un método es porque aunque la recomendación de uso es la función en negritas, la otra opción es más antigua y muy utilizada.<a href="5-1-importacion-de-datos.html#fnref8">↩</a></p></li>
+<li id="fn9"><p>Función adaptada de notas de Adolfo de Únanue.<a href="5-1-importacion-de-datos.html#fnref9">↩</a></p></li>
+</ol>
+</div>
+<p style="text-align: center;">
+<a href="5-herramientas-basicas-para-un-proyecto-de-datos.html"><button class="btn btn-default">Previous</button></a>
+<a href="6-conclusion.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>
