@@ -211,6 +211,16 @@ img {
 <li><a href="5-1-importacion-de-datos.html#heroku-postgres"><span class="toc-section-number">5.1.11</span> Heroku Postgres</a></li>
 <li><a href="5-1-importacion-de-datos.html#rdata"><span class="toc-section-number">5.1.12</span> rdata</a></li>
 </ul></li>
+<li class="has-sub"><a href="5-2-transformacion-de-datos.html#transformacion-de-datos"><span class="toc-section-number">5.2</span> Transformación de datos</a><ul>
+<li><a href="5-2-transformacion-de-datos.html#tareas-comunes-en-la-manipulacion-de-datos"><span class="toc-section-number">5.2.1</span> Tareas comunes en la manipulación de datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#extraccion-de-subconjuntos-de-observaciones"><span class="toc-section-number">5.2.2</span> Extracción de subconjuntos de observaciones</a></li>
+<li><a href="5-2-transformacion-de-datos.html#extraccion-de-subconjuntos-de-variables-select"><span class="toc-section-number">5.2.3</span> Extracción de subconjuntos de variables (<em>select</em>)</a></li>
+<li><a href="5-2-transformacion-de-datos.html#creacion-de-resumenes-de-datos"><span class="toc-section-number">5.2.4</span> Creación de resumenes de datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#creacion-de-nuevas-variables"><span class="toc-section-number">5.2.5</span> Creación de nuevas variables</a></li>
+<li><a href="5-2-transformacion-de-datos.html#combinacion-de-conjuntos-de-datos-joins"><span class="toc-section-number">5.2.6</span> Combinación de conjuntos de datos (<em>joins</em>)</a></li>
+<li><a href="5-2-transformacion-de-datos.html#agrupar-datos"><span class="toc-section-number">5.2.7</span> Agrupar datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#reorganizar-datos"><span class="toc-section-number">5.2.8</span> Reorganizar datos</a></li>
+</ul></li>
 </ul></li>
 <li><a href="6-conclusion.html#conclusion"><span class="toc-section-number">6</span> Conclusión</a></li>
 <li class="appendix"><span><b>Apéndices</b></span></li>
@@ -336,8 +346,11 @@ x <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <
 <h3><span class="header-section-number">2.3.3</span> Comandos útiles</h3>
 <p>Para enlistar los objetos que están en el espacio de trabajo</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre></div>
-<pre><code>## [1] &quot;airports&quot;     &quot;df&quot;           &quot;df2&quot;          &quot;flights&quot;     
-## [5] &quot;group.colors&quot; &quot;planes&quot;       &quot;x&quot;</code></pre>
+<pre><code>##  [1] &quot;a&quot;            &quot;airports&quot;     &quot;b&quot;            &quot;destinos&quot;    
+##  [5] &quot;df&quot;           &quot;df2&quot;          &quot;dfTab&quot;        &quot;flights&quot;     
+##  [9] &quot;flights2&quot;     &quot;flights.g&quot;    &quot;flights.m&quot;    &quot;g.df&quot;        
+## [13] &quot;group.colors&quot; &quot;mean_na&quot;      &quot;planes&quot;       &quot;vel_aviones&quot; 
+## [17] &quot;x&quot;</code></pre>
 <p>Para eliminar todos los objetos en un directorio de trabajo (<em>workspace</em>)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>()) <span class="co"># se puede borrar solo uno, por ejemplo, nombrándolo</span>
 <span class="kw">ls</span>()</code></pre></div>

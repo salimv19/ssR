@@ -211,6 +211,16 @@ img {
 <li><a href="5-1-importacion-de-datos.html#heroku-postgres"><span class="toc-section-number">5.1.11</span> Heroku Postgres</a></li>
 <li><a href="5-1-importacion-de-datos.html#rdata"><span class="toc-section-number">5.1.12</span> rdata</a></li>
 </ul></li>
+<li class="has-sub"><a href="5-2-transformacion-de-datos.html#transformacion-de-datos"><span class="toc-section-number">5.2</span> Transformación de datos</a><ul>
+<li><a href="5-2-transformacion-de-datos.html#tareas-comunes-en-la-manipulacion-de-datos"><span class="toc-section-number">5.2.1</span> Tareas comunes en la manipulación de datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#extraccion-de-subconjuntos-de-observaciones"><span class="toc-section-number">5.2.2</span> Extracción de subconjuntos de observaciones</a></li>
+<li><a href="5-2-transformacion-de-datos.html#extraccion-de-subconjuntos-de-variables-select"><span class="toc-section-number">5.2.3</span> Extracción de subconjuntos de variables (<em>select</em>)</a></li>
+<li><a href="5-2-transformacion-de-datos.html#creacion-de-resumenes-de-datos"><span class="toc-section-number">5.2.4</span> Creación de resumenes de datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#creacion-de-nuevas-variables"><span class="toc-section-number">5.2.5</span> Creación de nuevas variables</a></li>
+<li><a href="5-2-transformacion-de-datos.html#combinacion-de-conjuntos-de-datos-joins"><span class="toc-section-number">5.2.6</span> Combinación de conjuntos de datos (<em>joins</em>)</a></li>
+<li><a href="5-2-transformacion-de-datos.html#agrupar-datos"><span class="toc-section-number">5.2.7</span> Agrupar datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#reorganizar-datos"><span class="toc-section-number">5.2.8</span> Reorganizar datos</a></li>
+</ul></li>
 </ul></li>
 <li><a href="6-conclusion.html#conclusion"><span class="toc-section-number">6</span> Conclusión</a></li>
 <li class="appendix"><span><b>Apéndices</b></span></li>
@@ -586,7 +596,8 @@ password : password
 </code></pre>
 <p>Nota: el salto de línea en la última línea es importante.</p>
 <p>Para leer datos, creamos una función a la que podemos enviarle una cadena de comandos en SQL.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sql2df &lt;-<span class="st"> </span><span class="cf">function</span>(sql.file, <span class="dt">df.file =</span> <span class="st">&quot;&quot;</span>) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### POSTGRES
+sql2df &lt;-<span class="st"> </span><span class="cf">function</span>(sql.file, <span class="dt">df.file =</span> <span class="st">&quot;&quot;</span>) {
   <span class="kw">require</span>(DBI)
   <span class="kw">require</span>(futile.logger)
   <span class="kw">require</span>(yaml)
@@ -641,11 +652,13 @@ password : password
 from information_schema.tables 
 where table_schema = &#39;information_schema&#39;;</code></pre>
 <p>Guardamos ésta en el archivo <code>sql/ejemplo.sql</code> la cláusula de arriba. Después, llamamos a la función.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos &lt;-<span class="st"> </span><span class="kw">sql2df</span>(<span class="st">&quot;sql/ejemplo.sql&quot;</span>, <span class="dt">df.file =</span> <span class="st">&quot;ejemplo.rds&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### POSTGRES
+datos &lt;-<span class="st"> </span><span class="kw">sql2df</span>(<span class="st">&quot;sql/ejemplo.sql&quot;</span>, <span class="dt">df.file =</span> <span class="st">&quot;ejemplo.rds&quot;</span>)
 <span class="kw">head</span>(datos)</code></pre></div>
 <p>Con el parámetro <code>df.file</code> es posible especificar una ruta para que se guarde una copia local del resultado de los datos. Esto es útil cuando se está trabajando con los datos, de forma que sea más rápido el trabajo con los mismos.</p>
 <p>Para escribir datos, podemos utilizar la función siguiente:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2sql &lt;-<span class="st"> </span><span class="cf">function</span>(data.frame, df.schema.name, df.table.name, <span class="dt">owner.to =</span> <span class="ot">NA</span>) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### POSTGRES
+df2sql &lt;-<span class="st"> </span><span class="cf">function</span>(data.frame, df.schema.name, df.table.name, <span class="dt">owner.to =</span> <span class="ot">NA</span>) {
   <span class="kw">require</span>(DBI)
   <span class="kw">require</span>(futile.logger)
   <span class="kw">require</span>(yaml)
@@ -713,7 +726,8 @@ normalizarNombres &lt;-<span class="st"> </span><span class="cf">function</span>
 <span class="st">    </span><span class="kw">tolower</span>(.)
 }</code></pre></div>
 <p>Se especifican en los parámetros el data.frame a escribir, una cadena de caracteres indicando el esquema en el que se escribirá la base, una cadena indicando el nombre de la tabla y es posible especificar qué dueño deberá asignarse para la base:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">df2sql</span>(iris, <span class="st">&quot;public&quot;</span>, <span class="st">&quot;iris&quot;</span>, <span class="dt">owner.to =</span> <span class="st">&quot;usr&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### POSTGRES
+<span class="kw">df2sql</span>(iris, <span class="st">&quot;public&quot;</span>, <span class="st">&quot;iris&quot;</span>, <span class="dt">owner.to =</span> <span class="st">&quot;usr&quot;</span>)</code></pre></div>
 </div>
 <div id="rdata" class="section level3">
 <h3><span class="header-section-number">5.1.12</span> rdata</h3>
@@ -731,7 +745,6 @@ normalizarNombres &lt;-<span class="st"> </span><span class="cf">function</span>
 
 </div>
 </div>
-<!-- </div> -->
 <h3>Bibliografía</h3>
 <div id="refs" class="references">
 <div id="ref-grolemund2016r">
@@ -765,7 +778,7 @@ normalizarNombres &lt;-<span class="st"> </span><span class="cf">function</span>
 </div>
 <p style="text-align: center;">
 <a href="5-herramientas-basicas-para-un-proyecto-de-datos.html"><button class="btn btn-default">Previous</button></a>
-<a href="6-conclusion.html"><button class="btn btn-default">Next</button></a>
+<a href="5-2-transformacion-de-datos.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>

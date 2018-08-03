@@ -565,6 +565,7 @@ Para leer datos, creamos una función a la que podemos enviarle una cadena
 de comandos en SQL. 
 
 ```{r, eval = FALSE}
+### POSTGRES
 sql2df <- function(sql.file, df.file = "") {
   require(DBI)
   require(futile.logger)
@@ -631,12 +632,14 @@ where table_schema = 'information_schema';
 Guardamos ésta en el archivo `sql/ejemplo.sql` la cláusula de arriba. Después, 
 llamamos a la función.
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
+### POSTGRES
 datos <- sql2df("sql/ejemplo.sql", df.file = "ejemplo.rds")
 head(datos)
 ```
 
-```{r, echo =  F, eval=FALSE}
+```{r, echo =  F, eval = FALSE}
+### POSTGRES
 file.remove("ejemplo.rds")
 ```
 
@@ -646,7 +649,8 @@ con los datos, de forma que sea más rápido el trabajo con los mismos.
 
 Para escribir datos, podemos utilizar la función siguiente:
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
+### POSTGRES
 df2sql <- function(data.frame, df.schema.name, df.table.name, owner.to = NA) {
   require(DBI)
   require(futile.logger)
@@ -722,6 +726,7 @@ indicando el nombre de la tabla y es posible especificar qué dueño deberá
 asignarse para la base:
 
 ```{r, eval = FALSE}
+### POSTGRES
 df2sql(iris, "public", "iris", owner.to = "usr")
 ```
 

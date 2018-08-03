@@ -199,6 +199,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.1.11" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#heroku-postgres"><i class="fa fa-check"></i><b>5.1.11</b> Heroku Postgres</a></li>
 <li class="chapter" data-level="5.1.12" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#rdata"><i class="fa fa-check"></i><b>5.1.12</b> rdata</a></li>
 </ul></li>
+<li class="chapter" data-level="5.2" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html"><i class="fa fa-check"></i><b>5.2</b> Transformación de datos</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#tareas-comunes-en-la-manipulacion-de-datos"><i class="fa fa-check"></i><b>5.2.1</b> Tareas comunes en la manipulación de datos</a></li>
+<li class="chapter" data-level="5.2.2" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#extraccion-de-subconjuntos-de-observaciones"><i class="fa fa-check"></i><b>5.2.2</b> Extracción de subconjuntos de observaciones</a></li>
+<li class="chapter" data-level="5.2.3" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#extraccion-de-subconjuntos-de-variables-select"><i class="fa fa-check"></i><b>5.2.3</b> Extracción de subconjuntos de variables (<em>select</em>)</a></li>
+<li class="chapter" data-level="5.2.4" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#creacion-de-resumenes-de-datos"><i class="fa fa-check"></i><b>5.2.4</b> Creación de resumenes de datos</a></li>
+<li class="chapter" data-level="5.2.5" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#creacion-de-nuevas-variables"><i class="fa fa-check"></i><b>5.2.5</b> Creación de nuevas variables</a></li>
+<li class="chapter" data-level="5.2.6" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#combinacion-de-conjuntos-de-datos-joins"><i class="fa fa-check"></i><b>5.2.6</b> Combinación de conjuntos de datos (<em>joins</em>)</a></li>
+<li class="chapter" data-level="5.2.7" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#agrupar-datos"><i class="fa fa-check"></i><b>5.2.7</b> Agrupar datos</a></li>
+<li class="chapter" data-level="5.2.8" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#reorganizar-datos"><i class="fa fa-check"></i><b>5.2.8</b> Reorganizar datos</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusión</a></li>
 <li class="appendix"><span><b>Apéndices</b></span></li>
@@ -381,7 +391,7 @@ tb &lt;-<span class="st"> </span><span class="kw">tibble</span>(
 ## 4    103            203   303
 ## 5    104            204   304</code></pre>
 <p>Para utilizar nombres no sintácticamente válidos es necesario conjugarlos con el acento invertido al nombrarlos en otros paquetes como <code>dplyr</code>, <code>ggplot2</code>, entre otros que son compatibles con el objeto <code>tibble</code>.</p>
-<p>La otra diferencia importante entre los <code>tibbles</code> y los <code>data.frames</code> es que pueden incorporar elementos de listas en una columna en forma sencilla <span class="citation">(Wickham <a href="#ref-wickhammx">2016</a>)</span>.</p>
+<p>La otra diferencia importante entre los <code>tibbles</code> y los <code>data.frames</code> es que pueden incorporar elementos de listas en una columna en forma sencilla <span class="citation">(H. Wickham <a href="#ref-wickhammx">2016</a><a href="#ref-wickhammx">c</a>)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">try</span>(df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">5</span>)))
 
 df&lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">I</span>(<span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">5</span>)))
@@ -413,7 +423,7 @@ tb</code></pre></div>
 <p>Wickham, Hadley, Romain Francois, and Kirill Müller. 2016. <em>Tibble: Simple Data Frames</em>. <a href="https://CRAN.R-project.org/package=tibble" class="uri">https://CRAN.R-project.org/package=tibble</a>.</p>
 </div>
 <div id="ref-wickhammx">
-<p>Wickham, Hadley. 2016. “Data Science with the Tidyverse.” <a href="http://eventos.itam.mx/es/data-science-tidyverse" class="uri">http://eventos.itam.mx/es/data-science-tidyverse</a>.</p>
+<p>Wickham, Hadley. 2016c. “Data Science with the Tidyverse.” <a href="http://eventos.itam.mx/es/data-science-tidyverse" class="uri">http://eventos.itam.mx/es/data-science-tidyverse</a>.</p>
 </div>
 </div>
             </section>
