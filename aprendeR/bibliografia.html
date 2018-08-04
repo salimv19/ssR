@@ -335,6 +335,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>McKinney, Wes. 2010. “pandas: Python Data Analysis Library.” <a href="http://pandas.pydata.org/" class="uri">http://pandas.pydata.org/</a>.</p>
 </div>
 <div>
+<p>MGN. 2005–2016. <em>Marco Geoestadístico Nacional</em>. <a href="http://www.inegi.org.mx/geo/contenidos/geoestadistica/m_geoestadistico.aspx" class="uri">http://www.inegi.org.mx/geo/contenidos/geoestadistica/m_geoestadistico.aspx</a>; INEGI.</p>
+</div>
+<div>
 <p>Moffat, CL. 2009. “Visual Representation of Sql Joins.” Blog. <a href="https://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins" class="uri">https://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins</a>.</p>
 </div>
 <div>
@@ -417,25 +420,55 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Estos números representan únicamente una fracción de las descargas de <code>R</code> en el mundo pues existen múltiples espejos del software de donde es posible realizar la descarga. Los datos son tomados de <span class="citation">Csardi (<a href="#ref-cranlogs">2016</a>)</span>.<a href="index.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Revisaremos más adelante con detalle la definición de vectores en la sección <a href="estructuras-y-funciones.html#estructuras-y-funciones">3</a>.<a href="el-espacio-de-trabajo-workspace.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>RStudio tiene muchos <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">atajos de teclado</a> que facilitan el trabajo.<a href="scripting.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>Hay otro tipo de funciones en las que accesar al código fuente no se pueda con los métodos descritos. Para ello, es útil revisar la sección “old-school object-oriented programming in R” <span class="citation">(Adler <a href="#ref-adler2010r">2010</a>, págs. 131-133)</span> o las secciones dedicadas a los objetos S3 y S4 en <span class="citation">H. Wickham (<a href="#ref-wickham2014advanced">2014</a><a href="#ref-wickham2014advanced">a</a>)</span>.<a href="ayuda-y-documentacion.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>El concepto es mucho más general que esto pero lo reduciremos a una de sus capas más bajas primero para introducirlo y, segundo, porque el concepto general cobra sentido al avanzar en las tareas de programación a las que se enfrenta el usuario.<a href="funciones.html#fnref5">↩</a></p></li>
+<li id="fn6"><p>Los tipos básicos son referidos como atómicos cuando es necesario excluir listas.<a href="estructuras-de-datos.html#fnref6">↩</a></p></li>
+<li id="fn7"><p>Se denomina así por su autor quien en <span class="citation">(Likert <a href="#ref-likert1932">1932</a>)</span> describe su uso.<a href="estructuras-de-datos.html#fnref7">↩</a></p></li>
+<li id="fn8"><p>La lista no pretende ser comprehensiva, sin embargo, se presentan algunos de los formatos de datos más comunes. De igual forma, se presentan algunas funciones que sirven para conectar <code>R</code> con datos que están guardados en un manejador de datos externo o en la nube. En caso de presentarse más de un método es porque aunque la recomendación de uso es la función en negritas, la otra opción es más antigua y muy utilizada.<a href="importacion-de-datos.html#fnref8">↩</a></p></li>
+<li id="fn9"><p>Función adaptada de notas de Adolfo de Únanue.<a href="importacion-de-datos.html#fnref9">↩</a></p></li>
+<li id="fn10"><p>Para iniciar en <code>data.table</code> se recomienda ver <span class="citation">Srinivasan and Dowle (<a href="#ref-datatabletutorial">2016</a>)</span> así como las viñetas del paquete <span class="citation">Dowle et al. (<a href="#ref-datatable">2015</a>)</span>.<a href="transformacion-de-datos.html#fnref10">↩</a></p></li>
+<li id="fn11"><p>Para una explicación más detallada de la importancia de este operador en la simplificación de código, ver la nota del autor del paquete Stefan Milton en <span class="citation">Galili (<a href="#ref-simplermagrittr">2014</a>)</span> y la viñeta <code>magrittr</code> dentro del paquete.<a href="transformacion-de-datos.html#fnref11">↩</a></p></li>
+<li id="fn12"><p><span class="citation">(Wickham and Grolemund <a href="#ref-wickham2016r">2016</a>, sección Data Tidying)</span> explica este último criterio como “cada valor ocupa su propia celda”.<a href="datos-limpios.html#fnref12">↩</a></p></li>
+<li id="fn13"><p>Ejemplo tomado de <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 3)</span>.<a href="datos-limpios.html#fnref13">↩</a></p></li>
+<li id="fn14"><p>Los valores perdidos estructurales, representan mediciones de valores que no se puede hacer o que no suceden y, por tanto, se pueden eliminar (por ejemplo, hombres embarazados). En este ejemplo, tenemos un valor perdido no estructural.<a href="datos-limpios.html#fnref14">↩</a></p></li>
+</ol>
+</div>
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-cranlogs">
+<p>Csardi, Gabor. 2016. <em>Cranlogs: Download Logs from the ’Rstudio’ ’Cran’ Mirror</em>. <a href="https://github.com/metacran/cranlogs" class="uri">https://github.com/metacran/cranlogs</a>.</p>
+</div>
+<div id="ref-adler2010r">
+<p>Adler, Joseph. 2010. <em>R in a Nutshell: A Desktop Quick Reference</em>. “ O’Reilly Media, Inc.”</p>
+</div>
+<div id="ref-wickham2014advanced">
+<p>Wickham, Hadley. 2014a. <em>Advanced R</em>. CRC Press.</p>
+</div>
+<div id="ref-likert1932">
+<p>Likert, Rensis. 1932. “A Technique for the Measurement of Attitudes.” <em>Archives of Psychology</em>.</p>
+</div>
+<div id="ref-datatabletutorial">
+<p>Srinivasan, A, and M Dowle. 2016. “Data.table Tutorials.” Tutorial. Datacamp; <a href="https://www.datacamp.com/courses/data-table-data-manipulation-r-tutorial" class="uri">https://www.datacamp.com/courses/data-table-data-manipulation-r-tutorial</a>.</p>
+</div>
+<div id="ref-datatable">
+<p>Dowle, M, A Srinivasan, T Short, S Lianoglou with contributions from R Saporta, and E Antonyan. 2015. <em>Data.table: Extension of Data.frame</em>. <a href="https://CRAN.R-project.org/package=data.table" class="uri">https://CRAN.R-project.org/package=data.table</a>.</p>
+</div>
+<div id="ref-simplermagrittr">
+<p>Galili, Tal. 2014. “Simpler R Coding with Pipes: The Present and Future of the Magrittr Package.” Blog. <a href="https://www.r-bloggers.com/simpler-r-coding-with-pipes-the-present-and-future-of-the-magrittr-package/" class="uri">https://www.r-bloggers.com/simpler-r-coding-with-pipes-the-present-and-future-of-the-magrittr-package/</a>.</p>
+</div>
+<div id="ref-wickham2016r">
+<p>Wickham, Hadley, and Garrett Grolemund. 2016. “R for Data Science.” Sebastopol, CA: O’Reilly Media.</p>
+</div>
+<div id="ref-wickham2014tidy">
+<p>Wickham, Hadley, and others. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10). Foundation for Open Access Statistics: 1–23.</p>
+</div>
+</div>
             </section>
 
           </div>

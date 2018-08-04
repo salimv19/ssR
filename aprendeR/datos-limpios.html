@@ -245,7 +245,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="datos-limpios" class="section level2">
 <h2><span class="header-section-number">5.3</span> Datos limpios</h2>
-<p>Esta sección resume algunas de las funciones existentes para <strong>limpiar</strong> datos de distintos formatos a <code>R</code>. En particular, se utiliza la conceptualización de datos limpios presentada en <span class="citation">Wickham and others (<a href="#ref-wickham2014tidy">2014</a>)</span> e implementada en el paquete <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span>. En la figura  podemos ver la etapa del análisis de datos correspondiente.</p>
+<p>Esta sección resume algunas de las funciones existentes para <strong>limpiar</strong> datos de distintos formatos a <code>R</code>. En particular, se utiliza la conceptualización de datos limpios presentada en <span class="citation">Wickham and others (<a href="#ref-wickham2014tidy">2014</a>)</span> e implementada en el paquete <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span>. En la figura <a href="datos-limpios.html#fig:ciclo2">5.5</a> podemos ver la etapa del análisis de datos correspondiente.</p>
 <div class="figure" style="text-align: center"><span id="fig:ciclo2"></span>
 <img src="images/02_ciclo_2.png" alt="Limpieza de datos [@grolemund2016r, Introducción]." width="75%" />
 <p class="caption">
@@ -254,7 +254,7 @@ Figura 5.5: Limpieza de datos <span class="citation">(Grolemund and Wickham <a h
 </div>
 <p>Mucho del esfuerzo en analítica lidia con la limpieza de datos. Tomar datos de diferentes fuentes y poderlas poner en la forma en la que uno los necesita para realizar analítica toma mucho tiempo y esfuerzo. Existen herramientas que permiten que esta parte sea más fácil y eficiente. Entre éstas se encuentran los criterios de datos limpios.</p>
 <p>Los conjuntos de datos limpios (<em>tidy datasets</em>) permiten manipularlos fácilmente, modelarlos y visualizarlos. Aunque funcionan independientemente del lenguaje utilizado, son particularmente útiles en <code>R</code> pues éste es un lenguaje pensado para estructuras de datos tabulares; mismas que son más fácilmente explotables si se usan datos limpios <span class="citation">(Wickham and Grolemund <a href="#ref-wickham2016r">2016</a>)</span>.</p>
-<p>Los datos limpios tienen una estructura específica: cada variable es una columna, cada observación una fila y tipo de unidad observacional forma una tabla<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a>.</p>
+<p>Los datos limpios tienen una estructura específica: cada variable es una columna, cada observación una fila y tipo de unidad observacional forma una tabla<a href="bibliografia.html#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a>.</p>
 <div id="datos-limpios-en-el-procesamiento-de-datos" class="section level4">
 <h4><span class="header-section-number">5.3.0.1</span> Datos limpios en el procesamiento de datos</h4>
 <p>Esta actividad incluye una gran cantidad de elementos: revisión de valores atípicos, extracción de variables de cadenas en datos no estructurados, imputación de valores perdidos. Los datos limpios son tan solo un subconjunto de este proceso y lidian con el cómo estructurar los datos de manera que se facilite el análisis.</p>
@@ -264,19 +264,18 @@ Figura 5.5: Limpieza de datos <span class="citation">(Grolemund and Wickham <a h
 <div id="estructura-de-datos-un-ejemplo" class="section level5">
 <h5><span class="header-section-number">5.3.0.1.1</span> Estructura de datos: un ejemplo</h5>
 <p>La mayoría de los datos estadísticos están conformados por tablas rectangulares compuestas por filas y columnas. Las columnas casi siempre están etiquetadas (<em>colnames</em>) y las filas a veces lo están.</p>
-<p>Tomamos el ejemplo de datos de la figura  en donde se presentan datos de un experimento<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a>. La tabla contiene dos columnas y tres filas, ambas etiquetadas.</p>
+<p>Tomamos el ejemplo de datos de la figura <a href="datos-limpios.html#fig:estructura">5.6</a> en donde se presentan datos de un experimento<a href="bibliografia.html#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a>. La tabla contiene dos columnas y tres filas, ambas etiquetadas.</p>
 <div class="figure" style="text-align: center"><span id="fig:estructura"></span>
 <img src="images/02_estructura.png" alt="Típica presentación de datos." width="40%" />
 <p class="caption">
 Figura 5.6: Típica presentación de datos.
 </p>
 </div>
-<p>Podemos estructurar los datos de diferentes maneras pero la abstracción de filas y columnas solamente nos permite pensar en la representación transpuesta que se muestra en la figura . El diseño cambia pero los datos son los mismos. Además de la apariencia, deberíamos de poder describir la semántica -el significado- de los valores que se muestran en una tabla <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 3)</span> pero la abstracción de filas y columnas no da para más.</p>
+<p>Podemos estructurar los datos de diferentes maneras pero la abstracción de filas y columnas solamente nos permite pensar en la representación transpuesta que se muestra en la figura <a href="datos-limpios.html#fig:estructurat">5.7</a>. El diseño cambia pero los datos son los mismos. Además de la apariencia, deberíamos de poder describir la semántica -el significado- de los valores que se muestran en una tabla <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 3)</span> pero la abstracción de filas y columnas no da para más.</p>
 <div class="figure" style="text-align: center"><span id="fig:estructurat"></span>
-<img src="images/02_estructurat.png" alt="Mismos datos que en 
-ef{fig:estructura} pero traspuestos." width="50%" />
+<img src="images/02_estructurat.png" alt="Mismos datos que en [5.6] pero traspuestos." width="50%" />
 <p class="caption">
-Figura 5.7: Mismos datos que en ef{fig:estructura} pero traspuestos.
+Figura 5.7: Mismos datos que en <a href="datos-limpios.html#fig:estructura">5.6</a> pero traspuestos.
 </p>
 </div>
 </div>
@@ -288,14 +287,14 @@ Figura 5.7: Mismos datos que en ef{fig:estructura} pero traspuestos.
 <li>Una <em>variable</em> contiene todos los valores de una medida y del mismo atributo subyacente (por ejemplo, temperatura, duración, altura, latitud) a través de unidades.</li>
 <li>Una <em>observación</em>, en cambio, contiene todos los valores medidos para la misma unidad (por ejemplo, una persona, un día, un municipio) a través de distintos atributos.</li>
 </ul>
-<p>Los mismos datos en las figuras  y  los pensamos ahora en estos términos. Tenemos 3 variables:</p>
+<p>Los mismos datos en las figuras <a href="datos-limpios.html#fig:estructura">5.6</a> y <a href="datos-limpios.html#fig:estructurat">5.7</a> los pensamos ahora en estos términos. Tenemos 3 variables:</p>
 <ol style="list-style-type: decimal">
 <li><em>persona</em> con tres posibles valores (John, Jane, Mary)</li>
 <li><em>tratamiento</em> con dos posibles valores (a o b)</li>
 <li><em>resultado</em> con 6 valores (-, 16, 3, 2, 11, 1)</li>
 </ol>
-<p>El diseño del experimento mismo nos habla de la estructura de las observaciones y los posibles valores que pueden tomar. Por ejemplo, en este caso el valor perdido nos dice que, por diseño, se debió de capturar esta variable pero no se hizo (por eso es importante guardarlo como tal)<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a>.</p>
-<p>En la figura  se muestran los mismos datos que antes pero pensados tal que las variables son columnas y las observaciones (en este caso, cada punto en el diseño experimental) son filas.</p>
+<p>El diseño del experimento mismo nos habla de la estructura de las observaciones y los posibles valores que pueden tomar. Por ejemplo, en este caso el valor perdido nos dice que, por diseño, se debió de capturar esta variable pero no se hizo (por eso es importante guardarlo como tal)<a href="bibliografia.html#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a>.</p>
+<p>En la figura <a href="datos-limpios.html#fig:estructuratidy">5.8</a> se muestran los mismos datos que antes pero pensados tal que las variables son columnas y las observaciones (en este caso, cada punto en el diseño experimental) son filas.</p>
 <div class="figure" style="text-align: center"><span id="fig:estructuratidy"></span>
 <img src="images/02_estructuratidy.png" alt="Observaciones son filas, variables columnas." width="40%" />
 <p class="caption">
@@ -322,9 +321,30 @@ Figura 5.9: Ejemplificación de datos limpios <span class="citation">(Wickham an
 </p>
 </div>
 <p>Esto equivale a la tercera forma normal de Codd <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 4)</span> enfocado a un solo conjunto de datos y no a datos conectados como en bases relacionales. Los datos sucios son cualquier otro tipo de manera de organizar los datos.</p>
-<p>La tabla  corresponde a datos limpios: cada fila es una observación, es decir, el resultado de un tratamiento a una persona. Cada columna es una variable. Solo tenemos un tipo de unidad observacional, es decir, cada renglón es una unidad del diseño experimental.</p>
-<p>Con los datos así ordenados, suele ser más fácil extraer datos que, por ejemplo, en Tabla .</p>
-
+<p>La tabla <a href="datos-limpios.html#fig:estructuratidy">5.8</a> corresponde a datos limpios: cada fila es una observación, es decir, el resultado de un tratamiento a una persona. Cada columna es una variable. Solo tenemos un tipo de unidad observacional, es decir, cada renglón es una unidad del diseño experimental.</p>
+<p>Con los datos así ordenados, suele ser más fácil extraer datos que, por ejemplo, en Tabla <a href="datos-limpios.html#fig:estructura">5.6</a>.</p>
+<div class="ejercicio">
+<p>
+<strong>Ejercicios</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Crea un dataframe con los valores de la tabla <a href="datos-limpios.html#fig:estructura">5.6</a> y otro con los valores de la tabla <a href="datos-limpios.html#fig:estructuratidy">5.8</a>.
+</li>
+<li>
+Extrae el resultado para (John Smith, tratamiento a) en la primera configuración y en la segunda.
+</li>
+<li>
+Especifica el número de tratamientos con la forma sucia y la forma limpia.
+</li>
+<li>
+¿Cuál es la media de los resultados? Usa la forma 1 y la forma 2.
+</li>
+<li>
+Extrae los tratamientos del tipo a en la forma 2.
+</li>
+</ol>
+</div>
 <p>Los datos limpios permiten hacerle preguntas a los datos de manera simple y sistemática. En particular, es una estructura muy útil para programación vectorizada como la que <code>R</code> tiene (el ejercicio 5) porque la <em>forma</em> en la que almacenamos los datos se asegura que valores para diferentes variables de la misma observación siempre están apareados.</p>
 <p>Por convención, las variables se acomodan de una forma particular. Las variables <em>fijas</em> (en este ejemplo, las propias al diseño experimental) van primero y posteriormente las variables <em>medidas</em>. Ordenamos éstas de forma que las que están relacionadas sean contiguas.</p>
 </div>
@@ -359,8 +379,40 @@ Figura 5.9: Ejemplificación de datos limpios <span class="citation">(Wickham an
 </ul>
 <p>Hay parámetros opcionales en la función. Para estos datos en particular, por ejemplo, es conveniente remover los grupos para los que no se tiene el dato con el parámetro <code>na.rm = TRUE</code>.</p>
 
-
-
+<div class="nota">
+<p>
+<strong>gather</strong>
+</p>
+<p>
+En la figura se ejemplifica la operacionalización de <code>gather</code> para los datos de tratamiento.
+</p>
+<p>
+<img src="images/gather.png" width="650">
+</p>
+<p>
+Esto es resultado de ejecutar:
+</p>
+<p>
+<code>gather(fig1, key = trt, value = result, -name, na.rm = T) %&gt;%</code>
+</p>
+<p>
+<code>mutate(trt = gsub(“treatment”, “”, trt))</code>
+</p>
+</div>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+Este tipo de formato de datos (poner valores de variables en las columnas) es útil también cuando se capturan datos al evitar la repetición de valores.
+</p>
+<p>
+Por ejemplo, pensemos en un experimento clínico en el que seguimos a sujetos a lo largo de un tratamiento midiendo su IMC. Una forma muy sencilla de guardar los datos del experimento es utilizando un procesador de texto común. El capturista no querrá seguir criterios de datos limpios al llenar la información pues implicaría repetir el nombre de la persona, el día de la captura y el nivel de colesterol. Supongamos un experimento con 16 sujetos a lo largo de un año en donde se mide el colesterol una vez al mes (mes1, mes2, etc.). Los datos capturados se muestran en la tabla .
+</p>
+<p>
+Nuevamente, queremos convertir la columna 3 a 14 en filas, es decir, observaciones. Utiliza el comando <code>gather</code> para realizar esto y obtener el resultado que se muestra en la tabla .
+</p>
+</div>
 
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Creamos los datos</span>
@@ -384,7 +436,20 @@ tidyr<span class="op">::</span><span class="kw">gather</span>(df, <span class="d
 <p>Si regresamos al ejemplo de la sección anterior, podemos notar que todavía no se tienen datos limpios. Primero, notamos una redundancia: todos los valores tienen el sufijo “new_” o “new” pero éste no tiene significado. Eliminamos ese pedazo de texto de los valores con la función <code>gsub</code>.</p>
 <p>Segundo, debemos extraer los valores de las variables método de diagnóstico, género y categoría de edad de la columna que acabamos de construir (que llamamos “variables”).</p>
 <p>En la descripción de las variables (teclea <code>?who</code>) se describen a los títulos de las columnas (que ahora están guardados en la variable <em>variables</em>) tales que contienen como prefijo “new_”, seguido del diagnóstico que puede ser de dos o tres caracteres, “_f&quot; para mujeres o “_m&quot; para hombres y, por último, el rango de edad.</p>
-
+<div class="curiosidad">
+<p>
+<strong>Expresiones regulares o regex</strong>
+</p>
+<p>
+En esencia, las <em>regex</em> (por el inglés regular expressions) utilizan caracteres para definir patrones de más caracteres. Éstos se conocen como metacaracteres y pueden ser herramientas poderosas en la limpieza de datos.
+</p>
+<p>
+Pueden ser utilizadas para buscar una cadena en específico en forma exacta, buscar una cadena dentro de otra o para reemplazar una parte de una cadena con otra cosa.
+</p>
+<p>
+<span class="citation"><span class="citation">(Peng, Kross, and Anderson <a href="#ref-peng2016m">2016</a>, sección “text processing and regular expressions”)</span></span> realiza una buena revisión de las funciones disponibles en <code>R</code> para utilizar expresiones regulares.
+</p>
+</div>
 <p>Para eso, utilizamos la función <code>extract</code> del paquete <code>tidyr</code>. A esta función, debemos decirle cuál es el nombre de la variable que contiene varios valores (parámetro <em>col</em>), los nuevos nombres de columnas (parámetro <em>into</em>) y la expresión regular con la que irá capturando los pedazos y asignándolos a la columna correcta (parámetro <em>regex</em>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">limpios &lt;-<span class="st"> </span>junta <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">variables =</span> <span class="kw">gsub</span>(<span class="st">&quot;new_|new&quot;</span>, <span class="st">&quot;&quot;</span>, variables)) <span class="op">%&gt;%</span>
@@ -401,11 +466,35 @@ tidyr<span class="op">::</span><span class="kw">gather</span>(df, <span class="d
                                , <span class="st">&quot;45-54&quot;</span>, <span class="st">&quot;55-64&quot;</span>, <span class="st">&quot;65&gt;&quot;</span>)
                   , <span class="dt">ordered =</span> T)
   )</code></pre></div>
-
+<div class="nota">
+<p>
+<strong>Nota</strong>
+</p>
+<p>
+Nota como en el último ejemplo, se utiliza el símbolo <code>%<span class="math inline">\(&amp;lt;&amp;gt;\)</span>%</code> que es equivalente a realizar una asignación (<span class="math inline"><span class="math inline">\(&amp;lt;-\)</span></span>) y un pipe (<code>%<span class="math inline">\(&amp;gt;\)</span>%</code>) de los datos que están guardados en el dataframe limpios.
+</p>
+</div>
 <p>De esta forma, obtenemos los datos como se ven en la tabla  donde tenemos una variable para el método de diagnóstico, una para el género, otra para la edad y una última con el número de casos observados.</p>
 
-
-
+<div class="nota">
+<p>
+<strong>Nota</strong>
+</p>
+<p>
+Esta forma es limpia pues cada columna es una variable, cada fila es una observación y no se mezclan unidades observacionales.
+</p>
+</div>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+A continuación se crea el dataframe <em>pob</em> que contiene un identificador para el individuo (id) y una columna llamada <em>variables</em> que contiene el sexo, año de nacimiento y la altura en centímetros todos en una columna y separados por “_“.
+</p>
+<p>
+Utiliza la función <code>separate</code> del paquete <code>tidyr</code> para limpiar estos datos.
+</p>
+</div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuestas</span>
 <span class="co"># Generamos los datos</span>
 pob &lt;-<span class="st"> </span><span class="kw">tibble</span>(
@@ -450,7 +539,14 @@ clean1<span class="op">$</span>date &lt;-<span class="st"> </span><span class="k
 <span class="co"># Seleccionamos las variables limpias y ordenamos</span>
 clean1 &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select_</span>(clean1, <span class="st">&quot;id&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;element&quot;</span>, <span class="st">&quot;value&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">arrange</span>(date, element) </code></pre></div>
-
+<div class="nota">
+<p>
+<strong>stringr</strong>
+</p>
+<p>
+Otro paquete muy útil para realizar tareas de limpieza con cadenas. La <a href="https://cran.r-project.org/web/packages/stringr/stringr.pdf">documentación</a> detalla todas sus funciones. En este caso, utilizamos la función <code>str_replace</code> que nos permite reemplazar una cadena de caracteres por otra.
+</p>
+</div>
 
 <p>El segundo paso es transformar la variable <code>element</code> en dos columnas pues, en realidad, almacena dos variables: temperatura máxima y mínima.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Las temperaturas van a columnas</span>
@@ -481,7 +577,14 @@ billboard_tidy &lt;-<span class="st"> </span>billboard_long <span class="op">%&g
 ## 5  2000 Aguilera, Chri… Come… 03:38 Rock  2000-10-14      1 57   
 ## 6  2000 Janet           Does… 04:17 Rock  2000-08-26      1 59   
 ## # ... with 1 more variable: date &lt;date&gt;</code></pre>
-
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+¿Cuáles son las unidades observacionales en esta tabla?
+</p>
+</div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
 
 <span class="co"># Tenemos por un lado una unidad observacional: las características de la</span>
@@ -567,7 +670,30 @@ specdata <span class="op">%&gt;%</span><span class="st"> </span>head</code></pre
 ## 4     1       1 2003-01-04      NA      NA
 ## 5     1       1 2003-01-05      NA      NA
 ## 6     1       1 2003-01-06      NA      NA</code></pre>
+<div class="ejercicio">
+<p>
+<strong>Ejercicio</strong>
+</p>
+<p>
+En la carpeta <code>tidyr_datasets/informe/</code> se encuentran dos archivos que contienen los datos de la relación del pago de pensiones del IMSS e ISSSTE respecto a su gasto programable devengado por entidad federativa.
+</p>
+<p>
+Los datos tienen todos los problemas explorados en esta sección, salvo el que solo hay un tipo de unidad observacional.
+</p>
+<p>
+Los datos están divididos en los archivos <code>M2_218.xlsx</code> y <code>M2_219.xlsx</code> y se puede observar un ejemplo de éstos en la figura . El ejercicio consiste en leer los datos y limpiarlos de forma que sean datos limpios<a href="bibliografia.html#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.
+</p>
 
+
+
+
+
+
+
+
+
+
+</div>
 <div class="figure" style="text-align: center"><span id="fig:ejerciciofinal"></span>
 <img src="images/ejercicio_tidy_informe.png" alt="Datos de pensiones del IMSS e ISSSTE 2000 a 2016 [@informe, págs. 218-219]." width="75%" />
 <p class="caption">
@@ -677,6 +803,9 @@ all</code></pre></div>
 <div id="ref-wickham2016r">
 <p>Wickham, Hadley, and Garrett Grolemund. 2016. “R for Data Science.” Sebastopol, CA: O’Reilly Media.</p>
 </div>
+<div id="ref-peng2016m">
+<p>Peng, RD, S Kross, and B Anderson. 2016. <em>Mastering Software Development in R</em>. Libro en desarrollo, disponible en línea. <a href="http://rdpeng.github.io/RProgDA/" class="uri">http://rdpeng.github.io/RProgDA/</a>.</p>
+</div>
 <div id="ref-tidydata">
 <p>Wickham, Hadley. 2014b. “Tidy-Data.” <em>GitHub Repository</em>. <a href="https://github.com/hadley/tidy-data" class="uri">https://github.com/hadley/tidy-data</a>; GitHub.</p>
 </div>
@@ -693,6 +822,7 @@ all</code></pre></div>
 <li id="fn12"><p><span class="citation">(Wickham and Grolemund <a href="#ref-wickham2016r">2016</a>, sección Data Tidying)</span> explica este último criterio como “cada valor ocupa su propia celda”.<a href="datos-limpios.html#fnref12">↩</a></p></li>
 <li id="fn13"><p>Ejemplo tomado de <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 3)</span>.<a href="datos-limpios.html#fnref13">↩</a></p></li>
 <li id="fn14"><p>Los valores perdidos estructurales, representan mediciones de valores que no se puede hacer o que no suceden y, por tanto, se pueden eliminar (por ejemplo, hombres embarazados). En este ejemplo, tenemos un valor perdido no estructural.<a href="datos-limpios.html#fnref14">↩</a></p></li>
+<li id="fn1"><p>Estos números representan únicamente una fracción de las descargas de <code>R</code> en el mundo pues existen múltiples espejos del software de donde es posible realizar la descarga. Los datos son tomados de <span class="citation">Csardi (<a href="#ref-cranlogs">2016</a>)</span>.<a href="index.html#fnref1">↩</a></p></li>
 </ol>
 </div>
             </section>

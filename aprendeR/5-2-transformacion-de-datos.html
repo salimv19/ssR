@@ -253,7 +253,7 @@ img {
 Figura 5.3: Transformación de datos <span class="citation">(Grolemund and Wickham <a href="#ref-grolemund2016r">2016</a>, Introducción)</span>.
 </p>
 </div>
-<p>Existen muchas maneras de transformar los datos y una gran cantidad de paquetes que implementan distintas funciones útiles para realizar esta tarea. En particular, resaltamos <code>dplyr</code> y <code>data.table</code>. En esta sección se ejemplifican todas las funciones que permiten hacer trabajo con datos que están implementadas en <code>dplyr</code><a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> y en <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span>.</p>
+<p>Existen muchas maneras de transformar los datos y una gran cantidad de paquetes que implementan distintas funciones útiles para realizar esta tarea. En particular, resaltamos <code>dplyr</code> y <code>data.table</code>. En esta sección se ejemplifican todas las funciones que permiten hacer trabajo con datos que están implementadas en <code>dplyr</code><a href="bibliografia.html#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> y en <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span>.</p>
 <div id="tareas-comunes-en-la-manipulacion-de-datos" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Tareas comunes en la manipulación de datos</h3>
 <p>Las funciones implementadas en este paquete están diseñadas para facilitar la transformación de datos. En general, la transformación de datos implica definir qué se hará con ellos, escribir un programa que realice esa tarea y ejecutarlo <span class="citation">(Wickham and Francois, n.d., viñeta de introducción)</span>.</p>
@@ -709,7 +709,7 @@ mean_na &lt;-<span class="st"> </span><span class="cf">function</span>(x){
 ##  9   1054 EWR        10.1
 ## 10   1424 DCA        10.1
 ## # ... with 227,486 more rows</code></pre>
-<p>Esta manera de transformar a los datos (utilizando varios de los verbos) es confusa y difícil de leer. Es más sencillo utilizar el operador pipe<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a> de <code>R</code> implementado en el paquete <code>magrittr</code>, es decir, <code>%&gt;%</code> <span class="citation">(Bache and Wickham <a href="#ref-magrittr">2014</a>)</span>.</p>
+<p>Esta manera de transformar a los datos (utilizando varios de los verbos) es confusa y difícil de leer. Es más sencillo utilizar el operador pipe<a href="bibliografia.html#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a> de <code>R</code> implementado en el paquete <code>magrittr</code>, es decir, <code>%&gt;%</code> <span class="citation">(Bache and Wickham <a href="#ref-magrittr">2014</a>)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights2 &lt;-<span class="st"> </span><span class="kw">mutate</span>(flights, <span class="dt">velocidad =</span> dist<span class="op">/</span>time) <span class="op">%&gt;%</span>
 <span class="st">              </span><span class="kw">arrange</span>(., <span class="kw">desc</span>(velocidad)) <span class="op">%&gt;%</span>
 <span class="st">              </span><span class="kw">select</span>(., flight, dest, velocidad)

@@ -12,7 +12,7 @@ library(readxl)
 Esta sección resume algunas de las funciones existentes para **limpiar** 
 datos de distintos formatos a `R`. En particular, se utiliza la conceptualización 
 de datos limpios presentada en @wickham2014tidy e implementada en el paquete `tidyr`
-[@tidyr]. En la figura \ref{fig:ciclo2} podemos ver la etapa del
+[@tidyr]. En la figura [5.5](#fig:ciclo2) podemos ver la etapa del
 análisis de datos correspondiente.
 
 ```{r ciclo2, out.width='75%', fig.show='hold', fig.align = 'center', fig.cap='Limpieza de datos [@grolemund2016r, Introducción].', echo = FALSE, results='hold'}
@@ -62,7 +62,7 @@ La mayoría de los datos estadísticos están conformados por tablas rectangular
 compuestas por filas y columnas. Las columnas casi siempre están etiquetadas 
 (*colnames*) y las filas a veces lo están. 
 
-Tomamos el ejemplo de datos de la figura \ref{fig:estructura} en donde se presentan 
+Tomamos el ejemplo de datos de la figura [5.6](#fig:estructura) en donde se presentan 
 datos de un experimento^[Ejemplo tomado de [@wickham2014tidy, pág. 3].]. La tabla contiene dos columnas y tres filas, 
 ambas etiquetadas.
 
@@ -72,13 +72,13 @@ knitr::include_graphics('images/02_estructura.png')
 
 Podemos estructurar los datos de diferentes maneras pero la abstracción de filas
 y columnas solamente nos permite pensar en la representación transpuesta que
-se muestra en la figura \ref{fig:estructurat}. El diseño cambia pero los datos
+se muestra en la figura [5.7](#fig:estructurat). El diseño cambia pero los datos
 son los mismos. Además de la apariencia, deberíamos de poder describir la 
 semántica -el significado- 
 de los valores que se muestran en una tabla [@wickham2014tidy, pág. 3]
 pero la abstracción de filas y columnas no da para más.
 
-```{r estructurat, out.width='50%', fig.show='hold', fig.align = 'center', fig.cap='Mismos datos que en \ref{fig:estructura} pero traspuestos.', echo = FALSE, results='hold'}
+```{r estructurat, out.width='50%', fig.show='hold', fig.align = 'center', fig.cap='Mismos datos que en [5.6](#fig:estructura) pero traspuestos.', echo = FALSE, results='hold'}
 knitr::include_graphics('images/02_estructurat.png')
 ```
 
@@ -96,7 +96,7 @@ a través de unidades.
 medidos para la misma unidad (por ejemplo, una persona, un día, un municipio)
 a través de distintos atributos.
 
-Los mismos datos en las figuras \ref{fig:estructura} y \ref{fig:estructurat} los
+Los mismos datos en las figuras [5.6](#fig:estructura) y [5.7](#fig:estructurat) los
 pensamos ahora en estos términos. Tenemos 3 variables:
 
 1. *persona* con tres posibles valores (John, Jane, Mary)
@@ -114,7 +114,7 @@ tanto, se pueden eliminar (por ejemplo, hombres embarazados). En este ejemplo,
 tenemos un valor perdido no estructural.
 
 En la figura 
-\ref{fig:estructuratidy} se muestran los mismos datos que antes pero pensados tal que las 
+[5.8](#fig:estructuratidy) se muestran los mismos datos que antes pero pensados tal que las 
 variables son columnas y las observaciones (en este caso, cada punto en el
 diseño experimental) son filas.
 
@@ -166,31 +166,24 @@ enfocado a un solo conjunto de
 datos y no a datos conectados como en bases relacionales. Los datos sucios son 
 cualquier otro tipo de manera de organizar los datos.
 
-La tabla \ref{fig:estructuratidy} corresponde a datos limpios: cada fila es
+La tabla [5.8](#fig:estructuratidy) corresponde a datos limpios: cada fila es
 una observación, es decir, el resultado de un tratamiento a una persona. Cada
 columna es una variable. Solo tenemos un tipo de unidad observacional, es decir,
 cada renglón es una unidad del diseño experimental. 
 
 Con los datos así ordenados, suele ser más fácil extraer datos que, por ejemplo,
-en Tabla \ref{fig:estructura}.
+en Tabla [5.6](#fig:estructura).
 
-\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
-\begin{bclogo}[
-  couleur=llred,
-  arrondi=0,
-  logo=\bcstop,
-  barre=none,
-  noborder=true]{Ejercicios}
-\begin{enumerate}
-\item Crea un dataframe con los valores de la tabla \ref{fig:estructura} y otro 
-con los valores de la tabla \ref{fig:estructuratidy}.
-\item Extrae el resultado para (John Smith, tratamiento a) en la primera configuración y en la segunda.
-\item Especifica el número de tratamientos con la forma sucia y la forma limpia.
-\item ¿Cuál es la media de los resultados? Usa la forma 1 y la forma 2.
-\item Extrae los tratamientos del tipo a en la forma 2.
-\end{enumerate}
+```{block, type='ejercicio'}
+**Ejercicios**
 
-\end{bclogo}
+1. Crea un dataframe con los valores de la tabla [5.6](#fig:estructura) y otro 
+con los valores de la tabla [5.8](#fig:estructuratidy).
+2. Extrae el resultado para (John Smith, tratamiento a) en la primera configuración y en la segunda.
+3. Especifica el número de tratamientos con la forma sucia y la forma limpia.
+4. ¿Cuál es la media de los resultados? Usa la forma 1 y la forma 2.
+5. Extrae los tratamientos del tipo a en la forma 2.
+```
 
 ```{r, eval=FALSE, echo=FALSE}
 
@@ -282,29 +275,23 @@ print(xtable(head(junta), label = "tab:varsjuntadas",
       size=getOption("xtable.size", "tiny"))
 ```
 
-\begin{nota} 
+```{block, type='nota'}
 **gather**
 
 En la figura se ejemplifica la operacionalización de `gather` para los datos de tratamiento.
 
-\includegraphics[width=0.9\textwidth]{../img/gather.png}
+<img src="images/gather.png" width="650">
 
 Esto es resultado de ejecutar: 
 
-```
-gather(fig1, key = trt, value = result, -name, na.rm = T) %>% 
-  mutate(trt = gsub("treatment", "", trt))
+`gather(fig1, key = trt, value = result, -name, na.rm = T) %>% `
+
+\t`mutate(trt = gsub("treatment", "", trt))`
+
 ```
 
-\end{nota}
-
-\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
-\begin{bclogo}[
-  couleur=llred,
-  arrondi=0,
-  logo=\bcstop,
-  barre=none,
-  noborder=true]{Ejercicio}
+```{block, type='ejercicio'}
+**Ejercicio**
 
 Este tipo de formato de datos (poner valores de variables en las columnas) 
 es útil también cuando se capturan datos al evitar la repetición de valores. 
@@ -320,7 +307,7 @@ el día de la captura y el nivel de colesterol. Supongamos un experimento con
 Nuevamente, queremos convertir la columna 3 a 14 en filas, es decir, observaciones.
 Utiliza el comando `gather` para realizar esto y obtener el resultado que se
 muestra en la tabla \ref{tab:sujetostidy}.
-\end{bclogo}
+```
 
 
 ```{r, echo=FALSE, results='asis'}
@@ -390,7 +377,9 @@ contienen como prefijo "new_", seguido del diagnóstico que puede ser de dos o
 tres caracteres, "_f" para mujeres o "_m" para hombres y, por último, el rango 
 de edad.
 
-\begin{curiosidad}[Expresiones regulares o regex]
+```{block, type='curiosidad'}
+**Expresiones regulares o regex**
+
 En esencia, las *regex* (por el inglés regular expressions) utilizan 
 caracteres para definir patrones de más caracteres. Éstos se conocen como 
 metacaracteres y pueden ser herramientas poderosas en la limpieza de datos.
@@ -402,7 +391,7 @@ otra cosa.
 [@peng2016m, sección "text processing and regular expressions"] 
 realiza una buena revisión de las funciones disponibles en `R` para 
 utilizar expresiones regulares. 
-\end{curiosidad}
+```
 
 Para eso, utilizamos
 la función `extract` del paquete `tidyr`. A esta función, debemos decirle cuál 
@@ -435,11 +424,13 @@ limpios %<>%
   )
 ```
 
-\begin{nota}[Nota]
+```{block, type='nota'}
+**Nota**
+
 Nota como en el último ejemplo, se utiliza el símbolo `%$<>$%` que es 
 equivalente a realizar una asignación ($<-$) y un pipe (`%$>$%`) de los datos 
 que están guardados en el dataframe limpios.
-\end{nota}
+```
 
 De esta forma, obtenemos los datos como se ven en la tabla \ref{tab:varslimpios}
 donde tenemos una variable para el método de diagnóstico, una para el género,
@@ -452,18 +443,15 @@ print(xtable(head(limpios), label = "tab:varslimpios",
       size=getOption("xtable.size", "tiny"))
 ```
 
-\begin{nota}[Nota] 
+```{block, type='nota'}
+**Nota**
+
 Esta forma es limpia pues cada columna es una variable, cada fila es una observación
 y no se mezclan unidades observacionales.
-\end{nota}
+```
 
-\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
-\begin{bclogo}[
-  couleur=llred,
-  arrondi=0,
-  logo=\bcstop,
-  barre=none,
-  noborder=true]{Ejercicio}
+```{block, type='ejercicio'}
+**Ejercicio**
   
 A continuación se crea el dataframe *pob* que contiene un identificador
 para el individuo (id) y una columna llamada *variables* que contiene
@@ -472,7 +460,7 @@ separados por "_".
 
 Utiliza la función `separate` del paquete `tidyr` para limpiar
 estos datos.
-\end{bclogo}
+```
 
 ```{r, eval = FALSE}
 # Respuestas
@@ -547,12 +535,14 @@ clean1 <- dplyr::select_(clean1, "id", "date", "element", "value") %>%
   dplyr::arrange(date, element) 
 ```
 
-\begin{nota}[stringr]
+```{block, type='nota'}
+**stringr**
+
 Otro paquete muy útil para realizar tareas de limpieza con cadenas. 
 La [documentación](https://cran.r-project.org/web/packages/stringr/stringr.pdf)
 detalla todas sus funciones. En este caso, utilizamos la función `str_replace`
 que nos permite reemplazar una cadena de caracteres por otra.
-\end{nota}
+```
 
 ```{r, echo=FALSE, results='asis'}
 print(
@@ -609,16 +599,11 @@ billboard_tidy <- billboard_long %>%
 head(billboard_tidy)
 ```
 
-\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
-\begin{bclogo}[
-  couleur=llred,
-  arrondi=0,
-  logo=\bcstop,
-  barre=none,
-  noborder=true]{Ejercicio}
+```{block, type='ejercicio'}
+**Ejercicio**
   
 ¿Cuáles son las unidades observacionales en esta tabla?
-\end{bclogo}
+```
 
 ```{r}
 # Respuesta
@@ -710,13 +695,8 @@ specdata <- specdata_US %>%
 specdata %>% head
 ```
 
-\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
-\begin{bclogo}[
-  couleur=llred,
-  arrondi=0,
-  logo=\bcstop,
-  barre=none,
-  noborder=true]{Ejercicio}
+```{block, type='ejercicio'}
+**Ejercicio**
 
 En la carpeta `tidyr_datasets/informe/` se encuentran dos archivos que
 contienen los datos de la relación del pago de pensiones del IMSS e ISSSTE respecto 
@@ -730,7 +710,7 @@ Los datos están divididos en los archivos `M2_218.xlsx` y
 El ejercicio consiste en leer los datos y limpiarlos de forma que sean datos
 limpios^[Los datos fueron tomados de [@informe, págs. 218-219] y el catálogo de estados se tomó de [@mgn]].
 
-\end{bclogo}
+```
 
 ```{r ejerciciofinal, out.width='75%', fig.show='hold', fig.align = 'center', fig.cap='Datos de pensiones del IMSS e ISSSTE 2000 a 2016 [@informe, págs. 218-219].', echo = FALSE, results='hold'}
 knitr::include_graphics('images/ejercicio_tidy_informe.png')
