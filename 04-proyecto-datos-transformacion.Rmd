@@ -1,22 +1,19 @@
 ## Transformación de datos
 
 ```{r setup04, include=FALSE}
-knitr::opts_chunk$set(echo = T, error = F, message = F, warning = F, results = 'hold')
+knitr::opts_chunk$set(echo = T, error = F, message = F, warning = F, results='markup')
 ```
 
 Esta sección resume algunas de las funciones existentes para **transformar** 
 datos en `R`. En particular, se revisan las transformaciones más comunes que
 se realizan sobre datos. En esta sección, se revisan las acciones 
 implementadas en el paquete `dplyr` [@dplyr]. 
-En la figura \ref{fig:ciclo3} podemos ver la etapa del
+En la figura [5.3](#fig:ciclo3) podemos ver la etapa del
 análisis de datos correspondiente.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.75\textwidth]{../img/02_ciclo_3.png}
-    \caption{Transformación de datos [@grolemund2016r, Introducción].}
-    \label{fig:ciclo3}
-\end{figure}
+```{r ciclo3, out.width='75%', fig.show='hold', fig.align = 'center', fig.cap='Transformación de datos [@grolemund2016r, Introducción].', echo = FALSE, results='hold'}
+knitr::include_graphics('images/02_ciclo_3.png')
+```
 
 Existen muchas maneras de transformar los datos y una gran cantidad de paquetes
 que implementan distintas funciones útiles para realizar esta tarea. En particular,
@@ -92,7 +89,7 @@ Todos estos verbos funcionan de la misma manera (tienen la misma estructura):
 - Los argumentos subsecuentes indican qué es lo que se debe hacer a ese *data.frame*
 - Siempre regresa un *data.frame*
 
-A continuación, se ejemplifica el uso de los distintos verbos de la tabla \ref{tab:accionescomunes}.
+A continuación, se ejemplifica el uso de los distintos verbos de la tabla [5.2](#tab:accionescomunes).
 Para esto, utilizaremos los siguientes
 conjuntos de datos de muestra, todos disponibles en el paquete `nycflights13` [@flights]. Se leerán desde archivo de texto plano para ejemplificar algunos elementos de la limpieza.
 
@@ -108,12 +105,8 @@ nueva implementación de `read.csv` pero mucho mas rápida.
 ```{r}
 flights <- read_csv("data/flights.csv")
 flights
-```
-```{r}
 planes <- read_csv("data/planes.csv")
 planes
-```
-```{r}
 airports <- read_csv("data/airports.csv")
 airports
 ```
@@ -216,23 +209,18 @@ O las que contienen algún patrón
 select(flights, contains("dep"))
 ```
 
-\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
-\begin{bclogo}[
-  couleur=llred,
-  arrondi=0,
-  logo=\bcstop,
-  barre=none,
-  noborder=true]{Ejercicios}
-\begin{enumerate}
-\item Revisa la ayuda de select con `?select`.
-\item Juega con la función `starts\_with()`. ¿Qué variables empiezan con ``de''?
-\item Juega con la función `ends\_with()`. ¿Qué variables terminan con ``delay''?
-\item Utiliza la base de datos `iris` como en el ejemplo de la ayuda.
-\item ¿Qué hace la función `contains()`?
-\item ¿Cómo es diferente de `matches()`?
-\item ¿Cómo obtienes todas las variables *menos* Petal.Width?
-\end{enumerate}
-\end{bclogo}
+```{block, type='ejercicio'}
+**Ejercicios**
+
+
+1. Revisa la ayuda de select con `?select`.
+2. Juega con la función `starts_with()`. ¿Qué variables empiezan con "de"?
+3. Juega con la función `ends_with()`. ¿Qué variables terminan con "delay"?
+4. Utiliza la base de datos `iris` como en el ejemplo de la ayuda.
+5. ¿Qué hace la función `contains()`?
+6. ¿Cómo es diferente de `matches()`?
+7. ¿Cómo obtienes todas las variables *menos* Petal.Width?
+```
 
 
 ### Creación de resumenes de datos
@@ -251,19 +239,20 @@ flights$velocidad <- flights$dist/flights$time
 summarise(flights, vel_prom = mean(velocidad, na.rm = T))
 ```
 
-\begin{curiosidad}[Funciones resumen]
+```{block, type='curiosidad'}
+**Funciones resumen**
+
 Pueden utilizarse junto con summarise cualesquiera función en `R` 
 (por ejemplo: min, max, mean, median, var, sd) que
 realice agregaciones de vectores. Sin embargo, el paquete `dplyr` implementa
 varias funciones útiles adicionales como [@datawrangling]: 
 
-\begin{itemize}
-\item `first`: extrae el primer valor de un vector
-\item `last`: extrae el último valor de un vector
-\item `n`: cuenta el número de valores en un vector
-\item `n\_distinct` cuenta el número de valores único en un vector
-\end{itemize}
-\end{curiosidad}
+
+* `first`: extrae el primer valor de un vector
+* `last`: extrae el último valor de un vector
+* `n`: cuenta el número de valores en un vector
+* `n_distinct` cuenta el número de valores único en un vector
+```
 
 #### summarise_each
 
@@ -343,24 +332,19 @@ dplyr::transmute(flights, velocidad = dist/time) %>%
 ```
 
 
-\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
-\begin{bclogo}[
-  couleur=llred,
-  arrondi=0,
-  logo=\bcstop,
-  barre=none,
-  noborder=true]{Ejercicios}
-\begin{enumerate}
-\item ¿Cuáles son los 10 aviones-aerolíneas mas lentos? Utiliza el operador pipe, 
+```{block, type='ejercicio'}
+**Ejercicios**
+
+
+1. ¿Cuáles son los 10 aviones-aerolíneas mas lentos? Utiliza el operador pipe, 
 mutate, arrange y head.
-\item Utiliza la función `str\_sub` dentro de `stringr` para extraer únicamente el 
+2. Utiliza la función `str_sub` dentro de `stringr` para extraer únicamente el 
 día del campo `date`.
 3. Utiliza la función `ymd` del paquete `lubridate` para declarar date como una
 fecha (¡otra clase!).
-4. Utiliza las funciones `paste0` del `base` y `ymd\_hm` de `lubridate` para
+4. Utiliza las funciones `paste0` del `base` y `ymd_hm` de `lubridate` para
 declarar date como un `datetime`.
-\end{enumerate}
-\end{bclogo}
+```
 
 
 ```{r, eval = FALSE}
@@ -398,31 +382,32 @@ mutate(flights,
 
 ```
 
-\begin{curiosidad}[Funciones ventana *window functions*]
+```{block, type='curiosidad'}
+**Funciones ventana *window functions* **
+
 Dentro de mutate, se pueden utilizar otras funciones que realicen transformaciones
 sobre vectores que regresen un vector del mismo tamaño, así como funciones
 propias.
 
 Ahora bien, `dplyr` implementa otras funciones ventana como [@datawrangling]:
 
-\begin{itemize}
-\item `lead`: regresa todos los valores del vector movidos por una posición posterior
-\item `lag`: regresa todos los valores del vector movidos por una posición anterior
-\item `dense\_rank`: rango sin huecos
-\item `min\_rank`: rango especificando el criterio de mínimo para empates
-\item `percent\_rank`: rango reescalado para estar entre 0 y 1
-\item `row\_number`: número de fila
-\item `ntile`: creación de $n$ percentiles
-\item `between`: verifica si el valor está entre dos valores
-\item `cume\_dist`: distribución acumulada
-\item `cumall`: para vectores lógicos, intersección de los valores al renglón i-ésimo
-\item `cumany`: para vectores lógicos, unión de los valores al renglón i-ésimo
-\item `cummean`: acumula la media 
-\end{itemize}
+* `lead`: regresa todos los valores del vector movidos por una posición posterior
+* `lag`: regresa todos los valores del vector movidos por una posición anterior
+* `dense_rank`: rango sin huecos
+* `min_rank`: rango especificando el criterio de mínimo para empates
+* `percent_rank`: rango reescalado para estar entre 0 y 1
+* `row_number`: número de fila
+* `ntile`: creación de $n$ percentiles
+* `between`: verifica si el valor está entre dos valores
+* `cume_dist`: distribución acumulada
+* `cumall`: para vectores lógicos, intersección de los valores al renglón i-ésimo
+* `cumany`: para vectores lógicos, unión de los valores al renglón i-ésimo
+* `cummean`: acumula la media 
 
-Para mayor detalle, puede revisarse la viñeta ``window-functions'' en el 
+
+Para mayor detalle, puede revisarse la viñeta "window-functions" en el 
 paquete dplyr [@dplyr] con el comando `vignette("window-functions", package $=$ "dplyr")`
-\end{curiosidad}
+```
 
 #### mutate_each
 
@@ -441,15 +426,12 @@ table(flights.m$time)
 Muchas veces la información se tiene repartida entre diferentes tablas pero es
 necesario juntar las variables de las diferentes observaciones en una sola
 tabla para modelarlas o describirlas. Es muy estándar, en el lenguaje SQL, el
-tipo de joins que se pueden utilizar. La figura \ref{fig:joins} muestra un 
+tipo de joins que se pueden utilizar. La figura [5.4](#fig:joins) muestra un 
 resumen del tipo de joins que pueden realizarse.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.75\textwidth]{../img/02_joins.PNG}
-    \caption{Joins en el lenguaje SQL [@joins].}
-    \label{fig:joins}
-\end{figure}
+```{r joins, out.width='75%', fig.show='hold', fig.align = 'center', fig.cap='Joins en el lenguaje SQL [@joins].', echo = FALSE, results='hold'}
+knitr::include_graphics('images/02_joins.png')
+```
 
 El paquete `dplyr` implementa estos joins de manera natural, utilizando la 
 lógica de SQL.
@@ -512,22 +494,16 @@ flights.g <- flights %>% group_by(., carrier)
 flights.g
 ```
 
-\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
-\begin{bclogo}[
-  couleur=llred,
-  arrondi=0,
-  logo=\bcstop,
-  barre=none,
-  noborder=true]{Ejercicios}
-\begin{enumerate}
-\item Busca en la ayuda la función `top\_n`.
-\item Utilízala, junto con `group\_by`, `arrange` y `summarise` para extraer los 10 
-aviones por aerolínea con el menor promedio de velocidad.
-\item ¿Cuáles son los aeropuertos con mayor promedio de retraso en la salida?
-\item ¿Cuáles son los aeropuertos con mayor promedio de retraso en las llegadas?
-\end{enumerate}
+```{block, type='ejercicio'}
+**Ejercicios**
 
-\end{bclogo}
+
+1. Busca en la ayuda la función `top_n`.
+2. Utilízala, junto con `group_by`, `arrange` y `summarise` para extraer los 10 
+aviones por aerolínea con el menor promedio de velocidad.
+3. ¿Cuáles son los aeropuertos con mayor promedio de retraso en la salida?
+4. ¿Cuáles son los aeropuertos con mayor promedio de retraso en las llegadas?
+```
 
 
 ```{r, eval = FALSE}
@@ -553,18 +529,21 @@ flights %>%
                   
 ```
 
-\begin{curiosidad}[Afectación de otros verbos por `group\_by`]
+```{block, type='curiosidad'}
+**Afectación de otros verbos por `group_by`**
+
+
 El establecer grupos puede conjugarse con los demás verbos implementados en 
 el paquete `dplyr` y los afecta de diferente manera [@dplyr, viñeta de introducción]:
 
-\begin{itemize}
-\item `select` realiza la misma operación pero retiene siempre las variables de agrupación.
-\item `arrange` realiza el arreglo según las variables especificadas pero ordena primero según los grupos.
-\item `mutate` y `filter` realizan las operación dentro de los grupos definidos y son más útiles cuando se utilizan en conjunción a las funciones ventana.
-\item `sample\_n` y `sample\_frac` extraen el número o fracción de observaciones según el número o fracción de filas en cada grupo.
-\item `summarise` en conjunción con `group\_by` llevan acabo el paradigma split (por las variables definidas en el `group\_by`), apply (por las funciones especificadas en el `summarise`) y lo combinan en un dataframe.
-\end{itemize}
-\end{curiosidad}
+
+* `select` realiza la misma operación pero retiene siempre las variables de agrupación.
+* `arrange` realiza el arreglo según las variables especificadas pero ordena primero según los grupos.
+* `mutate` y `filter` realizan las operación dentro de los grupos definidos y son más útiles cuando se utilizan en conjunción a las funciones ventana.
+* `sample_n` y `sample_frac` extraen el número o fracción de observaciones según el número o fracción de filas en cada grupo.
+* `summarise` en conjunción con `group_by` llevan acabo el paradigma split (por las variables definidas en el `group_by`), apply (por las funciones especificadas en el `summarise`) y lo combinan en un dataframe.
+
+```
 
 #### ungroup
 
@@ -589,24 +568,18 @@ names(attributes(ungroup(g.df)))
 ```
 
 
-\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
-\begin{bclogo}[
-  couleur=llred,
-  arrondi=0,
-  logo=\bcstop,
-  barre=none,
-  noborder=true]{Ejercicios}
-\begin{enumerate}
-\item ¿Cuáles son los aeropuertos que SI están en la base de destinos?
-\item ¿Cuáles son los aeropuertos que NO están en la base de destinos?
-\item Realiza un resumen de los vuelos por aeropuerto para varias variables con la función `summarise`.
-\item Utiliza la función `inner\_join` para pegar la tablas de resumen creada en el paso anterior a la tabla *airports*
-\item Realiza un resumen de los vuelos por avión para varias variables con la función `summarise`.
-\item Utiliza la función `left\_join` para pegar la tablas de resumen creada en el paso anterior a la tabla *planes*
-\item Extrae el porcentaje de vuelos cancelados por aerolínea cada año y el porcentaje de vuelos retrasados por aerolínea cada año.
-\end{enumerate}
+```{block, type='ejercicio'}
+**Ejercicios**
 
-\end{bclogo}
+
+1. ¿Cuáles son los aeropuertos que SI están en la base de destinos?
+2. ¿Cuáles son los aeropuertos que NO están en la base de destinos?
+3. Realiza un resumen de los vuelos por aeropuerto para varias variables con la función `summarise`.
+4. Utiliza la función `inner_join` para pegar la tablas de resumen creada en el paso anterior a la tabla *airports*
+5. Realiza un resumen de los vuelos por avión para varias variables con la función `summarise`.
+6. Utiliza la función `left_join` para pegar la tablas de resumen creada en el paso anterior a la tabla *planes*
+7. Extrae el porcentaje de vuelos cancelados por aerolínea cada año y el porcentaje de vuelos retrasados por aerolínea cada año.
+```
 
 ```{r, eval = FALSE}
 # Respuestas

@@ -209,6 +209,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.2.7" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#agrupar-datos"><i class="fa fa-check"></i><b>5.2.7</b> Agrupar datos</a></li>
 <li class="chapter" data-level="5.2.8" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#reorganizar-datos"><i class="fa fa-check"></i><b>5.2.8</b> Reorganizar datos</a></li>
 </ul></li>
+<li class="chapter" data-level="5.3" data-path="datos-limpios.html"><a href="datos-limpios.html"><i class="fa fa-check"></i><b>5.3</b> Datos limpios</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="datos-limpios.html"><a href="datos-limpios.html#datos-limpios-1"><i class="fa fa-check"></i><b>5.3.1</b> Datos limpios</a></li>
+<li class="chapter" data-level="5.3.2" data-path="datos-limpios.html"><a href="datos-limpios.html#de-sucio-a-limpio"><i class="fa fa-check"></i><b>5.3.2</b> De sucio a limpio</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusión</a></li>
 <li class="appendix"><span><b>Apéndices</b></span></li>
@@ -326,7 +330,7 @@ z &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 2L, 3L) <span clas
 </div>
 <div id="vectores" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Vectores</h3>
-<p>Los vectores son la estructura de datos más básica de R <span class="citation">(Wickham <a href="#ref-wickham2014advanced">2014</a>)</span>. Hay dos tipos de vectores: vectores atómicos y listas.</p>
+<p>Los vectores son la estructura de datos más básica de R <span class="citation">(H. Wickham <a href="#ref-wickham2014advanced">2014</a><a href="#ref-wickham2014advanced">a</a>)</span>. Hay dos tipos de vectores: vectores atómicos y listas.</p>
 <p>Típicamente -en libros, blogs, manuales, cuando se mencionan vectores se refieren a los atómicos y no a las listas.</p>
 <div id="vectores-atomicos" class="section level4">
 <h4><span class="header-section-number">3.3.2.1</span> Vectores atómicos</h4>
@@ -447,7 +451,7 @@ a</code></pre></div>
 <pre><code>## [1] NA NA NA</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.logical</span>(x)</code></pre></div>
 <pre><code>## [1] NA NA NA</code></pre>
-<p>Normalmente, se obtiene un mensaje de advertencia (<em>warning</em>) cuando alguna coerción puede derivar en pérdida de información <span class="citation">(Wickham <a href="#ref-wickham2014advanced">2014</a>)</span>.</p>
+<p>Normalmente, se obtiene un mensaje de advertencia (<em>warning</em>) cuando alguna coerción puede derivar en pérdida de información <span class="citation">(H. Wickham <a href="#ref-wickham2014advanced">2014</a><a href="#ref-wickham2014advanced">a</a>)</span>.</p>
 <p>La última consideración importante es que para R un objeto no es igual, aunque no se pierda información, si su tipo no es el mismo</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">5</span>
 <span class="kw">identical</span>(x, <span class="kw">as.numeric</span>(x))</code></pre></div>
@@ -592,7 +596,7 @@ En matrices, <code>[[</code> casi no se utiliza. Como vimos en el ejemplo, <code
 </div>
 <div id="listas" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> Listas</h3>
-<p>Tiene características muy similares a un vector pero permite que cada elemento sea de un tipo distinto. Mas aún, es posible incluir una lista como un elemento de otra lista y por eso también se les conoce como vectores recursivos (<em>recursive vectors</em>) <span class="citation">(Wickham <a href="#ref-wickham2014advanced">2014</a>, sección “lists”)</span>.</p>
+<p>Tiene características muy similares a un vector pero permite que cada elemento sea de un tipo distinto. Mas aún, es posible incluir una lista como un elemento de otra lista y por eso también se les conoce como vectores recursivos (<em>recursive vectors</em>) <span class="citation">(H. Wickham <a href="#ref-wickham2014advanced">2014</a><a href="#ref-wickham2014advanced">a</a>, sección “lists”)</span>.</p>
 <p>Para crear una lista vacía utilizas <code>list()</code> y para coercionar un objeto a una lista usa <code>as.list()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">list</span>(3L, <span class="fl">3.56</span>, <span class="dv">1</span> <span class="op">+</span><span class="st"> </span>4i, <span class="ot">TRUE</span>, <span class="st">&quot;hola&quot;</span>, <span class="kw">list</span>(<span class="st">&quot;genial&quot;</span>, <span class="dv">1</span>))
 
@@ -874,7 +878,7 @@ A pesar de sus ventajas, si son incorrectamente utilizados las estructuras de da
 </div>
 <div id="data-frames" class="section level3">
 <h3><span class="header-section-number">3.3.6</span> Data frames</h3>
-<p>Los dataframes son una de las estructuras de datos más importantes para guardar datos en R <span class="citation">(Wickham <a href="#ref-wickham2014advanced">2014</a>, sección “Data frames”)</span>. En <code>python</code>, existe una estructura similar en la librería <code>pandas</code> creado para facilitar el análisis de datos en este lenguaje sin la necesidad de cambiar a un lenguaje de dominio específico como <code>R</code> <span class="citation">(McKinney <a href="#ref-pandas">2010</a>, sección “What problem does pandas solve?”)</span>.</p>
+<p>Los dataframes son una de las estructuras de datos más importantes para guardar datos en R <span class="citation">(H. Wickham <a href="#ref-wickham2014advanced">2014</a><a href="#ref-wickham2014advanced">a</a>, sección “Data frames”)</span>. En <code>python</code>, existe una estructura similar en la librería <code>pandas</code> creado para facilitar el análisis de datos en este lenguaje sin la necesidad de cambiar a un lenguaje de dominio específico como <code>R</code> <span class="citation">(McKinney <a href="#ref-pandas">2010</a>, sección “What problem does pandas solve?”)</span>.</p>
 <p>Este objeto es tan importante porque muchos de los modelos estadísticos que se utliizan necesitan una estructura de datos tabular.</p>
 <p>Los dataframes tienen atributos adicionales a los que tienen los vectores:</p>
 <ul>
@@ -1020,7 +1024,7 @@ No se permiten palabras reservadas (if, else, repeat, next, TRUE, FALSE, entre o
 <p>R Core Team. 2016a. <em>R Language Definition, Manual for R Version 3.3.2</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-lang.html</a>.</p>
 </div>
 <div id="ref-wickham2014advanced">
-<p>Wickham, Hadley. 2014. <em>Advanced R</em>. CRC Press.</p>
+<p>Wickham, Hadley. 2014a. <em>Advanced R</em>. CRC Press.</p>
 </div>
 <div id="ref-pandas">
 <p>McKinney, Wes. 2010. “pandas: Python Data Analysis Library.” <a href="http://pandas.pydata.org/" class="uri">http://pandas.pydata.org/</a>.</p>

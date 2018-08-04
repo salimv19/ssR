@@ -221,6 +221,10 @@ img {
 <li><a href="5-2-transformacion-de-datos.html#agrupar-datos"><span class="toc-section-number">5.2.7</span> Agrupar datos</a></li>
 <li><a href="5-2-transformacion-de-datos.html#reorganizar-datos"><span class="toc-section-number">5.2.8</span> Reorganizar datos</a></li>
 </ul></li>
+<li class="has-sub"><a href="5-3-datos-limpios.html#datos-limpios"><span class="toc-section-number">5.3</span> Datos limpios</a><ul>
+<li><a href="5-3-datos-limpios.html#datos-limpios-1"><span class="toc-section-number">5.3.1</span> Datos limpios</a></li>
+<li><a href="5-3-datos-limpios.html#de-sucio-a-limpio"><span class="toc-section-number">5.3.2</span> De sucio a limpio</a></li>
+</ul></li>
 </ul></li>
 <li><a href="6-conclusion.html#conclusion"><span class="toc-section-number">6</span> Conclusión</a></li>
 <li class="appendix"><span><b>Apéndices</b></span></li>
@@ -242,8 +246,13 @@ img {
 <div class="col-sm-12">
 <div id="transformacion-de-datos" class="section level2">
 <h2><span class="header-section-number">5.2</span> Transformación de datos</h2>
-<p>Esta sección resume algunas de las funciones existentes para <strong>transformar</strong> datos en <code>R</code>. En particular, se revisan las transformaciones más comunes que se realizan sobre datos. En esta sección, se revisan las acciones implementadas en el paquete <code>dplyr</code> <span class="citation">(Wickham and Francois, n.d.)</span>. En la figura  podemos ver la etapa del análisis de datos correspondiente.</p>
-
+<p>Esta sección resume algunas de las funciones existentes para <strong>transformar</strong> datos en <code>R</code>. En particular, se revisan las transformaciones más comunes que se realizan sobre datos. En esta sección, se revisan las acciones implementadas en el paquete <code>dplyr</code> <span class="citation">(Wickham and Francois, n.d.)</span>. En la figura <a href="5-2-transformacion-de-datos.html#fig:ciclo3">5.3</a> podemos ver la etapa del análisis de datos correspondiente.</p>
+<div class="figure" style="text-align: center"><span id="fig:ciclo3"></span>
+<img src="images/02_ciclo_3.png" alt="Transformación de datos [@grolemund2016r, Introducción]." width="75%" />
+<p class="caption">
+Figura 5.3: Transformación de datos <span class="citation">(Grolemund and Wickham <a href="#ref-grolemund2016r">2016</a>, Introducción)</span>.
+</p>
+</div>
 <p>Existen muchas maneras de transformar los datos y una gran cantidad de paquetes que implementan distintas funciones útiles para realizar esta tarea. En particular, resaltamos <code>dplyr</code> y <code>data.table</code>. En esta sección se ejemplifican todas las funciones que permiten hacer trabajo con datos que están implementadas en <code>dplyr</code><a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> y en <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span>.</p>
 <div id="tareas-comunes-en-la-manipulacion-de-datos" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Tareas comunes en la manipulación de datos</h3>
@@ -295,7 +304,7 @@ img {
 <li>Los argumentos subsecuentes indican qué es lo que se debe hacer a ese <em>data.frame</em></li>
 <li>Siempre regresa un <em>data.frame</em></li>
 </ul>
-<p>A continuación, se ejemplifica el uso de los distintos verbos de la tabla . Para esto, utilizaremos los siguientes conjuntos de datos de muestra, todos disponibles en el paquete <code>nycflights13</code> <span class="citation">(H. Wickham <a href="#ref-flights">2016</a><a href="#ref-flights">a</a>)</span>. Se leerán desde archivo de texto plano para ejemplificar algunos elementos de la limpieza.</p>
+<p>A continuación, se ejemplifica el uso de los distintos verbos de la tabla <a href="5-2-transformacion-de-datos.html#tab:accionescomunes">5.2</a>. Para esto, utilizaremos los siguientes conjuntos de datos de muestra, todos disponibles en el paquete <code>nycflights13</code> <span class="citation">(H. Wickham <a href="#ref-flights">2016</a><a href="#ref-flights">a</a>)</span>. Se leerán desde archivo de texto plano para ejemplificar algunos elementos de la limpieza.</p>
 <p>Nota como utilizamos la función del paquete <code>readr</code> <code>read_csv</code>. Esta es una nueva implementación de <code>read.csv</code> pero mucho mas rápida.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/flights.csv&quot;</span>)
 flights</code></pre></div>
@@ -408,22 +417,18 @@ airports</code></pre></div>
 <h4><span class="header-section-number">5.2.2.2</span> distinct</h4>
 <p>Para eliminar duplicados, usamos la función <code>distinct</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights.dup &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(flights, flights)
-<span class="kw">dim</span>(flights.dup)
-<span class="kw">dim</span>(<span class="kw">distinct</span>(flights.dup))
-<span class="kw">rm</span>(flights.dup)</code></pre></div>
-<pre><code>## [1] 454992     14
-## [1] 227496     14</code></pre>
+<span class="kw">dim</span>(flights.dup)</code></pre></div>
+<pre><code>## [1] 454992     14</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(<span class="kw">distinct</span>(flights.dup))</code></pre></div>
+<pre><code>## [1] 227496     14</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(flights.dup)</code></pre></div>
 </div>
 <div id="sample_n-sample_frac-slice" class="section level4">
 <h4><span class="header-section-number">5.2.2.3</span> sample_n, sample_frac, slice</h4>
 <p>En ocasiones necesitamos extraer subconjuntos aleatorios de los datos, para ello podemos especificar el número de renglones que necesitamos (usando <code>sample_n</code>), el porcentaje de datos que deseamos (usando <code>sample_frac</code>) o las posiciones específicas de los datos que queremos (usando <code>slice</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1099</span>) 
 <span class="co"># extraemos 10 datos en forma aleatoria</span>
-<span class="kw">sample_n</span>(flights, <span class="dt">size =</span> <span class="dv">10</span>)
-<span class="co"># Extraemos el 1% de los datos de flights</span>
-<span class="kw">sample_frac</span>(flights, <span class="dt">size =</span> <span class="fl">0.01</span>)
-<span class="co"># extraemos las posiciones 100 a 110</span>
-<span class="kw">slice</span>(flights, <span class="dv">100</span><span class="op">:</span><span class="dv">110</span>)</code></pre></div>
+<span class="kw">sample_n</span>(flights, <span class="dt">size =</span> <span class="dv">10</span>)</code></pre></div>
 <pre><code>## # A tibble: 10 x 14
 ##    date                 hour minute   dep   arr dep_delay arr_delay carrier
 ##    &lt;dttm&gt;              &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt; &lt;chr&gt;  
@@ -438,8 +443,10 @@ airports</code></pre></div>
 ##  9 2011-04-19 12:00:00    17     48  1748     6        18        NA UA     
 ## 10 2011-10-10 12:00:00    10     26  1026  1406         1        -1 CO     
 ## # ... with 6 more variables: flight &lt;int&gt;, dest &lt;chr&gt;, plane &lt;chr&gt;,
-## #   cancelled &lt;int&gt;, time &lt;int&gt;, dist &lt;int&gt;
-## # A tibble: 2,275 x 14
+## #   cancelled &lt;int&gt;, time &lt;int&gt;, dist &lt;int&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extraemos el 1% de los datos de flights</span>
+<span class="kw">sample_frac</span>(flights, <span class="dt">size =</span> <span class="fl">0.01</span>)</code></pre></div>
+<pre><code>## # A tibble: 2,275 x 14
 ##    date                 hour minute   dep   arr dep_delay arr_delay carrier
 ##    &lt;dttm&gt;              &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt; &lt;chr&gt;  
 ##  1 2011-03-21 12:00:00    13     21  1321  1635         6         0 CO     
@@ -453,8 +460,10 @@ airports</code></pre></div>
 ##  9 2011-06-17 12:00:00    13     50  1350  1545         0         2 OO     
 ## 10 2011-11-01 12:00:00    14     30  1430  1601         5         1 CO     
 ## # ... with 2,265 more rows, and 6 more variables: flight &lt;int&gt;,
-## #   dest &lt;chr&gt;, plane &lt;chr&gt;, cancelled &lt;int&gt;, time &lt;int&gt;, dist &lt;int&gt;
-## # A tibble: 11 x 14
+## #   dest &lt;chr&gt;, plane &lt;chr&gt;, cancelled &lt;int&gt;, time &lt;int&gt;, dist &lt;int&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># extraemos las posiciones 100 a 110</span>
+<span class="kw">slice</span>(flights, <span class="dv">100</span><span class="op">:</span><span class="dv">110</span>)</code></pre></div>
+<pre><code>## # A tibble: 11 x 14
 ##    date                 hour minute   dep   arr dep_delay arr_delay carrier
 ##    &lt;dttm&gt;              &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt; &lt;chr&gt;  
 ##  1 2011-01-12 12:00:00    16     31  1631  1739         1        -6 AA     
@@ -566,7 +575,34 @@ airports</code></pre></div>
 ##  9  1443        43
 ## 10  1443        43
 ## # ... with 227,486 more rows</code></pre>
-
+<div class="ejercicio">
+<p>
+<strong>Ejercicios</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Revisa la ayuda de select con <code>?select</code>.
+</li>
+<li>
+Juega con la función <code>starts_with()</code>. ¿Qué variables empiezan con “de”?
+</li>
+<li>
+Juega con la función <code>ends_with()</code>. ¿Qué variables terminan con “delay”?
+</li>
+<li>
+Utiliza la base de datos <code>iris</code> como en el ejemplo de la ayuda.
+</li>
+<li>
+¿Qué hace la función <code>contains()</code>?
+</li>
+<li>
+¿Cómo es diferente de <code>matches()</code>?
+</li>
+<li>
+¿Cómo obtienes todas las variables <em>menos</em> Petal.Width?
+</li>
+</ol>
+</div>
 </div>
 <div id="creacion-de-resumenes-de-datos" class="section level3">
 <h3><span class="header-section-number">5.2.4</span> Creación de resumenes de datos</h3>
@@ -579,7 +615,28 @@ airports</code></pre></div>
 <span class="kw">summarise</span>(flights, <span class="dt">vel_prom =</span> <span class="kw">mean</span>(velocidad, <span class="dt">na.rm =</span> T))</code></pre></div>
 <pre><code>##   vel_prom
 ## 1 7.017055</code></pre>
-
+<div class="curiosidad">
+<p>
+<strong>Funciones resumen</strong>
+</p>
+<p>
+Pueden utilizarse junto con summarise cualesquiera función en <code>R</code> (por ejemplo: min, max, mean, median, var, sd) que realice agregaciones de vectores. Sin embargo, el paquete <code>dplyr</code> implementa varias funciones útiles adicionales como <span class="citation"><span class="citation">(<span class="citeproc-not-found" data-reference-id="datawrangling"><strong>???</strong></span>)</span></span>:
+</p>
+<ul>
+<li>
+<code>first</code>: extrae el primer valor de un vector
+</li>
+<li>
+<code>last</code>: extrae el último valor de un vector
+</li>
+<li>
+<code>n</code>: cuenta el número de valores en un vector
+</li>
+<li>
+<code>n_distinct</code> cuenta el número de valores único en un vector
+</li>
+</ul>
+</div>
 </div>
 <div id="summarise_each" class="section level4">
 <h4><span class="header-section-number">5.2.4.2</span> summarise_each</h4>
@@ -591,18 +648,17 @@ airports</code></pre></div>
 ## 1 2011-07-02 03:05:12        NA        NA    NA  788.</code></pre>
 <p>Debido a que existen valores perdidos en variables como retraso de salida (<em>dep_delay</em>) y retrasos de llegada (<em>arr_delay</em>), debemos especificar la opción para no utilizar los NAs en la función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarise_each</span>(flights, <span class="kw">funs</span>(<span class="kw">mean</span>(., <span class="dt">na.rm =</span> T)), date, dep_delay
-               , arr_delay, time, dist)
-
-<span class="co"># opcion 2</span>
+               , arr_delay, time, dist)</code></pre></div>
+<pre><code>## # A tibble: 1 x 5
+##   date                dep_delay arr_delay  time  dist
+##   &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 2011-07-02 03:05:12      9.44      7.09  108.  788.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># opcion 2</span>
 mean_na &lt;-<span class="st"> </span><span class="cf">function</span>(x){
   <span class="kw">mean</span>(x, <span class="dt">na.rm =</span> T)
 }
 <span class="kw">summarise_each</span>(flights, <span class="kw">funs</span>(mean_na), date, dep_delay, arr_delay, time, dist)</code></pre></div>
 <pre><code>## # A tibble: 1 x 5
-##   date                dep_delay arr_delay  time  dist
-##   &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 2011-07-02 03:05:12      9.44      7.09  108.  788.
-## # A tibble: 1 x 5
 ##   date                dep_delay arr_delay  time  dist
 ##   &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1 2011-07-02 03:05:12      9.44      7.09  108.  788.</code></pre>
@@ -696,7 +752,25 @@ flights2</code></pre></div>
 ##  9      10.1
 ## 10      10.1
 ## # ... with 227,486 more rows</code></pre>
-
+<div class="ejercicio">
+<p>
+<strong>Ejercicios</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+¿Cuáles son los 10 aviones-aerolíneas mas lentos? Utiliza el operador pipe, mutate, arrange y head.
+</li>
+<li>
+Utiliza la función <code>str_sub</code> dentro de <code>stringr</code> para extraer únicamente el día del campo <code>date</code>.
+</li>
+<li>
+Utiliza la función <code>ymd</code> del paquete <code>lubridate</code> para declarar date como una fecha (¡otra clase!).
+</li>
+<li>
+Utiliza las funciones <code>paste0</code> del <code>base</code> y <code>ymd_hm</code> de <code>lubridate</code> para declarar date como un <code>datetime</code>.
+</li>
+</ol>
+</div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuestas</span>
 
 <span class="co">#1</span>
@@ -728,7 +802,58 @@ flights2</code></pre></div>
 <span class="kw">mutate</span>(flights,
        <span class="dt">fecha =</span> lubridate<span class="op">::</span><span class="kw">ymd_hms</span>(date)) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">select</span>(date, fecha)</code></pre></div>
-
+<div class="curiosidad">
+<p>
+<strong>Funciones ventana <em>window functions</em> </strong>
+</p>
+<p>
+Dentro de mutate, se pueden utilizar otras funciones que realicen transformaciones sobre vectores que regresen un vector del mismo tamaño, así como funciones propias.
+</p>
+<p>
+Ahora bien, <code>dplyr</code> implementa otras funciones ventana como <span class="citation"><span class="citation">(<span class="citeproc-not-found" data-reference-id="datawrangling"><strong>???</strong></span>)</span></span>:
+</p>
+<ul>
+<li>
+<code>lead</code>: regresa todos los valores del vector movidos por una posición posterior
+</li>
+<li>
+<code>lag</code>: regresa todos los valores del vector movidos por una posición anterior
+</li>
+<li>
+<code>dense_rank</code>: rango sin huecos
+</li>
+<li>
+<code>min_rank</code>: rango especificando el criterio de mínimo para empates
+</li>
+<li>
+<code>percent_rank</code>: rango reescalado para estar entre 0 y 1
+</li>
+<li>
+<code>row_number</code>: número de fila
+</li>
+<li>
+<code>ntile</code>: creación de <span class="math inline"><span class="math inline">\(n\)</span></span> percentiles
+</li>
+<li>
+<code>between</code>: verifica si el valor está entre dos valores
+</li>
+<li>
+<code>cume_dist</code>: distribución acumulada
+</li>
+<li>
+<code>cumall</code>: para vectores lógicos, intersección de los valores al renglón i-ésimo
+</li>
+<li>
+<code>cumany</code>: para vectores lógicos, unión de los valores al renglón i-ésimo
+</li>
+<li>
+<code>cummean</code>: acumula la media
+</li>
+</ul>
+<p>
+Para mayor detalle, puede revisarse la viñeta “window-functions” en el paquete dplyr <span class="citation"><span class="citation">(Wickham and Francois, n.d.)</span></span> con el comando <code>vignette(“window-functions”, package <span class="math inline">\(=\)</span> “dplyr”)</code>
+</p>
+</div>
 </div>
 <div id="mutate_each" class="section level4">
 <h4><span class="header-section-number">5.2.5.2</span> mutate_each</h4>
@@ -742,8 +867,13 @@ flights2</code></pre></div>
 </div>
 <div id="combinacion-de-conjuntos-de-datos-joins" class="section level3">
 <h3><span class="header-section-number">5.2.6</span> Combinación de conjuntos de datos (<em>joins</em>)</h3>
-<p>Muchas veces la información se tiene repartida entre diferentes tablas pero es necesario juntar las variables de las diferentes observaciones en una sola tabla para modelarlas o describirlas. Es muy estándar, en el lenguaje SQL, el tipo de joins que se pueden utilizar. La figura  muestra un resumen del tipo de joins que pueden realizarse.</p>
-
+<p>Muchas veces la información se tiene repartida entre diferentes tablas pero es necesario juntar las variables de las diferentes observaciones en una sola tabla para modelarlas o describirlas. Es muy estándar, en el lenguaje SQL, el tipo de joins que se pueden utilizar. La figura <a href="5-2-transformacion-de-datos.html#fig:joins">5.4</a> muestra un resumen del tipo de joins que pueden realizarse.</p>
+<div class="figure" style="text-align: center"><span id="fig:joins"></span>
+<img src="images/02_joins.png" alt="Joins en el lenguaje SQL [@joins]." width="75%" />
+<p class="caption">
+Figura 5.4: Joins en el lenguaje SQL <span class="citation">(Moffat <a href="#ref-joins">2009</a>)</span>.
+</p>
+</div>
 <p>El paquete <code>dplyr</code> implementa estos joins de manera natural, utilizando la lógica de SQL.</p>
 <ul>
 <li><code>inner_join</code>: regresa todas las filas de x en donde hay valores correspondientes para y, junto con todas las columnas.</li>
@@ -833,7 +963,25 @@ flights.g</code></pre></div>
 ## # ... with 227,486 more rows, and 7 more variables: flight &lt;int&gt;,
 ## #   dest &lt;chr&gt;, plane &lt;chr&gt;, cancelled &lt;int&gt;, time &lt;int&gt;, dist &lt;int&gt;,
 ## #   velocidad &lt;dbl&gt;</code></pre>
-
+<div class="ejercicio">
+<p>
+<strong>Ejercicios</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Busca en la ayuda la función <code>top_n</code>.
+</li>
+<li>
+Utilízala, junto con <code>group_by</code>, <code>arrange</code> y <code>summarise</code> para extraer los 10 aviones por aerolínea con el menor promedio de velocidad.
+</li>
+<li>
+¿Cuáles son los aeropuertos con mayor promedio de retraso en la salida?
+</li>
+<li>
+¿Cuáles son los aeropuertos con mayor promedio de retraso en las llegadas?
+</li>
+</ol>
+</div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuestas</span>
 <span class="co"># 1</span>
 ?top_n
@@ -853,7 +1001,31 @@ flights <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">summarise</span>(<span class="dt">arr_delay =</span> <span class="kw">mean</span>(arr_delay, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(arr_delay)) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">head</span>(<span class="dv">10</span>)</code></pre></div>
-
+<div class="curiosidad">
+<p>
+<strong>Afectación de otros verbos por <code>group_by</code></strong>
+</p>
+<p>
+El establecer grupos puede conjugarse con los demás verbos implementados en el paquete <code>dplyr</code> y los afecta de diferente manera <span class="citation"><span class="citation">(Wickham and Francois, n.d., viñeta de introducción)</span></span>:
+</p>
+<ul>
+<li>
+<code>select</code> realiza la misma operación pero retiene siempre las variables de agrupación.
+</li>
+<li>
+<code>arrange</code> realiza el arreglo según las variables especificadas pero ordena primero según los grupos.
+</li>
+<li>
+<code>mutate</code> y <code>filter</code> realizan las operación dentro de los grupos definidos y son más útiles cuando se utilizan en conjunción a las funciones ventana.
+</li>
+<li>
+<code>sample_n</code> y <code>sample_frac</code> extraen el número o fracción de observaciones según el número o fracción de filas en cada grupo.
+</li>
+<li>
+<code>summarise</code> en conjunción con <code>group_by</code> llevan acabo el paradigma split (por las variables definidas en el <code>group_by</code>), apply (por las funciones especificadas en el <code>summarise</code>) y lo combinan en un dataframe.
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div id="ungroup" class="section level4">
@@ -861,24 +1033,50 @@ flights <span class="op">%&gt;%</span>
 <!-- agregar cuales funciones pueden agruparse -->
 <p>La función <code>group_by</code> agrega la clase <code>grouped_df</code>, así como atributos al objeto.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g.df &lt;-<span class="st"> </span><span class="kw">group_by</span>(flights, plane, carrier)
-<span class="kw">class</span>(g.df)
-<span class="kw">names</span>(<span class="kw">attributes</span>(g.df))
-
-<span class="kw">class</span>(flights)
-<span class="kw">names</span>(<span class="kw">attributes</span>(flights))</code></pre></div>
-<pre><code>## [1] &quot;grouped_df&quot; &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;
-##  [1] &quot;names&quot;              &quot;row.names&quot;          &quot;spec&quot;              
+<span class="kw">class</span>(g.df)</code></pre></div>
+<pre><code>## [1] &quot;grouped_df&quot; &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw">attributes</span>(g.df))</code></pre></div>
+<pre><code>##  [1] &quot;names&quot;              &quot;row.names&quot;          &quot;spec&quot;              
 ##  [4] &quot;class&quot;              &quot;vars&quot;               &quot;drop&quot;              
 ##  [7] &quot;indices&quot;            &quot;group_sizes&quot;        &quot;biggest_group_size&quot;
-## [10] &quot;labels&quot;            
-## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;
-## [1] &quot;names&quot;     &quot;row.names&quot; &quot;spec&quot;      &quot;class&quot;</code></pre>
+## [10] &quot;labels&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(flights)</code></pre></div>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw">attributes</span>(flights))</code></pre></div>
+<pre><code>## [1] &quot;names&quot;     &quot;row.names&quot; &quot;spec&quot;      &quot;class&quot;</code></pre>
 <p>La función <code>ungroup</code> los elimina:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="kw">ungroup</span>(g.df))
-<span class="kw">names</span>(<span class="kw">attributes</span>(<span class="kw">ungroup</span>(g.df)))</code></pre></div>
-<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;
-## [1] &quot;class&quot;     &quot;names&quot;     &quot;row.names&quot; &quot;spec&quot;</code></pre>
-
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="kw">ungroup</span>(g.df))</code></pre></div>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw">attributes</span>(<span class="kw">ungroup</span>(g.df)))</code></pre></div>
+<pre><code>## [1] &quot;class&quot;     &quot;names&quot;     &quot;row.names&quot; &quot;spec&quot;</code></pre>
+<div class="ejercicio">
+<p>
+<strong>Ejercicios</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+¿Cuáles son los aeropuertos que SI están en la base de destinos?
+</li>
+<li>
+¿Cuáles son los aeropuertos que NO están en la base de destinos?
+</li>
+<li>
+Realiza un resumen de los vuelos por aeropuerto para varias variables con la función <code>summarise</code>.
+</li>
+<li>
+Utiliza la función <code>inner_join</code> para pegar la tablas de resumen creada en el paso anterior a la tabla <em>airports</em>
+</li>
+<li>
+Realiza un resumen de los vuelos por avión para varias variables con la función <code>summarise</code>.
+</li>
+<li>
+Utiliza la función <code>left_join</code> para pegar la tablas de resumen creada en el paso anterior a la tabla <em>planes</em>
+</li>
+<li>
+Extrae el porcentaje de vuelos cancelados por aerolínea cada año y el porcentaje de vuelos retrasados por aerolínea cada año.
+</li>
+</ol>
+</div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuestas</span>
 
 <span class="co"># 1</span>
@@ -933,15 +1131,14 @@ flights <span class="op">%&gt;%</span>
   <span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>)
   , <span class="dt">y =</span> <span class="kw">runif</span>(<span class="dv">100</span>)
 )
-<span class="kw">class</span>(df)
-
-df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+<span class="kw">class</span>(df)</code></pre></div>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
   <span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>)
   , <span class="dt">y =</span> <span class="kw">runif</span>(<span class="dv">100</span>)
 )
 <span class="kw">class</span>(df)</code></pre></div>
-<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;
-## [1] &quot;data.frame&quot;</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>La clase del objeto generado por la función <code>data_frame</code> es un <code>tibble</code> mientras que la función del base <code>data.frame</code> es de clase <code>data.frame</code>.</p>
 </div>
 <div id="arrange" class="section level4">
@@ -1014,9 +1211,11 @@ df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
 </div>
 </div>
 </div>
-<!-- </div> -->
 <h3>Bibliografía</h3>
 <div id="refs" class="references">
+<div id="ref-grolemund2016r">
+<p>Grolemund, G., and H. Wickham. 2016. <em>R for Data Science</em>. O’Reilly Media, Incorporated. <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a>.</p>
+</div>
 <div id="ref-tidyr">
 <p>Wickham, Hadley. 2016b. <em>Tidyr: Easily Tidy Data with ’Spread()’ and ’Gather()’ Functions</em>. <a href="https://CRAN.R-project.org/package=tidyr" class="uri">https://CRAN.R-project.org/package=tidyr</a>.</p>
 </div>
@@ -1025,6 +1224,9 @@ df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
 </div>
 <div id="ref-magrittr">
 <p>Bache, Stefan Milton, and Hadley Wickham. 2014. <em>Magrittr: A Forward-Pipe Operator for R</em>. <a href="https://CRAN.R-project.org/package=magrittr" class="uri">https://CRAN.R-project.org/package=magrittr</a>.</p>
+</div>
+<div id="ref-joins">
+<p>Moffat, CL. 2009. “Visual Representation of Sql Joins.” Blog. <a href="https://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins" class="uri">https://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins</a>.</p>
 </div>
 </div>
 <div class="footnotes">
@@ -1036,7 +1238,7 @@ df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
 </div>
 <p style="text-align: center;">
 <a href="5-1-importacion-de-datos.html"><button class="btn btn-default">Previous</button></a>
-<a href="6-conclusion.html"><button class="btn btn-default">Next</button></a>
+<a href="5-3-datos-limpios.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>

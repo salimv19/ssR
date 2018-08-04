@@ -1,0 +1,811 @@
+## Datos limpios
+
+```{r setup05, include=FALSE}
+knitr::opts_chunk$set(echo = T, error = F, message = F, warning = F)
+library(magrittr)
+library(tidyr)
+library(dplyr)
+library(xtable)
+library(readxl)
+```
+
+Esta sección resume algunas de las funciones existentes para **limpiar** 
+datos de distintos formatos a `R`. En particular, se utiliza la conceptualización 
+de datos limpios presentada en @wickham2014tidy e implementada en el paquete `tidyr`
+[@tidyr]. En la figura \ref{fig:ciclo2} podemos ver la etapa del
+análisis de datos correspondiente.
+
+```{r ciclo2, out.width='75%', fig.show='hold', fig.align = 'center', fig.cap='Limpieza de datos [@grolemund2016r, Introducción].', echo = FALSE, results='hold'}
+knitr::include_graphics('images/02_ciclo_2.png')
+```
+
+Mucho del esfuerzo en analítica lidia con la limpieza de datos. Tomar datos de 
+diferentes fuentes y poderlas poner en la forma en la que uno los necesita para
+realizar analítica toma mucho tiempo y esfuerzo. Existen herramientas que permiten
+que esta parte sea más fácil y eficiente. Entre éstas se encuentran los criterios
+de datos limpios.
+
+Los conjuntos de datos limpios (*tidy datasets*) permiten manipularlos fácilmente,
+modelarlos y visualizarlos. Aunque funcionan independientemente del lenguaje 
+utilizado, son particularmente útiles en `R` pues éste es un lenguaje
+pensado para estructuras de datos tabulares; mismas que son más fácilmente 
+explotables si se usan datos limpios [@wickham2016r]. 
+
+Los datos limpios tienen una estructura específica: cada variable es una 
+columna, cada observación una fila y tipo de unidad observacional forma una 
+tabla^[[@wickham2016r, sección Data Tidying] explica este último criterio como "cada valor ocupa su propia celda".].
+
+#### Datos limpios en el procesamiento de datos
+
+Esta actividad incluye una gran cantidad de elementos: revisión de valores atípicos, 
+extracción de variables de cadenas en datos no estructurados, imputación de 
+valores perdidos. Los datos limpios son tan solo un subconjunto de este proceso y
+lidian con el cómo estructurar los datos de manera que se facilite el análisis.
+
+Los criterios de datos limpios están diseñados para facilitar la exploración inicial y
+el análisis de datos, así como simplificar el desarrollo de herramientas para el 
+análisis de datos que trabajen bien con datos limpios. 
+
+Los criterios de datos limpios están muy relacionados a los de las bases de 
+datos relacionales y, por ende, al álgebra relacional de Codd [@wickham2014tidy]. Sin embargo,
+se expresan y enmarcan en lenguaje que le es familiar a estadísticos. 
+
+Están creados para lidiar con conjuntos de datos que se encuentran
+en el mundo real pues -aunque parecen simples- es difícil encontrar datos limpios de origen. 
+Los criterios de datos limpios proporcionan un marco mental a través
+del cual la intuición es explícita, es decir, proporcionan una manera estándar de ligar la estructura de un
+dataset (es decir su layout físico) con su semántica (su significado).
+
+##### Estructura de datos: un ejemplo
+
+La mayoría de los datos estadísticos están conformados por tablas rectangulares 
+compuestas por filas y columnas. Las columnas casi siempre están etiquetadas 
+(*colnames*) y las filas a veces lo están. 
+
+Tomamos el ejemplo de datos de la figura \ref{fig:estructura} en donde se presentan 
+datos de un experimento^[Ejemplo tomado de [@wickham2014tidy, pág. 3].]. La tabla contiene dos columnas y tres filas, 
+ambas etiquetadas.
+
+```{r estructura, out.width='40%', fig.show='hold', fig.align = 'center', fig.cap='Típica presentación de datos.', echo = FALSE, results='hold'}
+knitr::include_graphics('images/02_estructura.png')
+```
+
+Podemos estructurar los datos de diferentes maneras pero la abstracción de filas
+y columnas solamente nos permite pensar en la representación transpuesta que
+se muestra en la figura \ref{fig:estructurat}. El diseño cambia pero los datos
+son los mismos. Además de la apariencia, deberíamos de poder describir la 
+semántica -el significado- 
+de los valores que se muestran en una tabla [@wickham2014tidy, pág. 3]
+pero la abstracción de filas y columnas no da para más.
+
+```{r estructurat, out.width='50%', fig.show='hold', fig.align = 'center', fig.cap='Mismos datos que en \ref{fig:estructura} pero traspuestos.', echo = FALSE, results='hold'}
+knitr::include_graphics('images/02_estructurat.png')
+```
+
+#### Semántica
+
+Un conjunto de datos es una colección de **valores** (normalmente 
+cuantitativos/números o cualitativos/caracteres).
+Los valores se organizan de dos maneras: cada valor pertenece simultáneamente
+a una variable y a una observación. 
+
+- Una *variable* contiene todos los valores de una medida y del
+mismo atributo subyacente (por ejemplo, temperatura, duración, altura, latitud)
+a través de unidades. 
+- Una *observación*, en cambio, contiene todos los valores
+medidos para la misma unidad (por ejemplo, una persona, un día, un municipio)
+a través de distintos atributos.
+
+Los mismos datos en las figuras \ref{fig:estructura} y \ref{fig:estructurat} los
+pensamos ahora en estos términos. Tenemos 3 variables:
+
+1. *persona* con tres posibles valores (John, Jane, Mary)
+2. *tratamiento* con dos posibles valores (a o b)
+3. *resultado* con 6 valores (-, 16, 3, 2, 11, 1)
+
+El diseño del experimento mismo nos habla de la estructura de las observaciones 
+y los posibles valores que pueden tomar. Por ejemplo, en este caso el valor
+perdido nos dice que, por diseño, se debió de capturar esta variable pero no se 
+hizo (por eso es importante guardarlo como tal)[^1]. 
+
+[^1]: Los valores perdidos estructurales, 
+representan mediciones de valores que no se puede hacer o que no suceden y, por
+tanto, se pueden eliminar (por ejemplo, hombres embarazados). En este ejemplo, 
+tenemos un valor perdido no estructural.
+
+En la figura 
+\ref{fig:estructuratidy} se muestran los mismos datos que antes pero pensados tal que las 
+variables son columnas y las observaciones (en este caso, cada punto en el
+diseño experimental) son filas.
+
+```{r estructuratidy, out.width='40%', fig.show='hold', fig.align = 'center', fig.cap='Observaciones son filas, variables columnas.', echo = FALSE, results='hold'}
+knitr::include_graphics('images/02_estructuratidy.png')
+```
+
+Normalmente, es fácil determinar cuáles son las observaciones y cuáles son las variables 
+en los distintos casos, pero es difícil dar una definición en forma precisa. Por ejemplo,
+si tienes teléfonos de casa y celulares, se pueden considerar como dos variables
+distintas en muchos contextos pero en prevención de fraude necesitas una variable 
+que guarde el tipo de teléfono y otra en la que se guarde el número pues el uso
+regular del mismo número de teléfono por parte de la misma persona puede ayudar
+a detectarlo.
+
+En general, es más fácil describir las *relaciones funcionales entre las variables* 
+que entre las filas pues las puedes operar fácilmente: por ejemplo, el radio entre
+dos variables, una combinación lineal de varias variables. También es
+más fácil *hacer comparaciones entre grupos de observaciones* que entre columnas: la suma, el
+promedio, la varianza, la moda [@wickham2014tidy, pág. 4]. 
+
+Las observaciones, por su parte, son más complejas pues normalmente
+*se enmarcan en un análisis específico* que se desea realizar con los datos y existen varios
+niveles. Por ejemplo, en un análisis de ingreso podemos tener datos sociodemográficos
+de los individuos, datos geográficos del lugar en el que viven, datos macroeconómicos
+del tiempo específico, datos de la familia del individuo, datos del trabajo del individuo,
+entre otros.
+
+### Datos limpios
+
+Éstos mapean de forma estándar el significado y la estructura de los datos.
+Un conjunto de datos se considera sucio o limpio dependiendo de cómo las
+filas, columnas y tablas mapean a observaciones, variables y tipos. En 
+**datos limpios**:
+
+1. Cada *variable* es una columna.
+2. Cada *observación* es una fila.
+3. Cada *tipo de unidad observacional* es una tabla / cada valor tiene su celda.
+
+En la figura \ref{fig:datoslimpios} podemos ver estos tres elementos de los 
+datos limpios y cómo se representan en un *dataframe*.
+
+```{r datoslimpios, out.width='90%', fig.show='hold', fig.align = 'center', fig.cap='Ejemplificación de datos limpios [@wickham2016r, sección Data Tidying].', echo = FALSE, results='hold'}
+knitr::include_graphics('images/datos_limpios.png')
+```
+
+Esto equivale a la tercera forma normal de Codd [@wickham2014tidy, pág. 4] 
+enfocado a un solo conjunto de 
+datos y no a datos conectados como en bases relacionales. Los datos sucios son 
+cualquier otro tipo de manera de organizar los datos.
+
+La tabla \ref{fig:estructuratidy} corresponde a datos limpios: cada fila es
+una observación, es decir, el resultado de un tratamiento a una persona. Cada
+columna es una variable. Solo tenemos un tipo de unidad observacional, es decir,
+cada renglón es una unidad del diseño experimental. 
+
+Con los datos así ordenados, suele ser más fácil extraer datos que, por ejemplo,
+en Tabla \ref{fig:estructura}.
+
+\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
+\begin{bclogo}[
+  couleur=llred,
+  arrondi=0,
+  logo=\bcstop,
+  barre=none,
+  noborder=true]{Ejercicios}
+\begin{enumerate}
+\item Crea un dataframe con los valores de la tabla \ref{fig:estructura} y otro 
+con los valores de la tabla \ref{fig:estructuratidy}.
+\item Extrae el resultado para (John Smith, tratamiento a) en la primera configuración y en la segunda.
+\item Especifica el número de tratamientos con la forma sucia y la forma limpia.
+\item ¿Cuál es la media de los resultados? Usa la forma 1 y la forma 2.
+\item Extrae los tratamientos del tipo a en la forma 2.
+\end{enumerate}
+
+\end{bclogo}
+
+```{r, eval=FALSE, echo=FALSE}
+
+```
+
+Los datos limpios permiten hacerle preguntas a los datos
+de manera simple y sistemática. En particular, es una estructura muy útil para
+programación vectorizada como la que `R` tiene (el ejercicio 5) porque la *forma*
+en la que almacenamos los datos se asegura que
+valores para diferentes variables de la misma observación siempre están apareados.
+
+Por convención, las variables se acomodan de una forma particular. Las variables
+*fijas* (en este ejemplo, las propias al diseño experimental) van primero y
+posteriormente las variables *medidas*. Ordenamos éstas de forma que las que 
+están relacionadas sean contiguas. 
+
+### De sucio a limpio
+
+Los conjuntos de datos normalmente **no cumplen** con estos criterios. Es raro obtener un
+conjunto de datos con el cuál podemos trabajar de manera inmediata. 
+
+Los 5 problemas más comunes para llevar datos sucios a limpios [@wickham2014tidy, pág. 5] son:
+
+1. Los nombres de las columnas son valores, no nombres de variables.
+2. Múltiples variables se encuentran en la misma columna.
+3. Las variables están guardadas tanto en filas como en columnas.
+4. Muchos tipos de unidad observacional se encuentran en la misma tabla.
+5. Una sola unidad observacional se guardó en varias tablas.
+
+Estos problemas pueden ser resueltos con las funciones implementadas
+en el paquete `tidyr`: `gather`, `spread`, `separate` y `unite`. 
+
+#### Los nombres de las columnas son valores, no nombres de variables
+
+La tabla \ref{tab:varsencols} muestra datos sucios con este problema. La base
+acompaña al paquete `tidyr` [@tidyr] y es una muestra de los datos del reporte
+sobre tuberculosis de la organización mundial de la salud. Contiene observaciones
+anuales por país para casos de tuberculosis según distintos grupos.
+
+La descripción de todas las variables se puede ver tecleando `?who`
+
+Dentro de un reporte, la representación que se tiene de las variables tiene 
+sentido. Por ejemplo, en la tabla \ref{tab:varsencols} vemos los casos 
+de tuberculosis para distintos grupos de edad de hombres en México para cierto
+tipo de diagnóstico.
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
+raw <- filter(who, country == "Mexico", year >= 2000, year < 2011) %>% 
+  select(., country, year, contains("sp_m"))
+print(xtable(raw, label = "tab:varsencols", 
+             caption = "Casos de tuberculosis para México del 2000 al 2010 para hombres con diagnóstico por lesiones de pulmón."), 
+      comment = F, include.rownames=F, table.placement="H", 
+      size=getOption("xtable.size", "tiny"))
+```
+
+En las columnas tenemos varias variables: método de diagnóstico, género y 
+categorías de edad.
+Para arreglarlo, necesitamos *juntar* (gather) las columnas con valores de
+variables en una sola columna que contenga esos nombres como valores. 
+En otras palabras, debemos convertir de la columna 5 en adelante en filas. 
+
+Con el paquete **tidyr** esto se puede realizar en forma fácil con el comando 
+`gather` de manera que obtenemos un dataframe como el que se muestra en la tabla
+\ref{tab:varsjuntadas}.
+
+```{r}
+junta <- tidyr::gather(who, key = variables, value = casos
+                       , -country, -iso2, -iso3, -year, na.rm = T)
+```
+
+Los parámetros que recibe la función gather son (al menos):
+
+- El *data.frame* como primer parámetro.
+- La llave (parámetro *key*) será el nombre que tomará la
+variable con los nombres de las columnas a juntar.
+- El valor (parámetro *value*)
+es el nombre de la variable que contendrá los valores correspondientes a cada
+valor (el diagnóstico $i-ésimo$, el $j-ésimo$ género y el $k-ésimo$ grupo de edad). 
+- Al último, especificamos las variables que **NO** se deben de juntar (en este caso: el país, iso2, iso3 y el año).
+
+Hay parámetros opcionales en la función. Para estos datos en particular, por ejemplo, es
+conveniente remover los grupos para los que no se tiene el dato con el parámetro
+`na.rm = TRUE`.
+
+```{r, echo = FALSE, results = "asis"}
+print(xtable(head(junta), label = "tab:varsjuntadas", 
+             caption = "Valores de variables en una sola variable."), 
+      comment = F, include.rownames=F, table.placement="ht", 
+      size=getOption("xtable.size", "tiny"))
+```
+
+\begin{nota} 
+**gather**
+
+En la figura se ejemplifica la operacionalización de `gather` para los datos de tratamiento.
+
+\includegraphics[width=0.9\textwidth]{../img/gather.png}
+
+Esto es resultado de ejecutar: 
+
+```
+gather(fig1, key = trt, value = result, -name, na.rm = T) %>% 
+  mutate(trt = gsub("treatment", "", trt))
+```
+
+\end{nota}
+
+\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
+\begin{bclogo}[
+  couleur=llred,
+  arrondi=0,
+  logo=\bcstop,
+  barre=none,
+  noborder=true]{Ejercicio}
+
+Este tipo de formato de datos (poner valores de variables en las columnas) 
+es útil también cuando se capturan datos al evitar la repetición de valores. 
+
+Por ejemplo, pensemos en un experimento clínico en el que seguimos a sujetos
+a lo largo de un tratamiento midiendo su IMC. Una forma muy
+sencilla de guardar los datos del experimento es utilizando un procesador
+de texto común. El capturista no querrá seguir criterios de datos limpios
+al llenar la información pues implicaría repetir el nombre de la persona,
+el día de la captura y el nivel de colesterol. Supongamos un experimento con
+16 sujetos a lo largo de un año en donde se mide el colesterol una vez al mes (mes1, mes2, etc.). Los datos capturados se muestran en la tabla \ref{tab:sujetos}. 
+
+Nuevamente, queremos convertir la columna 3 a 14 en filas, es decir, observaciones.
+Utiliza el comando `gather` para realizar esto y obtener el resultado que se
+muestra en la tabla \ref{tab:sujetostidy}.
+\end{bclogo}
+
+
+```{r, echo=FALSE, results='asis'}
+# Generación aleatoria de datos
+df <- data.frame(
+  sujetos = LETTERS[1:16],
+  grupo = sample(c("control", "tratamiento"), size = 16, replace = T
+                 , prob = c(0.5, 0.5))
+  )
+m <- t(sapply(runif(16, 16, 35), FUN = function(x){
+  cumsum(c(x, rnorm(11, mean = 0.5, sd = 1)))
+  }))
+colnames(m) <- paste0("mes",1:12)
+df <- cbind(df, m)
+print(xtable(df, label = "tab:sujetos", 
+             caption = "Mediciones de IMC en sujetos."), 
+      comment = F, include.rownames=F, table.placement="H", 
+      size=getOption("xtable.size", "tiny"))
+```
+
+
+```{r, echo=FALSE, results='asis'}
+# Respuesta
+opcion1 <- tidyr::gather(df, key = mes, value = IMC, -sujetos, -grupo)
+opcion2 <- tidyr::gather(df, key = mes, value = IMC, mes1:mes12)
+
+print(xtable(sample_n(opcion2, size = 10), label = "tab:sujetostidy", 
+             caption = "Muestra de datos limpios para experimentos IMC."), 
+      comment = F, include.rownames=F, table.placement="H"
+      )
+```
+
+```{r, eval = FALSE}
+# Creamos los datos
+df <- data.frame(
+  sujetos = LETTERS[1:16],
+  grupo = sample(c("control", "tratamiento"), size = 16, replace = T, prob = c(0.5, 0.5))
+  # ,  meses = as.vector(sapply(paste0("mes",1:12), rep, 16))
+  )
+m <- t(sapply(runif(16, 16, 35), FUN = function(x){cumsum(c(x, rnorm(11, mean = 0.5, sd = 1)))}))
+colnames(m) <- paste0("mes",1:12)
+df <- cbind(df, m)
+
+# Respuesta: opción 1
+tidyr::gather(df, key = mes, value = IMC, -sujetos, -grupo)
+# opción 2
+tidyr::gather(df, key = mes, value = IMC, mes1:mes12)
+```
+
+#### Múltiples variables se encuentran en la misma columna
+
+Otra forma de datos sucios es cuando una columna con nombres de 
+variables tiene realmente varias variables dentro del nombre.
+
+Si regresamos al ejemplo de la sección anterior, podemos notar que todavía
+no se tienen datos limpios. Primero, notamos una redundancia: 
+todos los valores tienen el sufijo "new_" o "new" pero éste no tiene 
+significado. Eliminamos ese pedazo de texto de los valores con la función `gsub`.
+
+Segundo, debemos extraer los valores de las
+variables método de diagnóstico, género y categoría de edad de la columna
+que acabamos de construir (que llamamos "variables"). 
+
+En la descripción de las variables (teclea `?who`) se describen a los títulos de
+las columnas (que ahora están guardados en la variable *variables*) tales que
+contienen como prefijo "new_", seguido del diagnóstico que puede ser de dos o 
+tres caracteres, "_f" para mujeres o "_m" para hombres y, por último, el rango 
+de edad.
+
+\begin{curiosidad}[Expresiones regulares o regex]
+En esencia, las *regex* (por el inglés regular expressions) utilizan 
+caracteres para definir patrones de más caracteres. Éstos se conocen como 
+metacaracteres y pueden ser herramientas poderosas en la limpieza de datos.
+
+Pueden ser utilizadas para buscar una cadena en específico en forma exacta, 
+buscar una cadena dentro de otra o para reemplazar una parte de una cadena con
+otra cosa.
+
+[@peng2016m, sección "text processing and regular expressions"] 
+realiza una buena revisión de las funciones disponibles en `R` para 
+utilizar expresiones regulares. 
+\end{curiosidad}
+
+Para eso, utilizamos
+la función `extract` del paquete `tidyr`. A esta función, debemos decirle cuál 
+es el nombre de la variable que contiene varios valores (parámetro *col*),
+los nuevos nombres de columnas (parámetro *into*) y la expresión regular con 
+la que irá capturando los pedazos y asignándolos a la columna correcta 
+(parámetro *regex*).
+
+```{r}
+limpios <- junta %>%
+  mutate(variables = gsub("new_|new", "", variables)) %>%
+  tidyr::extract(., col = variables
+          , into = c("diagnostico", "genero", "edad")
+          , regex = "([[:alnum:]]+)_([a-z])([[0-9]]+)") 
+```
+
+Por último, se deben limpiar las categorías de edad. En este caso, se decide
+volverlos un factor con las categorías ordenadas por los grupos de edad existentes
+en la base:
+
+```{r}
+limpios %<>%
+  mutate(
+    edad = factor(edad, 
+                  levels = c("014", "1524", "2534", "3544"
+                             , "4554", "5564", "65")
+                  , labels = c("0-14", "15-24", "25-34", "35-44"
+                               , "45-54", "55-64", "65>")
+                  , ordered = T)
+  )
+```
+
+\begin{nota}[Nota]
+Nota como en el último ejemplo, se utiliza el símbolo `%$<>$%` que es 
+equivalente a realizar una asignación ($<-$) y un pipe (`%$>$%`) de los datos 
+que están guardados en el dataframe limpios.
+\end{nota}
+
+De esta forma, obtenemos los datos como se ven en la tabla \ref{tab:varslimpios}
+donde tenemos una variable para el método de diagnóstico, una para el género,
+otra para la edad y una última con el número de casos observados.
+
+```{r, echo = FALSE, results = "asis"}
+print(xtable(head(limpios), label = "tab:varslimpios", 
+             caption = "Cada columna es una variable."), 
+      comment = F, include.rownames=F, table.placement="ht", 
+      size=getOption("xtable.size", "tiny"))
+```
+
+\begin{nota}[Nota] 
+Esta forma es limpia pues cada columna es una variable, cada fila es una observación
+y no se mezclan unidades observacionales.
+\end{nota}
+
+\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
+\begin{bclogo}[
+  couleur=llred,
+  arrondi=0,
+  logo=\bcstop,
+  barre=none,
+  noborder=true]{Ejercicio}
+  
+A continuación se crea el dataframe *pob* que contiene un identificador
+para el individuo (id) y una columna llamada *variables* que contiene
+el sexo, año de nacimiento y la altura en centímetros todos en una columna y
+separados por "_". 
+
+Utiliza la función `separate` del paquete `tidyr` para limpiar
+estos datos.
+\end{bclogo}
+
+```{r, eval = FALSE}
+# Respuestas
+# Generamos los datos
+pob <- tibble(
+  id = 1:1000
+  , variables = paste0(
+    sample(x = c('f', 'm'), size = 1000, replace = T)
+    , "_"
+    , floor(runif(1000, 45, 99))
+    , "_"
+    , floor(runif(1000, 50, 190))
+  )
+)
+
+# Utilizamos separate para generar las variables:
+# sexo, año de nacimiento y altura
+pob.tidy <- pob %>%
+  separate(col = variables
+           , into = c("sexo", "anio_nac", "altura"), sep = "_")
+
+# Pasamos a enteros las variables anio de nac y altura
+pob.tidy %<>%
+  mutate_each(funs(as.integer), anio_nac, altura)
+
+pob.tidy
+```
+
+
+#### Las variables están guardadas tanto en filas como en columnas
+
+Uno de los problemas más difíciles es cuando las variables están tanto en 
+filas como en columnas. 
+
+Para ejemplificar este problema, se muestran los datos de temperatura máxima
+y mínima en algunas zonas de México [@tidydata, archivo: data/weather.txt].
+Los datos que limpiaremos se ven en la tabla \ref{tab:clima}. Como se puede 
+ver, tenemos valores del día del mes de la observación como nombres de variables:
+d1 (día 1), d2 (día 2), etc. Esto es homólogo al problema 1 visto anteriormente.
+
+También tenemos variables en las filas: la temperatura máxima y la temperatura
+mínima deberían ser el nombre de las columnas.
+
+```{r, echo=FALSE, results='asis'}
+rm(list = ls())
+source("weather.R")
+
+print(xtable(raw[, 1:15], label = "tab:clima", 
+             caption = "Mediciones de temperatura max y min."), 
+      comment = F, include.rownames=F, table.placement="ht", 
+      size=getOption("xtable.size", "tiny"))
+```
+
+Para limpiar, lo primero que debemos hacer es juntar los días (que son valores
+de la variable día) en una sola columna. Después utilizamos la nueva variable
+para crear la fecha. Así, obtenemos la tabla \ref{tab:clima1}, a partir de 
+los datos en el dataframe *raw*.
+
+
+```{r}
+# Tidy
+# Primero, juntamos la variable dias
+clean1 <- tidyr::gather(raw, key = variable, value = value, d1:d31
+                        , na.rm = T)
+
+# Después, generamos la variable día y fecha
+clean1$day <- as.integer(str_replace(clean1$variable, "d", ""))
+clean1$date <- as.Date(ISOdate(clean1$year, clean1$month, clean1$day))
+
+# Seleccionamos las variables limpias y ordenamos
+clean1 <- dplyr::select_(clean1, "id", "date", "element", "value") %>%
+  dplyr::arrange(date, element) 
+```
+
+\begin{nota}[stringr]
+Otro paquete muy útil para realizar tareas de limpieza con cadenas. 
+La [documentación](https://cran.r-project.org/web/packages/stringr/stringr.pdf)
+detalla todas sus funciones. En este caso, utilizamos la función `str_replace`
+que nos permite reemplazar una cadena de caracteres por otra.
+\end{nota}
+
+```{r, echo=FALSE, results='asis'}
+print(
+  xtable(clean1[1:5, ], caption = "Paso 1. Juntar las columnas, limpiar dias, crear fecha.", label = "tab:clima1"), comment = F, include.rownames=F, table.placement="ht")
+```
+
+El segundo paso es transformar la variable `element` en dos columnas pues, en realidad,
+almacena dos variables: temperatura máxima y mínima.
+
+```{r}
+# Las temperaturas van a columnas
+clean2 <- tidyr::spread(clean1, key = element, value = value)
+```
+
+```{r, echo=FALSE, results='asis'}
+print(
+  xtable(clean1[1:5, ], caption = "Paso 2. Enviar a columnas las mediciones de temperaturas.", label = "tab:clima1"), comment = F, include.rownames=F, table.placement="ht")
+```
+
+
+En este caso, se utilizó la función `spread` del paquete `tidyr`. Esta función
+realiza una especie de inverso a la operación que hace `gather`. En lugar de juntar
+nombres de variables, utiliza los valores de una variable como nombres de 
+columnas (parámetro *key*) y rellena apropiadamente las celdas con los valores
+de otra variable (parámetro *value*). Los demás parámetros son opcionales y,
+por ejemplo, en lugar de tener un parámetro para especificar qué hacer con los 
+`NA` (en gather: `na.rm`), en este caso pide el parámetro `fill` cuyo default
+es `NA` pero, en algunos casos, es más apropiado insertar otro valor para 
+rellenar valores de celdas en donde no había un valor correspondiente.
+
+
+#### Muchos tipos de unidad observacional se encuentran en la misma tabla
+
+En ocasiones las bases de datos involucran diferentes tipos de unidad observacional. 
+Para tener datos limpios, cada unidad observacional debe estar almacenada en su propia tabla.
+
+Para este ejemplo, utilizamos la base de datos `billboard` [@tidydata, archivo: data/billboard.csv]
+
+```{r, echo = FALSE}
+if (!file.exists("tidyr_datasets/billboard.csv")) download.file("https://raw.githubusercontent.com/hadley/tidy-data/master/data/billboard.csv",
+                "tidyr_datasets/billboard.csv")
+```
+
+
+```{r}
+billboard <- readr::read_csv("tidyr_datasets/billboard.csv")
+billboard_long <- gather(billboard, week, rank, x1st.week:x76th.week
+                         , na.rm = TRUE)
+billboard_tidy <- billboard_long %>%
+  mutate(
+    week = extract_numeric(week),
+    date = as.Date(date.entered) + 7 * (week - 1)) %>%
+    select(-date.entered)
+head(billboard_tidy)
+```
+
+\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
+\begin{bclogo}[
+  couleur=llred,
+  arrondi=0,
+  logo=\bcstop,
+  barre=none,
+  noborder=true]{Ejercicio}
+  
+¿Cuáles son las unidades observacionales en esta tabla?
+\end{bclogo}
+
+```{r}
+# Respuesta
+
+# Tenemos por un lado una unidad observacional: las características de la
+# canción.
+
+# Por el otro tenemos otra unidad observacional: las posiciones que tuvieron 
+# las canciones en cada semana.
+```
+
+
+Debemos separar las unidades observacionales, esto significa separar la 
+base de datos en dos: la tabla *canciones* que almacena artista, 
+nombre de la canción y duración; la tabla *posiciones* que almacena el 
+ranking de la canción en cada semana.
+
+```{r}
+canciones <- billboard_tidy %>% 
+  select(artist.inverted, track, year, time) %>%
+  unique() %>%
+  arrange(artist.inverted) %>%
+  mutate(song_id = row_number(artist.inverted))
+
+head(canciones, 5)
+```
+
+```{r}
+posiciones <- billboard_tidy %>%
+  left_join(canciones, c("artist.inverted", "track", "year", "time")) %>%
+  select(song_id, date, week, rank) %>%
+  arrange(song_id, date) %>%
+  tbl_df
+posiciones
+```
+
+#### Una sola unidad observarcional se guardó en varias tablas
+
+Este ejemplo y datos se toman de @tutorialintro.
+
+```{r, echo = FALSE}
+# descarga de datos
+if(!file.exists("rprog-data-specdata.zip")) {
+        temp <- tempfile()
+        download.file(
+          "https://drive.google.com/open?id=0B58pFa0ldIHJYVhqLWFyckxyZm8"
+          , "tidyr")
+        unzip(temp)
+        unlink(temp)
+}
+
+```
+
+
+Es común que los valores sobre una misma unidad observacional estén separados 
+en varios archivos. Muchas veces, cada archivo es una variable, e.g. el mes o
+el nombre del paciente, etc. Para limpiar estos datos debemos:
+
+1. Leemos los archivos en una lista de tablas.
+2. Para cada tabla agregamos una columna que registra el nombre del archivo original.
+3. Combinamos las tablas en un solo dataframe.
+
+La carpeta `tidyr_datasets/specdata` contiene 332 archivos csv que 
+almacenan información de monitoreo de contaminación en 332 ubicaciones de EUA. 
+Cada archivo contiene información de una unidad de monitoreo y 
+el número de identificación del monitor es el nombre del archivo.
+
+Primero creamos un vector con los nombres de los archivos en un directorio con 
+extensión .csv.
+
+```{r}
+paths <- dir("tidyr_datasets/specdata", pattern = "\\.csv$"
+             , full.names = TRUE)
+names(paths) <- basename(paths)
+specdata_US <- tbl_df(ldply(paths, read.csv, stringsAsFactors = FALSE))
+specdata_US %>% head
+```
+
+Las variables quedaron un poco sucias... las limpiamos y seleccionamos solo 
+las de interés.
+
+
+```{r}
+specdata <- specdata_US %>%
+  mutate(
+    monitor = extract_numeric(.id),
+    date = as.Date(Date)) %>%
+    select(id = ID, monitor, date, sulfate, nitrate)
+specdata %>% head
+```
+
+\renewcommand\bcStyleTitre[1]{\large\textcolor{bbblack}{#1}}
+\begin{bclogo}[
+  couleur=llred,
+  arrondi=0,
+  logo=\bcstop,
+  barre=none,
+  noborder=true]{Ejercicio}
+
+En la carpeta `tidyr_datasets/informe/` se encuentran dos archivos que
+contienen los datos de la relación del pago de pensiones del IMSS e ISSSTE respecto 
+a su gasto programable devengado por entidad federativa. 
+
+Los datos tienen todos los problemas explorados en esta sección, salvo el que 
+solo hay un tipo de unidad observacional.
+
+Los datos están divididos en los archivos `M2_218.xlsx` y 
+`M2_219.xlsx` y se puede observar un ejemplo de éstos en la figura \ref{fig:ejerciciofinal}.
+El ejercicio consiste en leer los datos y limpiarlos de forma que sean datos
+limpios^[Los datos fueron tomados de [@informe, págs. 218-219] y el catálogo de estados se tomó de [@mgn]].
+
+\end{bclogo}
+
+```{r ejerciciofinal, out.width='75%', fig.show='hold', fig.align = 'center', fig.cap='Datos de pensiones del IMSS e ISSSTE 2000 a 2016 [@informe, págs. 218-219].', echo = FALSE, results='hold'}
+knitr::include_graphics('images/ejercicio_tidy_informe.png')
+```
+
+```{r}
+# Respuesta
+rm(list = ls())
+# Funciones auxiliares
+
+# Como son archivos de excel, muchas líneas están vacias pero R no 
+# lo entiende. Esta función quita esas lineas.
+quita.nas <- function(df, prop.na = 0.8) {
+  df <- df[, !is.na(names(df)) & names(df) != ""]
+  r <- sapply(seq(nrow(df)), FUN = function(x){
+    sum(is.na(df[x,]))
+  })
+  r <- r/ncol(df)
+  df[r < prop.na, ]
+}
+
+# Como pegaremos estados a partir de sus nombres (y no una clave)
+# Esta función limpia los nombres de los estados
+limpia <- function(nn) {
+  gsub("\\s+", " ", stringr::str_trim(nn)) %>%
+    gsub("^ *|(?<= ) | *$", "", ., perl=T) %>%
+    iconv(., to='ASCII//TRANSLIT') %>%
+    tolower(.)
+}
+
+## Funcion para pegar la clave del estado a partir del nombre
+pega.estados <- function(df, nombres = "entidad") {
+  df$pega <- limpia(df[[nombres]])
+  
+  d <- rbind(readRDS("tidyr_datasets/informe/estados_p.rds"),
+             data.frame(
+               estado = c("00", "00", "30", "16", "15", "05")
+               , pega = c("nacional", "total nacional", "veracruz"
+                          , "michoacan", "estado de mexico", "coahuila")
+               , stringsAsFactors = F
+             )
+  )
+  
+  dd <- dplyr::left_join(df, d)
+  dplyr::select(dd, -pega)
+}
+
+# Limpieza de datos
+df <- read_excel("tidyr_datasets/informe/M2_218.xlsx", skip = 4
+                 , col_names = T) 
+names(df) <- c('entidad', paste0('imss_', 2000:2008)
+               , paste0('issste_', 2000:2008))
+df <- df %>%
+  quita.nas(.) %>%
+  pega.estados(.) %>%
+  tidyr::gather(., key = variable, value = valor, -entidad
+                , -estado, na.rm = T) %>%
+  tidyr::separate(variable, c("indicador", "anio"), extra = "drop") %>%
+  dplyr::mutate(indicador = paste0("pago_pensiones_", indicador))
+
+all <- df
+df <- read_excel("tidyr_datasets/informe/M2_219.xlsx", skip = 4
+                 , col_names = T) 
+names(df) <- c('entidad', paste0('imss_', 2009:2016)
+               , paste0('issste_', 2009:2016))
+df <- df %>%
+  quita.nas(.) %>%
+  pega.estados(.) %>%
+  tidyr::gather(., key = variable, value = valor, -entidad
+                , -estado, na.rm = T) %>%
+  tidyr::separate(variable, c("indicador", "anio")
+                  , extra = "drop") %>%
+  dplyr::mutate(indicador = paste0("pago_pensiones_", indicador))
+all <- rbind(all, df)
+
+all
+```
+

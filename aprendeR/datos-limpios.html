@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>aprendeR</title>
+  <meta name="description" content="aprendeR">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="aprendeR" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="aprendeR" />
+  
+  
+  
+
+<meta name="author" content="Andrea Fernández Conde">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="transformacion-de-datos.html">
+<link rel="next" href="conclusion.html">
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="estilos.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="r-lo-basico.html"><a href="r-lo-basico.html"><i class="fa fa-check"></i><b>2</b> R: lo básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="instalacion.html"><a href="instalacion.html"><i class="fa fa-check"></i><b>2.1</b> Instalación</a></li>
+<li class="chapter" data-level="2.2" data-path="editores.html"><a href="editores.html"><i class="fa fa-check"></i><b>2.2</b> Editores</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="editores.html"><a href="editores.html#rstudio"><i class="fa fa-check"></i><b>2.2.1</b> RStudio</a></li>
+<li class="chapter" data-level="2.2.2" data-path="editores.html"><a href="editores.html#ess"><i class="fa fa-check"></i><b>2.2.2</b> ESS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html"><i class="fa fa-check"></i><b>2.3</b> El espacio de trabajo (Workspace)</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#directorio-de-trabajo"><i class="fa fa-check"></i><b>2.3.1</b> Directorio de trabajo</a></li>
+<li class="chapter" data-level="2.3.2" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#ejemplos-basicos"><i class="fa fa-check"></i><b>2.3.2</b> Ejemplos básicos</a></li>
+<li class="chapter" data-level="2.3.3" data-path="el-espacio-de-trabajo-workspace.html"><a href="el-espacio-de-trabajo-workspace.html#comandos-utiles"><i class="fa fa-check"></i><b>2.3.3</b> Comandos útiles</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html"><i class="fa fa-check"></i><b>2.4</b> Paquetes (<em>libraries</em>)</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#cran"><i class="fa fa-check"></i><b>2.4.1</b> CRAN</a></li>
+<li class="chapter" data-level="2.4.2" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#github"><i class="fa fa-check"></i><b>2.4.2</b> Github</a></li>
+<li class="chapter" data-level="2.4.3" data-path="paquetes-libraries.html"><a href="paquetes-libraries.html#otras-fuentes"><i class="fa fa-check"></i><b>2.4.3</b> Otras fuentes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="paquetes-recomendados.html"><a href="paquetes-recomendados.html"><i class="fa fa-check"></i><b>2.5</b> Paquetes recomendados</a></li>
+<li class="chapter" data-level="2.6" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>2.6</b> Scripting</a></li>
+<li class="chapter" data-level="2.7" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>2.7</b> rmarkdown</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="rmarkdown.html"><a href="rmarkdown.html#encabezado-y-formatos"><i class="fa fa-check"></i><b>2.7.1</b> Encabezado y formatos</a></li>
+<li class="chapter" data-level="2.7.2" data-path="rmarkdown.html"><a href="rmarkdown.html#knitr-chunks"><i class="fa fa-check"></i><b>2.7.2</b> Knitr chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="ayuda-y-documentacion.html"><a href="ayuda-y-documentacion.html"><i class="fa fa-check"></i><b>2.8</b> Ayuda y documentación</a></li>
+<li class="chapter" data-level="2.9" data-path="optimizando.html"><a href="optimizando.html"><i class="fa fa-check"></i><b>2.9</b> Optimizando</a></li>
+<li class="chapter" data-level="2.10" data-path="material-adicional.html"><a href="material-adicional.html"><i class="fa fa-check"></i><b>2.10</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estructuras-y-funciones.html"><a href="estructuras-y-funciones.html"><i class="fa fa-check"></i><b>3</b> Estructuras y funciones</a><ul>
+<li class="chapter" data-level="3.1" data-path="objetos.html"><a href="objetos.html"><i class="fa fa-check"></i><b>3.1</b> Objetos</a></li>
+<li class="chapter" data-level="3.2" data-path="funciones.html"><a href="funciones.html"><i class="fa fa-check"></i><b>3.2</b> Funciones</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="funciones.html"><a href="funciones.html#componentes-de-una-funcion"><i class="fa fa-check"></i><b>3.2.1</b> Componentes de una función</a></li>
+<li class="chapter" data-level="3.2.2" data-path="funciones.html"><a href="funciones.html#el-ambiente"><i class="fa fa-check"></i><b>3.2.2</b> El ambiente</a></li>
+<li class="chapter" data-level="3.2.3" data-path="funciones.html"><a href="funciones.html#reglas-de-visibilidad-scoping"><i class="fa fa-check"></i><b>3.2.3</b> Reglas de visibilidad (scoping)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html"><i class="fa fa-check"></i><b>3.3</b> Estructuras de datos</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#clases-atomicas-atomic-classes"><i class="fa fa-check"></i><b>3.3.1</b> Clases atómicas (atomic classes)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#vectores"><i class="fa fa-check"></i><b>3.3.2</b> Vectores</a></li>
+<li class="chapter" data-level="3.3.3" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#matrices"><i class="fa fa-check"></i><b>3.3.3</b> Matrices</a></li>
+<li class="chapter" data-level="3.3.4" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#listas"><i class="fa fa-check"></i><b>3.3.4</b> Listas</a></li>
+<li class="chapter" data-level="3.3.5" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#factores-factor"><i class="fa fa-check"></i><b>3.3.5</b> Factores (factor)</a></li>
+<li class="chapter" data-level="3.3.6" data-path="estructuras-de-datos.html"><a href="estructuras-de-datos.html#data-frames"><i class="fa fa-check"></i><b>3.3.6</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="estructuras-de-datos-fuera-de-r-basico.html"><a href="estructuras-de-datos-fuera-de-r-basico.html"><i class="fa fa-check"></i><b>3.4</b> Estructuras de datos fuera de R-básico</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="estructuras-de-datos-fuera-de-r-basico.html"><a href="estructuras-de-datos-fuera-de-r-basico.html#data-tables"><i class="fa fa-check"></i><b>3.4.1</b> Data tables</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estructuras-de-datos-fuera-de-r-basico.html"><a href="estructuras-de-datos-fuera-de-r-basico.html#tibbles"><i class="fa fa-check"></i><b>3.4.2</b> Tibbles</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="objetos-importantes.html"><a href="objetos-importantes.html"><i class="fa fa-check"></i><b>3.5</b> Objetos importantes</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="objetos-importantes.html"><a href="objetos-importantes.html#infinito"><i class="fa fa-check"></i><b>3.5.1</b> Infinito</a></li>
+<li class="chapter" data-level="3.5.2" data-path="objetos-importantes.html"><a href="objetos-importantes.html#no-es-un-numero"><i class="fa fa-check"></i><b>3.5.2</b> No es un número</a></li>
+<li class="chapter" data-level="3.5.3" data-path="objetos-importantes.html"><a href="objetos-importantes.html#valores-perdidos-missing-values"><i class="fa fa-check"></i><b>3.5.3</b> Valores perdidos (missing values)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html"><i class="fa fa-check"></i><b>3.6</b> Estructuras de control</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#if"><i class="fa fa-check"></i><b>3.6.1</b> If</a></li>
+<li class="chapter" data-level="3.6.2" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#for"><i class="fa fa-check"></i><b>3.6.2</b> For</a></li>
+<li class="chapter" data-level="3.6.3" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#whiles"><i class="fa fa-check"></i><b>3.6.3</b> Whiles</a></li>
+<li class="chapter" data-level="3.6.4" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#repeat---break"><i class="fa fa-check"></i><b>3.6.4</b> Repeat - Break</a></li>
+<li class="chapter" data-level="3.6.5" data-path="estructuras-de-control.html"><a href="estructuras-de-control.html#next"><i class="fa fa-check"></i><b>3.6.5</b> Next</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="material-adicional-1.html"><a href="material-adicional-1.html"><i class="fa fa-check"></i><b>3.7</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectorizacion-la-familia-apply-y-otros.html"><a href="vectorizacion-la-familia-apply-y-otros.html"><i class="fa fa-check"></i><b>4</b> Vectorización, la familia apply y otros</a><ul>
+<li class="chapter" data-level="4.1" data-path="subconjuntos-de-diferentes-estructuras-de-datos.html"><a href="subconjuntos-de-diferentes-estructuras-de-datos.html"><i class="fa fa-check"></i><b>4.1</b> Subconjuntos de diferentes estructuras de datos</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="subconjuntos-de-diferentes-estructuras-de-datos.html"><a href="subconjuntos-de-diferentes-estructuras-de-datos.html#operadores-para-extraer-subconjuntos"><i class="fa fa-check"></i><b>4.1.1</b> Operadores para extraer subconjuntos</a></li>
+<li class="chapter" data-level="4.1.2" data-path="subconjuntos-de-diferentes-estructuras-de-datos.html"><a href="subconjuntos-de-diferentes-estructuras-de-datos.html#asignar-a-un-subconjunto"><i class="fa fa-check"></i><b>4.1.2</b> Asignar a un subconjunto</a></li>
+<li class="chapter" data-level="4.1.3" data-path="subconjuntos-de-diferentes-estructuras-de-datos.html"><a href="subconjuntos-de-diferentes-estructuras-de-datos.html#operadores-logicos"><i class="fa fa-check"></i><b>4.1.3</b> Operadores lógicos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="aplicaciones.html"><a href="aplicaciones.html"><i class="fa fa-check"></i><b>4.2</b> Aplicaciones</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="aplicaciones.html"><a href="aplicaciones.html#buscarv-o-buscarh"><i class="fa fa-check"></i><b>4.2.1</b> Buscarv o buscarh</a></li>
+<li class="chapter" data-level="4.2.2" data-path="aplicaciones.html"><a href="aplicaciones.html#muestras-aleatorias"><i class="fa fa-check"></i><b>4.2.2</b> Muestras aleatorias</a></li>
+<li class="chapter" data-level="4.2.3" data-path="aplicaciones.html"><a href="aplicaciones.html#expande-bases"><i class="fa fa-check"></i><b>4.2.3</b> Expande bases</a></li>
+<li class="chapter" data-level="4.2.4" data-path="aplicaciones.html"><a href="aplicaciones.html#which-intersect-y-union"><i class="fa fa-check"></i><b>4.2.4</b> Which, intersect y union</a></li>
+<li class="chapter" data-level="4.2.5" data-path="aplicaciones.html"><a href="aplicaciones.html#generacion-de-datos-a-partir-de-distribuciones"><i class="fa fa-check"></i><b>4.2.5</b> Generación de datos a partir de distribuciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="split-apply-combine.html"><a href="split-apply-combine.html"><i class="fa fa-check"></i><b>4.3</b> Split-apply-combine</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="split-apply-combine.html"><a href="split-apply-combine.html#apply"><i class="fa fa-check"></i><b>4.3.1</b> apply</a></li>
+<li class="chapter" data-level="4.3.2" data-path="split-apply-combine.html"><a href="split-apply-combine.html#lapply"><i class="fa fa-check"></i><b>4.3.2</b> lapply</a></li>
+<li class="chapter" data-level="4.3.3" data-path="split-apply-combine.html"><a href="split-apply-combine.html#sapply"><i class="fa fa-check"></i><b>4.3.3</b> sapply</a></li>
+<li class="chapter" data-level="4.3.4" data-path="split-apply-combine.html"><a href="split-apply-combine.html#mapply"><i class="fa fa-check"></i><b>4.3.4</b> mapply</a></li>
+<li class="chapter" data-level="4.3.5" data-path="split-apply-combine.html"><a href="split-apply-combine.html#tapply"><i class="fa fa-check"></i><b>4.3.5</b> tapply</a></li>
+<li class="chapter" data-level="4.3.6" data-path="split-apply-combine.html"><a href="split-apply-combine.html#by"><i class="fa fa-check"></i><b>4.3.6</b> by</a></li>
+<li class="chapter" data-level="4.3.7" data-path="split-apply-combine.html"><a href="split-apply-combine.html#replicate"><i class="fa fa-check"></i><b>4.3.7</b> replicate</a></li>
+<li class="chapter" data-level="4.3.8" data-path="split-apply-combine.html"><a href="split-apply-combine.html#puede-ser-mas-facil"><i class="fa fa-check"></i><b>4.3.8</b> ¿Puede ser más fácil?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="material-adicional-2.html"><a href="material-adicional-2.html"><i class="fa fa-check"></i><b>4.4</b> Material adicional</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="herramientas-basicas-para-un-proyecto-de-datos.html"><a href="herramientas-basicas-para-un-proyecto-de-datos.html"><i class="fa fa-check"></i><b>5</b> Herramientas básicas para un proyecto de datos</a><ul>
+<li class="chapter" data-level="5.1" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html"><i class="fa fa-check"></i><b>5.1</b> Importación de datos</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#rds"><i class="fa fa-check"></i><b>5.1.1</b> rds</a></li>
+<li class="chapter" data-level="5.1.2" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#separado-por"><i class="fa fa-check"></i><b>5.1.2</b> separado por *</a></li>
+<li class="chapter" data-level="5.1.3" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#csv"><i class="fa fa-check"></i><b>5.1.3</b> csv (archivo separado por comas)</a></li>
+<li class="chapter" data-level="5.1.4" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#microsoft-excel"><i class="fa fa-check"></i><b>5.1.4</b> Microsoft Excel</a></li>
+<li class="chapter" data-level="5.1.5" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#dbf"><i class="fa fa-check"></i><b>5.1.5</b> dbf</a></li>
+<li class="chapter" data-level="5.1.6" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#ibm-spss"><i class="fa fa-check"></i><b>5.1.6</b> IBM SPSS</a></li>
+<li class="chapter" data-level="5.1.7" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#stata"><i class="fa fa-check"></i><b>5.1.7</b> Stata</a></li>
+<li class="chapter" data-level="5.1.8" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#sas"><i class="fa fa-check"></i><b>5.1.8</b> SAS</a></li>
+<li class="chapter" data-level="5.1.9" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#google-spreadsheet"><i class="fa fa-check"></i><b>5.1.9</b> Google Spreadsheet</a></li>
+<li class="chapter" data-level="5.1.10" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#google-bigquery"><i class="fa fa-check"></i><b>5.1.10</b> Google bigquery</a></li>
+<li class="chapter" data-level="5.1.11" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#heroku-postgres"><i class="fa fa-check"></i><b>5.1.11</b> Heroku Postgres</a></li>
+<li class="chapter" data-level="5.1.12" data-path="importacion-de-datos.html"><a href="importacion-de-datos.html#rdata"><i class="fa fa-check"></i><b>5.1.12</b> rdata</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html"><i class="fa fa-check"></i><b>5.2</b> Transformación de datos</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#tareas-comunes-en-la-manipulacion-de-datos"><i class="fa fa-check"></i><b>5.2.1</b> Tareas comunes en la manipulación de datos</a></li>
+<li class="chapter" data-level="5.2.2" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#extraccion-de-subconjuntos-de-observaciones"><i class="fa fa-check"></i><b>5.2.2</b> Extracción de subconjuntos de observaciones</a></li>
+<li class="chapter" data-level="5.2.3" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#extraccion-de-subconjuntos-de-variables-select"><i class="fa fa-check"></i><b>5.2.3</b> Extracción de subconjuntos de variables (<em>select</em>)</a></li>
+<li class="chapter" data-level="5.2.4" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#creacion-de-resumenes-de-datos"><i class="fa fa-check"></i><b>5.2.4</b> Creación de resumenes de datos</a></li>
+<li class="chapter" data-level="5.2.5" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#creacion-de-nuevas-variables"><i class="fa fa-check"></i><b>5.2.5</b> Creación de nuevas variables</a></li>
+<li class="chapter" data-level="5.2.6" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#combinacion-de-conjuntos-de-datos-joins"><i class="fa fa-check"></i><b>5.2.6</b> Combinación de conjuntos de datos (<em>joins</em>)</a></li>
+<li class="chapter" data-level="5.2.7" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#agrupar-datos"><i class="fa fa-check"></i><b>5.2.7</b> Agrupar datos</a></li>
+<li class="chapter" data-level="5.2.8" data-path="transformacion-de-datos.html"><a href="transformacion-de-datos.html#reorganizar-datos"><i class="fa fa-check"></i><b>5.2.8</b> Reorganizar datos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="datos-limpios.html"><a href="datos-limpios.html"><i class="fa fa-check"></i><b>5.3</b> Datos limpios</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="datos-limpios.html"><a href="datos-limpios.html#datos-limpios-1"><i class="fa fa-check"></i><b>5.3.1</b> Datos limpios</a></li>
+<li class="chapter" data-level="5.3.2" data-path="datos-limpios.html"><a href="datos-limpios.html#de-sucio-a-limpio"><i class="fa fa-check"></i><b>5.3.2</b> De sucio a limpio</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusión</a></li>
+<li class="appendix"><span><b>Apéndices</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown</a><ul>
+<li class="chapter" data-level="A.1" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>A.1</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="packrat.html"><a href="packrat.html"><i class="fa fa-check"></i><b>B</b> Packrat</a><ul>
+<li class="chapter" data-level="B.1" data-path="el-directorio-del-proyecto.html"><a href="el-directorio-del-proyecto.html"><i class="fa fa-check"></i><b>B.1</b> El directorio del proyecto</a></li>
+<li class="chapter" data-level="B.2" data-path="instalacion-1.html"><a href="instalacion-1.html"><i class="fa fa-check"></i><b>B.2</b> Instalación</a></li>
+<li class="chapter" data-level="B.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>B.3</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="formatos.html"><a href="formatos.html"><i class="fa fa-check"></i><b>C</b> Formatos</a></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">aprendeR</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="datos-limpios" class="section level2">
+<h2><span class="header-section-number">5.3</span> Datos limpios</h2>
+<p>Esta sección resume algunas de las funciones existentes para <strong>limpiar</strong> datos de distintos formatos a <code>R</code>. En particular, se utiliza la conceptualización de datos limpios presentada en <span class="citation">Wickham and others (<a href="#ref-wickham2014tidy">2014</a>)</span> e implementada en el paquete <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span>. En la figura  podemos ver la etapa del análisis de datos correspondiente.</p>
+<div class="figure" style="text-align: center"><span id="fig:ciclo2"></span>
+<img src="images/02_ciclo_2.png" alt="Limpieza de datos [@grolemund2016r, Introducción]." width="75%" />
+<p class="caption">
+Figura 5.5: Limpieza de datos <span class="citation">(Grolemund and Wickham <a href="#ref-grolemund2016r">2016</a>, Introducción)</span>.
+</p>
+</div>
+<p>Mucho del esfuerzo en analítica lidia con la limpieza de datos. Tomar datos de diferentes fuentes y poderlas poner en la forma en la que uno los necesita para realizar analítica toma mucho tiempo y esfuerzo. Existen herramientas que permiten que esta parte sea más fácil y eficiente. Entre éstas se encuentran los criterios de datos limpios.</p>
+<p>Los conjuntos de datos limpios (<em>tidy datasets</em>) permiten manipularlos fácilmente, modelarlos y visualizarlos. Aunque funcionan independientemente del lenguaje utilizado, son particularmente útiles en <code>R</code> pues éste es un lenguaje pensado para estructuras de datos tabulares; mismas que son más fácilmente explotables si se usan datos limpios <span class="citation">(Wickham and Grolemund <a href="#ref-wickham2016r">2016</a>)</span>.</p>
+<p>Los datos limpios tienen una estructura específica: cada variable es una columna, cada observación una fila y tipo de unidad observacional forma una tabla<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a>.</p>
+<div id="datos-limpios-en-el-procesamiento-de-datos" class="section level4">
+<h4><span class="header-section-number">5.3.0.1</span> Datos limpios en el procesamiento de datos</h4>
+<p>Esta actividad incluye una gran cantidad de elementos: revisión de valores atípicos, extracción de variables de cadenas en datos no estructurados, imputación de valores perdidos. Los datos limpios son tan solo un subconjunto de este proceso y lidian con el cómo estructurar los datos de manera que se facilite el análisis.</p>
+<p>Los criterios de datos limpios están diseñados para facilitar la exploración inicial y el análisis de datos, así como simplificar el desarrollo de herramientas para el análisis de datos que trabajen bien con datos limpios.</p>
+<p>Los criterios de datos limpios están muy relacionados a los de las bases de datos relacionales y, por ende, al álgebra relacional de Codd <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>)</span>. Sin embargo, se expresan y enmarcan en lenguaje que le es familiar a estadísticos.</p>
+<p>Están creados para lidiar con conjuntos de datos que se encuentran en el mundo real pues -aunque parecen simples- es difícil encontrar datos limpios de origen. Los criterios de datos limpios proporcionan un marco mental a través del cual la intuición es explícita, es decir, proporcionan una manera estándar de ligar la estructura de un dataset (es decir su layout físico) con su semántica (su significado).</p>
+<div id="estructura-de-datos-un-ejemplo" class="section level5">
+<h5><span class="header-section-number">5.3.0.1.1</span> Estructura de datos: un ejemplo</h5>
+<p>La mayoría de los datos estadísticos están conformados por tablas rectangulares compuestas por filas y columnas. Las columnas casi siempre están etiquetadas (<em>colnames</em>) y las filas a veces lo están.</p>
+<p>Tomamos el ejemplo de datos de la figura  en donde se presentan datos de un experimento<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a>. La tabla contiene dos columnas y tres filas, ambas etiquetadas.</p>
+<div class="figure" style="text-align: center"><span id="fig:estructura"></span>
+<img src="images/02_estructura.png" alt="Típica presentación de datos." width="40%" />
+<p class="caption">
+Figura 5.6: Típica presentación de datos.
+</p>
+</div>
+<p>Podemos estructurar los datos de diferentes maneras pero la abstracción de filas y columnas solamente nos permite pensar en la representación transpuesta que se muestra en la figura . El diseño cambia pero los datos son los mismos. Además de la apariencia, deberíamos de poder describir la semántica -el significado- de los valores que se muestran en una tabla <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 3)</span> pero la abstracción de filas y columnas no da para más.</p>
+<div class="figure" style="text-align: center"><span id="fig:estructurat"></span>
+<img src="images/02_estructurat.png" alt="Mismos datos que en 
+ef{fig:estructura} pero traspuestos." width="50%" />
+<p class="caption">
+Figura 5.7: Mismos datos que en ef{fig:estructura} pero traspuestos.
+</p>
+</div>
+</div>
+</div>
+<div id="semantica" class="section level4">
+<h4><span class="header-section-number">5.3.0.2</span> Semántica</h4>
+<p>Un conjunto de datos es una colección de <strong>valores</strong> (normalmente cuantitativos/números o cualitativos/caracteres). Los valores se organizan de dos maneras: cada valor pertenece simultáneamente a una variable y a una observación.</p>
+<ul>
+<li>Una <em>variable</em> contiene todos los valores de una medida y del mismo atributo subyacente (por ejemplo, temperatura, duración, altura, latitud) a través de unidades.</li>
+<li>Una <em>observación</em>, en cambio, contiene todos los valores medidos para la misma unidad (por ejemplo, una persona, un día, un municipio) a través de distintos atributos.</li>
+</ul>
+<p>Los mismos datos en las figuras  y  los pensamos ahora en estos términos. Tenemos 3 variables:</p>
+<ol style="list-style-type: decimal">
+<li><em>persona</em> con tres posibles valores (John, Jane, Mary)</li>
+<li><em>tratamiento</em> con dos posibles valores (a o b)</li>
+<li><em>resultado</em> con 6 valores (-, 16, 3, 2, 11, 1)</li>
+</ol>
+<p>El diseño del experimento mismo nos habla de la estructura de las observaciones y los posibles valores que pueden tomar. Por ejemplo, en este caso el valor perdido nos dice que, por diseño, se debió de capturar esta variable pero no se hizo (por eso es importante guardarlo como tal)<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a>.</p>
+<p>En la figura  se muestran los mismos datos que antes pero pensados tal que las variables son columnas y las observaciones (en este caso, cada punto en el diseño experimental) son filas.</p>
+<div class="figure" style="text-align: center"><span id="fig:estructuratidy"></span>
+<img src="images/02_estructuratidy.png" alt="Observaciones son filas, variables columnas." width="40%" />
+<p class="caption">
+Figura 5.8: Observaciones son filas, variables columnas.
+</p>
+</div>
+<p>Normalmente, es fácil determinar cuáles son las observaciones y cuáles son las variables en los distintos casos, pero es difícil dar una definición en forma precisa. Por ejemplo, si tienes teléfonos de casa y celulares, se pueden considerar como dos variables distintas en muchos contextos pero en prevención de fraude necesitas una variable que guarde el tipo de teléfono y otra en la que se guarde el número pues el uso regular del mismo número de teléfono por parte de la misma persona puede ayudar a detectarlo.</p>
+<p>En general, es más fácil describir las <em>relaciones funcionales entre las variables</em> que entre las filas pues las puedes operar fácilmente: por ejemplo, el radio entre dos variables, una combinación lineal de varias variables. También es más fácil <em>hacer comparaciones entre grupos de observaciones</em> que entre columnas: la suma, el promedio, la varianza, la moda <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 4)</span>.</p>
+<p>Las observaciones, por su parte, son más complejas pues normalmente <em>se enmarcan en un análisis específico</em> que se desea realizar con los datos y existen varios niveles. Por ejemplo, en un análisis de ingreso podemos tener datos sociodemográficos de los individuos, datos geográficos del lugar en el que viven, datos macroeconómicos del tiempo específico, datos de la familia del individuo, datos del trabajo del individuo, entre otros.</p>
+</div>
+<div id="datos-limpios-1" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Datos limpios</h3>
+<p>Éstos mapean de forma estándar el significado y la estructura de los datos. Un conjunto de datos se considera sucio o limpio dependiendo de cómo las filas, columnas y tablas mapean a observaciones, variables y tipos. En <strong>datos limpios</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Cada <em>variable</em> es una columna.</li>
+<li>Cada <em>observación</em> es una fila.</li>
+<li>Cada <em>tipo de unidad observacional</em> es una tabla / cada valor tiene su celda.</li>
+</ol>
+<p>En la figura  podemos ver estos tres elementos de los datos limpios y cómo se representan en un <em>dataframe</em>.</p>
+<div class="figure" style="text-align: center"><span id="fig:datoslimpios"></span>
+<img src="images/datos_limpios.png" alt="Ejemplificación de datos limpios [@wickham2016r, sección Data Tidying]." width="90%" />
+<p class="caption">
+Figura 5.9: Ejemplificación de datos limpios <span class="citation">(Wickham and Grolemund <a href="#ref-wickham2016r">2016</a>, sección Data Tidying)</span>.
+</p>
+</div>
+<p>Esto equivale a la tercera forma normal de Codd <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 4)</span> enfocado a un solo conjunto de datos y no a datos conectados como en bases relacionales. Los datos sucios son cualquier otro tipo de manera de organizar los datos.</p>
+<p>La tabla  corresponde a datos limpios: cada fila es una observación, es decir, el resultado de un tratamiento a una persona. Cada columna es una variable. Solo tenemos un tipo de unidad observacional, es decir, cada renglón es una unidad del diseño experimental.</p>
+<p>Con los datos así ordenados, suele ser más fácil extraer datos que, por ejemplo, en Tabla .</p>
+
+<p>Los datos limpios permiten hacerle preguntas a los datos de manera simple y sistemática. En particular, es una estructura muy útil para programación vectorizada como la que <code>R</code> tiene (el ejercicio 5) porque la <em>forma</em> en la que almacenamos los datos se asegura que valores para diferentes variables de la misma observación siempre están apareados.</p>
+<p>Por convención, las variables se acomodan de una forma particular. Las variables <em>fijas</em> (en este ejemplo, las propias al diseño experimental) van primero y posteriormente las variables <em>medidas</em>. Ordenamos éstas de forma que las que están relacionadas sean contiguas.</p>
+</div>
+<div id="de-sucio-a-limpio" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> De sucio a limpio</h3>
+<p>Los conjuntos de datos normalmente <strong>no cumplen</strong> con estos criterios. Es raro obtener un conjunto de datos con el cuál podemos trabajar de manera inmediata.</p>
+<p>Los 5 problemas más comunes para llevar datos sucios a limpios <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 5)</span> son:</p>
+<ol style="list-style-type: decimal">
+<li>Los nombres de las columnas son valores, no nombres de variables.</li>
+<li>Múltiples variables se encuentran en la misma columna.</li>
+<li>Las variables están guardadas tanto en filas como en columnas.</li>
+<li>Muchos tipos de unidad observacional se encuentran en la misma tabla.</li>
+<li>Una sola unidad observacional se guardó en varias tablas.</li>
+</ol>
+<p>Estos problemas pueden ser resueltos con las funciones implementadas en el paquete <code>tidyr</code>: <code>gather</code>, <code>spread</code>, <code>separate</code> y <code>unite</code>.</p>
+<div id="los-nombres-de-las-columnas-son-valores-no-nombres-de-variables" class="section level4">
+<h4><span class="header-section-number">5.3.2.1</span> Los nombres de las columnas son valores, no nombres de variables</h4>
+<p>La tabla  muestra datos sucios con este problema. La base acompaña al paquete <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span> y es una muestra de los datos del reporte sobre tuberculosis de la organización mundial de la salud. Contiene observaciones anuales por país para casos de tuberculosis según distintos grupos.</p>
+<p>La descripción de todas las variables se puede ver tecleando <code>?who</code></p>
+<p>Dentro de un reporte, la representación que se tiene de las variables tiene sentido. Por ejemplo, en la tabla  vemos los casos de tuberculosis para distintos grupos de edad de hombres en México para cierto tipo de diagnóstico.</p>
+
+<p>En las columnas tenemos varias variables: método de diagnóstico, género y categorías de edad. Para arreglarlo, necesitamos <em>juntar</em> (gather) las columnas con valores de variables en una sola columna que contenga esos nombres como valores. En otras palabras, debemos convertir de la columna 5 en adelante en filas.</p>
+<p>Con el paquete <strong>tidyr</strong> esto se puede realizar en forma fácil con el comando <code>gather</code> de manera que obtenemos un dataframe como el que se muestra en la tabla .</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">junta &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw">gather</span>(who, <span class="dt">key =</span> variables, <span class="dt">value =</span> casos
+                       , <span class="op">-</span>country, <span class="op">-</span>iso2, <span class="op">-</span>iso3, <span class="op">-</span>year, <span class="dt">na.rm =</span> T)</code></pre></div>
+<p>Los parámetros que recibe la función gather son (al menos):</p>
+<ul>
+<li>El <em>data.frame</em> como primer parámetro.</li>
+<li>La llave (parámetro <em>key</em>) será el nombre que tomará la variable con los nombres de las columnas a juntar.</li>
+<li>El valor (parámetro <em>value</em>) es el nombre de la variable que contendrá los valores correspondientes a cada valor (el diagnóstico <span class="math inline">\(i-ésimo\)</span>, el <span class="math inline">\(j-ésimo\)</span> género y el <span class="math inline">\(k-ésimo\)</span> grupo de edad).</li>
+<li>Al último, especificamos las variables que <strong>NO</strong> se deben de juntar (en este caso: el país, iso2, iso3 y el año).</li>
+</ul>
+<p>Hay parámetros opcionales en la función. Para estos datos en particular, por ejemplo, es conveniente remover los grupos para los que no se tiene el dato con el parámetro <code>na.rm = TRUE</code>.</p>
+
+
+
+
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Creamos los datos</span>
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">sujetos =</span> LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">16</span>],
+  <span class="dt">grupo =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;tratamiento&quot;</span>), <span class="dt">size =</span> <span class="dv">16</span>, <span class="dt">replace =</span> T, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))
+  <span class="co"># ,  meses = as.vector(sapply(paste0(&quot;mes&quot;,1:12), rep, 16))</span>
+  )
+m &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">sapply</span>(<span class="kw">runif</span>(<span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">35</span>), <span class="dt">FUN =</span> <span class="cf">function</span>(x){<span class="kw">cumsum</span>(<span class="kw">c</span>(x, <span class="kw">rnorm</span>(<span class="dv">11</span>, <span class="dt">mean =</span> <span class="fl">0.5</span>, <span class="dt">sd =</span> <span class="dv">1</span>)))}))
+<span class="kw">colnames</span>(m) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;mes&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>)
+df &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, m)
+
+<span class="co"># Respuesta: opción 1</span>
+tidyr<span class="op">::</span><span class="kw">gather</span>(df, <span class="dt">key =</span> mes, <span class="dt">value =</span> IMC, <span class="op">-</span>sujetos, <span class="op">-</span>grupo)
+<span class="co"># opción 2</span>
+tidyr<span class="op">::</span><span class="kw">gather</span>(df, <span class="dt">key =</span> mes, <span class="dt">value =</span> IMC, mes1<span class="op">:</span>mes12)</code></pre></div>
+</div>
+<div id="multiples-variables-se-encuentran-en-la-misma-columna" class="section level4">
+<h4><span class="header-section-number">5.3.2.2</span> Múltiples variables se encuentran en la misma columna</h4>
+<p>Otra forma de datos sucios es cuando una columna con nombres de variables tiene realmente varias variables dentro del nombre.</p>
+<p>Si regresamos al ejemplo de la sección anterior, podemos notar que todavía no se tienen datos limpios. Primero, notamos una redundancia: todos los valores tienen el sufijo “new_” o “new” pero éste no tiene significado. Eliminamos ese pedazo de texto de los valores con la función <code>gsub</code>.</p>
+<p>Segundo, debemos extraer los valores de las variables método de diagnóstico, género y categoría de edad de la columna que acabamos de construir (que llamamos “variables”).</p>
+<p>En la descripción de las variables (teclea <code>?who</code>) se describen a los títulos de las columnas (que ahora están guardados en la variable <em>variables</em>) tales que contienen como prefijo “new_”, seguido del diagnóstico que puede ser de dos o tres caracteres, “_f&quot; para mujeres o “_m&quot; para hombres y, por último, el rango de edad.</p>
+
+<p>Para eso, utilizamos la función <code>extract</code> del paquete <code>tidyr</code>. A esta función, debemos decirle cuál es el nombre de la variable que contiene varios valores (parámetro <em>col</em>), los nuevos nombres de columnas (parámetro <em>into</em>) y la expresión regular con la que irá capturando los pedazos y asignándolos a la columna correcta (parámetro <em>regex</em>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">limpios &lt;-<span class="st"> </span>junta <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">variables =</span> <span class="kw">gsub</span>(<span class="st">&quot;new_|new&quot;</span>, <span class="st">&quot;&quot;</span>, variables)) <span class="op">%&gt;%</span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">extract</span>(., <span class="dt">col =</span> variables
+          , <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;diagnostico&quot;</span>, <span class="st">&quot;genero&quot;</span>, <span class="st">&quot;edad&quot;</span>)
+          , <span class="dt">regex =</span> <span class="st">&quot;([[:alnum:]]+)_([a-z])([[0-9]]+)&quot;</span>) </code></pre></div>
+<p>Por último, se deben limpiar las categorías de edad. En este caso, se decide volverlos un factor con las categorías ordenadas por los grupos de edad existentes en la base:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">limpios <span class="op">%&lt;&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">edad =</span> <span class="kw">factor</span>(edad, 
+                  <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;014&quot;</span>, <span class="st">&quot;1524&quot;</span>, <span class="st">&quot;2534&quot;</span>, <span class="st">&quot;3544&quot;</span>
+                             , <span class="st">&quot;4554&quot;</span>, <span class="st">&quot;5564&quot;</span>, <span class="st">&quot;65&quot;</span>)
+                  , <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;0-14&quot;</span>, <span class="st">&quot;15-24&quot;</span>, <span class="st">&quot;25-34&quot;</span>, <span class="st">&quot;35-44&quot;</span>
+                               , <span class="st">&quot;45-54&quot;</span>, <span class="st">&quot;55-64&quot;</span>, <span class="st">&quot;65&gt;&quot;</span>)
+                  , <span class="dt">ordered =</span> T)
+  )</code></pre></div>
+
+<p>De esta forma, obtenemos los datos como se ven en la tabla  donde tenemos una variable para el método de diagnóstico, una para el género, otra para la edad y una última con el número de casos observados.</p>
+
+
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuestas</span>
+<span class="co"># Generamos los datos</span>
+pob &lt;-<span class="st"> </span><span class="kw">tibble</span>(
+  <span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>
+  , <span class="dt">variables =</span> <span class="kw">paste0</span>(
+    <span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&#39;f&#39;</span>, <span class="st">&#39;m&#39;</span>), <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> T)
+    , <span class="st">&quot;_&quot;</span>
+    , <span class="kw">floor</span>(<span class="kw">runif</span>(<span class="dv">1000</span>, <span class="dv">45</span>, <span class="dv">99</span>))
+    , <span class="st">&quot;_&quot;</span>
+    , <span class="kw">floor</span>(<span class="kw">runif</span>(<span class="dv">1000</span>, <span class="dv">50</span>, <span class="dv">190</span>))
+  )
+)
+
+<span class="co"># Utilizamos separate para generar las variables:</span>
+<span class="co"># sexo, año de nacimiento y altura</span>
+pob.tidy &lt;-<span class="st"> </span>pob <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">separate</span>(<span class="dt">col =</span> variables
+           , <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;sexo&quot;</span>, <span class="st">&quot;anio_nac&quot;</span>, <span class="st">&quot;altura&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)
+
+<span class="co"># Pasamos a enteros las variables anio de nac y altura</span>
+pob.tidy <span class="op">%&lt;&gt;%</span>
+<span class="st">  </span><span class="kw">mutate_each</span>(<span class="kw">funs</span>(as.integer), anio_nac, altura)
+
+pob.tidy</code></pre></div>
+</div>
+<div id="las-variables-estan-guardadas-tanto-en-filas-como-en-columnas" class="section level4">
+<h4><span class="header-section-number">5.3.2.3</span> Las variables están guardadas tanto en filas como en columnas</h4>
+<p>Uno de los problemas más difíciles es cuando las variables están tanto en filas como en columnas.</p>
+<p>Para ejemplificar este problema, se muestran los datos de temperatura máxima y mínima en algunas zonas de México <span class="citation">(H. Wickham <a href="#ref-tidydata">2014</a><a href="#ref-tidydata">b</a>, archivo: data/weather.txt)</span>. Los datos que limpiaremos se ven en la tabla . Como se puede ver, tenemos valores del día del mes de la observación como nombres de variables: d1 (día 1), d2 (día 2), etc. Esto es homólogo al problema 1 visto anteriormente.</p>
+<p>También tenemos variables en las filas: la temperatura máxima y la temperatura mínima deberían ser el nombre de las columnas.</p>
+
+<p>Para limpiar, lo primero que debemos hacer es juntar los días (que son valores de la variable día) en una sola columna. Después utilizamos la nueva variable para crear la fecha. Así, obtenemos la tabla , a partir de los datos en el dataframe <em>raw</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Tidy</span>
+<span class="co"># Primero, juntamos la variable dias</span>
+clean1 &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw">gather</span>(raw, <span class="dt">key =</span> variable, <span class="dt">value =</span> value, d1<span class="op">:</span>d31
+                        , <span class="dt">na.rm =</span> T)
+
+<span class="co"># Después, generamos la variable día y fecha</span>
+clean1<span class="op">$</span>day &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="kw">str_replace</span>(clean1<span class="op">$</span>variable, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;&quot;</span>))
+clean1<span class="op">$</span>date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">ISOdate</span>(clean1<span class="op">$</span>year, clean1<span class="op">$</span>month, clean1<span class="op">$</span>day))
+
+<span class="co"># Seleccionamos las variables limpias y ordenamos</span>
+clean1 &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select_</span>(clean1, <span class="st">&quot;id&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;element&quot;</span>, <span class="st">&quot;value&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">arrange</span>(date, element) </code></pre></div>
+
+
+<p>El segundo paso es transformar la variable <code>element</code> en dos columnas pues, en realidad, almacena dos variables: temperatura máxima y mínima.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Las temperaturas van a columnas</span>
+clean2 &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw">spread</span>(clean1, <span class="dt">key =</span> element, <span class="dt">value =</span> value)</code></pre></div>
+
+<p>En este caso, se utilizó la función <code>spread</code> del paquete <code>tidyr</code>. Esta función realiza una especie de inverso a la operación que hace <code>gather</code>. En lugar de juntar nombres de variables, utiliza los valores de una variable como nombres de columnas (parámetro <em>key</em>) y rellena apropiadamente las celdas con los valores de otra variable (parámetro <em>value</em>). Los demás parámetros son opcionales y, por ejemplo, en lugar de tener un parámetro para especificar qué hacer con los <code>NA</code> (en gather: <code>na.rm</code>), en este caso pide el parámetro <code>fill</code> cuyo default es <code>NA</code> pero, en algunos casos, es más apropiado insertar otro valor para rellenar valores de celdas en donde no había un valor correspondiente.</p>
+</div>
+<div id="muchos-tipos-de-unidad-observacional-se-encuentran-en-la-misma-tabla" class="section level4">
+<h4><span class="header-section-number">5.3.2.4</span> Muchos tipos de unidad observacional se encuentran en la misma tabla</h4>
+<p>En ocasiones las bases de datos involucran diferentes tipos de unidad observacional. Para tener datos limpios, cada unidad observacional debe estar almacenada en su propia tabla.</p>
+<p>Para este ejemplo, utilizamos la base de datos <code>billboard</code> <span class="citation">(H. Wickham <a href="#ref-tidydata">2014</a><a href="#ref-tidydata">b</a>, archivo: data/billboard.csv)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;tidyr_datasets/billboard.csv&quot;</span>)
+billboard_long &lt;-<span class="st"> </span><span class="kw">gather</span>(billboard, week, rank, x1st.week<span class="op">:</span>x76th.week
+                         , <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+billboard_tidy &lt;-<span class="st"> </span>billboard_long <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">week =</span> <span class="kw">extract_numeric</span>(week),
+    <span class="dt">date =</span> <span class="kw">as.Date</span>(date.entered) <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">*</span><span class="st"> </span>(week <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>date.entered)
+<span class="kw">head</span>(billboard_tidy)</code></pre></div>
+<pre><code>## # A tibble: 6 x 9
+##    year artist.inverted track time  genre date.peaked  week rank 
+##   &lt;int&gt; &lt;chr&gt;           &lt;chr&gt; &lt;tim&gt; &lt;chr&gt; &lt;date&gt;      &lt;dbl&gt; &lt;chr&gt;
+## 1  2000 Destiny&#39;s Child Inde… 03:38 Rock  2000-11-18      1 78   
+## 2  2000 Santana         Mari… 04:18 Rock  2000-04-08      1 15   
+## 3  2000 Savage Garden   I Kn… 04:07 Rock  2000-01-29      1 71   
+## 4  2000 Madonna         Music 03:45 Rock  2000-09-16      1 41   
+## 5  2000 Aguilera, Chri… Come… 03:38 Rock  2000-10-14      1 57   
+## 6  2000 Janet           Does… 04:17 Rock  2000-08-26      1 59   
+## # ... with 1 more variable: date &lt;date&gt;</code></pre>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
+
+<span class="co"># Tenemos por un lado una unidad observacional: las características de la</span>
+<span class="co"># canción.</span>
+
+<span class="co"># Por el otro tenemos otra unidad observacional: las posiciones que tuvieron </span>
+<span class="co"># las canciones en cada semana.</span></code></pre></div>
+<p>Debemos separar las unidades observacionales, esto significa separar la base de datos en dos: la tabla <em>canciones</em> que almacena artista, nombre de la canción y duración; la tabla <em>posiciones</em> que almacena el ranking de la canción en cada semana.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">canciones &lt;-<span class="st"> </span>billboard_tidy <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(artist.inverted, track, year, time) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(artist.inverted) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">song_id =</span> <span class="kw">row_number</span>(artist.inverted))
+
+<span class="kw">head</span>(canciones, <span class="dv">5</span>)</code></pre></div>
+<pre><code>## # A tibble: 5 x 5
+##   artist.inverted track                                 year time  song_id
+##   &lt;chr&gt;           &lt;chr&gt;                                &lt;int&gt; &lt;tim&gt;   &lt;int&gt;
+## 1 2Ge+her         The Hardest Part Of Breaking Up (Is…  2000 03:15       1
+## 2 2 Pac           Baby Don&#39;t Cry (Keep Ya Head Up II)   2000 04:22       2
+## 3 3 Doors Down    Kryptonite                            2000 03:53       3
+## 4 3 Doors Down    Loser                                 2000 04:24       4
+## 5 504 Boyz        Wobble Wobble                         2000 03:35       5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">posiciones &lt;-<span class="st"> </span>billboard_tidy <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">left_join</span>(canciones, <span class="kw">c</span>(<span class="st">&quot;artist.inverted&quot;</span>, <span class="st">&quot;track&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;time&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(song_id, date, week, rank) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(song_id, date) <span class="op">%&gt;%</span>
+<span class="st">  </span>tbl_df
+posiciones</code></pre></div>
+<pre><code>## # A tibble: 5,307 x 4
+##    song_id date        week rank 
+##      &lt;int&gt; &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;
+##  1       1 2000-09-02     1 91   
+##  2       1 2000-09-09     2 87   
+##  3       1 2000-09-16     3 92   
+##  4       2 2000-02-26     1 87   
+##  5       2 2000-03-04     2 82   
+##  6       2 2000-03-11     3 72   
+##  7       2 2000-03-18     4 77   
+##  8       2 2000-03-25     5 87   
+##  9       2 2000-04-01     6 94   
+## 10       2 2000-04-08     7 99   
+## # ... with 5,297 more rows</code></pre>
+</div>
+<div id="una-sola-unidad-observarcional-se-guardo-en-varias-tablas" class="section level4">
+<h4><span class="header-section-number">5.3.2.5</span> Una sola unidad observarcional se guardó en varias tablas</h4>
+<p>Este ejemplo y datos se toman de <span class="citation">Ortiz (<a href="#ref-tutorialintro">2015</a>)</span>.</p>
+<p>Es común que los valores sobre una misma unidad observacional estén separados en varios archivos. Muchas veces, cada archivo es una variable, e.g. el mes o el nombre del paciente, etc. Para limpiar estos datos debemos:</p>
+<ol style="list-style-type: decimal">
+<li>Leemos los archivos en una lista de tablas.</li>
+<li>Para cada tabla agregamos una columna que registra el nombre del archivo original.</li>
+<li>Combinamos las tablas en un solo dataframe.</li>
+</ol>
+<p>La carpeta <code>tidyr_datasets/specdata</code> contiene 332 archivos csv que almacenan información de monitoreo de contaminación en 332 ubicaciones de EUA. Cada archivo contiene información de una unidad de monitoreo y el número de identificación del monitor es el nombre del archivo.</p>
+<p>Primero creamos un vector con los nombres de los archivos en un directorio con extensión .csv.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">paths &lt;-<span class="st"> </span><span class="kw">dir</span>(<span class="st">&quot;tidyr_datasets/specdata&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.csv$&quot;</span>
+             , <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
+<span class="kw">names</span>(paths) &lt;-<span class="st"> </span><span class="kw">basename</span>(paths)
+specdata_US &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(<span class="kw">ldply</span>(paths, read.csv, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>))
+specdata_US <span class="op">%&gt;%</span><span class="st"> </span>head</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   .id     Date       sulfate nitrate    ID
+##   &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;
+## 1 001.csv 2003-01-01      NA      NA     1
+## 2 001.csv 2003-01-02      NA      NA     1
+## 3 001.csv 2003-01-03      NA      NA     1
+## 4 001.csv 2003-01-04      NA      NA     1
+## 5 001.csv 2003-01-05      NA      NA     1
+## 6 001.csv 2003-01-06      NA      NA     1</code></pre>
+<p>Las variables quedaron un poco sucias… las limpiamos y seleccionamos solo las de interés.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">specdata &lt;-<span class="st"> </span>specdata_US <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">monitor =</span> <span class="kw">extract_numeric</span>(.id),
+    <span class="dt">date =</span> <span class="kw">as.Date</span>(Date)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(<span class="dt">id =</span> ID, monitor, date, sulfate, nitrate)
+specdata <span class="op">%&gt;%</span><span class="st"> </span>head</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##      id monitor date       sulfate nitrate
+##   &lt;int&gt;   &lt;dbl&gt; &lt;date&gt;       &lt;dbl&gt;   &lt;dbl&gt;
+## 1     1       1 2003-01-01      NA      NA
+## 2     1       1 2003-01-02      NA      NA
+## 3     1       1 2003-01-03      NA      NA
+## 4     1       1 2003-01-04      NA      NA
+## 5     1       1 2003-01-05      NA      NA
+## 6     1       1 2003-01-06      NA      NA</code></pre>
+
+<div class="figure" style="text-align: center"><span id="fig:ejerciciofinal"></span>
+<img src="images/ejercicio_tidy_informe.png" alt="Datos de pensiones del IMSS e ISSSTE 2000 a 2016 [@informe, págs. 218-219]." width="75%" />
+<p class="caption">
+Figura 5.10: Datos de pensiones del IMSS e ISSSTE 2000 a 2016 <span class="citation">(“Cuarto Informe de Gobierno, 2015-2016. Anexo Estadístico.” <a href="#ref-informe">2016</a>, págs. 218-219)</span>.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuesta</span>
+<span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())
+<span class="co"># Funciones auxiliares</span>
+
+<span class="co"># Como son archivos de excel, muchas líneas están vacias pero R no </span>
+<span class="co"># lo entiende. Esta función quita esas lineas.</span>
+quita.nas &lt;-<span class="st"> </span><span class="cf">function</span>(df, <span class="dt">prop.na =</span> <span class="fl">0.8</span>) {
+  df &lt;-<span class="st"> </span>df[, <span class="op">!</span><span class="kw">is.na</span>(<span class="kw">names</span>(df)) <span class="op">&amp;</span><span class="st"> </span><span class="kw">names</span>(df) <span class="op">!=</span><span class="st"> &quot;&quot;</span>]
+  r &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">seq</span>(<span class="kw">nrow</span>(df)), <span class="dt">FUN =</span> <span class="cf">function</span>(x){
+    <span class="kw">sum</span>(<span class="kw">is.na</span>(df[x,]))
+  })
+  r &lt;-<span class="st"> </span>r<span class="op">/</span><span class="kw">ncol</span>(df)
+  df[r <span class="op">&lt;</span><span class="st"> </span>prop.na, ]
+}
+
+<span class="co"># Como pegaremos estados a partir de sus nombres (y no una clave)</span>
+<span class="co"># Esta función limpia los nombres de los estados</span>
+limpia &lt;-<span class="st"> </span><span class="cf">function</span>(nn) {
+  <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot; &quot;</span>, stringr<span class="op">::</span><span class="kw">str_trim</span>(nn)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">gsub</span>(<span class="st">&quot;^ *|(?&lt;= ) | *$&quot;</span>, <span class="st">&quot;&quot;</span>, ., <span class="dt">perl=</span>T) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">iconv</span>(., <span class="dt">to=</span><span class="st">&#39;ASCII//TRANSLIT&#39;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">tolower</span>(.)
+}
+
+## Funcion para pegar la clave del estado a partir del nombre
+pega.estados &lt;-<span class="st"> </span><span class="cf">function</span>(df, <span class="dt">nombres =</span> <span class="st">&quot;entidad&quot;</span>) {
+  df<span class="op">$</span>pega &lt;-<span class="st"> </span><span class="kw">limpia</span>(df[[nombres]])
+  
+  d &lt;-<span class="st"> </span><span class="kw">rbind</span>(<span class="kw">readRDS</span>(<span class="st">&quot;tidyr_datasets/informe/estados_p.rds&quot;</span>),
+             <span class="kw">data.frame</span>(
+               <span class="dt">estado =</span> <span class="kw">c</span>(<span class="st">&quot;00&quot;</span>, <span class="st">&quot;00&quot;</span>, <span class="st">&quot;30&quot;</span>, <span class="st">&quot;16&quot;</span>, <span class="st">&quot;15&quot;</span>, <span class="st">&quot;05&quot;</span>)
+               , <span class="dt">pega =</span> <span class="kw">c</span>(<span class="st">&quot;nacional&quot;</span>, <span class="st">&quot;total nacional&quot;</span>, <span class="st">&quot;veracruz&quot;</span>
+                          , <span class="st">&quot;michoacan&quot;</span>, <span class="st">&quot;estado de mexico&quot;</span>, <span class="st">&quot;coahuila&quot;</span>)
+               , <span class="dt">stringsAsFactors =</span> F
+             )
+  )
+  
+  dd &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(df, d)
+  dplyr<span class="op">::</span><span class="kw">select</span>(dd, <span class="op">-</span>pega)
+}
+
+<span class="co"># Limpieza de datos</span>
+df &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;tidyr_datasets/informe/M2_218.xlsx&quot;</span>, <span class="dt">skip =</span> <span class="dv">4</span>
+                 , <span class="dt">col_names =</span> T) 
+<span class="kw">names</span>(df) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;entidad&#39;</span>, <span class="kw">paste0</span>(<span class="st">&#39;imss_&#39;</span>, <span class="dv">2000</span><span class="op">:</span><span class="dv">2008</span>)
+               , <span class="kw">paste0</span>(<span class="st">&#39;issste_&#39;</span>, <span class="dv">2000</span><span class="op">:</span><span class="dv">2008</span>))
+df &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">quita.nas</span>(.) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">pega.estados</span>(.) <span class="op">%&gt;%</span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(., <span class="dt">key =</span> variable, <span class="dt">value =</span> valor, <span class="op">-</span>entidad
+                , <span class="op">-</span>estado, <span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">separate</span>(variable, <span class="kw">c</span>(<span class="st">&quot;indicador&quot;</span>, <span class="st">&quot;anio&quot;</span>), <span class="dt">extra =</span> <span class="st">&quot;drop&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">indicador =</span> <span class="kw">paste0</span>(<span class="st">&quot;pago_pensiones_&quot;</span>, indicador))
+
+all &lt;-<span class="st"> </span>df
+df &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;tidyr_datasets/informe/M2_219.xlsx&quot;</span>, <span class="dt">skip =</span> <span class="dv">4</span>
+                 , <span class="dt">col_names =</span> T) 
+<span class="kw">names</span>(df) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;entidad&#39;</span>, <span class="kw">paste0</span>(<span class="st">&#39;imss_&#39;</span>, <span class="dv">2009</span><span class="op">:</span><span class="dv">2016</span>)
+               , <span class="kw">paste0</span>(<span class="st">&#39;issste_&#39;</span>, <span class="dv">2009</span><span class="op">:</span><span class="dv">2016</span>))
+df &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">quita.nas</span>(.) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">pega.estados</span>(.) <span class="op">%&gt;%</span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(., <span class="dt">key =</span> variable, <span class="dt">value =</span> valor, <span class="op">-</span>entidad
+                , <span class="op">-</span>estado, <span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw">separate</span>(variable, <span class="kw">c</span>(<span class="st">&quot;indicador&quot;</span>, <span class="st">&quot;anio&quot;</span>)
+                  , <span class="dt">extra =</span> <span class="st">&quot;drop&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">indicador =</span> <span class="kw">paste0</span>(<span class="st">&quot;pago_pensiones_&quot;</span>, indicador))
+all &lt;-<span class="st"> </span><span class="kw">rbind</span>(all, df)
+
+all</code></pre></div>
+<pre><code>## # A tibble: 1,122 x 5
+##    entidad             estado indicador           anio  valor
+##    &lt;chr&gt;               &lt;chr&gt;  &lt;chr&gt;               &lt;chr&gt; &lt;dbl&gt;
+##  1 Total nacional      00     pago_pensiones_imss 2000   41.2
+##  2 Aguascalientes      01     pago_pensiones_imss 2000   41.5
+##  3 Baja California     02     pago_pensiones_imss 2000   38.9
+##  4 Baja California Sur 03     pago_pensiones_imss 2000   28.2
+##  5 Campeche            04     pago_pensiones_imss 2000   37.5
+##  6 Coahuila            05     pago_pensiones_imss 2000   46.5
+##  7 Colima              06     pago_pensiones_imss 2000   37.9
+##  8 Chiapas             07     pago_pensiones_imss 2000   34.9
+##  9 Chihuahua           08     pago_pensiones_imss 2000   39.2
+## 10 Ciudad de México    09     pago_pensiones_imss 2000   35.8
+## # ... with 1,112 more rows</code></pre>
+
+</div>
+</div>
+</div>
+<!-- </div> -->
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-wickham2014tidy">
+<p>Wickham, Hadley, and others. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10). Foundation for Open Access Statistics: 1–23.</p>
+</div>
+<div id="ref-tidyr">
+<p>Wickham, Hadley. 2016b. <em>Tidyr: Easily Tidy Data with ’Spread()’ and ’Gather()’ Functions</em>. <a href="https://CRAN.R-project.org/package=tidyr" class="uri">https://CRAN.R-project.org/package=tidyr</a>.</p>
+</div>
+<div id="ref-grolemund2016r">
+<p>Grolemund, G., and H. Wickham. 2016. <em>R for Data Science</em>. O’Reilly Media, Incorporated. <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a>.</p>
+</div>
+<div id="ref-wickham2016r">
+<p>Wickham, Hadley, and Garrett Grolemund. 2016. “R for Data Science.” Sebastopol, CA: O’Reilly Media.</p>
+</div>
+<div id="ref-tidydata">
+<p>Wickham, Hadley. 2014b. “Tidy-Data.” <em>GitHub Repository</em>. <a href="https://github.com/hadley/tidy-data" class="uri">https://github.com/hadley/tidy-data</a>; GitHub.</p>
+</div>
+<div id="ref-tutorialintro">
+<p>Ortiz, T. 2015. “Manipulación Y Agrupación de Datos.” Blog. <a href="https://dl.dropboxusercontent.com/u/1351973/tutoriales/intro_r_2.html" class="uri">https://dl.dropboxusercontent.com/u/1351973/tutoriales/intro_r_2.html</a>.</p>
+</div>
+<div id="ref-informe">
+<p>“Cuarto Informe de Gobierno, 2015-2016. Anexo Estadístico.” 2016. 4. Presidencia de la República. <a href="https://framework-gb.cdn.gob.mx/cuartoinforme/4IG_Anexo_Estadistico_TGM_26_08_16_COMPLETO.pdf" class="uri">https://framework-gb.cdn.gob.mx/cuartoinforme/4IG_Anexo_Estadistico_TGM_26_08_16_COMPLETO.pdf</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="12">
+<li id="fn12"><p><span class="citation">(Wickham and Grolemund <a href="#ref-wickham2016r">2016</a>, sección Data Tidying)</span> explica este último criterio como “cada valor ocupa su propia celda”.<a href="datos-limpios.html#fnref12">↩</a></p></li>
+<li id="fn13"><p>Ejemplo tomado de <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 3)</span>.<a href="datos-limpios.html#fnref13">↩</a></p></li>
+<li id="fn14"><p>Los valores perdidos estructurales, representan mediciones de valores que no se puede hacer o que no suceden y, por tanto, se pueden eliminar (por ejemplo, hombres embarazados). En este ejemplo, tenemos un valor perdido no estructural.<a href="datos-limpios.html#fnref14">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="transformacion-de-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": true,
+"linkedin": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["aprendeR.pdf"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
