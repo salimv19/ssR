@@ -36,6 +36,7 @@ MathJax.Hub.Config({
 <script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -253,47 +254,81 @@ img {
 Figura 5.3: Transformación de datos <span class="citation">(Grolemund and Wickham <a href="#ref-grolemund2016r">2016</a>, Introducción)</span>.
 </p>
 </div>
-<p>Existen muchas maneras de transformar los datos y una gran cantidad de paquetes que implementan distintas funciones útiles para realizar esta tarea. En particular, resaltamos <code>dplyr</code> y <code>data.table</code>. En esta sección se ejemplifican todas las funciones que permiten hacer trabajo con datos que están implementadas en <code>dplyr</code><a href="bibliografia.html#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> y en <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span>.</p>
+<p>Existen muchas maneras de transformar los datos y una gran cantidad de paquetes que implementan distintas funciones útiles para realizar esta tarea. En particular, resaltamos <code>dplyr</code> y <code>data.table</code>. En esta sección se ejemplifican todas las funciones que permiten hacer trabajo con datos que están implementadas en <code>dplyr</code><a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> y en <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span>.</p>
 <div id="tareas-comunes-en-la-manipulacion-de-datos" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Tareas comunes en la manipulación de datos</h3>
 <p>Las funciones implementadas en este paquete están diseñadas para facilitar la transformación de datos. En general, la transformación de datos implica definir qué se hará con ellos, escribir un programa que realice esa tarea y ejecutarlo <span class="citation">(Wickham and Francois, n.d., viñeta de introducción)</span>.</p>
 <p><code>dplyr</code> y <code>tidyr</code> simplifican estos pasos al proveer de opciones limitadas consideradas como las tareas más comunes en la transformación de datos. Además, proveen de verbos simples que corresponden a funciones en <code>R</code> y que mapean directamente a estas <em>tareas más comunes</em> (ver Cuadro <a href="5-2-transformacion-de-datos.html#tab:accionescomunes">5.1</a>).</p>
 <table>
-<caption><span id="tab:accionescomunes">Cuadro 5.1: </span>Acciones y verbos comunes en la manipulación de datos <span class="citation">(<span class="citeproc-not-found" data-reference-id="datawrangling"><strong>???</strong></span>)</span>.</caption>
+<caption>
+<span id="tab:accionescomunes">Cuadro 5.1: </span>Acciones y verbos comunes en la manipulación de datos <span class="citation">(<span class="citeproc-not-found" data-reference-id="datawrangling"><strong>???</strong></span>)</span>.
+</caption>
 <thead>
-<tr class="header">
-<th align="left">Acción</th>
-<th align="left">Verbos</th>
+<tr>
+<th style="text-align:left;">
+Acción
+</th>
+<th style="text-align:left;">
+Verbos
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Extracción de <strong>subconjuntos de observaciones</strong>.</td>
-<td align="left"><span>•</span> <code>filter</code>: seleccionamos filas de acuerdo a los valores de las variables<br><span>•</span><code>distinct</code>: elimina renglones duplicados<br><span>•</span><code>sample_frac</code>: selecciona aleatoriamente una fracción de filas<br><span>•</span><code>sample_n</code>: selecciona aleatoriamente <span class="math inline">\(n\)</span> filas<br><span>•</span><code>slice</code>: selecciona filas por posición<br><span>•</span><code>top_n</code>: selecciona y ordena según una variable <span class="math inline">\(n\)</span> entradas</td>
+<tr>
+<td style="text-align:left;">
+Extracción de <strong>subconjuntos de observaciones</strong>.
+</td>
+<td style="text-align:left;">
+&lt;span&gt;&amp;#8226;&lt;/span&gt; <code>filter</code>: seleccionamos filas de acuerdo a los valores de las variables&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>distinct</code>: elimina renglones duplicados&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>sample_frac</code>: selecciona aleatoriamente una fracción de filas&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>sample_n</code>: selecciona aleatoriamente <span class="math inline">\(n\)</span> filas&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>slice</code>: selecciona filas por posición&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>top_n</code>: selecciona y ordena según una variable <span class="math inline">\(n\)</span> entradas
+</td>
 </tr>
-<tr class="even">
-<td align="left">Extracción de <strong>subconjuntos de variables</strong>.</td>
-<td align="left"><span>•</span><code>select</code>: seleccionamos un subconjunto de las columnas utilizando los nombres de las variables</td>
+<tr>
+<td style="text-align:left;">
+Extracción de <strong>subconjuntos de variables</strong>.
+</td>
+<td style="text-align:left;">
+&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>select</code>: seleccionamos un subconjunto de las columnas utilizando los nombres de las variables
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Creación de <strong>resumenes de datos</strong>.</td>
-<td align="left"><span>•</span><code>summarise</code>: resume los datos en un valor único<br><span>•</span><code>summarise_each</code>: aplica una función de resumen a cada columna<br><span>•</span><code>count</code>: cuenta el número de filas con cada valor única de una variable</td>
+<tr>
+<td style="text-align:left;">
+Creación de <strong>resumenes de datos</strong>.
+</td>
+<td style="text-align:left;">
+&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>summarise</code>: resume los datos en un valor único&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>summarise_each</code>: aplica una función de resumen a cada columna&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>count</code>: cuenta el número de filas con cada valor única de una variable
+</td>
 </tr>
-<tr class="even">
-<td align="left">Creación de <strong>nuevas variables</strong>.</td>
-<td align="left"><span>•</span><code>mutate</code>: genera nuevas variables a partir de las variables originales<br> <span>•</span><code>mutate_each</code>: aplica una función ventana a cada columna<br><span>•</span><code>transmute</code>: genera una o más nuevas columnas eliminando las columnas originales</td>
+<tr>
+<td style="text-align:left;">
+Creación de <strong>nuevas variables</strong>.
+</td>
+<td style="text-align:left;">
+&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>mutate</code>: genera nuevas variables a partir de las variables originales&lt;br&gt; &lt;span&gt;&amp;#8226;&lt;/span&gt;<code>mutate_each</code>: aplica una función ventana a cada columna&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>transmute</code>: genera una o más nuevas columnas eliminando las columnas originales
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><strong>Combinación</strong> de conjuntos de datos.</td>
-<td align="left"><span>•</span><code>left_join</code>: realiza un join conservando todas las observaciones de la primera tabla especificada<br><span>•</span><code>right_join</code>: realiza un join conservando todas las observaciones de la segunda tabla especificada<br><span>•</span><code>inner_join</code>: realiza un join conservando todas las observaciones que están en ambas tablas<br><span>•</span><code>full_join</code>: realiza un join conservando todas las observaciones y valores de ambas tablas<br><span>•</span><code>semi_join</code>: conserva todas las observaciones de la primera tabla que están en la segunda tabla<br><span>•</span><code>anti_join</code>: conserva todas las observaciones de la primera tabla que no están en la segunda tabla<br><span>•</span><code>intersect</code>: conserva observaciones que están tanto en la primera tabla como en la segunda<br><span>•</span><code>union</code>: conserva observaciones que están en cualesquier tabla<br><span>•</span><code>setdiff</code>: conserva observaciones de la primera tabla que no están en la segunda<br><span>•</span><code>bind_rows</code>: une las filas de la segunda tabla a las de la primera<br><span>•</span><code>bind_cols</code>: une las columnas de la segunda tabla a las de la primera</td>
+<tr>
+<td style="text-align:left;">
+<strong>Combinación</strong> de conjuntos de datos.
+</td>
+<td style="text-align:left;">
+&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>left_join</code>: realiza un join conservando todas las observaciones de la primera tabla especificada&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>right_join</code>: realiza un join conservando todas las observaciones de la segunda tabla especificada&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>inner_join</code>: realiza un join conservando todas las observaciones que están en ambas tablas&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>full_join</code>: realiza un join conservando todas las observaciones y valores de ambas tablas&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>semi_join</code>: conserva todas las observaciones de la primera tabla que están en la segunda tabla&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>anti_join</code>: conserva todas las observaciones de la primera tabla que no están en la segunda tabla&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>intersect</code>: conserva observaciones que están tanto en la primera tabla como en la segunda&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>union</code>: conserva observaciones que están en cualesquier tabla&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>setdiff</code>: conserva observaciones de la primera tabla que no están en la segunda&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>bind_rows</code>: une las filas de la segunda tabla a las de la primera&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>bind_cols</code>: une las columnas de la segunda tabla a las de la primera
+</td>
 </tr>
-<tr class="even">
-<td align="left"><strong>Agrupar</strong> datos.</td>
-<td align="left"><span>•</span><code>group_by</code>: agrupa los datos según una o más variables<br><span>•</span><code>ungroup</code>: elimina los grupos en un data frame</td>
+<tr>
+<td style="text-align:left;">
+<strong>Agrupar</strong> datos.
+</td>
+<td style="text-align:left;">
+&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>group_by</code>: agrupa los datos según una o más variables&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>ungroup</code>: elimina los grupos en un data frame
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><strong>Reorganizar</strong> datos (<em>reshape data</em>).</td>
-<td align="left"><span>•</span><code>data_frame</code>: combina vectores en un dataframe<br><span>•</span><code>arrange</code>: Ordena las filas según una o más variables<br><span>•</span><code>rename</code>: renombra columnas de un dataframe</td>
+<tr>
+<td style="text-align:left;">
+<strong>Reorganizar</strong> datos (<em>reshape data</em>).
+</td>
+<td style="text-align:left;">
+&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>data_frame</code>: combina vectores en un dataframe&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>arrange</code>: Ordena las filas según una o más variables&lt;br&gt;&lt;span&gt;&amp;#8226;&lt;/span&gt;<code>rename</code>: renombra columnas de un dataframe
+</td>
 </tr>
 </tbody>
 </table>
@@ -709,7 +744,7 @@ mean_na &lt;-<span class="st"> </span><span class="cf">function</span>(x){
 ##  9   1054 EWR        10.1
 ## 10   1424 DCA        10.1
 ## # ... with 227,486 more rows</code></pre>
-<p>Esta manera de transformar a los datos (utilizando varios de los verbos) es confusa y difícil de leer. Es más sencillo utilizar el operador pipe<a href="bibliografia.html#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a> de <code>R</code> implementado en el paquete <code>magrittr</code>, es decir, <code>%&gt;%</code> <span class="citation">(Bache and Wickham <a href="#ref-magrittr">2014</a>)</span>.</p>
+<p>Esta manera de transformar a los datos (utilizando varios de los verbos) es confusa y difícil de leer. Es más sencillo utilizar el operador pipe<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a> de <code>R</code> implementado en el paquete <code>magrittr</code>, es decir, <code>%&gt;%</code> <span class="citation">(Bache and Wickham <a href="#ref-magrittr">2014</a>)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights2 &lt;-<span class="st"> </span><span class="kw">mutate</span>(flights, <span class="dt">velocidad =</span> dist<span class="op">/</span>time) <span class="op">%&gt;%</span>
 <span class="st">              </span><span class="kw">arrange</span>(., <span class="kw">desc</span>(velocidad)) <span class="op">%&gt;%</span>
 <span class="st">              </span><span class="kw">select</span>(., flight, dest, velocidad)

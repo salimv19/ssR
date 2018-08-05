@@ -46,6 +46,7 @@
 
 
 
+<script src="assets/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -248,7 +249,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>R tiene diferentes tipos y estructuras de datos que permiten al usuario aprovechar el lenguaje. La manipulación de estos objetos es algo que se hace diario y entender cómo operarlos o cómo convertir de una a otra es muy útil.</p>
 <div id="clases-atomicas-atomic-classes" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Clases atómicas (atomic classes)</h3>
-<p>R tiene 6 clases atómicas<a href="bibliografia.html#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> <span class="citation">(R Core Team <a href="#ref-rmanual">2016</a><a href="#ref-rmanual">a</a>)</span>.</p>
+<p>R tiene 6 clases atómicas<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> <span class="citation">(R Core Team <a href="#ref-rmanual">2016</a><a href="#ref-rmanual">a</a>)</span>.</p>
 <ul>
 <li><code>character</code> (caracter)</li>
 <li><code>numeric</code> (números reales o decimales, a esta clase también se le llama <code>double</code>)</li>
@@ -258,44 +259,88 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><code>raw</code> (contiene bytes)</li>
 </ul>
 <table>
-<caption><span id="tab:unnamed-chunk-52">Cuadro 3.1: </span>Clases atómicas</caption>
+<caption>
+<span id="tab:unnamed-chunk-52">Cuadro 3.1: </span>Clases atómicas
+</caption>
 <thead>
-<tr class="header">
-<th align="left">Type</th>
-<th align="left">Tipo</th>
-<th align="left">Ejemplo</th>
+<tr>
+<th style="text-align:left;">
+Type
+</th>
+<th style="text-align:left;">
+Tipo
+</th>
+<th style="text-align:left;">
+Ejemplo
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left"><code>character</code></td>
-<td align="left">Caracter</td>
-<td align="left">‘hola’, ‘x’</td>
+<tr>
+<td style="text-align:left;">
+<code>character</code>
+</td>
+<td style="text-align:left;">
+Caracter
+</td>
+<td style="text-align:left;">
+‘hola’, ‘x’
+</td>
 </tr>
-<tr class="even">
-<td align="left"><code>numeric</code></td>
-<td align="left">Numérico</td>
-<td align="left">67, 45.5</td>
+<tr>
+<td style="text-align:left;">
+<code>numeric</code>
+</td>
+<td style="text-align:left;">
+Numérico
+</td>
+<td style="text-align:left;">
+67, 45.5
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><code>integer</code></td>
-<td align="left">Integer</td>
-<td align="left">2L, 67L</td>
+<tr>
+<td style="text-align:left;">
+<code>integer</code>
+</td>
+<td style="text-align:left;">
+Integer
+</td>
+<td style="text-align:left;">
+2L, 67L
+</td>
 </tr>
-<tr class="even">
-<td align="left"><code>logical</code></td>
-<td align="left">Lógico</td>
-<td align="left">TRUE, FALSE, T, F</td>
+<tr>
+<td style="text-align:left;">
+<code>logical</code>
+</td>
+<td style="text-align:left;">
+Lógico
+</td>
+<td style="text-align:left;">
+TRUE, FALSE, T, F
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><code>complex</code></td>
-<td align="left">Complejo</td>
-<td align="left">1+4i</td>
+<tr>
+<td style="text-align:left;">
+<code>complex</code>
+</td>
+<td style="text-align:left;">
+Complejo
+</td>
+<td style="text-align:left;">
+1+4i
+</td>
 </tr>
-<tr class="even">
-<td align="left"><code>raw</code></td>
-<td align="left">Crudo</td>
-<td align="left">01 - imprime hexadecimales</td>
+<tr>
+<td style="text-align:left;">
+<code>raw</code>
+</td>
+<td style="text-align:left;">
+Crudo
+</td>
+<td style="text-align:left;">
+01 - imprime hexadecimales
+</td>
 </tr>
 </tbody>
 </table>
@@ -792,7 +837,7 @@ La función <code>summary</code> es la función genérica que produce resumenes 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;no&quot;</span>), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;si&quot;</span>, <span class="st">&quot;tal vez&quot;</span>))
 <span class="kw">c</span>(x, <span class="st">&quot;tal vez&quot;</span>)</code></pre></div>
 <pre><code>## [1] &quot;1&quot;       &quot;2&quot;       &quot;2&quot;       &quot;1&quot;       &quot;tal vez&quot;</code></pre>
-<p>Para datos ordinales como las respuestas en una pregunta de encuesta con escala likert<a href="bibliografia.html#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> los factores son también objetos útiles.</p>
+<p>Para datos ordinales como las respuestas en una pregunta de encuesta con escala likert<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> los factores son también objetos útiles.</p>
 <p>Veamos un ejemplo en donde tenemos 500 respuestas a la pregunta “este tutorial es muy útil”:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2887</span>)
 respuestas &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">size =</span> <span class="dv">500</span>, <span class="dt">replace =</span>  T

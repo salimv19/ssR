@@ -36,6 +36,7 @@ MathJax.Hub.Config({
 <script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -253,7 +254,7 @@ img {
 Figura 5.2: Importación en el análisis de datos <span class="citation">(Grolemund and Wickham <a href="#ref-grolemund2016r">2016</a>, Introducción)</span>.
 </p>
 </div>
-<p>Para aplicar las herramientas de R a nuestro trabajo, es necesario poder importar nuestros datos a R. R tiene conectores ya implementados para casi cualquier tipo y formato de datos. Entre los más comunes están<a href="bibliografia.html#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>:</p>
+<p>Para aplicar las herramientas de R a nuestro trabajo, es necesario poder importar nuestros datos a R. R tiene conectores ya implementados para casi cualquier tipo y formato de datos. Entre los más comunes están<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>:</p>
 <table>
 <colgroup>
 <col width="33%" />
@@ -651,7 +652,7 @@ sql2df &lt;-<span class="st"> </span><span class="cf">function</span>(sql.file, 
   
   <span class="kw">return</span>(df)
 }</code></pre></div>
-<p>La función <code>sql2df</code><a href="bibliografia.html#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> recibe como parámetro, como cadena, la ruta hacia un archivo de extensión <code>.sql</code> con los comandos a ejecutar en el manejador de base de datos. Éste puede verse, por ejemplo, como:</p>
+<p>La función <code>sql2df</code><a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> recibe como parámetro, como cadena, la ruta hacia un archivo de extensión <code>.sql</code> con los comandos a ejecutar en el manejador de base de datos. Éste puede verse, por ejemplo, como:</p>
 <pre><code>select * 
 from information_schema.tables 
 where table_schema = &#39;information_schema&#39;;</code></pre>

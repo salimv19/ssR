@@ -46,6 +46,7 @@
 
 
 
+<script src="assets/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -245,7 +246,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="funciones" class="section level2">
 <h2><span class="header-section-number">3.2</span> Funciones</h2>
-<p>Hay una regla de oro en programación en general: <em>DRY code</em><a href="bibliografia.html#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> (acrónimo de “Don’t repeat yourself”) <span class="citation">(Hunt and Thomas <a href="#ref-hunt2000">1999</a>)</span>. Básicamente esto se reduce a <em>no te repitas</em>. Cuando tienes las mismas líneas de código varias veces (cuando estas copiando y pegando mucho) entonces lo que necesitas es escribir una función que realice esa tarea.</p>
+<p>Hay una regla de oro en programación en general: <em>DRY code</em><a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> (acrónimo de “Don’t repeat yourself”) <span class="citation">(Hunt and Thomas <a href="#ref-hunt2000">1999</a>)</span>. Básicamente esto se reduce a <em>no te repitas</em>. Cuando tienes las mismas líneas de código varias veces (cuando estas copiando y pegando mucho) entonces lo que necesitas es escribir una función que realice esa tarea.</p>
 <p>En R las funciones son los <em>building blocks</em> de básicamente todo. Como todo lo demás en R, las funciones son también objetos. Cuando llamas a un objeto en R, casi siempre estas en realidad llamando a una función.</p>
 <div id="componentes-de-una-funcion" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Componentes de una función</h3>
@@ -354,17 +355,17 @@ x</code></pre></div>
 <p>Esto es debido a que R tienen espacios de nombres (<em>namespaces</em>) separados para funciones y no-funciones. Cuando R intenta concatenar los valores del 1 al 4, busca primero en el ambiente global y, en caso de no encontrarlo, busca en los <em>namespaces</em> de cada uno de los paquetes que tiene cargados.</p>
 <p>El orden en el que busca se puede encontrar utilizando el comando <code>search()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search</span>()</code></pre></div>
-<pre><code>##  [1] &quot;.GlobalEnv&quot;           &quot;package:reshape2&quot;     &quot;package:stringr&quot;     
-##  [4] &quot;package:tidyr&quot;        &quot;package:magrittr&quot;     &quot;package:bindrcpp&quot;    
-##  [7] &quot;package:pryr&quot;         &quot;package:bigrquery&quot;    &quot;package:googlesheets&quot;
-## [10] &quot;package:xlsx&quot;         &quot;package:readxl&quot;       &quot;package:readr&quot;       
-## [13] &quot;package:haven&quot;        &quot;package:foreign&quot;      &quot;package:xtable&quot;      
-## [16] &quot;package:tibble&quot;       &quot;package:data.table&quot;   &quot;package:carData&quot;     
-## [19] &quot;package:VIF&quot;          &quot;package:plyr&quot;         &quot;package:ggplot2&quot;     
-## [22] &quot;package:dplyr&quot;        &quot;package:knitr&quot;        &quot;tools:rstudio&quot;       
-## [25] &quot;package:stats&quot;        &quot;package:graphics&quot;     &quot;package:grDevices&quot;   
-## [28] &quot;package:utils&quot;        &quot;package:datasets&quot;     &quot;package:methods&quot;     
-## [31] &quot;Autoloads&quot;            &quot;package:base&quot;</code></pre>
+<pre><code>##  [1] &quot;.GlobalEnv&quot;           &quot;package:kableExtra&quot;   &quot;package:reshape2&quot;    
+##  [4] &quot;package:stringr&quot;      &quot;package:tidyr&quot;        &quot;package:magrittr&quot;    
+##  [7] &quot;package:bindrcpp&quot;     &quot;package:pryr&quot;         &quot;package:bigrquery&quot;   
+## [10] &quot;package:googlesheets&quot; &quot;package:xlsx&quot;         &quot;package:readxl&quot;      
+## [13] &quot;package:readr&quot;        &quot;package:haven&quot;        &quot;package:foreign&quot;     
+## [16] &quot;package:xtable&quot;       &quot;package:tibble&quot;       &quot;package:data.table&quot;  
+## [19] &quot;package:carData&quot;      &quot;package:VIF&quot;          &quot;package:plyr&quot;        
+## [22] &quot;package:ggplot2&quot;      &quot;package:dplyr&quot;        &quot;package:knitr&quot;       
+## [25] &quot;tools:rstudio&quot;        &quot;package:stats&quot;        &quot;package:graphics&quot;    
+## [28] &quot;package:grDevices&quot;    &quot;package:utils&quot;        &quot;package:datasets&quot;    
+## [31] &quot;package:methods&quot;      &quot;Autoloads&quot;            &quot;package:base&quot;</code></pre>
 <p>Los paquetes recién llamados acaban en la posición número 2 y todo lo demás se recorre en el orden de la lista. Nota como el <em>base</em> (que se carga por default en toda sesión) está hasta el final.</p>
 <p><code>.GlobalEnv</code> es el workspace del que hablamos antes. Si hay un símbolo que corresponde a tu petición entonces tomará el valor en tu workspace para poder ejecutar tu petición. Si no encuentra nada, busca en el namespace de cada uno de los paquetes que has cargado hasta el momento en el <em>orden</em> en el que los llamaste.</p>
 <p>Esto es <strong>muy</strong> importante. Hay contribuidores de paquetes en todo el mundo y es muy común que utilicen el mismo nombre para implementaciones de distintas cosas y, por lo tanto, a veces nuestros resultados no son lo que esperábamos.</p>

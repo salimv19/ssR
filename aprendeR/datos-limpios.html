@@ -46,6 +46,7 @@
 
 
 
+<script src="assets/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -254,7 +255,7 @@ Figura 5.5: Limpieza de datos <span class="citation">(Grolemund and Wickham <a h
 </div>
 <p>Mucho del esfuerzo en analítica lidia con la limpieza de datos. Tomar datos de diferentes fuentes y poderlas poner en la forma en la que uno los necesita para realizar analítica toma mucho tiempo y esfuerzo. Existen herramientas que permiten que esta parte sea más fácil y eficiente. Entre éstas se encuentran los criterios de datos limpios.</p>
 <p>Los conjuntos de datos limpios (<em>tidy datasets</em>) permiten manipularlos fácilmente, modelarlos y visualizarlos. Aunque funcionan independientemente del lenguaje utilizado, son particularmente útiles en <code>R</code> pues éste es un lenguaje pensado para estructuras de datos tabulares; mismas que son más fácilmente explotables si se usan datos limpios <span class="citation">(Wickham and Grolemund <a href="#ref-wickham2016r">2016</a>)</span>.</p>
-<p>Los datos limpios tienen una estructura específica: cada variable es una columna, cada observación una fila y tipo de unidad observacional forma una tabla<a href="bibliografia.html#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a>.</p>
+<p>Los datos limpios tienen una estructura específica: cada variable es una columna, cada observación una fila y tipo de unidad observacional forma una tabla<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a>.</p>
 <div id="datos-limpios-en-el-procesamiento-de-datos" class="section level4">
 <h4><span class="header-section-number">5.3.0.1</span> Datos limpios en el procesamiento de datos</h4>
 <p>Esta actividad incluye una gran cantidad de elementos: revisión de valores atípicos, extracción de variables de cadenas en datos no estructurados, imputación de valores perdidos. Los datos limpios son tan solo un subconjunto de este proceso y lidian con el cómo estructurar los datos de manera que se facilite el análisis.</p>
@@ -264,7 +265,7 @@ Figura 5.5: Limpieza de datos <span class="citation">(Grolemund and Wickham <a h
 <div id="estructura-de-datos-un-ejemplo" class="section level5">
 <h5><span class="header-section-number">5.3.0.1.1</span> Estructura de datos: un ejemplo</h5>
 <p>La mayoría de los datos estadísticos están conformados por tablas rectangulares compuestas por filas y columnas. Las columnas casi siempre están etiquetadas (<em>colnames</em>) y las filas a veces lo están.</p>
-<p>Tomamos el ejemplo de datos de la figura <a href="datos-limpios.html#fig:estructura">5.6</a> en donde se presentan datos de un experimento<a href="bibliografia.html#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a>. La tabla contiene dos columnas y tres filas, ambas etiquetadas.</p>
+<p>Tomamos el ejemplo de datos de la figura <a href="datos-limpios.html#fig:estructura">5.6</a> en donde se presentan datos de un experimento<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a>. La tabla contiene dos columnas y tres filas, ambas etiquetadas.</p>
 <div class="figure" style="text-align: center"><span id="fig:estructura"></span>
 <img src="images/02_estructura.png" alt="Típica presentación de datos." width="40%" />
 <p class="caption">
@@ -293,7 +294,7 @@ Figura 5.7: Mismos datos que en <a href="datos-limpios.html#fig:estructura">5.6<
 <li><em>tratamiento</em> con dos posibles valores (a o b)</li>
 <li><em>resultado</em> con 6 valores (-, 16, 3, 2, 11, 1)</li>
 </ol>
-<p>El diseño del experimento mismo nos habla de la estructura de las observaciones y los posibles valores que pueden tomar. Por ejemplo, en este caso el valor perdido nos dice que, por diseño, se debió de capturar esta variable pero no se hizo (por eso es importante guardarlo como tal)<a href="bibliografia.html#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a>.</p>
+<p>El diseño del experimento mismo nos habla de la estructura de las observaciones y los posibles valores que pueden tomar. Por ejemplo, en este caso el valor perdido nos dice que, por diseño, se debió de capturar esta variable pero no se hizo (por eso es importante guardarlo como tal)<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a>.</p>
 <p>En la figura <a href="datos-limpios.html#fig:estructuratidy">5.8</a> se muestran los mismos datos que antes pero pensados tal que las variables son columnas y las observaciones (en este caso, cada punto en el diseño experimental) son filas.</p>
 <div class="figure" style="text-align: center"><span id="fig:estructuratidy"></span>
 <img src="images/02_estructuratidy.png" alt="Observaciones son filas, variables columnas." width="40%" />
@@ -313,7 +314,7 @@ Figura 5.8: Observaciones son filas, variables columnas.
 <li>Cada <em>observación</em> es una fila.</li>
 <li>Cada <em>tipo de unidad observacional</em> es una tabla / cada valor tiene su celda.</li>
 </ol>
-<p>En la figura  podemos ver estos tres elementos de los datos limpios y cómo se representan en un <em>dataframe</em>.</p>
+<p>En la figura <a href="datos-limpios.html#fig:datoslimpios">5.9</a> podemos ver estos tres elementos de los datos limpios y cómo se representan en un <em>dataframe</em>.</p>
 <div class="figure" style="text-align: center"><span id="fig:datoslimpios"></span>
 <img src="images/datos_limpios.png" alt="Ejemplificación de datos limpios [@wickham2016r, sección Data Tidying]." width="90%" />
 <p class="caption">
@@ -362,12 +363,370 @@ Extrae los tratamientos del tipo a en la forma 2.
 <p>Estos problemas pueden ser resueltos con las funciones implementadas en el paquete <code>tidyr</code>: <code>gather</code>, <code>spread</code>, <code>separate</code> y <code>unite</code>.</p>
 <div id="los-nombres-de-las-columnas-son-valores-no-nombres-de-variables" class="section level4">
 <h4><span class="header-section-number">5.3.2.1</span> Los nombres de las columnas son valores, no nombres de variables</h4>
-<p>La tabla  muestra datos sucios con este problema. La base acompaña al paquete <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span> y es una muestra de los datos del reporte sobre tuberculosis de la organización mundial de la salud. Contiene observaciones anuales por país para casos de tuberculosis según distintos grupos.</p>
+<p>La tabla <a href="datos-limpios.html#tab:varsencols">5.2</a> muestra datos sucios con este problema. La base acompaña al paquete <code>tidyr</code> <span class="citation">(H. Wickham <a href="#ref-tidyr">2016</a><a href="#ref-tidyr">b</a>)</span> y es una muestra de los datos del reporte sobre tuberculosis de la organización mundial de la salud. Contiene observaciones anuales por país para casos de tuberculosis según distintos grupos.</p>
 <p>La descripción de todas las variables se puede ver tecleando <code>?who</code></p>
-<p>Dentro de un reporte, la representación que se tiene de las variables tiene sentido. Por ejemplo, en la tabla  vemos los casos de tuberculosis para distintos grupos de edad de hombres en México para cierto tipo de diagnóstico.</p>
-
+<p>Dentro de un reporte, la representación que se tiene de las variables tiene sentido. Por ejemplo, en la tabla <a href="datos-limpios.html#tab:varsencols">5.2</a> vemos los casos de tuberculosis para distintos grupos de edad de hombres en México para cierto tipo de diagnóstico.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:varsencols">Cuadro 5.2: </span>Casos de tuberculosis para México del 2000 al 2010 <br>para hombres con diagnóstico por lesiones de pulmón.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:right;">
+new_sp_m014
+</th>
+<th style="text-align:right;">
+new_sp_m1524
+</th>
+<th style="text-align:right;">
+new_sp_m2534
+</th>
+<th style="text-align:right;">
+new_sp_m3544
+</th>
+<th style="text-align:right;">
+new_sp_m4554
+</th>
+<th style="text-align:right;">
+new_sp_m5564
+</th>
+<th style="text-align:right;">
+new_sp_m65
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+214
+</td>
+<td style="text-align:right;">
+1079
+</td>
+<td style="text-align:right;">
+1387
+</td>
+<td style="text-align:right;">
+1162
+</td>
+<td style="text-align:right;">
+1235
+</td>
+<td style="text-align:right;">
+972
+</td>
+<td style="text-align:right;">
+1126
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+1448
+</td>
+<td style="text-align:right;">
+1639
+</td>
+<td style="text-align:right;">
+1683
+</td>
+<td style="text-align:right;">
+1606
+</td>
+<td style="text-align:right;">
+1229
+</td>
+<td style="text-align:right;">
+1566
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2002
+</td>
+<td style="text-align:right;">
+154
+</td>
+<td style="text-align:right;">
+1090
+</td>
+<td style="text-align:right;">
+1292
+</td>
+<td style="text-align:right;">
+1301
+</td>
+<td style="text-align:right;">
+1146
+</td>
+<td style="text-align:right;">
+986
+</td>
+<td style="text-align:right;">
+1144
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2003
+</td>
+<td style="text-align:right;">
+187
+</td>
+<td style="text-align:right;">
+1207
+</td>
+<td style="text-align:right;">
+1461
+</td>
+<td style="text-align:right;">
+1417
+</td>
+<td style="text-align:right;">
+1313
+</td>
+<td style="text-align:right;">
+1005
+</td>
+<td style="text-align:right;">
+1352
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2004
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+1053
+</td>
+<td style="text-align:right;">
+1276
+</td>
+<td style="text-align:right;">
+1181
+</td>
+<td style="text-align:right;">
+1201
+</td>
+<td style="text-align:right;">
+958
+</td>
+<td style="text-align:right;">
+1209
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2005
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+1095
+</td>
+<td style="text-align:right;">
+1376
+</td>
+<td style="text-align:right;">
+1314
+</td>
+<td style="text-align:right;">
+1238
+</td>
+<td style="text-align:right;">
+1042
+</td>
+<td style="text-align:right;">
+1288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2006
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+986
+</td>
+<td style="text-align:right;">
+1320
+</td>
+<td style="text-align:right;">
+1333
+</td>
+<td style="text-align:right;">
+1275
+</td>
+<td style="text-align:right;">
+1012
+</td>
+<td style="text-align:right;">
+1215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2007
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+981
+</td>
+<td style="text-align:right;">
+1286
+</td>
+<td style="text-align:right;">
+1286
+</td>
+<td style="text-align:right;">
+1266
+</td>
+<td style="text-align:right;">
+942
+</td>
+<td style="text-align:right;">
+1226
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:right;">
+966
+</td>
+<td style="text-align:right;">
+1292
+</td>
+<td style="text-align:right;">
+1314
+</td>
+<td style="text-align:right;">
+1267
+</td>
+<td style="text-align:right;">
+1004
+</td>
+<td style="text-align:right;">
+1213
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+1030
+</td>
+<td style="text-align:right;">
+1262
+</td>
+<td style="text-align:right;">
+1401
+</td>
+<td style="text-align:right;">
+1360
+</td>
+<td style="text-align:right;">
+1024
+</td>
+<td style="text-align:right;">
+1252
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:right;">
+1081
+</td>
+<td style="text-align:right;">
+1375
+</td>
+<td style="text-align:right;">
+1380
+</td>
+<td style="text-align:right;">
+1392
+</td>
+<td style="text-align:right;">
+1119
+</td>
+<td style="text-align:right;">
+1303
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>En las columnas tenemos varias variables: método de diagnóstico, género y categorías de edad. Para arreglarlo, necesitamos <em>juntar</em> (gather) las columnas con valores de variables en una sola columna que contenga esos nombres como valores. En otras palabras, debemos convertir de la columna 5 en adelante en filas.</p>
-<p>Con el paquete <strong>tidyr</strong> esto se puede realizar en forma fácil con el comando <code>gather</code> de manera que obtenemos un dataframe como el que se muestra en la tabla .</p>
+<p>Con el paquete <strong>tidyr</strong> esto se puede realizar en forma fácil con el comando <code>gather</code> de manera que obtenemos un dataframe como el que se muestra en la tabla <a href="datos-limpios.html#tab:varsjuntadas">5.3</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">junta &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw">gather</span>(who, <span class="dt">key =</span> variables, <span class="dt">value =</span> casos
                        , <span class="op">-</span>country, <span class="op">-</span>iso2, <span class="op">-</span>iso3, <span class="op">-</span>year, <span class="dt">na.rm =</span> T)</code></pre></div>
 <p>Los parámetros que recibe la función gather son (al menos):</p>
@@ -378,7 +737,155 @@ Extrae los tratamientos del tipo a en la forma 2.
 <li>Al último, especificamos las variables que <strong>NO</strong> se deben de juntar (en este caso: el país, iso2, iso3 y el año).</li>
 </ul>
 <p>Hay parámetros opcionales en la función. Para estos datos en particular, por ejemplo, es conveniente remover los grupos para los que no se tiene el dato con el parámetro <code>na.rm = TRUE</code>.</p>
-
+<table>
+<caption>
+<span id="tab:varsjuntadas">Cuadro 5.3: </span>Valores de variables en una sola variable.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:left;">
+iso2
+</th>
+<th style="text-align:left;">
+iso3
+</th>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:left;">
+variables
+</th>
+<th style="text-align:right;">
+casos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+1997
+</td>
+<td style="text-align:left;">
+new_sp_m014
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+1998
+</td>
+<td style="text-align:left;">
+new_sp_m014
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:left;">
+new_sp_m014
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+new_sp_m014
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+new_sp_m014
+</td>
+<td style="text-align:right;">
+129
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+2002
+</td>
+<td style="text-align:left;">
+new_sp_m014
+</td>
+<td style="text-align:right;">
+90
+</td>
+</tr>
+</tbody>
+</table>
 <div class="nota">
 <p>
 <strong>gather</strong>
@@ -407,14 +914,966 @@ Esto es resultado de ejecutar:
 Este tipo de formato de datos (poner valores de variables en las columnas) es útil también cuando se capturan datos al evitar la repetición de valores.
 </p>
 <p>
-Por ejemplo, pensemos en un experimento clínico en el que seguimos a sujetos a lo largo de un tratamiento midiendo su IMC. Una forma muy sencilla de guardar los datos del experimento es utilizando un procesador de texto común. El capturista no querrá seguir criterios de datos limpios al llenar la información pues implicaría repetir el nombre de la persona, el día de la captura y el nivel de colesterol. Supongamos un experimento con 16 sujetos a lo largo de un año en donde se mide el colesterol una vez al mes (mes1, mes2, etc.). Los datos capturados se muestran en la tabla .
+Por ejemplo, pensemos en un experimento clínico en el que seguimos a sujetos a lo largo de un tratamiento midiendo su IMC. Una forma muy sencilla de guardar los datos del experimento es utilizando un procesador de texto común. El capturista no querrá seguir criterios de datos limpios al llenar la información pues implicaría repetir el nombre de la persona, el día de la captura y el nivel de colesterol. Supongamos un experimento con 16 sujetos a lo largo de un año en donde se mide el colesterol una vez al mes (mes1, mes2, etc.). Los datos capturados se muestran en la tabla <a href="datos-limpios.html#tab:sujetos">5.4</a>.
 </p>
 <p>
-Nuevamente, queremos convertir la columna 3 a 14 en filas, es decir, observaciones. Utiliza el comando <code>gather</code> para realizar esto y obtener el resultado que se muestra en la tabla .
+Nuevamente, queremos convertir la columna 3 a 14 en filas, es decir, observaciones. Utiliza el comando <code>gather</code> para realizar esto y obtener el resultado que se muestra en la tabla <a href="datos-limpios.html#tab:sujetostidy">5.5</a>.
 </p>
 </div>
-
-
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:sujetos">Cuadro 5.4: </span>Mediciones de IMC en sujetos.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+sujetos
+</th>
+<th style="text-align:left;">
+grupo
+</th>
+<th style="text-align:right;">
+mes1
+</th>
+<th style="text-align:right;">
+mes2
+</th>
+<th style="text-align:right;">
+mes3
+</th>
+<th style="text-align:right;">
+mes4
+</th>
+<th style="text-align:right;">
+mes5
+</th>
+<th style="text-align:right;">
+mes6
+</th>
+<th style="text-align:right;">
+mes7
+</th>
+<th style="text-align:right;">
+mes8
+</th>
+<th style="text-align:right;">
+mes9
+</th>
+<th style="text-align:right;">
+mes10
+</th>
+<th style="text-align:right;">
+mes11
+</th>
+<th style="text-align:right;">
+mes12
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+31.67964
+</td>
+<td style="text-align:right;">
+30.80521
+</td>
+<td style="text-align:right;">
+31.04734
+</td>
+<td style="text-align:right;">
+30.97029
+</td>
+<td style="text-align:right;">
+31.08039
+</td>
+<td style="text-align:right;">
+31.39251
+</td>
+<td style="text-align:right;">
+32.17970
+</td>
+<td style="text-align:right;">
+32.31917
+</td>
+<td style="text-align:right;">
+32.82939
+</td>
+<td style="text-align:right;">
+33.54767
+</td>
+<td style="text-align:right;">
+34.54069
+</td>
+<td style="text-align:right;">
+35.43622
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+17.78817
+</td>
+<td style="text-align:right;">
+20.12772
+</td>
+<td style="text-align:right;">
+21.35329
+</td>
+<td style="text-align:right;">
+21.27564
+</td>
+<td style="text-align:right;">
+22.75788
+</td>
+<td style="text-align:right;">
+23.29498
+</td>
+<td style="text-align:right;">
+24.89155
+</td>
+<td style="text-align:right;">
+25.84079
+</td>
+<td style="text-align:right;">
+26.42524
+</td>
+<td style="text-align:right;">
+25.07992
+</td>
+<td style="text-align:right;">
+25.81010
+</td>
+<td style="text-align:right;">
+24.41464
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+25.45886
+</td>
+<td style="text-align:right;">
+25.59492
+</td>
+<td style="text-align:right;">
+24.52453
+</td>
+<td style="text-align:right;">
+26.44944
+</td>
+<td style="text-align:right;">
+27.30098
+</td>
+<td style="text-align:right;">
+29.46577
+</td>
+<td style="text-align:right;">
+29.62005
+</td>
+<td style="text-align:right;">
+32.31106
+</td>
+<td style="text-align:right;">
+32.35442
+</td>
+<td style="text-align:right;">
+33.19972
+</td>
+<td style="text-align:right;">
+34.50747
+</td>
+<td style="text-align:right;">
+35.61197
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+tratamiento
+</td>
+<td style="text-align:right;">
+29.41561
+</td>
+<td style="text-align:right;">
+29.83634
+</td>
+<td style="text-align:right;">
+31.81709
+</td>
+<td style="text-align:right;">
+31.49870
+</td>
+<td style="text-align:right;">
+31.14921
+</td>
+<td style="text-align:right;">
+31.68939
+</td>
+<td style="text-align:right;">
+31.21548
+</td>
+<td style="text-align:right;">
+31.38993
+</td>
+<td style="text-align:right;">
+31.11228
+</td>
+<td style="text-align:right;">
+31.80051
+</td>
+<td style="text-align:right;">
+32.46867
+</td>
+<td style="text-align:right;">
+32.90205
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+29.33292
+</td>
+<td style="text-align:right;">
+30.25089
+</td>
+<td style="text-align:right;">
+32.55599
+</td>
+<td style="text-align:right;">
+33.20818
+</td>
+<td style="text-align:right;">
+34.47790
+</td>
+<td style="text-align:right;">
+34.88486
+</td>
+<td style="text-align:right;">
+34.15729
+</td>
+<td style="text-align:right;">
+34.95511
+</td>
+<td style="text-align:right;">
+34.43524
+</td>
+<td style="text-align:right;">
+32.58758
+</td>
+<td style="text-align:right;">
+33.19314
+</td>
+<td style="text-align:right;">
+33.38311
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+tratamiento
+</td>
+<td style="text-align:right;">
+17.88799
+</td>
+<td style="text-align:right;">
+18.70229
+</td>
+<td style="text-align:right;">
+20.45231
+</td>
+<td style="text-align:right;">
+20.71991
+</td>
+<td style="text-align:right;">
+22.08819
+</td>
+<td style="text-align:right;">
+20.76101
+</td>
+<td style="text-align:right;">
+20.32347
+</td>
+<td style="text-align:right;">
+20.25175
+</td>
+<td style="text-align:right;">
+21.32090
+</td>
+<td style="text-align:right;">
+22.66232
+</td>
+<td style="text-align:right;">
+22.74831
+</td>
+<td style="text-align:right;">
+24.15287
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+31.76521
+</td>
+<td style="text-align:right;">
+30.79351
+</td>
+<td style="text-align:right;">
+28.75247
+</td>
+<td style="text-align:right;">
+29.09485
+</td>
+<td style="text-align:right;">
+29.55794
+</td>
+<td style="text-align:right;">
+29.79581
+</td>
+<td style="text-align:right;">
+30.25448
+</td>
+<td style="text-align:right;">
+31.10475
+</td>
+<td style="text-align:right;">
+32.66187
+</td>
+<td style="text-align:right;">
+33.12959
+</td>
+<td style="text-align:right;">
+33.03333
+</td>
+<td style="text-align:right;">
+34.59451
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+tratamiento
+</td>
+<td style="text-align:right;">
+32.73641
+</td>
+<td style="text-align:right;">
+34.01387
+</td>
+<td style="text-align:right;">
+34.43079
+</td>
+<td style="text-align:right;">
+35.41067
+</td>
+<td style="text-align:right;">
+35.25427
+</td>
+<td style="text-align:right;">
+35.40786
+</td>
+<td style="text-align:right;">
+35.06554
+</td>
+<td style="text-align:right;">
+33.36535
+</td>
+<td style="text-align:right;">
+34.25122
+</td>
+<td style="text-align:right;">
+33.80415
+</td>
+<td style="text-align:right;">
+34.95198
+</td>
+<td style="text-align:right;">
+34.45725
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+20.51924
+</td>
+<td style="text-align:right;">
+18.72126
+</td>
+<td style="text-align:right;">
+18.71415
+</td>
+<td style="text-align:right;">
+18.76056
+</td>
+<td style="text-align:right;">
+19.17783
+</td>
+<td style="text-align:right;">
+20.17382
+</td>
+<td style="text-align:right;">
+20.70428
+</td>
+<td style="text-align:right;">
+20.06915
+</td>
+<td style="text-align:right;">
+20.86691
+</td>
+<td style="text-align:right;">
+20.75775
+</td>
+<td style="text-align:right;">
+20.89958
+</td>
+<td style="text-align:right;">
+23.20577
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+27.78727
+</td>
+<td style="text-align:right;">
+27.03307
+</td>
+<td style="text-align:right;">
+30.14577
+</td>
+<td style="text-align:right;">
+30.90720
+</td>
+<td style="text-align:right;">
+31.71385
+</td>
+<td style="text-align:right;">
+32.25916
+</td>
+<td style="text-align:right;">
+32.36215
+</td>
+<td style="text-align:right;">
+33.66277
+</td>
+<td style="text-align:right;">
+33.93563
+</td>
+<td style="text-align:right;">
+34.55387
+</td>
+<td style="text-align:right;">
+34.79750
+</td>
+<td style="text-align:right;">
+35.23222
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+29.11799
+</td>
+<td style="text-align:right;">
+29.50777
+</td>
+<td style="text-align:right;">
+30.87742
+</td>
+<td style="text-align:right;">
+31.51282
+</td>
+<td style="text-align:right;">
+31.84775
+</td>
+<td style="text-align:right;">
+31.78363
+</td>
+<td style="text-align:right;">
+33.10028
+</td>
+<td style="text-align:right;">
+32.90888
+</td>
+<td style="text-align:right;">
+31.09432
+</td>
+<td style="text-align:right;">
+31.32973
+</td>
+<td style="text-align:right;">
+31.77483
+</td>
+<td style="text-align:right;">
+33.89905
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+26.92163
+</td>
+<td style="text-align:right;">
+27.00659
+</td>
+<td style="text-align:right;">
+28.88764
+</td>
+<td style="text-align:right;">
+27.85031
+</td>
+<td style="text-align:right;">
+27.59390
+</td>
+<td style="text-align:right;">
+28.70915
+</td>
+<td style="text-align:right;">
+30.90390
+</td>
+<td style="text-align:right;">
+32.50579
+</td>
+<td style="text-align:right;">
+33.98148
+</td>
+<td style="text-align:right;">
+35.29480
+</td>
+<td style="text-align:right;">
+35.51516
+</td>
+<td style="text-align:right;">
+37.23530
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+31.74101
+</td>
+<td style="text-align:right;">
+32.09997
+</td>
+<td style="text-align:right;">
+33.23600
+</td>
+<td style="text-align:right;">
+32.50806
+</td>
+<td style="text-align:right;">
+33.94469
+</td>
+<td style="text-align:right;">
+33.92085
+</td>
+<td style="text-align:right;">
+33.98528
+</td>
+<td style="text-align:right;">
+34.15463
+</td>
+<td style="text-align:right;">
+34.49340
+</td>
+<td style="text-align:right;">
+35.28866
+</td>
+<td style="text-align:right;">
+36.26842
+</td>
+<td style="text-align:right;">
+36.46921
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+tratamiento
+</td>
+<td style="text-align:right;">
+26.10780
+</td>
+<td style="text-align:right;">
+25.48703
+</td>
+<td style="text-align:right;">
+24.63164
+</td>
+<td style="text-align:right;">
+26.17675
+</td>
+<td style="text-align:right;">
+27.46665
+</td>
+<td style="text-align:right;">
+25.80113
+</td>
+<td style="text-align:right;">
+25.77473
+</td>
+<td style="text-align:right;">
+25.80246
+</td>
+<td style="text-align:right;">
+25.82197
+</td>
+<td style="text-align:right;">
+25.61214
+</td>
+<td style="text-align:right;">
+26.57368
+</td>
+<td style="text-align:right;">
+26.69203
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+31.91337
+</td>
+<td style="text-align:right;">
+32.17217
+</td>
+<td style="text-align:right;">
+31.11317
+</td>
+<td style="text-align:right;">
+33.21405
+</td>
+<td style="text-align:right;">
+35.93714
+</td>
+<td style="text-align:right;">
+36.78629
+</td>
+<td style="text-align:right;">
+37.28242
+</td>
+<td style="text-align:right;">
+37.69217
+</td>
+<td style="text-align:right;">
+38.80763
+</td>
+<td style="text-align:right;">
+40.63381
+</td>
+<td style="text-align:right;">
+41.32086
+</td>
+<td style="text-align:right;">
+41.74856
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+tratamiento
+</td>
+<td style="text-align:right;">
+21.47310
+</td>
+<td style="text-align:right;">
+20.65247
+</td>
+<td style="text-align:right;">
+20.97520
+</td>
+<td style="text-align:right;">
+22.16279
+</td>
+<td style="text-align:right;">
+21.86995
+</td>
+<td style="text-align:right;">
+19.00752
+</td>
+<td style="text-align:right;">
+17.50338
+</td>
+<td style="text-align:right;">
+18.16701
+</td>
+<td style="text-align:right;">
+18.15270
+</td>
+<td style="text-align:right;">
+19.56805
+</td>
+<td style="text-align:right;">
+19.54166
+</td>
+<td style="text-align:right;">
+21.78162
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<table>
+<caption>
+<span id="tab:sujetostidy">Cuadro 5.5: </span>Muestra de datos limpios para experimentos IMC.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+sujetos
+</th>
+<th style="text-align:left;">
+grupo
+</th>
+<th style="text-align:left;">
+mes
+</th>
+<th style="text-align:right;">
+IMC
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+41
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+mes3
+</td>
+<td style="text-align:right;">
+18.71415
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+187
+</td>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+mes12
+</td>
+<td style="text-align:right;">
+33.89905
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31
+</td>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+mes2
+</td>
+<td style="text-align:right;">
+32.17217
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+56
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+tratamiento
+</td>
+<td style="text-align:left;">
+mes4
+</td>
+<td style="text-align:right;">
+35.41067
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+188
+</td>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+mes12
+</td>
+<td style="text-align:right;">
+37.23530
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+111
+</td>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+mes7
+</td>
+<td style="text-align:right;">
+37.28242
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+119
+</td>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+mes8
+</td>
+<td style="text-align:right;">
+31.10475
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+mes1
+</td>
+<td style="text-align:right;">
+26.92163
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+136
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+tratamiento
+</td>
+<td style="text-align:left;">
+mes9
+</td>
+<td style="text-align:right;">
+34.25122
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+58
+</td>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+mes4
+</td>
+<td style="text-align:right;">
+30.90720
+</td>
+</tr>
+</tbody>
+</table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Creamos los datos</span>
 df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
   <span class="dt">sujetos =</span> LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">16</span>],
@@ -471,11 +1930,201 @@ Pueden ser utilizadas para buscar una cadena en específico en forma exacta, bus
 <strong>Nota</strong>
 </p>
 <p>
-Nota como en el último ejemplo, se utiliza el símbolo <code>%<span class="math inline">\(&amp;lt;&amp;gt;\)</span>%</code> que es equivalente a realizar una asignación (<span class="math inline"><span class="math inline">\(&amp;lt;-\)</span></span>) y un pipe (<code>%<span class="math inline">\(&amp;gt;\)</span>%</code>) de los datos que están guardados en el dataframe limpios.
+Nota como en el último ejemplo, se utiliza el símbolo <code>%&lt;&gt;%</code> que es equivalente a realizar una asignación (&lt;-) y un pipe (<code>%&gt;%</code>) de los datos que están guardados en el dataframe limpios.
 </p>
 </div>
-<p>De esta forma, obtenemos los datos como se ven en la tabla  donde tenemos una variable para el método de diagnóstico, una para el género, otra para la edad y una última con el número de casos observados.</p>
-
+<p>De esta forma, obtenemos los datos como se ven en la tabla <a href="datos-limpios.html#tab:varslimpios">5.6</a> donde tenemos una variable para el método de diagnóstico, una para el género, otra para la edad y una última con el número de casos observados.</p>
+<table>
+<caption>
+<span id="tab:varslimpios">Cuadro 5.6: </span>Cada columna es una variable.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:left;">
+iso2
+</th>
+<th style="text-align:left;">
+iso3
+</th>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:left;">
+diagnostico
+</th>
+<th style="text-align:left;">
+genero
+</th>
+<th style="text-align:left;">
+edad
+</th>
+<th style="text-align:right;">
+casos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+1997
+</td>
+<td style="text-align:left;">
+sp
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+0-14
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+1998
+</td>
+<td style="text-align:left;">
+sp
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+0-14
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:left;">
+sp
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+0-14
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:left;">
+sp
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+0-14
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+sp
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+0-14
+</td>
+<td style="text-align:right;">
+129
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+AF
+</td>
+<td style="text-align:left;">
+AFG
+</td>
+<td style="text-align:right;">
+2002
+</td>
+<td style="text-align:left;">
+sp
+</td>
+<td style="text-align:left;">
+m
+</td>
+<td style="text-align:left;">
+0-14
+</td>
+<td style="text-align:right;">
+90
+</td>
+</tr>
+</tbody>
+</table>
 <div class="nota">
 <p>
 <strong>Nota</strong>
@@ -523,10 +2172,1101 @@ pob.tidy</code></pre></div>
 <div id="las-variables-estan-guardadas-tanto-en-filas-como-en-columnas" class="section level4">
 <h4><span class="header-section-number">5.3.2.3</span> Las variables están guardadas tanto en filas como en columnas</h4>
 <p>Uno de los problemas más difíciles es cuando las variables están tanto en filas como en columnas.</p>
-<p>Para ejemplificar este problema, se muestran los datos de temperatura máxima y mínima en algunas zonas de México <span class="citation">(H. Wickham <a href="#ref-tidydata">2014</a><a href="#ref-tidydata">b</a>, archivo: data/weather.txt)</span>. Los datos que limpiaremos se ven en la tabla . Como se puede ver, tenemos valores del día del mes de la observación como nombres de variables: d1 (día 1), d2 (día 2), etc. Esto es homólogo al problema 1 visto anteriormente.</p>
+<p>Para ejemplificar este problema, se muestran los datos de temperatura máxima y mínima en algunas zonas de México <span class="citation">(H. Wickham <a href="#ref-tidydata">2014</a><a href="#ref-tidydata">b</a>, archivo: data/weather.txt)</span>. Los datos que limpiaremos se ven en la tabla <a href="datos-limpios.html#tab:clima">5.7</a>. Como se puede ver, tenemos valores del día del mes de la observación como nombres de variables: d1 (día 1), d2 (día 2), etc. Esto es homólogo al problema 1 visto anteriormente.</p>
 <p>También tenemos variables en las filas: la temperatura máxima y la temperatura mínima deberían ser el nombre de las columnas.</p>
-
-<p>Para limpiar, lo primero que debemos hacer es juntar los días (que son valores de la variable día) en una sola columna. Después utilizamos la nueva variable para crear la fecha. Así, obtenemos la tabla , a partir de los datos en el dataframe <em>raw</em>.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:clima">Cuadro 5.7: </span>Mediciones de temperatura max y min.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+id
+</th>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:right;">
+month
+</th>
+<th style="text-align:left;">
+element
+</th>
+<th style="text-align:right;">
+d1
+</th>
+<th style="text-align:right;">
+d2
+</th>
+<th style="text-align:right;">
+d3
+</th>
+<th style="text-align:right;">
+d4
+</th>
+<th style="text-align:right;">
+d5
+</th>
+<th style="text-align:right;">
+d6
+</th>
+<th style="text-align:right;">
+d7
+</th>
+<th style="text-align:right;">
+d8
+</th>
+<th style="text-align:right;">
+d9
+</th>
+<th style="text-align:right;">
+d10
+</th>
+<th style="text-align:right;">
+d11
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+27.3
+</td>
+<td style="text-align:right;">
+24.1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+29.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+13.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+32.1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+34.5
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+14.2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+16.8
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+28.6
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+17.5
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+29.6
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+29.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+15.8
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+17.3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+27.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+28.1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+14.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+12.9
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+31.3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+27.2
+</td>
+<td style="text-align:right;">
+26.3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+16.3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+7.9
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+29.9
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+27.8
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+13.8
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Para limpiar, lo primero que debemos hacer es juntar los días (que son valores de la variable día) en una sola columna. Después utilizamos la nueva variable para crear la fecha. Así, obtenemos la tabla <a href="datos-limpios.html#tab:clima1">5.8</a>, a partir de los datos en el dataframe <em>raw</em>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Tidy</span>
 <span class="co"># Primero, juntamos la variable dias</span>
 clean1 &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw">gather</span>(raw, <span class="dt">key =</span> variable, <span class="dt">value =</span> value, d1<span class="op">:</span>d31
@@ -547,11 +3287,195 @@ clean1 &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class=
 Otro paquete muy útil para realizar tareas de limpieza con cadenas. La <a href="https://cran.r-project.org/web/packages/stringr/stringr.pdf">documentación</a> detalla todas sus funciones. En este caso, utilizamos la función <code>str_replace</code> que nos permite reemplazar una cadena de caracteres por otra.
 </p>
 </div>
-
+<table>
+<caption>
+<span id="tab:clima1">Cuadro 5.8: </span>Paso 1. Juntar las columnas, limpiar días, crear fecha.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+id
+</th>
+<th style="text-align:left;">
+date
+</th>
+<th style="text-align:left;">
+element
+</th>
+<th style="text-align:right;">
+value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-01-30
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+27.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-01-30
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+14.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-02-02
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+27.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-02-02
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-02-03
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+24.1
+</td>
+</tr>
+</tbody>
+</table>
 <p>El segundo paso es transformar la variable <code>element</code> en dos columnas pues, en realidad, almacena dos variables: temperatura máxima y mínima.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Las temperaturas van a columnas</span>
 clean2 &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw">spread</span>(clean1, <span class="dt">key =</span> element, <span class="dt">value =</span> value)</code></pre></div>
-
+<table>
+<caption>
+<span id="tab:clima2">Cuadro 5.9: </span>Paso 2. Enviar a columnas las mediciones de temperaturas.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+id
+</th>
+<th style="text-align:left;">
+date
+</th>
+<th style="text-align:left;">
+element
+</th>
+<th style="text-align:right;">
+value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-01-30
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+27.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-01-30
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+14.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-02-02
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+27.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-02-02
+</td>
+<td style="text-align:left;">
+tmin
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MX17004
+</td>
+<td style="text-align:left;">
+2010-02-03
+</td>
+<td style="text-align:left;">
+tmax
+</td>
+<td style="text-align:right;">
+24.1
+</td>
+</tr>
+</tbody>
+</table>
 <p>En este caso, se utilizó la función <code>spread</code> del paquete <code>tidyr</code>. Esta función realiza una especie de inverso a la operación que hace <code>gather</code>. En lugar de juntar nombres de variables, utiliza los valores de una variable como nombres de columnas (parámetro <em>key</em>) y rellena apropiadamente las celdas con los valores de otra variable (parámetro <em>value</em>). Los demás parámetros son opcionales y, por ejemplo, en lugar de tener un parámetro para especificar qué hacer con los <code>NA</code> (en gather: <code>na.rm</code>), en este caso pide el parámetro <code>fill</code> cuyo default es <code>NA</code> pero, en algunos casos, es más apropiado insertar otro valor para rellenar valores de celdas en donde no había un valor correspondiente.</p>
 </div>
 <div id="muchos-tipos-de-unidad-observacional-se-encuentran-en-la-misma-tabla" class="section level4">
@@ -681,18 +3605,11 @@ En la carpeta <code>tidyr_datasets/informe/</code> se encuentran dos archivos qu
 Los datos tienen todos los problemas explorados en esta sección, salvo el que solo hay un tipo de unidad observacional.
 </p>
 <p>
-Los datos están divididos en los archivos <code>M2_218.xlsx</code> y <code>M2_219.xlsx</code> y se puede observar un ejemplo de éstos en la figura . El ejercicio consiste en leer los datos y limpiarlos de forma que sean datos limpios<a href="bibliografia.html#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.
+Los datos están divididos en los archivos <code>M2_218.xlsx</code> y <code>M2_219.xlsx</code> y se puede observar un ejemplo de éstos en la figura <a href="datos-limpios.html#fig:ejerciciofinal">5.10</a>. El ejercicio consiste en leer los datos y limpiarlos de forma que sean datos limpios.
 </p>
-
-
-
-
-
-
-
-
-
-
+<p>
+<em>Los datos fueron tomados de <span class="citation"><span class="citation">(“Cuarto Informe de Gobierno, 2015-2016. Anexo Estadístico.” <a href="#ref-informe">2016</a>, págs. 218-219)</span></span> y el catálogo de estados se tomó de <span class="citation"><span class="citation">(MGN <a href="#ref-mgn">2005–2016</a>)</span></span>.</em>
+</p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:ejerciciofinal"></span>
 <img src="images/ejercicio_tidy_informe.png" alt="Datos de pensiones del IMSS e ISSSTE 2000 a 2016 [@informe, págs. 218-219]." width="75%" />
@@ -815,6 +3732,9 @@ all</code></pre></div>
 <div id="ref-informe">
 <p>“Cuarto Informe de Gobierno, 2015-2016. Anexo Estadístico.” 2016. 4. Presidencia de la República. <a href="https://framework-gb.cdn.gob.mx/cuartoinforme/4IG_Anexo_Estadistico_TGM_26_08_16_COMPLETO.pdf" class="uri">https://framework-gb.cdn.gob.mx/cuartoinforme/4IG_Anexo_Estadistico_TGM_26_08_16_COMPLETO.pdf</a>.</p>
 </div>
+<div id="ref-mgn">
+<p>MGN. 2005–2016. <em>Marco Geoestadístico Nacional</em>. <a href="http://www.inegi.org.mx/geo/contenidos/geoestadistica/m_geoestadistico.aspx" class="uri">http://www.inegi.org.mx/geo/contenidos/geoestadistica/m_geoestadistico.aspx</a>; INEGI.</p>
+</div>
 </div>
 <div class="footnotes">
 <hr />
@@ -822,7 +3742,6 @@ all</code></pre></div>
 <li id="fn12"><p><span class="citation">(Wickham and Grolemund <a href="#ref-wickham2016r">2016</a>, sección Data Tidying)</span> explica este último criterio como “cada valor ocupa su propia celda”.<a href="datos-limpios.html#fnref12">↩</a></p></li>
 <li id="fn13"><p>Ejemplo tomado de <span class="citation">(Wickham and others <a href="#ref-wickham2014tidy">2014</a>, pág. 3)</span>.<a href="datos-limpios.html#fnref13">↩</a></p></li>
 <li id="fn14"><p>Los valores perdidos estructurales, representan mediciones de valores que no se puede hacer o que no suceden y, por tanto, se pueden eliminar (por ejemplo, hombres embarazados). En este ejemplo, tenemos un valor perdido no estructural.<a href="datos-limpios.html#fnref14">↩</a></p></li>
-<li id="fn1"><p>Estos números representan únicamente una fracción de las descargas de <code>R</code> en el mundo pues existen múltiples espejos del software de donde es posible realizar la descarga. Los datos son tomados de <span class="citation">Csardi (<a href="#ref-cranlogs">2016</a>)</span>.<a href="index.html#fnref1">↩</a></p></li>
 </ol>
 </div>
             </section>

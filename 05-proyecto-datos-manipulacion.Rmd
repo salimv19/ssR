@@ -7,6 +7,7 @@ library(tidyr)
 library(dplyr)
 library(xtable)
 library(readxl)
+library(kableExtra)
 ```
 
 Esta sección resume algunas de las funciones existentes para **limpiar** 
@@ -106,12 +107,10 @@ pensamos ahora en estos términos. Tenemos 3 variables:
 El diseño del experimento mismo nos habla de la estructura de las observaciones 
 y los posibles valores que pueden tomar. Por ejemplo, en este caso el valor
 perdido nos dice que, por diseño, se debió de capturar esta variable pero no se 
-hizo (por eso es importante guardarlo como tal)[^1]. 
-
-[^1]: Los valores perdidos estructurales, 
+hizo (por eso es importante guardarlo como tal)^[Los valores perdidos estructurales, 
 representan mediciones de valores que no se puede hacer o que no suceden y, por
 tanto, se pueden eliminar (por ejemplo, hombres embarazados). En este ejemplo, 
-tenemos un valor perdido no estructural.
+tenemos un valor perdido no estructural.].
 
 En la figura 
 [5.8](#fig:estructuratidy) se muestran los mismos datos que antes pero pensados tal que las 
@@ -154,7 +153,7 @@ filas, columnas y tablas mapean a observaciones, variables y tipos. En
 2. Cada *observación* es una fila.
 3. Cada *tipo de unidad observacional* es una tabla / cada valor tiene su celda.
 
-En la figura \ref{fig:datoslimpios} podemos ver estos tres elementos de los 
+En la figura [5.9](#fig:datoslimpios) podemos ver estos tres elementos de los 
 datos limpios y cómo se representan en un *dataframe*.
 
 ```{r datoslimpios, out.width='90%', fig.show='hold', fig.align = 'center', fig.cap='Ejemplificación de datos limpios [@wickham2016r, sección Data Tidying].', echo = FALSE, results='hold'}
@@ -218,7 +217,7 @@ en el paquete `tidyr`: `gather`, `spread`, `separate` y `unite`.
 
 #### Los nombres de las columnas son valores, no nombres de variables
 
-La tabla \ref{tab:varsencols} muestra datos sucios con este problema. La base
+La tabla [5.2](#tab:varsencols) muestra datos sucios con este problema. La base
 acompaña al paquete `tidyr` [@tidyr] y es una muestra de los datos del reporte
 sobre tuberculosis de la organización mundial de la salud. Contiene observaciones
 anuales por país para casos de tuberculosis según distintos grupos.
@@ -226,17 +225,20 @@ anuales por país para casos de tuberculosis según distintos grupos.
 La descripción de todas las variables se puede ver tecleando `?who`
 
 Dentro de un reporte, la representación que se tiene de las variables tiene 
-sentido. Por ejemplo, en la tabla \ref{tab:varsencols} vemos los casos 
+sentido. Por ejemplo, en la tabla [5.2](#tab:varsencols) vemos los casos 
 de tuberculosis para distintos grupos de edad de hombres en México para cierto
 tipo de diagnóstico.
 
-```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, results='asis'}
+```{r varsencols, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, results='hold'}
 raw <- filter(who, country == "Mexico", year >= 2000, year < 2011) %>% 
   select(., country, year, contains("sp_m"))
-print(xtable(raw, label = "tab:varsencols", 
-             caption = "Casos de tuberculosis para México del 2000 al 2010 para hombres con diagnóstico por lesiones de pulmón."), 
-      comment = F, include.rownames=F, table.placement="H", 
-      size=getOption("xtable.size", "tiny"))
+
+knitr::kable(
+  raw, booktabs = TRUE,
+  caption = 'Casos de tuberculosis para México del 2000 al 2010 <br>para hombres con diagnóstico por lesiones de pulmón.'
+) %>%
+  kable_styling() %>%
+  scroll_box(width = "100%")
 ```
 
 En las columnas tenemos varias variables: método de diagnóstico, género y 
@@ -247,7 +249,7 @@ En otras palabras, debemos convertir de la columna 5 en adelante en filas.
 
 Con el paquete **tidyr** esto se puede realizar en forma fácil con el comando 
 `gather` de manera que obtenemos un dataframe como el que se muestra en la tabla
-\ref{tab:varsjuntadas}.
+[5.3](#tab:varsjuntadas).
 
 ```{r}
 junta <- tidyr::gather(who, key = variables, value = casos
@@ -268,11 +270,10 @@ Hay parámetros opcionales en la función. Para estos datos en particular, por e
 conveniente remover los grupos para los que no se tiene el dato con el parámetro
 `na.rm = TRUE`.
 
-```{r, echo = FALSE, results = "asis"}
-print(xtable(head(junta), label = "tab:varsjuntadas", 
-             caption = "Valores de variables en una sola variable."), 
-      comment = F, include.rownames=F, table.placement="ht", 
-      size=getOption("xtable.size", "tiny"))
+```{r varsjuntadas, echo = FALSE, results = "asis"}
+ knitr::kable(head(junta), booktabs = TRUE,
+caption = 'Valores de variables en una sola variable.'
+)
 ```
 
 ```{block, type='nota'}
@@ -302,15 +303,15 @@ sencilla de guardar los datos del experimento es utilizando un procesador
 de texto común. El capturista no querrá seguir criterios de datos limpios
 al llenar la información pues implicaría repetir el nombre de la persona,
 el día de la captura y el nivel de colesterol. Supongamos un experimento con
-16 sujetos a lo largo de un año en donde se mide el colesterol una vez al mes (mes1, mes2, etc.). Los datos capturados se muestran en la tabla \ref{tab:sujetos}. 
+16 sujetos a lo largo de un año en donde se mide el colesterol una vez al mes (mes1, mes2, etc.). Los datos capturados se muestran en la tabla [5.4](#tab:sujetos). 
 
 Nuevamente, queremos convertir la columna 3 a 14 en filas, es decir, observaciones.
 Utiliza el comando `gather` para realizar esto y obtener el resultado que se
-muestra en la tabla \ref{tab:sujetostidy}.
+muestra en la tabla [5.5](#tab:sujetostidy).
 ```
 
 
-```{r, echo=FALSE, results='asis'}
+```{r sujetos, echo=FALSE, results='asis'}
 # Generación aleatoria de datos
 df <- data.frame(
   sujetos = LETTERS[1:16],
@@ -322,22 +323,23 @@ m <- t(sapply(runif(16, 16, 35), FUN = function(x){
   }))
 colnames(m) <- paste0("mes",1:12)
 df <- cbind(df, m)
-print(xtable(df, label = "tab:sujetos", 
-             caption = "Mediciones de IMC en sujetos."), 
-      comment = F, include.rownames=F, table.placement="H", 
-      size=getOption("xtable.size", "tiny"))
+
+knitr::kable(df, booktabs = TRUE,
+caption = 'Mediciones de IMC en sujetos.'
+) %>%
+  kable_styling() %>%
+  scroll_box(width = "100%")
 ```
 
 
-```{r, echo=FALSE, results='asis'}
+```{r sujetostidy, echo=FALSE, results='asis'}
 # Respuesta
 opcion1 <- tidyr::gather(df, key = mes, value = IMC, -sujetos, -grupo)
 opcion2 <- tidyr::gather(df, key = mes, value = IMC, mes1:mes12)
 
-print(xtable(sample_n(opcion2, size = 10), label = "tab:sujetostidy", 
-             caption = "Muestra de datos limpios para experimentos IMC."), 
-      comment = F, include.rownames=F, table.placement="H"
-      )
+knitr::kable(sample_n(opcion2, size = 10), booktabs = TRUE,
+caption = 'Muestra de datos limpios para experimentos IMC.'
+)
 ```
 
 ```{r, eval = FALSE}
@@ -427,20 +429,19 @@ limpios %<>%
 ```{block, type='nota'}
 **Nota**
 
-Nota como en el último ejemplo, se utiliza el símbolo `%$<>$%` que es 
-equivalente a realizar una asignación ($<-$) y un pipe (`%$>$%`) de los datos 
+Nota como en el último ejemplo, se utiliza el símbolo `%<>%` que es 
+equivalente a realizar una asignación (<-) y un pipe (`%>%`) de los datos 
 que están guardados en el dataframe limpios.
 ```
 
-De esta forma, obtenemos los datos como se ven en la tabla \ref{tab:varslimpios}
+De esta forma, obtenemos los datos como se ven en la tabla [5.6](#tab:varslimpios)
 donde tenemos una variable para el método de diagnóstico, una para el género,
 otra para la edad y una última con el número de casos observados.
 
-```{r, echo = FALSE, results = "asis"}
-print(xtable(head(limpios), label = "tab:varslimpios", 
-             caption = "Cada columna es una variable."), 
-      comment = F, include.rownames=F, table.placement="ht", 
-      size=getOption("xtable.size", "tiny"))
+```{r varslimpios, echo = FALSE, results = "asis"}
+knitr::kable(head(limpios), booktabs = TRUE,
+caption = 'Cada columna es una variable.'
+)
 ```
 
 ```{block, type='nota'}
@@ -497,26 +498,27 @@ filas como en columnas.
 
 Para ejemplificar este problema, se muestran los datos de temperatura máxima
 y mínima en algunas zonas de México [@tidydata, archivo: data/weather.txt].
-Los datos que limpiaremos se ven en la tabla \ref{tab:clima}. Como se puede 
+Los datos que limpiaremos se ven en la tabla [5.7](#tab:clima). Como se puede 
 ver, tenemos valores del día del mes de la observación como nombres de variables:
 d1 (día 1), d2 (día 2), etc. Esto es homólogo al problema 1 visto anteriormente.
 
 También tenemos variables en las filas: la temperatura máxima y la temperatura
 mínima deberían ser el nombre de las columnas.
 
-```{r, echo=FALSE, results='asis'}
+```{r clima, echo=FALSE, results='asis'}
 rm(list = ls())
 source("weather.R")
 
-print(xtable(raw[, 1:15], label = "tab:clima", 
-             caption = "Mediciones de temperatura max y min."), 
-      comment = F, include.rownames=F, table.placement="ht", 
-      size=getOption("xtable.size", "tiny"))
+knitr::kable(raw[, 1:15], booktabs = TRUE,
+caption = 'Mediciones de temperatura max y min.'
+) %>%
+  kable_styling() %>%
+  scroll_box(width = "100%")
 ```
 
 Para limpiar, lo primero que debemos hacer es juntar los días (que son valores
 de la variable día) en una sola columna. Después utilizamos la nueva variable
-para crear la fecha. Así, obtenemos la tabla \ref{tab:clima1}, a partir de 
+para crear la fecha. Así, obtenemos la tabla [5.8](#tab:clima1), a partir de 
 los datos en el dataframe *raw*.
 
 
@@ -544,9 +546,10 @@ detalla todas sus funciones. En este caso, utilizamos la función `str_replace`
 que nos permite reemplazar una cadena de caracteres por otra.
 ```
 
-```{r, echo=FALSE, results='asis'}
-print(
-  xtable(clean1[1:5, ], caption = "Paso 1. Juntar las columnas, limpiar dias, crear fecha.", label = "tab:clima1"), comment = F, include.rownames=F, table.placement="ht")
+```{r clima1, echo=FALSE, results='asis'}
+knitr::kable(clean1[1:5, ], booktabs = TRUE,
+caption = 'Paso 1. Juntar las columnas, limpiar días, crear fecha.'
+)
 ```
 
 El segundo paso es transformar la variable `element` en dos columnas pues, en realidad,
@@ -557,9 +560,10 @@ almacena dos variables: temperatura máxima y mínima.
 clean2 <- tidyr::spread(clean1, key = element, value = value)
 ```
 
-```{r, echo=FALSE, results='asis'}
-print(
-  xtable(clean1[1:5, ], caption = "Paso 2. Enviar a columnas las mediciones de temperaturas.", label = "tab:clima1"), comment = F, include.rownames=F, table.placement="ht")
+```{r clima2, echo=FALSE, results='asis'}
+knitr::kable(clean1[1:5, ], booktabs = TRUE,
+caption = 'Paso 2. Enviar a columnas las mediciones de temperaturas.'
+)
 ```
 
 
@@ -706,15 +710,19 @@ Los datos tienen todos los problemas explorados en esta sección, salvo el que
 solo hay un tipo de unidad observacional.
 
 Los datos están divididos en los archivos `M2_218.xlsx` y 
-`M2_219.xlsx` y se puede observar un ejemplo de éstos en la figura \ref{fig:ejerciciofinal}.
+`M2_219.xlsx` y se puede observar un ejemplo de éstos en la figura [5.10](#fig:ejerciciofinal).
 El ejercicio consiste en leer los datos y limpiarlos de forma que sean datos
-limpios^[Los datos fueron tomados de [@informe, págs. 218-219] y el catálogo de estados se tomó de [@mgn]].
+limpios.
+
+*Los datos fueron tomados de [@informe, págs. 218-219] y el catálogo de estados se tomó de [@mgn].*
 
 ```
+
 
 ```{r ejerciciofinal, out.width='75%', fig.show='hold', fig.align = 'center', fig.cap='Datos de pensiones del IMSS e ISSSTE 2000 a 2016 [@informe, págs. 218-219].', echo = FALSE, results='hold'}
 knitr::include_graphics('images/ejercicio_tidy_informe.png')
 ```
+
 
 ```{r}
 # Respuesta
