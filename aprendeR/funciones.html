@@ -243,7 +243,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="B" data-path="packrat.html"><a href="packrat.html"><i class="fa fa-check"></i><b>B</b> Packrat</a><ul>
 <li class="chapter" data-level="B.1" data-path="el-directorio-del-proyecto.html"><a href="el-directorio-del-proyecto.html"><i class="fa fa-check"></i><b>B.1</b> El directorio del proyecto</a></li>
 <li class="chapter" data-level="B.2" data-path="instalacion-1.html"><a href="instalacion-1.html"><i class="fa fa-check"></i><b>B.2</b> Instalación</a></li>
-<li class="chapter" data-level="B.3" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>B.3</b> R Markdown</a></li>
+<li class="chapter" data-level="B.3" data-path="inicializarlo.html"><a href="inicializarlo.html"><i class="fa fa-check"></i><b>B.3</b> Inicializarlo</a></li>
+<li class="chapter" data-level="B.4" data-path="agregar-remover-y-actualizar-paquetes.html"><a href="agregar-remover-y-actualizar-paquetes.html"><i class="fa fa-check"></i><b>B.4</b> Agregar, remover y actualizar paquetes</a></li>
+<li class="chapter" data-level="B.5" data-path="otras-cosas-importantes.html"><a href="otras-cosas-importantes.html"><i class="fa fa-check"></i><b>B.5</b> Otras cosas importantes</a></li>
+<li class="chapter" data-level="B.6" data-path="ligas-utiles.html"><a href="ligas-utiles.html"><i class="fa fa-check"></i><b>B.6</b> Ligas útiles</a></li>
 </ul></li>
 <li class="chapter" data-level="C" data-path="formatos.html"><a href="formatos.html"><i class="fa fa-check"></i><b>C</b> Formatos</a></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografía</a></li>
@@ -375,26 +378,17 @@ x</code></pre></div>
 <p>Esto es debido a que R tienen espacios de nombres (<em>namespaces</em>) separados para funciones y no-funciones. Cuando R intenta concatenar los valores del 1 al 4, busca primero en el ambiente global y, en caso de no encontrarlo, busca en los <em>namespaces</em> de cada uno de los paquetes que tiene cargados.</p>
 <p>El orden en el que busca se puede encontrar utilizando el comando <code>search()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search</span>()</code></pre></div>
-<pre><code>##  [1] &quot;.GlobalEnv&quot;            &quot;package:futile.logger&quot;
-##  [3] &quot;package:RPostgreSQL&quot;   &quot;package:yaml&quot;         
-##  [5] &quot;package:DBI&quot;           &quot;package:lubridate&quot;    
-##  [7] &quot;package:cranlogs&quot;      &quot;package:kableExtra&quot;   
-##  [9] &quot;package:reshape2&quot;      &quot;package:stringr&quot;      
-## [11] &quot;package:tidyr&quot;         &quot;package:magrittr&quot;     
-## [13] &quot;package:bindrcpp&quot;      &quot;package:pryr&quot;         
-## [15] &quot;package:bigrquery&quot;     &quot;package:googlesheets&quot; 
-## [17] &quot;package:xlsx&quot;          &quot;package:readxl&quot;       
-## [19] &quot;package:readr&quot;         &quot;package:haven&quot;        
-## [21] &quot;package:foreign&quot;       &quot;package:xtable&quot;       
-## [23] &quot;package:tibble&quot;        &quot;package:data.table&quot;   
-## [25] &quot;package:carData&quot;       &quot;package:VIF&quot;          
-## [27] &quot;package:plyr&quot;          &quot;package:ggplot2&quot;      
-## [29] &quot;package:dplyr&quot;         &quot;package:knitr&quot;        
-## [31] &quot;tools:rstudio&quot;         &quot;package:stats&quot;        
-## [33] &quot;package:graphics&quot;      &quot;package:grDevices&quot;    
-## [35] &quot;package:utils&quot;         &quot;package:datasets&quot;     
-## [37] &quot;package:methods&quot;       &quot;Autoloads&quot;            
-## [39] &quot;package:base&quot;</code></pre>
+<pre><code>##  [1] &quot;.GlobalEnv&quot;           &quot;package:reshape2&quot;     &quot;package:stringr&quot;     
+##  [4] &quot;package:kableExtra&quot;   &quot;package:tidyr&quot;        &quot;package:magrittr&quot;    
+##  [7] &quot;package:bindrcpp&quot;     &quot;package:pryr&quot;         &quot;package:bigrquery&quot;   
+## [10] &quot;package:googlesheets&quot; &quot;package:xlsx&quot;         &quot;package:readxl&quot;      
+## [13] &quot;package:readr&quot;        &quot;package:haven&quot;        &quot;package:foreign&quot;     
+## [16] &quot;package:xtable&quot;       &quot;package:tibble&quot;       &quot;package:data.table&quot;  
+## [19] &quot;package:carData&quot;      &quot;package:VIF&quot;          &quot;package:plyr&quot;        
+## [22] &quot;package:ggplot2&quot;      &quot;package:dplyr&quot;        &quot;package:knitr&quot;       
+## [25] &quot;tools:rstudio&quot;        &quot;package:stats&quot;        &quot;package:graphics&quot;    
+## [28] &quot;package:grDevices&quot;    &quot;package:utils&quot;        &quot;package:datasets&quot;    
+## [31] &quot;package:methods&quot;      &quot;Autoloads&quot;            &quot;package:base&quot;</code></pre>
 <p>Los paquetes recién llamados acaban en la posición número 2 y todo lo demás se recorre en el orden de la lista. Nota como el <em>base</em> (que se carga por default en toda sesión) está hasta el final.</p>
 <p><code>.GlobalEnv</code> es el workspace del que hablamos antes. Si hay un símbolo que corresponde a tu petición entonces tomará el valor en tu workspace para poder ejecutar tu petición. Si no encuentra nada, busca en el namespace de cada uno de los paquetes que has cargado hasta el momento en el <em>orden</em> en el que los llamaste.</p>
 <p>Esto es <strong>muy</strong> importante. Hay contribuidores de paquetes en todo el mundo y es muy común que utilicen el mismo nombre para implementaciones de distintas cosas y, por lo tanto, a veces nuestros resultados no son lo que esperábamos.</p>

@@ -1,0 +1,3 @@
+housingexp              Boston Housing Data with 3-Way Interactions
+syn                     A Synthetic Data set For Testing VIF-Regression
+vif                     Fitting Linear Models using VIF-Regression

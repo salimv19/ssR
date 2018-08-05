@@ -255,7 +255,10 @@ img {
 <li class="has-sub"><a href="B-packrat.html#packrat"><span class="toc-section-number">B</span> Packrat</a><ul>
 <li><a href="B-1-el-directorio-del-proyecto.html#el-directorio-del-proyecto"><span class="toc-section-number">B.1</span> El directorio del proyecto</a></li>
 <li><a href="B-2-instalacion-1.html#instalacion-1"><span class="toc-section-number">B.2</span> Instalación</a></li>
-<li><a href="B-3-r-markdown.html#r-markdown"><span class="toc-section-number">B.3</span> R Markdown</a></li>
+<li><a href="B-3-inicializarlo.html#inicializarlo"><span class="toc-section-number">B.3</span> Inicializarlo</a></li>
+<li><a href="B-4-agregar-remover-y-actualizar-paquetes.html#agregar-remover-y-actualizar-paquetes"><span class="toc-section-number">B.4</span> Agregar, remover y actualizar paquetes</a></li>
+<li><a href="B-5-otras-cosas-importantes.html#otras-cosas-importantes"><span class="toc-section-number">B.5</span> Otras cosas importantes</a></li>
+<li><a href="B-6-ligas-utiles.html#ligas-utiles"><span class="toc-section-number">B.6</span> Ligas útiles</a></li>
 </ul></li>
 <li><a href="C-formatos.html#formatos"><span class="toc-section-number">C</span> Formatos</a></li>
 <li><a href="bibliografia.html#bibliografia">Bibliografía</a></li>
@@ -267,7 +270,29 @@ img {
 <div class="col-sm-12">
 <div id="packrat" class="section level1">
 <h1><span class="header-section-number">B</span> Packrat</h1>
-<p>Hola</p> 
+<p>Uno de los problemas en el trabajo colaborativo es poder ejecutar código realizado en otra computadora. La analítica reproducible y fácil de insertar en un ambiente de producción es fundamental para minimizar el retrabajo y que lo que se realice se (re)utilice.</p>
+<p>Existen múltiples maneras de trabajar de manera que se resuelva el problema de las versiones de software y sus dependencias. Una comprehensiva, por ejemplo, es usando <code>docker</code>. Cuando un proyecto incluye únicamente código de <code>R</code>, <code>packrat</code> es suficiente para empaquetarlo y que el código sea reproducible en cualquier computadora y sistema operativo <span class="citation">(Ushey et al. <a href="#ref-packrat">2016</a>)</span>.</p>
+<p><a href="https://rstudio.github.io/packrat/">Packrat</a> es un sistema de administración de dependencias para R que busca eliminar los problemas que suele haber para utilizar código realizado en diferentes momentos o máquinas con diferentes versiones de las librerías, entre los típicos son <span class="citation">(Inc. <a href="#ref-packratconcept">2014</a>)</span>:</p>
+<ul>
+<li>La falta de control sobre los paquetes que se necesitaban instalar para correr un script específico.</li>
+<li>Instalar paquetes en el ambiente global y dejarlos para siempre instalados en las computadoras porque no se sabe si algo se romperá al quitarlos.</li>
+<li>Romper código de otros proyectos por actualizar un paquete en otro.</li>
+</ul>
+<p>Packrat permite que los proyectos en <code>R</code> sean <span class="citation">(Inc. <a href="#ref-packratconcept">2014</a>)</span>:</p>
+<ul>
+<li><strong>Aislados</strong>: cada proyecto tiene su paquetería privada.</li>
+<li><strong>Portables</strong>: puedes transferir rápidamente los proyectos de una computadora a otra -y a través de distintas plataformas- pues facilita la instalación de toda la paquetería sobre la que descansa el proyecto.</li>
+<li><strong>Reproducibles</strong>: guarda las versiones exactas sobre las que el proyecto fue trabajado y éstos son los que son instalados en cualquier ambiente.</li>
+</ul> 
+</div>
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-packrat">
+<p>Ushey, Kevin, Jonathan McPherson, Joe Cheng, Aron Atkins, and JJ Allaire. 2016. <em>Packrat: A Dependency Management System for Projects and Their R Package Dependencies</em>. <a href="https://CRAN.R-project.org/package=packrat" class="uri">https://CRAN.R-project.org/package=packrat</a>.</p>
+</div>
+<div id="ref-packratconcept">
+<p>Inc., RStudio. 2014. “Packrat: Reproducible Package Management for R.” Blog. <a href="https://rstudio.github.io/packrat/" class="uri">https://rstudio.github.io/packrat/</a>.</p>
+</div>
 </div>
 <p style="text-align: center;">
 <a href="A-11-parrafos.html"><button class="btn btn-default">Previous</button></a>
