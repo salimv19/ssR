@@ -2,10 +2,278 @@
 
 # Markdown
 
-Hola
+Estamos acostumbrados a editores del tipo *what you see is what you get*. `Markdown` permite escribir contenidos en **texto plano** con una sintáxis para darle formato. Sobre esta sintáxis la herramienta de software en Perl convierte el
+texto plano a HTML [@markdown].
 
-## R Markdown
+Tiene un alfabeto y símbolos que, una vez procesados, se ven de cierta forma. A diferencia de un editor como Word en el que la versión de cada computadora cambia la manera en la que se ven los documentos, con `Markdown` esto no sucede. 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Este lenguaje se está volviendo cada vez más común y, en particular, páginas como GitHub y reddit lo utilizan para sus comentarios.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+La curva de aprendizaje es mínima. En lo que se va memorizando el alfabeto de markdown, lo más útil es tener una lista de fácil acceso con los caracteres más comúnes y lo que hacen. A continuación, se proporciona un listado de la sintáxis más común ^[Basado en @markdowncheet1 y en @markdowncheet2.].
+
+## Encabezados
+
+```
+# Nivel 1
+## Nivel 2
+### Nivel 3
+#### Nivel 4
+
+... y asi
+```
+
+<h1>Nivel 1</h1>
+<h2>Nivel 2</h2>
+<h3>Nivel 3</h3>
+<h4>Nivel 4</h4>
+
+## Lineas horizontales
+
+Con tres o mas de los siguientes
+
+```
+---
+
+Guiones
+
+***
+Asteriscos
+
+___
+
+Guiones bajos
+```
+
+---
+
+Guiones
+
+***
+Asteriscos
+
+___
+
+Guiones bajos
+
+## Énfasis
+
+```
+*italica* o _italica_
+**negritas** o __negritas__
+**_combinado_**
+**Uno en negritas _el otro combinado_**
+~~tachar~~
+```
+
+- *italica* o _italica_
+- **negritas** o __negritas__
+- **_combinado_**
+- **Uno en negritas _el otro combinado_**
+- ~~tachar~~
+
+## Bloques
+
+```
+> Ejemplo: Un bloque de varias
+> lineas.
+```
+
+> Ejemplo: Un bloque de varias
+> líneas.
+
+## Listas
+
+```
+1. Primero
+2. Segundo
+    - Primer elemento del segundo
+    - Segundo elemento del segundo
+7. No tengo que cambiar el nombre, se pondra el correcto
+    i. Una sublista con incisos
+    ii. Mas incisos
+4. Mas cosas
+    a. Otra cosa
+    b. Una mas
+5. Otra manera de hacer listas no ordenadas
+    * Usando asteriscos
+    - O usando menos
+    + O usando el signo de mas
+```
+
+1. Primero
+2. Segundo
+    - Primer elemento del segundo
+    - Segundo elemento del segundo
+7. No tengo que cambiar el nombre, se pondrá el correcto
+    i. Una sublista con incisos
+    ii. Mas incisos
+4. Mas cosas
+    a. Otra cosa
+    b. Una mas
+5. Otra manera de hacer listas no ordenadas
+    * Usando asteriscos
+    - O usando menos
+    + O usando el signo de mas
+
+## Links
+
+```
+[Esto es lo que se ve](https://www.google.com)
+[Esto es lo que se ve y el mensaje "Google" aparece en el hover]
+(https://www.google.com "Google")
+[Puedo hacer referencia a un archivo local](readme.md)
+[Puedes poner referencias][1]
+
+Detecata urls completos www.google.com o google.com
+
+Y luego pones a donde te lleva la referencia
+[1]: https://en.wikipedia.org/wiki/42_%28number%29#The_Hitchhiker.27s_Guide_to_the_Galaxy
+
+
+
+
+```
+
+[Esto es lo que se ve](https://www.google.com)
+
+[Esto es lo que se ve y el mensaje "Google" aparece en el hover](https://www.google.com "Google")
+
+[Puedo hacer referencia a un archivo local](readme.md)
+
+[Puedes poner referencias con numeros][1]
+
+Luego quieres hacer referencias a otra parte del documento [por lo tanto, puedes ligar texto]
+
+Detecta urls completos http://www.google.com
+
+Y luego pones a dónde te lleva la referencia
+
+[1]: https://en.wikipedia.org/wiki/42_%28number%29#The_Hitchhiker.27s_Guide_to_the_Galaxy
+
+[por lo tanto, puedes ligar texto]: http://www.reddit.com
+
+Nota que los espacios entre lineas son importantes.
+
+## Imágenes
+
+```
+Puedes ponerlo en una misma linea: 
+![alt text](dw.png "Es lo mejor")
+
+Reference-style: 
+![alt text][logo]
+
+[logo]: dw.png "Sin duda alguna"
+```
+
+Puedes ponerlo en una misma linea: 
+![alt text](dw.png "Es lo mejor")
+
+Reference-style: 
+![alt text][logo]
+
+[logo]: dw.png "Sin duda alguna"
+
+
+## Tablas
+
+```
+Una tabla simple 
+
+Encabezado 1  | Encabezado dos
+------------- | --------------
+Contenido     | Contenido
+Contenido     | Contenido 
+```
+
+Encabezado 1  | Encabezado dos
+------------- | --------------
+Contenido     | Contenido
+Contenido     | Contenido 
+
+```
+Una tabla alineada. La alineacion la puedes hacer por columnas
+
+| Derecha | Centro | Iquierda |
+| ----: | :----: | :---- |
+| 10    | 10     | 10    |
+| 1000  | 1000   | 1000  |
+```
+
+| Derecha | Centro | Izquierda |
+| ----: | :----: | :---- |
+| 10    | 10     | 10    |
+| 1000  | 1000   | 1000  |
+
+## HTML 
+
+Si sabes html, puedes utilizarlo directo.
+
+```
+<dl>
+  <dt>Lista de definiciones</dt>
+  <dd> Una def.</dd>
+
+  <dt>Markdown en HTML</dt>
+  <dd>No *siempre* funciona **bien**. Puro HTML <em>para que funcione</em>.</dd>
+</dl>
+
+Puedes controlar mejor las imagenes
+
+<img src="img/imagen.png" align="middle" height="50" width="75" margin="0 auto" />
+```
+
+<dl>
+  <dt>Lista de definiciones</dt>
+  <dd> Una def.</dd>
+
+  <dt>Markdown en HTML</dt>
+  <dd>No *siempre* funciona muy **bien**. Usa puro HTML <em>para que funcione siempre</em>.</dd>
+</dl>
+
+Puedes controlar mejor las imágenes
+
+<img src="img/imagen.png" align="middle" height="50" width="75" margin="0 auto" />
+
+## Código 
+
+```
+En una linea puedo poner `código`
+```
+
+En una linea puedo poner `código`.
+
+Para poner bloques de código se utilizan tres acentos invertidos y se especifica el lenguaje.
+
+```python
+import requests
+print "¡Hola mundo!"
+```
+
+```sql
+select * from tabla;
+```
+
+```r
+library(dplyr)
+```
+
+```
+Sin lenguaje, no lo resalta
+```
+
+## Párrafos
+
+```
+Si
+escribo asi
+me lo junta todo.
+
+Debo separar para iniciar otro parrafo.
+```
+
+Si
+escribo así
+me lo junta todo.
+
+Debo separar para iniciar otro párrafo.

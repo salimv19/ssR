@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="aprendeR" />
+<meta property="og:type" content="book" />
+
+
+
+
+
+<meta name="author" content="Andrea Fernández Conde" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="aprendeR">
+
+<title>aprendeR</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<link rel="stylesheet" href="estilos.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#introduccion"><span class="toc-section-number">1</span> Introducción</a></li>
+<li class="has-sub"><a href="2-r-lo-basico.html#r-lo-basico"><span class="toc-section-number">2</span> R: lo básico</a><ul>
+<li><a href="2-1-instalacion.html#instalacion"><span class="toc-section-number">2.1</span> Instalación</a></li>
+<li class="has-sub"><a href="2-2-editores.html#editores"><span class="toc-section-number">2.2</span> Editores</a><ul>
+<li><a href="2-2-editores.html#rstudio"><span class="toc-section-number">2.2.1</span> RStudio</a></li>
+<li><a href="2-2-editores.html#ess"><span class="toc-section-number">2.2.2</span> ESS</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-3-el-espacio-de-trabajo-workspace.html#el-espacio-de-trabajo-workspace"><span class="toc-section-number">2.3</span> El espacio de trabajo (Workspace)</a><ul>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#directorio-de-trabajo"><span class="toc-section-number">2.3.1</span> Directorio de trabajo</a></li>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#ejemplos-basicos"><span class="toc-section-number">2.3.2</span> Ejemplos básicos</a></li>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#comandos-utiles"><span class="toc-section-number">2.3.3</span> Comandos útiles</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-4-paquetes-libraries.html#paquetes-libraries"><span class="toc-section-number">2.4</span> Paquetes (<em>libraries</em>)</a><ul>
+<li><a href="2-4-paquetes-libraries.html#cran"><span class="toc-section-number">2.4.1</span> CRAN</a></li>
+<li><a href="2-4-paquetes-libraries.html#github"><span class="toc-section-number">2.4.2</span> Github</a></li>
+<li><a href="2-4-paquetes-libraries.html#otras-fuentes"><span class="toc-section-number">2.4.3</span> Otras fuentes</a></li>
+</ul></li>
+<li><a href="2-5-paquetes-recomendados.html#paquetes-recomendados"><span class="toc-section-number">2.5</span> Paquetes recomendados</a></li>
+<li><a href="2-6-scripting.html#scripting"><span class="toc-section-number">2.6</span> Scripting</a></li>
+<li class="has-sub"><a href="2-7-rmarkdown.html#rmarkdown"><span class="toc-section-number">2.7</span> rmarkdown</a><ul>
+<li><a href="2-7-rmarkdown.html#encabezado-y-formatos"><span class="toc-section-number">2.7.1</span> Encabezado y formatos</a></li>
+<li><a href="2-7-rmarkdown.html#knitr-chunks"><span class="toc-section-number">2.7.2</span> Knitr chunks</a></li>
+</ul></li>
+<li><a href="2-8-ayuda-y-documentacion.html#ayuda-y-documentacion"><span class="toc-section-number">2.8</span> Ayuda y documentación</a></li>
+<li><a href="2-9-optimizando.html#optimizando"><span class="toc-section-number">2.9</span> Optimizando</a></li>
+<li><a href="2-10-material-adicional.html#material-adicional"><span class="toc-section-number">2.10</span> Material adicional</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-estructuras-y-funciones.html#estructuras-y-funciones"><span class="toc-section-number">3</span> Estructuras y funciones</a><ul>
+<li><a href="3-1-objetos.html#objetos"><span class="toc-section-number">3.1</span> Objetos</a></li>
+<li class="has-sub"><a href="3-2-funciones.html#funciones"><span class="toc-section-number">3.2</span> Funciones</a><ul>
+<li><a href="3-2-funciones.html#componentes-de-una-funcion"><span class="toc-section-number">3.2.1</span> Componentes de una función</a></li>
+<li><a href="3-2-funciones.html#el-ambiente"><span class="toc-section-number">3.2.2</span> El ambiente</a></li>
+<li><a href="3-2-funciones.html#reglas-de-visibilidad-scoping"><span class="toc-section-number">3.2.3</span> Reglas de visibilidad (scoping)</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-3-estructuras-de-datos.html#estructuras-de-datos"><span class="toc-section-number">3.3</span> Estructuras de datos</a><ul>
+<li><a href="3-3-estructuras-de-datos.html#clases-atomicas-atomic-classes"><span class="toc-section-number">3.3.1</span> Clases atómicas (atomic classes)</a></li>
+<li><a href="3-3-estructuras-de-datos.html#vectores"><span class="toc-section-number">3.3.2</span> Vectores</a></li>
+<li><a href="3-3-estructuras-de-datos.html#matrices"><span class="toc-section-number">3.3.3</span> Matrices</a></li>
+<li><a href="3-3-estructuras-de-datos.html#listas"><span class="toc-section-number">3.3.4</span> Listas</a></li>
+<li><a href="3-3-estructuras-de-datos.html#factores-factor"><span class="toc-section-number">3.3.5</span> Factores (factor)</a></li>
+<li><a href="3-3-estructuras-de-datos.html#data-frames"><span class="toc-section-number">3.3.6</span> Data frames</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-4-estructuras-de-datos-fuera-de-r-basico.html#estructuras-de-datos-fuera-de-r-basico"><span class="toc-section-number">3.4</span> Estructuras de datos fuera de R-básico</a><ul>
+<li><a href="3-4-estructuras-de-datos-fuera-de-r-basico.html#data-tables"><span class="toc-section-number">3.4.1</span> Data tables</a></li>
+<li><a href="3-4-estructuras-de-datos-fuera-de-r-basico.html#tibbles"><span class="toc-section-number">3.4.2</span> Tibbles</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-5-objetos-importantes.html#objetos-importantes"><span class="toc-section-number">3.5</span> Objetos importantes</a><ul>
+<li><a href="3-5-objetos-importantes.html#infinito"><span class="toc-section-number">3.5.1</span> Infinito</a></li>
+<li><a href="3-5-objetos-importantes.html#no-es-un-numero"><span class="toc-section-number">3.5.2</span> No es un número</a></li>
+<li><a href="3-5-objetos-importantes.html#valores-perdidos-missing-values"><span class="toc-section-number">3.5.3</span> Valores perdidos (missing values)</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-6-estructuras-de-control.html#estructuras-de-control"><span class="toc-section-number">3.6</span> Estructuras de control</a><ul>
+<li><a href="3-6-estructuras-de-control.html#if"><span class="toc-section-number">3.6.1</span> If</a></li>
+<li><a href="3-6-estructuras-de-control.html#for"><span class="toc-section-number">3.6.2</span> For</a></li>
+<li><a href="3-6-estructuras-de-control.html#whiles"><span class="toc-section-number">3.6.3</span> Whiles</a></li>
+<li><a href="3-6-estructuras-de-control.html#repeat---break"><span class="toc-section-number">3.6.4</span> Repeat - Break</a></li>
+<li><a href="3-6-estructuras-de-control.html#next"><span class="toc-section-number">3.6.5</span> Next</a></li>
+</ul></li>
+<li><a href="3-7-material-adicional-1.html#material-adicional-1"><span class="toc-section-number">3.7</span> Material adicional</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-vectorizacion-la-familia-apply-y-otros.html#vectorizacion-la-familia-apply-y-otros"><span class="toc-section-number">4</span> Vectorización, la familia apply y otros</a><ul>
+<li class="has-sub"><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#subconjuntos-de-diferentes-estructuras-de-datos"><span class="toc-section-number">4.1</span> Subconjuntos de diferentes estructuras de datos</a><ul>
+<li><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#operadores-para-extraer-subconjuntos"><span class="toc-section-number">4.1.1</span> Operadores para extraer subconjuntos</a></li>
+<li><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#asignar-a-un-subconjunto"><span class="toc-section-number">4.1.2</span> Asignar a un subconjunto</a></li>
+<li><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#operadores-logicos"><span class="toc-section-number">4.1.3</span> Operadores lógicos</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-2-aplicaciones.html#aplicaciones"><span class="toc-section-number">4.2</span> Aplicaciones</a><ul>
+<li><a href="4-2-aplicaciones.html#buscarv-o-buscarh"><span class="toc-section-number">4.2.1</span> Buscarv o buscarh</a></li>
+<li><a href="4-2-aplicaciones.html#muestras-aleatorias"><span class="toc-section-number">4.2.2</span> Muestras aleatorias</a></li>
+<li><a href="4-2-aplicaciones.html#expande-bases"><span class="toc-section-number">4.2.3</span> Expande bases</a></li>
+<li><a href="4-2-aplicaciones.html#which-intersect-y-union"><span class="toc-section-number">4.2.4</span> Which, intersect y union</a></li>
+<li><a href="4-2-aplicaciones.html#generacion-de-datos-a-partir-de-distribuciones"><span class="toc-section-number">4.2.5</span> Generación de datos a partir de distribuciones</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-3-split-apply-combine.html#split-apply-combine"><span class="toc-section-number">4.3</span> Split-apply-combine</a><ul>
+<li><a href="4-3-split-apply-combine.html#apply"><span class="toc-section-number">4.3.1</span> apply</a></li>
+<li><a href="4-3-split-apply-combine.html#lapply"><span class="toc-section-number">4.3.2</span> lapply</a></li>
+<li><a href="4-3-split-apply-combine.html#sapply"><span class="toc-section-number">4.3.3</span> sapply</a></li>
+<li><a href="4-3-split-apply-combine.html#mapply"><span class="toc-section-number">4.3.4</span> mapply</a></li>
+<li><a href="4-3-split-apply-combine.html#tapply"><span class="toc-section-number">4.3.5</span> tapply</a></li>
+<li><a href="4-3-split-apply-combine.html#by"><span class="toc-section-number">4.3.6</span> by</a></li>
+<li><a href="4-3-split-apply-combine.html#replicate"><span class="toc-section-number">4.3.7</span> replicate</a></li>
+<li><a href="4-3-split-apply-combine.html#puede-ser-mas-facil"><span class="toc-section-number">4.3.8</span> ¿Puede ser más fácil?</a></li>
+</ul></li>
+<li><a href="4-4-material-adicional-2.html#material-adicional-2"><span class="toc-section-number">4.4</span> Material adicional</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-herramientas-basicas-para-un-proyecto-de-datos.html#herramientas-basicas-para-un-proyecto-de-datos"><span class="toc-section-number">5</span> Herramientas básicas para un proyecto de datos</a><ul>
+<li class="has-sub"><a href="5-1-importacion-de-datos.html#importacion-de-datos"><span class="toc-section-number">5.1</span> Importación de datos</a><ul>
+<li><a href="5-1-importacion-de-datos.html#rds"><span class="toc-section-number">5.1.1</span> rds</a></li>
+<li><a href="5-1-importacion-de-datos.html#separado-por"><span class="toc-section-number">5.1.2</span> separado por *</a></li>
+<li><a href="5-1-importacion-de-datos.html#csv"><span class="toc-section-number">5.1.3</span> csv (archivo separado por comas)</a></li>
+<li><a href="5-1-importacion-de-datos.html#microsoft-excel"><span class="toc-section-number">5.1.4</span> Microsoft Excel</a></li>
+<li><a href="5-1-importacion-de-datos.html#dbf"><span class="toc-section-number">5.1.5</span> dbf</a></li>
+<li><a href="5-1-importacion-de-datos.html#ibm-spss"><span class="toc-section-number">5.1.6</span> IBM SPSS</a></li>
+<li><a href="5-1-importacion-de-datos.html#stata"><span class="toc-section-number">5.1.7</span> Stata</a></li>
+<li><a href="5-1-importacion-de-datos.html#sas"><span class="toc-section-number">5.1.8</span> SAS</a></li>
+<li><a href="5-1-importacion-de-datos.html#google-spreadsheet"><span class="toc-section-number">5.1.9</span> Google Spreadsheet</a></li>
+<li><a href="5-1-importacion-de-datos.html#google-bigquery"><span class="toc-section-number">5.1.10</span> Google bigquery</a></li>
+<li><a href="5-1-importacion-de-datos.html#heroku-postgres"><span class="toc-section-number">5.1.11</span> Heroku Postgres</a></li>
+<li><a href="5-1-importacion-de-datos.html#rdata"><span class="toc-section-number">5.1.12</span> rdata</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-2-transformacion-de-datos.html#transformacion-de-datos"><span class="toc-section-number">5.2</span> Transformación de datos</a><ul>
+<li><a href="5-2-transformacion-de-datos.html#tareas-comunes-en-la-manipulacion-de-datos"><span class="toc-section-number">5.2.1</span> Tareas comunes en la manipulación de datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#extraccion-de-subconjuntos-de-observaciones"><span class="toc-section-number">5.2.2</span> Extracción de subconjuntos de observaciones</a></li>
+<li><a href="5-2-transformacion-de-datos.html#extraccion-de-subconjuntos-de-variables-select"><span class="toc-section-number">5.2.3</span> Extracción de subconjuntos de variables (<em>select</em>)</a></li>
+<li><a href="5-2-transformacion-de-datos.html#creacion-de-resumenes-de-datos"><span class="toc-section-number">5.2.4</span> Creación de resumenes de datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#creacion-de-nuevas-variables"><span class="toc-section-number">5.2.5</span> Creación de nuevas variables</a></li>
+<li><a href="5-2-transformacion-de-datos.html#combinacion-de-conjuntos-de-datos-joins"><span class="toc-section-number">5.2.6</span> Combinación de conjuntos de datos (<em>joins</em>)</a></li>
+<li><a href="5-2-transformacion-de-datos.html#agrupar-datos"><span class="toc-section-number">5.2.7</span> Agrupar datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#reorganizar-datos"><span class="toc-section-number">5.2.8</span> Reorganizar datos</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-3-datos-limpios.html#datos-limpios"><span class="toc-section-number">5.3</span> Datos limpios</a><ul>
+<li><a href="5-3-datos-limpios.html#datos-limpios-1"><span class="toc-section-number">5.3.1</span> Datos limpios</a></li>
+<li><a href="5-3-datos-limpios.html#de-sucio-a-limpio"><span class="toc-section-number">5.3.2</span> De sucio a limpio</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-4-visualizacion.html#visualizacion"><span class="toc-section-number">5.4</span> Visualización</a><ul>
+<li><a href="5-4-visualizacion.html#la-gramatica-de-las-graficas"><span class="toc-section-number">5.4.1</span> La gramática de las gráficas</a></li>
+<li><a href="5-4-visualizacion.html#que-es"><span class="toc-section-number">5.4.2</span> ¿Qué es?</a></li>
+<li><a href="5-4-visualizacion.html#base-plotting-vs.ggplot"><span class="toc-section-number">5.4.3</span> Base plotting vs. ggplot</a></li>
+<li><a href="5-4-visualizacion.html#ggplot"><span class="toc-section-number">5.4.4</span> ggplot</a></li>
+<li><a href="5-4-visualizacion.html#caracteristicas-importantes"><span class="toc-section-number">5.4.5</span> Características importantes</a></li>
+<li><a href="5-4-visualizacion.html#las-capas"><span class="toc-section-number">5.4.6</span> Las capas</a></li>
+<li><a href="5-4-visualizacion.html#componentes-de-una-capa"><span class="toc-section-number">5.4.7</span> Componentes de una capa</a></li>
+</ul></li>
+<li><a href="5-5-material-adicional-3.html#material-adicional-3"><span class="toc-section-number">5.5</span> Material adicional</a></li>
+</ul></li>
+<li><a href="6-conclusion.html#conclusion"><span class="toc-section-number">6</span> Conclusión</a></li>
+<li class="appendix"><span><b>Apéndices</b></span></li>
+<li class="has-sub"><a href="A-markdown.html#markdown"><span class="toc-section-number">A</span> Markdown</a><ul>
+<li><a href="A-markdown.html#encabezados"><span class="toc-section-number">A.0.1</span> Encabezados</a></li>
+</ul></li>
+<li class="has-sub"><a href="nivel-1.html#nivel-1">Nivel 1</a><ul>
+<li class="has-sub"><a href="nivel-2.html#nivel-2">Nivel 2</a><ul>
+<li><a href="nivel-2.html#nivel-3">Nivel 3</a></li>
+</ul></li>
+<li><a href="A-1-lineas-horizontales.html#lineas-horizontales"><span class="toc-section-number">A.1</span> Lineas horizontales</a></li>
+<li><a href="A-2-enfasis.html#enfasis"><span class="toc-section-number">A.2</span> Énfasis</a></li>
+<li><a href="A-3-bloques.html#bloques"><span class="toc-section-number">A.3</span> Bloques</a></li>
+<li><a href="A-4-listas-1.html#listas-1"><span class="toc-section-number">A.4</span> Listas</a></li>
+<li><a href="A-5-links.html#links"><span class="toc-section-number">A.5</span> Links</a></li>
+<li><a href="A-6-imagenes.html#imagenes"><span class="toc-section-number">A.6</span> Imágenes</a></li>
+<li><a href="A-7-tablas.html#tablas"><span class="toc-section-number">A.7</span> Tablas</a></li>
+<li><a href="A-8-html.html#html"><span class="toc-section-number">A.8</span> HTML</a></li>
+<li><a href="A-9-codigo.html#codigo"><span class="toc-section-number">A.9</span> Código</a></li>
+<li><a href="A-10-parrafos.html#parrafos"><span class="toc-section-number">A.10</span> Párrafos</a></li>
+</ul></li>
+<li class="has-sub"><a href="B-packrat.html#packrat"><span class="toc-section-number">B</span> Packrat</a><ul>
+<li><a href="B-1-el-directorio-del-proyecto.html#el-directorio-del-proyecto"><span class="toc-section-number">B.1</span> El directorio del proyecto</a></li>
+<li><a href="B-2-instalacion-1.html#instalacion-1"><span class="toc-section-number">B.2</span> Instalación</a></li>
+<li><a href="B-3-r-markdown.html#r-markdown"><span class="toc-section-number">B.3</span> R Markdown</a></li>
+</ul></li>
+<li><a href="C-formatos.html#formatos"><span class="toc-section-number">C</span> Formatos</a></li>
+<li><a href="bibliografia.html#bibliografia">Bibliografía</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="enfasis" class="section level2">
+<h2><span class="header-section-number">A.2</span> Énfasis</h2>
+<pre><code>*italica* o _italica_
+**negritas** o __negritas__
+**_combinado_**
+**Uno en negritas _el otro combinado_**
+~~tachar~~</code></pre>
+<ul>
+<li><em>italica</em> o <em>italica</em></li>
+<li><strong>negritas</strong> o <strong>negritas</strong></li>
+<li><strong><em>combinado</em></strong></li>
+<li><strong>Uno en negritas <em>el otro combinado</em></strong></li>
+<li><del>tachar</del></li>
+</ul>
+</div>
+<p style="text-align: center;">
+<a href="A-1-lineas-horizontales.html"><button class="btn btn-default">Previous</button></a>
+<a href="A-3-bloques.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>
