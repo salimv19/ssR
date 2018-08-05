@@ -23,3 +23,8 @@ yaml
 RPostgreSQL
 futile.logger
 bindrcpp
+magrittr
+tidyr
+stringr
+reshape2
+kableExtra

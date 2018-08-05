@@ -226,6 +226,16 @@ img {
 <li><a href="5-3-datos-limpios.html#datos-limpios-1"><span class="toc-section-number">5.3.1</span> Datos limpios</a></li>
 <li><a href="5-3-datos-limpios.html#de-sucio-a-limpio"><span class="toc-section-number">5.3.2</span> De sucio a limpio</a></li>
 </ul></li>
+<li class="has-sub"><a href="5-4-visualizacion.html#visualizacion"><span class="toc-section-number">5.4</span> Visualización</a><ul>
+<li><a href="5-4-visualizacion.html#la-gramatica-de-las-graficas"><span class="toc-section-number">5.4.1</span> La gramática de las gráficas</a></li>
+<li><a href="5-4-visualizacion.html#que-es"><span class="toc-section-number">5.4.2</span> ¿Qué es?</a></li>
+<li><a href="5-4-visualizacion.html#base-plotting-vs.ggplot"><span class="toc-section-number">5.4.3</span> Base plotting vs. ggplot</a></li>
+<li><a href="5-4-visualizacion.html#ggplot"><span class="toc-section-number">5.4.4</span> ggplot</a></li>
+<li><a href="5-4-visualizacion.html#caracteristicas-importantes"><span class="toc-section-number">5.4.5</span> Características importantes</a></li>
+<li><a href="5-4-visualizacion.html#las-capas"><span class="toc-section-number">5.4.6</span> Las capas</a></li>
+<li><a href="5-4-visualizacion.html#componentes-de-una-capa"><span class="toc-section-number">5.4.7</span> Componentes de una capa</a></li>
+</ul></li>
+<li><a href="5-5-material-adicional-3.html#material-adicional-3"><span class="toc-section-number">5.5</span> Material adicional</a></li>
 </ul></li>
 <li><a href="6-conclusion.html#conclusion"><span class="toc-section-number">6</span> Conclusión</a></li>
 <li class="appendix"><span><b>Apéndices</b></span></li>
@@ -356,17 +366,26 @@ x</code></pre></div>
 <p>Esto es debido a que R tienen espacios de nombres (<em>namespaces</em>) separados para funciones y no-funciones. Cuando R intenta concatenar los valores del 1 al 4, busca primero en el ambiente global y, en caso de no encontrarlo, busca en los <em>namespaces</em> de cada uno de los paquetes que tiene cargados.</p>
 <p>El orden en el que busca se puede encontrar utilizando el comando <code>search()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search</span>()</code></pre></div>
-<pre><code>##  [1] &quot;.GlobalEnv&quot;           &quot;package:kableExtra&quot;   &quot;package:reshape2&quot;    
-##  [4] &quot;package:stringr&quot;      &quot;package:tidyr&quot;        &quot;package:magrittr&quot;    
-##  [7] &quot;package:bindrcpp&quot;     &quot;package:pryr&quot;         &quot;package:bigrquery&quot;   
-## [10] &quot;package:googlesheets&quot; &quot;package:xlsx&quot;         &quot;package:readxl&quot;      
-## [13] &quot;package:readr&quot;        &quot;package:haven&quot;        &quot;package:foreign&quot;     
-## [16] &quot;package:xtable&quot;       &quot;package:tibble&quot;       &quot;package:data.table&quot;  
-## [19] &quot;package:carData&quot;      &quot;package:VIF&quot;          &quot;package:plyr&quot;        
-## [22] &quot;package:ggplot2&quot;      &quot;package:dplyr&quot;        &quot;package:knitr&quot;       
-## [25] &quot;tools:rstudio&quot;        &quot;package:stats&quot;        &quot;package:graphics&quot;    
-## [28] &quot;package:grDevices&quot;    &quot;package:utils&quot;        &quot;package:datasets&quot;    
-## [31] &quot;package:methods&quot;      &quot;Autoloads&quot;            &quot;package:base&quot;</code></pre>
+<pre><code>##  [1] &quot;.GlobalEnv&quot;            &quot;package:futile.logger&quot;
+##  [3] &quot;package:RPostgreSQL&quot;   &quot;package:yaml&quot;         
+##  [5] &quot;package:DBI&quot;           &quot;package:lubridate&quot;    
+##  [7] &quot;package:cranlogs&quot;      &quot;package:kableExtra&quot;   
+##  [9] &quot;package:reshape2&quot;      &quot;package:stringr&quot;      
+## [11] &quot;package:tidyr&quot;         &quot;package:magrittr&quot;     
+## [13] &quot;package:bindrcpp&quot;      &quot;package:pryr&quot;         
+## [15] &quot;package:bigrquery&quot;     &quot;package:googlesheets&quot; 
+## [17] &quot;package:xlsx&quot;          &quot;package:readxl&quot;       
+## [19] &quot;package:readr&quot;         &quot;package:haven&quot;        
+## [21] &quot;package:foreign&quot;       &quot;package:xtable&quot;       
+## [23] &quot;package:tibble&quot;        &quot;package:data.table&quot;   
+## [25] &quot;package:carData&quot;       &quot;package:VIF&quot;          
+## [27] &quot;package:plyr&quot;          &quot;package:ggplot2&quot;      
+## [29] &quot;package:dplyr&quot;         &quot;package:knitr&quot;        
+## [31] &quot;tools:rstudio&quot;         &quot;package:stats&quot;        
+## [33] &quot;package:graphics&quot;      &quot;package:grDevices&quot;    
+## [35] &quot;package:utils&quot;         &quot;package:datasets&quot;     
+## [37] &quot;package:methods&quot;       &quot;Autoloads&quot;            
+## [39] &quot;package:base&quot;</code></pre>
 <p>Los paquetes recién llamados acaban en la posición número 2 y todo lo demás se recorre en el orden de la lista. Nota como el <em>base</em> (que se carga por default en toda sesión) está hasta el final.</p>
 <p><code>.GlobalEnv</code> es el workspace del que hablamos antes. Si hay un símbolo que corresponde a tu petición entonces tomará el valor en tu workspace para poder ejecutar tu petición. Si no encuentra nada, busca en el namespace de cada uno de los paquetes que has cargado hasta el momento en el <em>orden</em> en el que los llamaste.</p>
 <p>Esto es <strong>muy</strong> importante. Hay contribuidores de paquetes en todo el mundo y es muy común que utilicen el mismo nombre para implementaciones de distintas cosas y, por lo tanto, a veces nuestros resultados no son lo que esperábamos.</p>

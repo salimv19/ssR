@@ -226,6 +226,16 @@ img {
 <li><a href="5-3-datos-limpios.html#datos-limpios-1"><span class="toc-section-number">5.3.1</span> Datos limpios</a></li>
 <li><a href="5-3-datos-limpios.html#de-sucio-a-limpio"><span class="toc-section-number">5.3.2</span> De sucio a limpio</a></li>
 </ul></li>
+<li class="has-sub"><a href="5-4-visualizacion.html#visualizacion"><span class="toc-section-number">5.4</span> Visualización</a><ul>
+<li><a href="5-4-visualizacion.html#la-gramatica-de-las-graficas"><span class="toc-section-number">5.4.1</span> La gramática de las gráficas</a></li>
+<li><a href="5-4-visualizacion.html#que-es"><span class="toc-section-number">5.4.2</span> ¿Qué es?</a></li>
+<li><a href="5-4-visualizacion.html#base-plotting-vs.ggplot"><span class="toc-section-number">5.4.3</span> Base plotting vs. ggplot</a></li>
+<li><a href="5-4-visualizacion.html#ggplot"><span class="toc-section-number">5.4.4</span> ggplot</a></li>
+<li><a href="5-4-visualizacion.html#caracteristicas-importantes"><span class="toc-section-number">5.4.5</span> Características importantes</a></li>
+<li><a href="5-4-visualizacion.html#las-capas"><span class="toc-section-number">5.4.6</span> Las capas</a></li>
+<li><a href="5-4-visualizacion.html#componentes-de-una-capa"><span class="toc-section-number">5.4.7</span> Componentes de una capa</a></li>
+</ul></li>
+<li><a href="5-5-material-adicional-3.html#material-adicional-3"><span class="toc-section-number">5.5</span> Material adicional</a></li>
 </ul></li>
 <li><a href="6-conclusion.html#conclusion"><span class="toc-section-number">6</span> Conclusión</a></li>
 <li class="appendix"><span><b>Apéndices</b></span></li>
@@ -351,8 +361,9 @@ x <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <
 <h3><span class="header-section-number">2.3.3</span> Comandos útiles</h3>
 <p>Para enlistar los objetos que están en el espacio de trabajo</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre></div>
-<pre><code>## [1] &quot;all&quot;          &quot;df&quot;           &quot;df2&quot;          &quot;group.colors&quot;
-## [5] &quot;limpia&quot;       &quot;pega.estados&quot; &quot;quita.nas&quot;    &quot;x&quot;</code></pre>
+<pre><code>## [1] &quot;all&quot;          &quot;df&quot;           &quot;df2&quot;          &quot;diamonds&quot;    
+## [5] &quot;group.colors&quot; &quot;limpia&quot;       &quot;pega.estados&quot; &quot;quita.nas&quot;   
+## [9] &quot;x&quot;</code></pre>
 <p>Para eliminar todos los objetos en un directorio de trabajo (<em>workspace</em>)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>()) <span class="co"># se puede borrar solo uno, por ejemplo, nombrándolo</span>
 <span class="kw">ls</span>()</code></pre></div>

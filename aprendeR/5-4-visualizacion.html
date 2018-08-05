@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="aprendeR" />
+<meta property="og:type" content="book" />
+
+
+
+
+
+<meta name="author" content="Andrea Fernández Conde" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="aprendeR">
+
+<title>aprendeR</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<link rel="stylesheet" href="estilos.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#introduccion"><span class="toc-section-number">1</span> Introducción</a></li>
+<li class="has-sub"><a href="2-r-lo-basico.html#r-lo-basico"><span class="toc-section-number">2</span> R: lo básico</a><ul>
+<li><a href="2-1-instalacion.html#instalacion"><span class="toc-section-number">2.1</span> Instalación</a></li>
+<li class="has-sub"><a href="2-2-editores.html#editores"><span class="toc-section-number">2.2</span> Editores</a><ul>
+<li><a href="2-2-editores.html#rstudio"><span class="toc-section-number">2.2.1</span> RStudio</a></li>
+<li><a href="2-2-editores.html#ess"><span class="toc-section-number">2.2.2</span> ESS</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-3-el-espacio-de-trabajo-workspace.html#el-espacio-de-trabajo-workspace"><span class="toc-section-number">2.3</span> El espacio de trabajo (Workspace)</a><ul>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#directorio-de-trabajo"><span class="toc-section-number">2.3.1</span> Directorio de trabajo</a></li>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#ejemplos-basicos"><span class="toc-section-number">2.3.2</span> Ejemplos básicos</a></li>
+<li><a href="2-3-el-espacio-de-trabajo-workspace.html#comandos-utiles"><span class="toc-section-number">2.3.3</span> Comandos útiles</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-4-paquetes-libraries.html#paquetes-libraries"><span class="toc-section-number">2.4</span> Paquetes (<em>libraries</em>)</a><ul>
+<li><a href="2-4-paquetes-libraries.html#cran"><span class="toc-section-number">2.4.1</span> CRAN</a></li>
+<li><a href="2-4-paquetes-libraries.html#github"><span class="toc-section-number">2.4.2</span> Github</a></li>
+<li><a href="2-4-paquetes-libraries.html#otras-fuentes"><span class="toc-section-number">2.4.3</span> Otras fuentes</a></li>
+</ul></li>
+<li><a href="2-5-paquetes-recomendados.html#paquetes-recomendados"><span class="toc-section-number">2.5</span> Paquetes recomendados</a></li>
+<li><a href="2-6-scripting.html#scripting"><span class="toc-section-number">2.6</span> Scripting</a></li>
+<li class="has-sub"><a href="2-7-rmarkdown.html#rmarkdown"><span class="toc-section-number">2.7</span> rmarkdown</a><ul>
+<li><a href="2-7-rmarkdown.html#encabezado-y-formatos"><span class="toc-section-number">2.7.1</span> Encabezado y formatos</a></li>
+<li><a href="2-7-rmarkdown.html#knitr-chunks"><span class="toc-section-number">2.7.2</span> Knitr chunks</a></li>
+</ul></li>
+<li><a href="2-8-ayuda-y-documentacion.html#ayuda-y-documentacion"><span class="toc-section-number">2.8</span> Ayuda y documentación</a></li>
+<li><a href="2-9-optimizando.html#optimizando"><span class="toc-section-number">2.9</span> Optimizando</a></li>
+<li><a href="2-10-material-adicional.html#material-adicional"><span class="toc-section-number">2.10</span> Material adicional</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-estructuras-y-funciones.html#estructuras-y-funciones"><span class="toc-section-number">3</span> Estructuras y funciones</a><ul>
+<li><a href="3-1-objetos.html#objetos"><span class="toc-section-number">3.1</span> Objetos</a></li>
+<li class="has-sub"><a href="3-2-funciones.html#funciones"><span class="toc-section-number">3.2</span> Funciones</a><ul>
+<li><a href="3-2-funciones.html#componentes-de-una-funcion"><span class="toc-section-number">3.2.1</span> Componentes de una función</a></li>
+<li><a href="3-2-funciones.html#el-ambiente"><span class="toc-section-number">3.2.2</span> El ambiente</a></li>
+<li><a href="3-2-funciones.html#reglas-de-visibilidad-scoping"><span class="toc-section-number">3.2.3</span> Reglas de visibilidad (scoping)</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-3-estructuras-de-datos.html#estructuras-de-datos"><span class="toc-section-number">3.3</span> Estructuras de datos</a><ul>
+<li><a href="3-3-estructuras-de-datos.html#clases-atomicas-atomic-classes"><span class="toc-section-number">3.3.1</span> Clases atómicas (atomic classes)</a></li>
+<li><a href="3-3-estructuras-de-datos.html#vectores"><span class="toc-section-number">3.3.2</span> Vectores</a></li>
+<li><a href="3-3-estructuras-de-datos.html#matrices"><span class="toc-section-number">3.3.3</span> Matrices</a></li>
+<li><a href="3-3-estructuras-de-datos.html#listas"><span class="toc-section-number">3.3.4</span> Listas</a></li>
+<li><a href="3-3-estructuras-de-datos.html#factores-factor"><span class="toc-section-number">3.3.5</span> Factores (factor)</a></li>
+<li><a href="3-3-estructuras-de-datos.html#data-frames"><span class="toc-section-number">3.3.6</span> Data frames</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-4-estructuras-de-datos-fuera-de-r-basico.html#estructuras-de-datos-fuera-de-r-basico"><span class="toc-section-number">3.4</span> Estructuras de datos fuera de R-básico</a><ul>
+<li><a href="3-4-estructuras-de-datos-fuera-de-r-basico.html#data-tables"><span class="toc-section-number">3.4.1</span> Data tables</a></li>
+<li><a href="3-4-estructuras-de-datos-fuera-de-r-basico.html#tibbles"><span class="toc-section-number">3.4.2</span> Tibbles</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-5-objetos-importantes.html#objetos-importantes"><span class="toc-section-number">3.5</span> Objetos importantes</a><ul>
+<li><a href="3-5-objetos-importantes.html#infinito"><span class="toc-section-number">3.5.1</span> Infinito</a></li>
+<li><a href="3-5-objetos-importantes.html#no-es-un-numero"><span class="toc-section-number">3.5.2</span> No es un número</a></li>
+<li><a href="3-5-objetos-importantes.html#valores-perdidos-missing-values"><span class="toc-section-number">3.5.3</span> Valores perdidos (missing values)</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-6-estructuras-de-control.html#estructuras-de-control"><span class="toc-section-number">3.6</span> Estructuras de control</a><ul>
+<li><a href="3-6-estructuras-de-control.html#if"><span class="toc-section-number">3.6.1</span> If</a></li>
+<li><a href="3-6-estructuras-de-control.html#for"><span class="toc-section-number">3.6.2</span> For</a></li>
+<li><a href="3-6-estructuras-de-control.html#whiles"><span class="toc-section-number">3.6.3</span> Whiles</a></li>
+<li><a href="3-6-estructuras-de-control.html#repeat---break"><span class="toc-section-number">3.6.4</span> Repeat - Break</a></li>
+<li><a href="3-6-estructuras-de-control.html#next"><span class="toc-section-number">3.6.5</span> Next</a></li>
+</ul></li>
+<li><a href="3-7-material-adicional-1.html#material-adicional-1"><span class="toc-section-number">3.7</span> Material adicional</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-vectorizacion-la-familia-apply-y-otros.html#vectorizacion-la-familia-apply-y-otros"><span class="toc-section-number">4</span> Vectorización, la familia apply y otros</a><ul>
+<li class="has-sub"><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#subconjuntos-de-diferentes-estructuras-de-datos"><span class="toc-section-number">4.1</span> Subconjuntos de diferentes estructuras de datos</a><ul>
+<li><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#operadores-para-extraer-subconjuntos"><span class="toc-section-number">4.1.1</span> Operadores para extraer subconjuntos</a></li>
+<li><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#asignar-a-un-subconjunto"><span class="toc-section-number">4.1.2</span> Asignar a un subconjunto</a></li>
+<li><a href="4-1-subconjuntos-de-diferentes-estructuras-de-datos.html#operadores-logicos"><span class="toc-section-number">4.1.3</span> Operadores lógicos</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-2-aplicaciones.html#aplicaciones"><span class="toc-section-number">4.2</span> Aplicaciones</a><ul>
+<li><a href="4-2-aplicaciones.html#buscarv-o-buscarh"><span class="toc-section-number">4.2.1</span> Buscarv o buscarh</a></li>
+<li><a href="4-2-aplicaciones.html#muestras-aleatorias"><span class="toc-section-number">4.2.2</span> Muestras aleatorias</a></li>
+<li><a href="4-2-aplicaciones.html#expande-bases"><span class="toc-section-number">4.2.3</span> Expande bases</a></li>
+<li><a href="4-2-aplicaciones.html#which-intersect-y-union"><span class="toc-section-number">4.2.4</span> Which, intersect y union</a></li>
+<li><a href="4-2-aplicaciones.html#generacion-de-datos-a-partir-de-distribuciones"><span class="toc-section-number">4.2.5</span> Generación de datos a partir de distribuciones</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-3-split-apply-combine.html#split-apply-combine"><span class="toc-section-number">4.3</span> Split-apply-combine</a><ul>
+<li><a href="4-3-split-apply-combine.html#apply"><span class="toc-section-number">4.3.1</span> apply</a></li>
+<li><a href="4-3-split-apply-combine.html#lapply"><span class="toc-section-number">4.3.2</span> lapply</a></li>
+<li><a href="4-3-split-apply-combine.html#sapply"><span class="toc-section-number">4.3.3</span> sapply</a></li>
+<li><a href="4-3-split-apply-combine.html#mapply"><span class="toc-section-number">4.3.4</span> mapply</a></li>
+<li><a href="4-3-split-apply-combine.html#tapply"><span class="toc-section-number">4.3.5</span> tapply</a></li>
+<li><a href="4-3-split-apply-combine.html#by"><span class="toc-section-number">4.3.6</span> by</a></li>
+<li><a href="4-3-split-apply-combine.html#replicate"><span class="toc-section-number">4.3.7</span> replicate</a></li>
+<li><a href="4-3-split-apply-combine.html#puede-ser-mas-facil"><span class="toc-section-number">4.3.8</span> ¿Puede ser más fácil?</a></li>
+</ul></li>
+<li><a href="4-4-material-adicional-2.html#material-adicional-2"><span class="toc-section-number">4.4</span> Material adicional</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-herramientas-basicas-para-un-proyecto-de-datos.html#herramientas-basicas-para-un-proyecto-de-datos"><span class="toc-section-number">5</span> Herramientas básicas para un proyecto de datos</a><ul>
+<li class="has-sub"><a href="5-1-importacion-de-datos.html#importacion-de-datos"><span class="toc-section-number">5.1</span> Importación de datos</a><ul>
+<li><a href="5-1-importacion-de-datos.html#rds"><span class="toc-section-number">5.1.1</span> rds</a></li>
+<li><a href="5-1-importacion-de-datos.html#separado-por"><span class="toc-section-number">5.1.2</span> separado por *</a></li>
+<li><a href="5-1-importacion-de-datos.html#csv"><span class="toc-section-number">5.1.3</span> csv (archivo separado por comas)</a></li>
+<li><a href="5-1-importacion-de-datos.html#microsoft-excel"><span class="toc-section-number">5.1.4</span> Microsoft Excel</a></li>
+<li><a href="5-1-importacion-de-datos.html#dbf"><span class="toc-section-number">5.1.5</span> dbf</a></li>
+<li><a href="5-1-importacion-de-datos.html#ibm-spss"><span class="toc-section-number">5.1.6</span> IBM SPSS</a></li>
+<li><a href="5-1-importacion-de-datos.html#stata"><span class="toc-section-number">5.1.7</span> Stata</a></li>
+<li><a href="5-1-importacion-de-datos.html#sas"><span class="toc-section-number">5.1.8</span> SAS</a></li>
+<li><a href="5-1-importacion-de-datos.html#google-spreadsheet"><span class="toc-section-number">5.1.9</span> Google Spreadsheet</a></li>
+<li><a href="5-1-importacion-de-datos.html#google-bigquery"><span class="toc-section-number">5.1.10</span> Google bigquery</a></li>
+<li><a href="5-1-importacion-de-datos.html#heroku-postgres"><span class="toc-section-number">5.1.11</span> Heroku Postgres</a></li>
+<li><a href="5-1-importacion-de-datos.html#rdata"><span class="toc-section-number">5.1.12</span> rdata</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-2-transformacion-de-datos.html#transformacion-de-datos"><span class="toc-section-number">5.2</span> Transformación de datos</a><ul>
+<li><a href="5-2-transformacion-de-datos.html#tareas-comunes-en-la-manipulacion-de-datos"><span class="toc-section-number">5.2.1</span> Tareas comunes en la manipulación de datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#extraccion-de-subconjuntos-de-observaciones"><span class="toc-section-number">5.2.2</span> Extracción de subconjuntos de observaciones</a></li>
+<li><a href="5-2-transformacion-de-datos.html#extraccion-de-subconjuntos-de-variables-select"><span class="toc-section-number">5.2.3</span> Extracción de subconjuntos de variables (<em>select</em>)</a></li>
+<li><a href="5-2-transformacion-de-datos.html#creacion-de-resumenes-de-datos"><span class="toc-section-number">5.2.4</span> Creación de resumenes de datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#creacion-de-nuevas-variables"><span class="toc-section-number">5.2.5</span> Creación de nuevas variables</a></li>
+<li><a href="5-2-transformacion-de-datos.html#combinacion-de-conjuntos-de-datos-joins"><span class="toc-section-number">5.2.6</span> Combinación de conjuntos de datos (<em>joins</em>)</a></li>
+<li><a href="5-2-transformacion-de-datos.html#agrupar-datos"><span class="toc-section-number">5.2.7</span> Agrupar datos</a></li>
+<li><a href="5-2-transformacion-de-datos.html#reorganizar-datos"><span class="toc-section-number">5.2.8</span> Reorganizar datos</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-3-datos-limpios.html#datos-limpios"><span class="toc-section-number">5.3</span> Datos limpios</a><ul>
+<li><a href="5-3-datos-limpios.html#datos-limpios-1"><span class="toc-section-number">5.3.1</span> Datos limpios</a></li>
+<li><a href="5-3-datos-limpios.html#de-sucio-a-limpio"><span class="toc-section-number">5.3.2</span> De sucio a limpio</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-4-visualizacion.html#visualizacion"><span class="toc-section-number">5.4</span> Visualización</a><ul>
+<li><a href="5-4-visualizacion.html#la-gramatica-de-las-graficas"><span class="toc-section-number">5.4.1</span> La gramática de las gráficas</a></li>
+<li><a href="5-4-visualizacion.html#que-es"><span class="toc-section-number">5.4.2</span> ¿Qué es?</a></li>
+<li><a href="5-4-visualizacion.html#base-plotting-vs.ggplot"><span class="toc-section-number">5.4.3</span> Base plotting vs. ggplot</a></li>
+<li><a href="5-4-visualizacion.html#ggplot"><span class="toc-section-number">5.4.4</span> ggplot</a></li>
+<li><a href="5-4-visualizacion.html#caracteristicas-importantes"><span class="toc-section-number">5.4.5</span> Características importantes</a></li>
+<li><a href="5-4-visualizacion.html#las-capas"><span class="toc-section-number">5.4.6</span> Las capas</a></li>
+<li><a href="5-4-visualizacion.html#componentes-de-una-capa"><span class="toc-section-number">5.4.7</span> Componentes de una capa</a></li>
+</ul></li>
+<li><a href="5-5-material-adicional-3.html#material-adicional-3"><span class="toc-section-number">5.5</span> Material adicional</a></li>
+</ul></li>
+<li><a href="6-conclusion.html#conclusion"><span class="toc-section-number">6</span> Conclusión</a></li>
+<li class="appendix"><span><b>Apéndices</b></span></li>
+<li class="has-sub"><a href="A-markdown.html#markdown"><span class="toc-section-number">A</span> Markdown</a><ul>
+<li><a href="A-1-r-markdown.html#r-markdown"><span class="toc-section-number">A.1</span> R Markdown</a></li>
+</ul></li>
+<li class="has-sub"><a href="B-packrat.html#packrat"><span class="toc-section-number">B</span> Packrat</a><ul>
+<li><a href="B-1-el-directorio-del-proyecto.html#el-directorio-del-proyecto"><span class="toc-section-number">B.1</span> El directorio del proyecto</a></li>
+<li><a href="B-2-instalacion-1.html#instalacion-1"><span class="toc-section-number">B.2</span> Instalación</a></li>
+<li><a href="B-3-r-markdown-1.html#r-markdown-1"><span class="toc-section-number">B.3</span> R Markdown</a></li>
+</ul></li>
+<li><a href="C-formatos.html#formatos"><span class="toc-section-number">C</span> Formatos</a></li>
+<li><a href="bibliografia.html#bibliografia">Bibliografía</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="visualizacion" class="section level2">
+<h2><span class="header-section-number">5.4</span> Visualización</h2>
+<p>La graficación es una manera eficiente de resumir, y mostrar información. Es fundamental entender el contexto de negocio y de la generación de los datos para tener más información con respecto a lo que se está graficando.</p>
+<p>Aunque no hay mucha teoría alrededor de gráficos estadísticos, muchos se describen en distintos libros de texto de estadística <span class="citation">(Unwin <a href="#ref-unwin2015">2015</a>, Introducción)</span>.</p>
+<p><span class="citation">(Unwin <a href="#ref-unwin2015">2015</a>, citando a John Tukey)</span> resume el propósito de la visualización de datos en cuatro frases:</p>
+<ol style="list-style-type: decimal">
+<li>Las gráficas son para análsisis cualitativos o descriptivos y quizá semi cuantitativos, nunca para análisis profundo cuantitativo (las tablas son mejores para esta tarea).</li>
+<li>Las gráficas son para realizar comparaciones (en el tiempo, entre grupos), no para describir cantidades particulares.</li>
+<li>Las gráficas son para impactar (visualmente, para sorprender, para transmitir información), pero casi nunca sirven para reflejar patrones escondidos en los datos.</li>
+<li>Las gráficas deberían de reportar un análisis de datos trabajado, fino y cuidadoso. Jamás deben de reemplazar el análisis. Las gráficas están para fortalecer el análisis, no para fundamentarlo y los gráficos finales en un análisis deben reflejar el análisis realizado.</li>
+</ol>
+<p>Esta sección resume algunas de las funciones implementadas para <strong>visualizar</strong> datos implementados en el paquete <code>ggplot2</code> de <code>R</code>. Está fuera de la alcance de este apartado las consideraciones estadísticas que deben de realizarse en un análisis de datos pues el enfoque es mostrar cómo realizar esta tarea en <code>R</code>. En la figura  podemos ver la etapa del análisis de datos correspondiente.</p>
+<div class="figure" style="text-align: center"><span id="fig:ciclo4"></span>
+<img src="images/02_ciclo_4.png" alt="Visualización en el análisis de datos [@grolemund2016r, Introducción]." width="75%" />
+<p class="caption">
+Figura 5.11: Visualización en el análisis de datos <span class="citation">(Grolemund and Wickham <a href="#ref-grolemund2016r">2016</a>, Introducción)</span>.
+</p>
+</div>
+<p>En <code>R</code> hay muchas maneras de realizar una tarea, esto es particularmente cierto en lo que se refiere a visualización de datos <span class="citation">(Yau <a href="#ref-basevggplot">2016</a>)</span>. A fin de cuentas, lo más importante de la visualización de datos es cuán útil es esta herramienta para el análisis de datos y la forma en la que se le indica a la máquina como realizar la tarea es un elemento importante solo en la medida en la que facilite el trabajo del estadístico.</p>
+<p>Aunque posiblemente cualquiera de los gráficos que se pueden hacer con <code>ggplot2</code> pueden hacerse también con los gráficos implementados en el <code>base graphics</code> de <code>R</code> <span class="citation">(Yau <a href="#ref-basevggplot">2016</a>)</span>, aquí se cubre visualización en <code>ggplot2</code> principalmente debido a que:</p>
+<ul>
+<li>El patrón de programación está definido formalmente mientras que en el <code>base</code> no lo está. Esto significa que cuando entiendes cómo hacer una gráfica en <code>ggplot2</code>, puedes hacer una gran cantidad de gráficos <span class="citation">(Yau <a href="#ref-basevggplot">2016</a>)</span>.</li>
+<li><code>ggplot2</code> tiene una gran cantidad de <em>defaults</em> predefinidos que facilitan realizar gráficos ilustrativos y estéticos muy rápidamente <span class="citation">(Mejia <a href="#ref-reasonsggplot">2013</a>)</span>.</li>
+<li><code>ggplot2</code> es compatible con <em>piping</em><a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a> <span class="citation">(Leek <a href="#ref-notggplot">2016</a>)</span>.</li>
+<li>Muchas veces, resulta necesario realizar un mismo gráfico para varios subconjuntos de datos. Esta tarea se puede hacer en forma directa en <code>ggplot2</code> y no en el <code>base</code> a través de facetas.</li>
+</ul>
+<p>Primero, se cubrirá el concepto detrás de <code>ggplot2</code>, la gramática de las gráficas. Posteriormente, se describen los componentes de una gráfica en <code>ggplot2</code>, las capas y sus componentes proporcionando ejemplos en cada caso.</p>
+<div id="la-gramatica-de-las-graficas" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> La gramática de las gráficas</h3>
+<p>Es una herramienta que nos permite <span class="citation">(Wickham <a href="#ref-wickham2010layered">2010</a>)</span>:</p>
+<ul>
+<li>Describir los componentes de una gráfica en forma concisa</li>
+<li>Ir más allá de los nombres de la gráfica (e.g. scatterplot, boxplot, etc.)</li>
+<li>Entender la estructura detrás de los gráficos estadísticos</li>
+</ul>
+</div>
+<div id="que-es" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> ¿Qué es?</h3>
+<p>La gramática le da reglas al lenguaje y es un sistema formal para generar enunciados <span class="citation">(Wilkinson <a href="#ref-wilkinson2006grammar">2006</a>)</span>. <span class="citation">Wilkinson (<a href="#ref-wilkinson2006grammar">2006</a>)</span> proporciona una gramática para gráficos que permite describir y construir una gran cantidad de gráficos estadísticos. <span class="citation">(Wickham <a href="#ref-wickham2010layered">2010</a>)</span> implementa esta gramática en el paquete <code>ggplot2</code> de <code>R</code> <span class="citation">(Wickham <a href="#ref-ggplot2">2009</a>)</span>.</p>
+<p>La gramática define un gráfico estadístico como un mapeo de datos a atributos estéticos (un color, una forma) en objetos geométricos (barras, líneas, puntos). Además, una gráfica puede implicar transformaciones estadísticas de los datos y se dibuja sobre un sistema de coordenadas específico. Por último, es posible generar el mismo gráfico en diferentes subconjuntos de los datos (facetas). La combinación de estos factores independientes conforman un gráfico <span class="citation">(Wickham <a href="#ref-ggplot2">2009</a>, pág. 5)</span>.</p>
+<p>La implementación en capas, permite que los usuarios no se limiten únicamente a los gráficos específicos que se implementan paquete a paquete sino que puedan realizar tantos gráficos como este lenguaje de gráficos permita.</p>
+</div>
+<div id="base-plotting-vs.ggplot" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> Base plotting vs. ggplot</h3>
+<p>Observemos una gráfica utilizando la base <code>diamonds</code> en donde graficamos en el eje <span class="math inline">\(x\)</span> el carataje de diamantes y en el eje <span class="math inline">\(y\)</span> su precio:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(diamonds, <span class="dt">package =</span> <span class="st">&quot;ggplot2&quot;</span>)
+<span class="kw">str</span>(diamonds)</code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    53940 obs. of  10 variables:
+##  $ carat  : num  0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
+##  $ cut    : Ord.factor w/ 5 levels &quot;Fair&quot;&lt;&quot;Good&quot;&lt;..: 5 4 2 4 2 3 3 3 1 3 ...
+##  $ color  : Ord.factor w/ 7 levels &quot;D&quot;&lt;&quot;E&quot;&lt;&quot;F&quot;&lt;&quot;G&quot;&lt;..: 2 2 2 6 7 7 6 5 2 5 ...
+##  $ clarity: Ord.factor w/ 8 levels &quot;I1&quot;&lt;&quot;SI2&quot;&lt;&quot;SI1&quot;&lt;..: 2 3 5 4 2 6 7 3 4 5 ...
+##  $ depth  : num  61.5 59.8 56.9 62.4 63.3 62.8 62.3 61.9 65.1 59.4 ...
+##  $ table  : num  55 61 65 58 58 57 57 55 61 61 ...
+##  $ price  : int  326 326 327 334 335 336 336 337 337 338 ...
+##  $ x      : num  3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...
+##  $ y      : num  3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...
+##  $ z      : num  2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(diamonds<span class="op">$</span>carat, diamonds<span class="op">$</span>price)</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-303-1.png" width="672" /></p>
+<p>Ese mismo gráfico, podemos realizarlo con la función <code>qplot</code> del paquete<code>ggplot</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">data =</span> diamonds, <span class="dt">x =</span> carat, <span class="dt">y =</span> price, <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>)</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-304-1.png" width="672" /></p>
+<p>En donde especificamos que la variable <code>carat</code> en la base <code>diamonds</code> mapea al eje <span class="math inline">\(x\)</span>, la variable <code>price</code> en la misma base al eje <span class="math inline">\(y\)</span> y queremos que la geometría sea de puntos.</p>
+<p>Observa que la estética de la gráfica generada con la función <code>plot</code> es un poco distinta a la generada con <code>qplot</code> (función que utiliza <code>ggplot</code>). Verifica la clase que tiene cada objeto, en el primer caso no tiene y en el segundo tenemos un objeto de clase <code>ggplot</code> que tiene atributos y que podemos guardar en un objeto.</p>
+</div>
+<div id="ggplot" class="section level3">
+<h3><span class="header-section-number">5.4.4</span> ggplot</h3>
+<p>Los componentes de la gramática de gráficas específica para <code>ggplot</code> son:</p>
+<ol style="list-style-type: decimal">
+<li>Una o más capas donde cada cuál tiene:
+<ol style="list-style-type: lower-alpha">
+<li>Datos</li>
+<li>Mapeo estético de los datos (<em>aesthetic mappings</em>)</li>
+<li>Un objeto geométrico</li>
+<li>Una transformación estadística</li>
+<li>Ajustes en las posiciones de los objetos</li>
+</ol></li>
+<li>Una escala para cada estética</li>
+<li>Un sistema de coordenadas</li>
+<li>Una especificación de facetas</li>
+</ol>
+<p>Al graficar en <code>ggplot</code> se tiene control sobre todos estos elementos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">layer</span>( <span class="co"># una capa</span>
+    <span class="dt">data =</span> diamonds, <span class="co"># datos</span>
+    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price), <span class="co"># mapeo estético</span>
+    <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="co"># geometría</span>
+    <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="co"># transformación estadística</span>
+    <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span> <span class="co"># ajuste en posición de objetos</span>
+    ) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>() <span class="op">+</span><span class="st"> </span><span class="co"># Escala para estética continua en y</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>() <span class="op">+</span><span class="st"> </span><span class="co"># Escala para estética continua en x</span>
+<span class="st">  </span><span class="kw">coord_cartesian</span>() <span class="co"># Sistema de coordenadas</span></code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-305-1.png" width="672" /></p>
+<p><code>ggplot</code> implementa también una serie de <code>defaults</code> <span class="citation">(Wickham <a href="#ref-ggplot2">2009</a>, pág. 3)</span> que facilitan la escritura de nuevas gráficas pues no es necesario especificar cada uno de los detalles al agregar una capa. Por tanto, es posible escribir el mismo gráfico haciendo uso de esos <code>defaults</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-306-1.png" width="672" /></p>
+</div>
+<div id="caracteristicas-importantes" class="section level3">
+<h3><span class="header-section-number">5.4.5</span> Características importantes</h3>
+<p>Los componentes de una gráfica son ortogonales:</p>
+<pre><code>- Cambiar uno no debe romper los otros
+- Una configuración distinta de componentes es válida
+- Puedes construir mayor complejidad agregando capas</code></pre>
+</div>
+<div id="las-capas" class="section level3">
+<h3><span class="header-section-number">5.4.6</span> Las capas</h3>
+<p><code>ggplot</code> produce un objeto que se puede convertir en una gráfica. Es decir, <code>R</code> sabe cómo convertirlo en una gráfica.</p>
+<p>Este objeto está formado por capas, mismas que tienen sus entradas (<em>inputs</em>) particulares y que comparten argumentos del gráfico <code>base</code> generado por la función <code>ggplot()</code>. Con el operador <code>+</code> se van agregando las distintas capas al mismo objeto.</p>
+<p>Así como en otros casos, el objeto en <code>R</code> puede ser guardado en una variable, se le puede imprimir, se le puede guardar como imagen de diferentes formatos, o se puede guardar en una lista o en un <code>Rdata</code>.</p>
+</div>
+<div id="componentes-de-una-capa" class="section level3">
+<h3><span class="header-section-number">5.4.7</span> Componentes de una capa</h3>
+<div id="datos-y-mapa-estetico" class="section level4">
+<h4><span class="header-section-number">5.4.7.1</span> Datos y mapa estético</h4>
+<p>Permite mapear las columnas del <code>data.frame</code> de entrada a los aspectos de la gráfica.</p>
+<p>Es decir,</p>
+<ul>
+<li>las coordenadas <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span></li>
+<li>los grupos (definidos por otra variable)</li>
+<li>el tamaño</li>
+<li>el color</li>
+<li>el relleno</li>
+</ul>
+<p>Para ejemplificar, generamos una variable <span class="math inline">\(x\)</span> que proviene de dos distribuciones normales: mil realizaciones <span class="math inline">\(N(0, 1)\)</span> y mil <span class="math inline">\(N(3, 1)\)</span>. Asignamos un grupo a las primeras mil y otro a la segunda.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mix2norm &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x  =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">1000</span>), <span class="kw">rnorm</span>(<span class="dv">1000</span>, <span class="dv">3</span>)), 
+                       <span class="dt">grupo =</span> <span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">each=</span><span class="dv">1000</span>)))
+
+<span class="kw">ggplot</span>(mix2norm, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">color =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>()</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-307-1.png" width="672" /></p>
+</div>
+<div id="transformaciones-estadisticas" class="section level4">
+<h4><span class="header-section-number">5.4.7.2</span> Transformaciones estadísticas</h4>
+<p>Ésta puede ser, por ejemplo, un resumen de la entrada (<em>input</em>) recibido; se especifica vía el comando <code>stat</code>. Ejemplos:</p>
+<ul>
+<li>binning</li>
+<li>smoothing</li>
+<li>boxplot</li>
+<li>identity</li>
+</ul>
+<p>Utilizamos, por ejemplo, la transformación <em>bin</em>, misma que se especifica en el objeto geométrico:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mix2norm, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">color =</span> grupo)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">stat =</span> <span class="st">&quot;bin&quot;</span>, <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-308-1.png" width="672" /></p>
+<p>La transformación utilizada tiene asociada parámetros como lo es el tamaño en el que deben realizarse los colapsos de la variable categórica (<em>binwidth</em>).</p>
+</div>
+<div id="el-objeto-geometrico" class="section level4">
+<h4><span class="header-section-number">5.4.7.3</span> El objeto geométrico</h4>
+<p>Esto permite especificar el tipo de gráfico a crear. Se especifica con la <code>geom</code>. Se define de acuerdo a su dimensión, es decir,</p>
+<ul>
+<li><code>0-dim</code>: puntos, texto</li>
+<li><code>1-dim</code>: líneas</li>
+<li><code>2-dim</code>: polígonos, intervalos</li>
+</ul>
+<p>Otras geometrías incluyen:</p>
+<ul>
+<li><code>geom_hist</code></li>
+<li><code>geom_bar</code></li>
+<li><code>geom_contour</code></li>
+<li><code>geom_line</code></li>
+<li><code>geom_density</code></li>
+</ul>
+<p>Además, se puede cambiar la transformación estadística manteniendo la geometría fijada. Al ejemplo anterior, le agregamos una transformación estadística dentro del objeto geométrico con el parámetro <code>adjust</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mix2norm, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">color =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>(<span class="dt">adjust =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-309-1.png" width="672" /></p>
+<p>En este caso, estamos pidiendo la mitad del tamaño del bin que se calcula en forma algorítmica por el paquete.</p>
+<p>Viceversa, puede cambiarse la geometría pero mantener la transformación estadística.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mix2norm, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">color =</span> grupo)) <span class="op">+</span><span class="st"> </span><span class="kw">stat_density</span>(<span class="dt">adjust =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-310-1.png" width="672" /></p>
+<p>Revisa el comando <code>position</code> y <code>geometry</code>. Revisa sus defaults y copia algunos de los ejemplos en la documentación.</p>
+<p><code>geom_density</code> por ejemplo utiliza <code>ribbon</code> o una cosa que a veces encontrarán en español como violín.</p>
+<div class="ejercicio">
+<p>
+<strong>Ejercicios</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Genera una gráfica con la función <code>ggplot</code> en donde los datos sea la base <code>diamonds</code> y la estética sea <span class="math inline"><span class="math inline">\(x = price\)</span></span>. Especifica como geometría una densidad.
+</li>
+<li>
+Cambia el color y el relleno de la geometría a gris (<code>grey50</code>)
+</li>
+<li>
+Cambia la geometría a <code>ribbon</code>, cambia los parámetros necesarios para que funcione.
+</li>
+<li>
+Agrega una faceta para que se haga un gráfico para cada uno de los subconjuntos definidos por la variable <code>cut</code>.
+</li>
+<li>
+Agrega a la gráfica el comando <code>coord_flip</code> para que el precio este en el eje <span class="math inline"><span class="math inline">\(y\)</span></span>.
+</li>
+</ol>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Respuestas</span>
+<span class="co"># 1</span>
+g &lt;-<span class="st"> </span><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> price)) <span class="op">+</span><span class="st"> </span><span class="kw">stat_density</span>()
+g
+<span class="co"># 2</span>
+g <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_density</span>(<span class="dt">fill =</span> <span class="st">&quot;grey50&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;grey50&quot;</span>) 
+<span class="co"># 3</span>
+g &lt;-<span class="st"> </span>g <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_density</span>(<span class="kw">aes</span>(<span class="dt">ymax =</span> ..density..,  <span class="dt">ymin =</span> <span class="op">-</span>..density..),
+    <span class="dt">fill =</span> <span class="st">&quot;grey50&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;grey50&quot;</span>,
+    <span class="dt">geom =</span> <span class="st">&quot;ribbon&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>)
+g
+<span class="co"># 4</span>
+g &lt;-<span class="st"> </span>g  <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(. <span class="op">~</span><span class="st"> </span>cut) 
+g
+<span class="co"># 5</span>
+g <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</code></pre></div>
+</div>
+<div id="posicion" class="section level4">
+<h4><span class="header-section-number">5.4.7.4</span> Posición</h4>
+<p>Es posible especificar la posición de cada una de las capas en relación a otras. Ejemplos:</p>
+<ul>
+<li><code>dodge</code></li>
+<li><code>identity</code></li>
+<li><code>jitter</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mix2norm, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">color =</span> grupo)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">stat_density</span>(<span class="dt">adjust=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dt">size=</span><span class="dv">2</span>, <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-313-1.png" width="672" /></p>
+</div>
+<div id="escalas" class="section level4">
+<h4><span class="header-section-number">5.4.7.5</span> Escalas</h4>
+<p>Determina cuál valor de entrada mapea a qué estética específica. Se escribe usando <code>scale</code>. Hay de todo:</p>
+<ul>
+<li><code>continous</code></li>
+<li><code>logarithmic</code></li>
+<li><code>values to shapes</code></li>
+<li><code>what limits</code></li>
+<li><code>what labels</code></li>
+<li><code>what marks</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mix2norm, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">color =</span> grupo)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">stat_density</span>(<span class="dt">adjust=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dt">size=</span><span class="dv">2</span>, <span class="dt">position =</span><span class="st">&quot;identity&quot;</span>, <span class="dt">geom =</span><span class="st">&quot;line&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_log10</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="fl">1e-5</span>,<span class="dv">1</span>))</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-314-1.png" width="672" /></p>
+</div>
+<div id="coordenadas" class="section level4">
+<h4><span class="header-section-number">5.4.7.6</span> Coordenadas</h4>
+<p>Te permite especificar las posiciones de las cosas y cómo mapean a las posiciones en la pantalla. Antes todo era entorno a cómo le dices las cosas a <code>R</code> pero también importa cómo las ves. Coordenadas distintas pueden afectar a los objetos geométricos. Ejemplos:</p>
+<ul>
+<li><code>cartesian</code></li>
+<li><code>polar</code></li>
+<li><code>map-projection</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mix2norm, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">color =</span> grupo)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">stat_density</span>(<span class="dt">adjust =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_polar</span>()</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-315-1.png" width="672" /></p>
+</div>
+<div id="facetas" class="section level4">
+<h4><span class="header-section-number">5.4.7.7</span> Facetas</h4>
+<p>Permite arreglar diferentes gráficas en un grid o panel.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mix2norm, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">color =</span> grupo)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">stat_density</span>(<span class="dt">adjust =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(grupo <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
+<p><img src="aprendeR_files/figure-html/unnamed-chunk-316-1.png" width="672" /></p>
+<p>Ve el help de <code>facet_wrap</code></p>
+</div>
+</div>
+</div>
+<h3>Bibliografía</h3>
+<div id="refs" class="references">
+<div id="ref-unwin2015">
+<p>Unwin, Antony. 2015. <em>Graphical Data Analysis with R</em>. Vol. 27. CRC Press.</p>
+</div>
+<div id="ref-grolemund2016r">
+<p>Grolemund, G., and H. Wickham. 2016. <em>R for Data Science</em>. O’Reilly Media, Incorporated. <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a>.</p>
+</div>
+<div id="ref-basevggplot">
+<p>Yau, Nathan. 2016. “Comparing Ggplot2 and R Base Graphics.” Blog. <a href="https://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/" class="uri">https://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/</a>; Flowingdata.</p>
+</div>
+<div id="ref-reasonsggplot">
+<p>Mejia, Mandy. 2013. “10 Reasons to Switch to Ggplot.” Blog. <a href="https://mandymejia.wordpress.com/2013/11/13/10-reasons-to-switch-to-ggplot-7/" class="uri">https://mandymejia.wordpress.com/2013/11/13/10-reasons-to-switch-to-ggplot-7/</a>.</p>
+</div>
+<div id="ref-notggplot">
+<p>Leek, Jeff. 2016. “Why I Don’t Use Ggplot2.” Blog. <a href="https://simplystatistics.org/2016/02/11/why-i-dont-use-ggplot2/" class="uri">https://simplystatistics.org/2016/02/11/why-i-dont-use-ggplot2/</a>.</p>
+</div>
+<div id="ref-wickham2010layered">
+<p>Wickham, Hadley. 2010. “A Layered Grammar of Graphics.” <em>Journal of Computational and Graphical Statistics</em> 19 (1). Taylor &amp; Francis: 3–28.</p>
+</div>
+<div id="ref-wilkinson2006grammar">
+<p>Wilkinson, Leland. 2006. <em>The Grammar of Graphics</em>. Springer Science &amp; Business Media.</p>
+</div>
+<div id="ref-ggplot2">
+<p>Wickham, Hadley. 2009. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="http://ggplot2.org" class="uri">http://ggplot2.org</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="15">
+<li id="fn15"><p>Se introdujo el operador <em>pipe</em> de <code>R</code> en la sección de transformación en este capítulo y se mencionó como ayuda en la lectura y escritura de código. Un <em>pipeline</em> en programación consiste en un arreglo de elementos de procesamiento en donde la salida de cada elemento es la entrada del siguiente elemento. Este concepto fue concebido por Douglas Mcllroy <span class="citation">(Mahoney, n.d.)</span>.<a href="5-4-visualizacion.html#fnref15">↩</a></p></li>
+</ol>
+</div>
+<p style="text-align: center;">
+<a href="5-3-datos-limpios.html"><button class="btn btn-default">Previous</button></a>
+<a href="5-5-material-adicional-3.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>
